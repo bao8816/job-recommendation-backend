@@ -1,0 +1,41 @@
+{
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.30.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "method-override": "^3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "name": "job-recommendation",
+  "version": "1.0.0",
+  "description": "Back-end folder of Job Recommendation Project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon --inspect src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eakan-Git/job-recommendation.git"
+  },
+  "keywords": [
+    "node",
+    "nodejs",
+    "job",
+    "recommendation",
+    "backend",
+    "javascript"
+  ],
+  "author": "StuckOverFlow",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Eakan-Git/job-recommendation/issues"
+  },
+  "homepage": "https://github.com/Eakan-Git/job-recommendation#readme"
+}
