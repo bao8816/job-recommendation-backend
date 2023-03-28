@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "@ant-design/icons": "^5.0.1",
+    "antd": "^5.3.2",
+    "customize-cra": "^1.0.0",
+    "react-app-rewired": "^2.2.1"
+  },
+  "dependencies": {
+    "react-helmet": "^6.1.0"
+  }
+}
