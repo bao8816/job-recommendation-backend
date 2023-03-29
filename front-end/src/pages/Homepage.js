@@ -1,16 +1,20 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import LogoRow from '../components/navBar/navBar';
+import Layout from "../components/Layout/Layout";
+import Helmet from "react-helmet";
+import HomeSearchBar from "../components/SearchBar/HomeSearchBar";
+import Carousel from "../components/Carousel/Carousel";
 const Homepage = () => {
-  return (
-    <>
+    return (
+      <>
       <Helmet>
-        <title>Tìm việc nhanh</title>
+        <title>FinDev - Tìm việc nhanh gọn!</title>
         <meta name="description" content="Tìm việc nhanh" />
       </Helmet>
-        <LogoRow/>
-    </>
-  );
+        <Layout>
+            <HomeSearchBar/>
+            <Carousel/>
+        </Layout>
+        </>
+    );
 };
 
 export default Homepage;

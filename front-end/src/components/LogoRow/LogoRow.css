@@ -1,0 +1,25 @@
+.logo-row-container {
+    padding: 24px;
+    background-color: #BAE1C5;
+
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .logo img {
+    margin-right: 10px;
+    border-radius: 10%;
+  }
+  
+  .logo span {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .login {
+    display: flex;
+    align-items: center;
+  }
