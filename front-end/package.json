@@ -38,5 +38,17 @@
   },
   "devDependencies": {
     "react-scripts": "^5.0.1"
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eakan-Git/job-recommendation.git"
+  },
+  "author": "StuckOverFlow",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Eakan-Git/job-recommendation/issues"
+  },
+  "homepage": "https://github.com/Eakan-Git/job-recommendation#readme"
 }

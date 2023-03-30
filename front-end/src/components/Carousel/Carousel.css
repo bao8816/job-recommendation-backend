@@ -1,11 +1,27 @@
-.carousel-title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 50px;
+.carousel-jobs-box{
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
 }
-
+.carousel-companies-box{
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+}
 .carousel-title h2 {
   text-align: center;
+}
+.carousel-container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+.view-more a {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  text-align: right;
+  display: block;
 }
