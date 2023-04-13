@@ -20,6 +20,9 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserController
         Route::get('/{user_id}', 'getUserById');
         Route::get('/', 'getAllUsers');
 
+        Route::get('/account/{user_id}', 'getUserAccountById');
+        Route::get('/account', 'getAllUserAccounts');
+
         Route::put('/{user_id}', 'updateUserById');
     });
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UserAccount;
 use App\Models\UserProfile;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -32,10 +33,52 @@ class UserController extends ApiController
         }
     }
 
+    public function getAllUserAccounts(Request $request): JsonResponse
+    {
+        try {
+            $count_per_page = $request->countPerPage;
+
+            $users = UserAccount::paginate($count_per_page);
+
+            if (count($users) === 0) {
+                return $this->respondNotFound('No users found');
+            }
+
+            return $this->respondWithData(
+                [
+                    'users' => $users,
+                ]
+            , 'Successfully retrieved users');
+        }
+        catch (Exception $exception) {
+            return $this->respondInternalServerError($exception->getMessage());
+        }
+    }
+
     public function getUserById(string $user_id): JsonResponse
     {
         try {
             $user = UserProfile::where('id', $user_id)->first();
+
+            if (!isset($user)) {
+                return $this->respondNotFound('User not found');
+            }
+
+            return $this->respondWithData(
+                [
+                    'user' => $user,
+                ]
+            , 'Successfully retrieved user');
+        }
+        catch (Exception $exception) {
+            return $this->respondInternalServerError($exception->getMessage());
+        }
+    }
+
+    public function getUserAccountById(string $user_id): JsonResponse
+    {
+        try {
+            $user = UserAccount::where('id', $user_id)->first();
 
             if (!isset($user)) {
                 return $this->respondNotFound('User not found');
