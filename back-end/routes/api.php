@@ -15,6 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserController::class)
+    ->prefix('users')->group(function () {
+        Route::get('/{user_id}', 'getUserById');
+        Route::get('/', 'getAllUsers');
+
+        Route::put('/{user_id}', 'updateUserById');
+    });
+
 Route::controller(AuthController::class)
     ->prefix('auth')->group(function () {
         Route::post('/sign-up', 'signUp');

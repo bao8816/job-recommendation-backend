@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SignUpRequest;
 use App\Models\UserAccount;
+use App\Models\UserProfile;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends ApiController
 {
+    private const TOKEN_PREFIX = 'Bearer ';
+
     //TODO: Change Request to SignUpRequest
     public function signUp(Request $request)
     {
@@ -34,6 +37,11 @@ class AuthController extends ApiController
             $userAccount->password = $hashedPassword;
             $userAccount->save();
 
+            //Create profile
+            $profile = new UserProfile();
+            $profile->id = $userAccount->id;
+            $profile->save();
+
             //Generate user token
             $tokenName = env('USER_AUTH_TOKEN');
             $token = $userAccount->createToken($tokenName, ['user']);
@@ -41,7 +49,7 @@ class AuthController extends ApiController
             return $this->respondCreated(
                 [
                     'userAccount' => $userAccount,
-                    'token' => $token->plainTextToken,
+                    'token' => self::TOKEN_PREFIX . $token->plainTextToken,
                 ], 'Successfully signed up');
         }
         catch (Exception $exception) {
@@ -66,6 +74,16 @@ class AuthController extends ApiController
                 return $this->respondBadRequest('Password is incorrect');
             }
 
+            if ($userAccount->is_banned) {
+                return $this->respondBadRequest('Your account has been banned');
+            }
+
+            if ($userAccount->locked_until !== null) {
+                if (now() < $userAccount->locked_until) {
+                    return $this->respondBadRequest('Your account has been locked until ' . $userAccount->locked_until);
+                }
+            }
+
             //Generate user token
             $tokenName = env('USER_AUTH_TOKEN');
             $token = $userAccount->createToken($tokenName, ['user']);
@@ -73,7 +91,7 @@ class AuthController extends ApiController
             return $this->respondWithData(
                 [
                     'userAccount' => $userAccount,
-                    'token' => $token->plainTextToken,
+                    'token' => self::TOKEN_PREFIX . $token->plainTextToken,
                 ], 'Successfully signed in');
         }
         catch (Exception $exception) {
