@@ -6,8 +6,8 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    protected $connection = 'mysql';
-    protected $collection = 'cv';
+    protected $connection = 'mongodb';
+    protected $collection = 'time_tables';
 
     /**
      * Run the migrations.
@@ -16,15 +16,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cv', function (Blueprint $table) {
+        Schema::create('time_tables', function (Blueprint $table) {
             $table->id();
-
-            // Define foreign key
-            $table->foreignId('user_id')->constrained('user_accounts', 'id')->onDelete('cascade');
-
-            $table->string('cv_path');
+            $table->string('user_id');
+            $table->json('time_table')->nullable()->default(null);
             $table->timestamps();
-
         });
     }
 
@@ -35,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cv');
+        Schema::dropIfExists('time_tables');
     }
 };

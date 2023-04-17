@@ -43,23 +43,48 @@ class UserAccount extends Authenticatable
         return $this->hasOne(UserProfile::class, 'id', 'id');
     }
 
-    public function education(): HasMany
+    public function educations(): HasMany
     {
         return $this->hasMany(UserEducation::class, 'user_id', 'id');
     }
 
-    public function cv(): HasMany
+    public function cvs(): HasMany
     {
         return $this->hasMany(CV::class, 'user_id', 'id');
     }
 
-    public function experience(): HasMany
+    public function experiences(): HasMany
     {
         return $this->hasMany(UserExperience::class, 'user_id', 'id');
     }
 
-    public function achievement(): HasMany
+    public function achievements(): HasMany
     {
         return $this->hasMany(UserAchievement::class, 'user_id', 'id');
+    }
+
+    public function skills(): HasMany
+    {
+        return $this->hasMany(UserSkill::class, 'user_id', 'id');
+    }
+
+    public function applications(): HasMany
+    {
+        return $this->hasMany(Application::class, 'user_id', 'id');
+    }
+
+    public function job_reports(): HasMany
+    {
+        return $this->hasMany(JobReport::class, 'user_id', 'id');
+    }
+
+    public function company_reports(): HasMany
+    {
+        return $this->hasMany(CompanyReport::class, 'user_id', 'id');
+    }
+
+    public function post_comments(): HasMany
+    {
+        return $this->hasMany(PostComment::class, 'user_id', 'id');
     }
 }

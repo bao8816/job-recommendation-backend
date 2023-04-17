@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    protected $connection = 'mysql';
+    protected $table = 'user_achievements';
+
     /**
      * Run the migrations.
      *
@@ -15,9 +18,13 @@ return new class extends Migration
     {
         Schema::create('user_achievements', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
+
+            // Define foreign key
+            $table->foreignId('user_id')->constrained('user_accounts', 'id')->onDelete('cascade');
+
             $table->string('content');
             $table->timestamps();
+
         });
     }
 

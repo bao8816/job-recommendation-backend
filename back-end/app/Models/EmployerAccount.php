@@ -4,41 +4,38 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class CV extends Model
+class EmployerAccount extends Model
 {
     use HasFactory;
 
     protected $connection = 'mysql';
-    protected $table = 'cv';
+    protected $table = 'employer_accounts';
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $fillable = [
-        'cv_path',
+        'username',
+        'password',
     ];
 
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $hidden = [
+        'password',
         'created_at',
         'updated_at',
     ];
 
-    public function user(): BelongsTo
+    public function jobs(): HasMany
     {
-        return $this->belongsTo(UserAccount::class, 'user_id', 'id');
-    }
-
-    public function application(): BelongsTo
-    {
-        return $this->belongsTo(Application::class, 'id', 'cv_id');
+        return $this->hasMany(Job::class, 'employer_id', 'id');
     }
 }

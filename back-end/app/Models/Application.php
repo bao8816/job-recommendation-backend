@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class CV extends Model
+class Application extends Model
 {
     use HasFactory;
 
     protected $connection = 'mysql';
-    protected $table = 'cv';
+    protected $table = 'applications';
 
     /**
      * The attributes that are mass assignable.
@@ -19,7 +20,8 @@ class CV extends Model
      * @var array
      */
     protected $fillable = [
-        'cv_path',
+        'status',
+        'cv_id',
     ];
 
     /**
@@ -37,8 +39,13 @@ class CV extends Model
         return $this->belongsTo(UserAccount::class, 'user_id', 'id');
     }
 
-    public function application(): BelongsTo
+    public function job(): BelongsTo
     {
-        return $this->belongsTo(Application::class, 'id', 'cv_id');
+        return $this->belongsTo(Job::class, 'job_id', 'id');
+    }
+
+    public function cv(): HasOne
+    {
+        return $this->hasOne(CV::class, 'id', 'cv_id');
     }
 }

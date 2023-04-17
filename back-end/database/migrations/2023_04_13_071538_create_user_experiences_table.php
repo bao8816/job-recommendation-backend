@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     protected $connection = 'mysql';
+    protected $table = 'user_experiences';
 
     /**
      * Run the migrations.
@@ -17,10 +18,14 @@ return new class extends Migration
     {
         Schema::create('user_experiences', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
+
+            // Define foreign keys
+            $table->foreignId('user_id')->constrained('user_accounts', 'id')->onDelete('cascade');
+
             $table->string('content');
             $table->dateTime('time');
             $table->timestamps();
+
         });
     }
 

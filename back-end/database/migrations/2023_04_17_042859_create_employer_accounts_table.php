@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     protected $connection = 'mysql';
-    protected $collection = 'cv';
+    protected $table = 'employer_accounts';
 
     /**
      * Run the migrations.
@@ -16,15 +16,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cv', function (Blueprint $table) {
+        Schema::create('employer_accounts', function (Blueprint $table) {
             $table->id();
-
-            // Define foreign key
-            $table->foreignId('user_id')->constrained('user_accounts', 'id')->onDelete('cascade');
-
-            $table->string('cv_path');
+            $table->string('username', 255)->unique();
+            $table->string('password', 255);
+            $table->boolean('is_banned')->default(0);
+            $table->dateTime('locked_until')->nullable();
+            $table->dateTime('last_login')->nullable();
             $table->timestamps();
-
         });
     }
 
@@ -35,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cv');
+        Schema::dropIfExists('employer_accounts');
     }
 };

@@ -37,6 +37,6 @@ class UserEducation extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(UserProfile::class, 'user_id', 'id');
+        return $this->belongsTo(UserAccount::class, 'user_id', 'id');
     }
 }

@@ -6,22 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class UserAchievement extends Model
+class JobReport extends Model
 {
     use HasFactory;
 
     protected $connection = 'mysql';
-    protected $table = 'user_achievements';
+    protected $table = 'job_reports';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'user_id',
-        'content',
-    ];
+    public function job(): BelongsTo
+    {
+        return $this->belongsTo(Job::class, 'job_id', 'id');
+    }
 
     public function user(): BelongsTo
     {
