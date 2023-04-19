@@ -1,0 +1,74 @@
+﻿id,name,avatar,dateofbirth,gender,address,email,phone,created_at,updated_at
+1,MAI THÚY VÂN,null,1997,Nữ,Hà Nội,vanmai2497@gmail.com,364529248,4/3/2023,4/4/2023
+2,NGO HONG CHAN,null,2000,Nam,TPHCM,ngohongchan12a4@gmail.com,768729814,4/3/2023,4/4/2023
+3,LỤC HUỲNH TẤN HOÀNG,null,2001,Nam,TPHCM,hoanglhtje@gmail.com,767101737,4/3/2023,4/4/2023
+4,BÙI ANH THƯ,null,2001,Nữ,TPHCM,thuanhbui2411@gmail.com,989713105,4/3/2023,4/4/2023
+5,BUI PHU THINH,null,1999,Nam,TPHCM,buithinh.tg@gmail.com,932925620,4/3/2023,4/4/2023
+6,BÙI THỊ HỒNG HÀ,null,1999,Nữ, Hà Nội,hongha18699@gmail.com,378505057,4/3/2023,4/4/2023
+7,Bùi Ngọc Chính,null,2001,Nam,TPHCM,buingocchinh1710@gmail.com,977739628,4/3/2023,4/4/2023
+8,Luc Huynh Tan Hoang,null,2001,Nam,TPHCM,hoanglhtje@gmail.com,767101737,4/3/2023,4/4/2023
+9,CHU DUC AN,null,2001,Nam,TPHCM,https://linkedin.com/in/chuducan,826677301,4/3/2023,4/4/2023
+10,HUA DAI TAM,null,1998,Nam,Hà Nội,hdtamlearnfru1805@gmail.com,868684534,4/3/2023,4/4/2023
+11,PHẠM NGUYỄN ĐĂNG DUY,null,2000,Nam,Hà Nội,dangduy11111111@gmail.com,906019148,4/3/2023,4/4/2023
+12,TRỊNH MINH TUẤN,null,2002,Nam,Hà Nội,tuantm.it.work@gmail.com,779245720,4/3/2023,4/4/2023
+13,Nguyen My ,null,2002,Nữ,TPHCM,mynguyen13022002@gmail.com,0,4/3/2023,4/4/2023
+14,DANG NGOC SANG,null,2001,Nam,TPHCM,dnsang.dev@gmail.com,968894960,4/3/2023,4/4/2023
+15,Nguyễn Đình Phước,null,1990,Nam,Hà Nội,phuocbn1990@gmail.com,368899214,4/3/2023,4/4/2023
+16,Ho Quang Lam,null,2003,Nữ,TPHCM,21521049@gm.uit.edu.vn,092844 753,4/3/2023,4/4/2023
+17,TẤN PHÁT HUỲNH,null,2001,Nam,TPHCM,huynhtanphatleo@gmail.com,833939799,4/3/2023,4/4/2023
+18,Nguyen Dang Anh Khoa,null,2001,Nam,TPHCM,khoaruoi69@gmail.com,793686646,4/3/2023,4/4/2023
+19,Nguyen Trong Quy,null,2001,Nam,TPHCM,ntquy11092001@gmail.com,345634374,4/3/2023,4/4/2023
+20,Phạm Khánh Duy,null,2002,Nam,Hà Nội,duypham05082002@gmail.com,344848305,4/3/2023,4/4/2023
+21,Ngô Đức Thành,null,2001,Nam,Hà Nội,thanhdcbn001@gmail.com,379305312,4/3/2023,4/4/2023
+22,ĐÀO THÀNH PHÚC,null,1999,Nam,TPHCM,mrphuc48@gmail.com,333475095,4/3/2023,4/4/2023
+23,HUỲNH THỊ MỸ THANH,null,2001,Nữ,TPHCM,thanh111@gmail.com,0,4/3/2023,4/4/2023
+24,TRỊNH MINH TUẤN,null,2002,Nam,Hà Nội,tuantm.it.work@gmail.com,779245720,4/3/2023,4/4/2023
+25,NAM NGUYEN,null,2002,Nam,TPHCM,namnguyenthanh.developer@gmail.com,366270052,4/3/2023,4/4/2023
+26,TRONG NGUYEN,null,2002,Nam,TPHCM,huutrong1101@gmail.com,773696410,4/3/2023,4/4/2023
+27,NGUYỄN QUỐC TRUNG,null,1905,Nam,TPHCM,endarkfamily@gmail.com,975182035,4/3/2023,4/4/2023
+28,DANG THAI DUY,null,2001,Nam,TPHCM,dtduy2210@gmail.com,789476036,4/3/2023,4/4/2023
+29,ĐỖ TIẾN ANH,null,2001,Nam,Hà Nội,"dotienanh21062001@gmail.co
+m",975243861,4/3/2023,4/4/2023
+30,DƯƠNG THỊ NGUYỆT MINH,null,2000,Nam,TPHCM,tongphungminh@gmail.com,386246298,4/3/2023,4/4/2023
+31,ĐÀM THỊ LINH,null,2002,Nam,Hà Nội,dtlinh010202@gmail.com,352651748,4/3/2023,4/4/2023
+32,DO VUONG PHUC,null,2001,Nam,TPHCM,phuc16102001@gmail.com,707953475,4/3/2023,4/4/2023
+33,"NHAT HOANG
+",null,2003,Nam,Hà Nội,hoangnhat102003@gmail.com,0,4/3/2023,4/4/2023
+34,Giang Do,null,2000,Nữ,TPHCM,giangDev.cv@gmail.com,365096648,4/3/2023,4/4/2023
+35,Hồ Vạn Đạt,null,2001,Nam,TPHCM,hovandat0.1@hotmail.com,812640742,4/3/2023,4/4/2023
+36,DAT HUYNH TUAN,null,2001,Nam,TPHCM,705507383,705507383,4/3/2023,4/4/2023
+37,VY NGUYEN,null,2001,Nữ,TPHCM,khacvy001@gmail.com,0,4/3/2023,4/4/2023
+38,LE QUANG DUNG,null,1995,Nam,Hưng Yên,dunglq512@gmail.com,329424008,4/3/2023,4/4/2023
+39,LE THANH KHOI,null,2001,Nam,TPHCM,Không cung cấp,0,4/3/2023,4/4/2023
+40,LE ANH PHI,null,2002,Nam,TPHCM,leanhphi1706@gmail.com,933105367,4/3/2023,4/4/2023
+41,LE NGUYEN ANH KHOI,null,2001,Nam,TPHCM,lnakhoi1811@gmail.com,908195678,4/3/2023,4/4/2023
+42,MA VIET HA,null,2004,Nam,Gia Lai,mavietha.ct@gmail.com,353386227,4/3/2023,4/4/2023
+43,NGUYEN THIEN MINH,null,2001,Nam,TPHCM,nthienminh3001@gmail.com,902662247,4/3/2023,4/4/2023
+44,Vũ Văn Khánh,null,1999,Nam,Hà Nội,vanvukhanh1999@gmail.com,973856943,4/3/2023,4/4/2023
+45,NAM CAP,null,1999,Nam,New Zealand,capmanhnam@gmail.com,278867789,4/3/2023,4/4/2023
+46,NGOC SON LE,null,2000,Nam,TPHCM,lengocson18122000@gmail.com,843333817,4/3/2023,4/4/2023
+47,HUY ANH NGO,null,2001,Nam,TPHCM,Không cung cấp,0,4/3/2023,4/4/2023
+48,NGUYEN HUU THANH,null,1994,Nam,TPHCM,Không cung cấp,339992892,4/3/2023,4/4/2023
+49,NGUYEN NGOC PHUOC,null,2001,Nam,TPHCM,Phuocmorpheus@gmail.com,327557909,4/3/2023,4/4/2023
+50,NGUYỄN TẤN LỘC,null,2001,Nam,TPHCM,nguyentanloc160201@gmail.com,913613257,4/3/2023,4/4/2023
+51,NGUYEN HUU PHU,null,1999,Nam,TPHCM,nhp2132@gmail.com,369202024,4/3/2023,4/4/2023
+52,Nguyễn Quang Đạt,null,1999,Nam,TPHCM,sukizu00@gmail.com,383154612,4/3/2023,4/4/2023
+53,NGUYỄN QUỐC VIỆT,null,2000,Nam,Hưng Yên,vietnqhe140773@gmail.com,968549998,4/3/2023,4/4/2023
+54,NGUYỄN THANH TÌNH,null,2001,Nam,TPHCM,Không cung cấp,0,4/3/2023,4/4/2023
+55,Nguyen Thanh Tung,null,2000,Nam,Hà Nội,thanhtung.devvv@gmail.com,982436274,4/3/2023,4/4/2023
+56,NGUYỄN TIẾN THÀNH,null,1999,Nam,Hà Nội,nguyentienthanh9291@gmail.com,334736187,4/3/2023,4/4/2023
+57,Nguyễn Trọng Hiếu,null,1998,Nam,Hà Nội,nguyenhieuad1998@gmail.com,971418474,4/3/2023,4/4/2023
+58,NGUYEN HOAI TAN,null,2000,Nam,Cần Thơ,hoaitandev@gmail.com,379586235,4/3/2023,4/4/2023
+59,NGUYEN NGOC BAO,null,2001,Nam,Bình Dương,ngocbao.javabe.intership@gmail.com,933546078,4/3/2023,4/4/2023
+60,Chiêu Nguyễn,null,2001,Nam,TPHCM,chieunguyen0703@hotmail.com,972277754,4/3/2023,4/4/2023
+61,NGUYỄN THỊ PHƯƠNG THẢO,null,2001,Nữ,TPHCM,thao.nguyenthiphuong.2001@gmail.com,358864014,4/3/2023,4/4/2023
+62,NGUYỄN VĂN HIẾU,null,2001,Nữ,Hà Nội,ngduchieu2001@gmail.com,0,4/3/2023,4/4/2023
+63,NGUYỄN NGỌC TUYÊN,null,2000,Nữ,TPHCM,nguyenngoctuyen188@gmail.com,969734928,4/3/2023,4/4/2023
+64,NGUYỄN KIỀU ĐỨC NHÂN,null,1997,Nam,TPHCM,nhan.nguyenkieu317@gmail.com,909146094,4/3/2023,4/4/2023
+65,Võ Quốc Minh,null,2001,Nam,TPHCM,voquocminh1209@gmail.com,969641857,4/3/2023,4/4/2023
+66,PHAM ANH DUC,null,2000,Nam,TPHCM,phamduc10920@gmail.com,364743279,4/3/2023,4/4/2023
+67,Phan Anh Tuấn,null,2002,Nam,Hà Nội,pt9871400@gmail.com,942572362,4/3/2023,4/4/2023
+68,PHAN ĐỨC HIẾU,null,2002,Nam,Hà Nội,phanduchieu.22@gmail.com,394337519,4/3/2023,4/4/2023
+69,Nguyễn Minh Kha,null,2001,Nam,TPHCM,nmkha0211@gmail.com,973597990,4/3/2023,4/4/2023
+70,TỐNG NGUYỄN TRỌNG PHÚC,null,2002,Nam,TPHCM,trongphucdev@gmail.com,335595738,4/3/2023,4/4/2023
+71,QUOC VIET TRAN,null,1997,Nam,TPHCM,trantrinhquocviet0811@gmail.com,382960850,4/3/2023,4/4/2023

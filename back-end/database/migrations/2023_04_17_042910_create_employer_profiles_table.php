@@ -22,10 +22,10 @@ return new class extends Migration
 
             // Define foreign keys
             $table->foreignId('id')->constrained('employer_accounts', 'id')->onDelete('cascade');
+            $table->foreignId('company_id')->constrained('company_accounts', 'id')->onDelete('cascade');
 
-            $table->integer('company_id')->unsigned();
             $table->string('full_name', 500);
-            $table->string('logo', 2000)->default('https://i.imgur.com/1ZQZQ9r.png');
+            $table->string('avatar', 2000)->default('https://i.imgur.com/1ZQZQ9r.png');
             $table->timestamps();
 
         });

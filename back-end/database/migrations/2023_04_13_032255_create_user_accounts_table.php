@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('password', 255);
             $table->boolean('is_banned')->default(false);
             $table->dateTime('locked_until')->nullable();
+            $table->dateTime('last_login')->nullable();
             $table->timestamps();
         });
     }

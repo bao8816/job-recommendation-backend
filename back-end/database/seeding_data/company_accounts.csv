@@ -1,0 +1,11 @@
+﻿id,username,password,is_verified,is_banned,locked_until,created_at,updated_at
+1,ANLAB,123,0,0,null,4/7/2023,4/7/2023
+2,Admicro,123,0,0,null,4/7/2023,4/7/2023
+3,ADPARCHITECTS,123,0,0,null,4/7/2023,4/7/2023
+4,Adpia,123,0,0,null,4/7/2023,4/7/2023
+5,AeonVietnam,123,0,0,null,4/7/2023,4/7/2023
+6,AESTechnologies,123,0,0,null,4/7/2023,4/7/2023
+7,AFIREColtd,123,0,0,null,4/7/2023,4/7/2023
+8,AGSCompany,123,0,0,null,4/7/2023,4/7/2023
+9,AHAMOVE,123,0,0,null,4/7/2023,4/7/2023
+10,AISMILE,123,0,0,null,4/7/2023,4/7/2023
