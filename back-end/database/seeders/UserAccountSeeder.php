@@ -18,15 +18,16 @@ class UserAccountSeeder extends Seeder
     {
         $csv = fopen(base_path('database/seeding_data/user_accounts.csv'), 'r');
 
-        $firstline = true;
+        $first_line = true;
 
         while (($line = fgetcsv($csv)) !== false) {
-            if ($firstline) {
-                $firstline = false;
+            if ($first_line) {
+                $first_line = false;
                 continue;
             }
 
             $user_account = new UserAccount();
+
             $user_account->id = $line[0];
             $user_account->username = $line[1];
             $user_account->password = Hash::make($line[2] . env('PASSWORD_SALT'));
@@ -35,6 +36,7 @@ class UserAccountSeeder extends Seeder
             $user_account->last_login = null;
             $user_account->created_at = now();
             $user_account->updated_at = now();
+
             $user_account->save();
         }
 

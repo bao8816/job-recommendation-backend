@@ -17,6 +17,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_unicode_ci';
+
             $table->id();
 
             // Define foreign keys
@@ -25,8 +28,8 @@ return new class extends Migration
 
             $table->string('title');
             $table->string('content');
-            $table->integer('upvote');
-            $table->integer('downvote');
+            $table->integer('upvote')->default(0);
+            $table->integer('downvote')->default(0);
             $table->timestamps();
 
         });

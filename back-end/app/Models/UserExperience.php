@@ -22,7 +22,8 @@ class UserExperience extends Model
     protected $fillable = [
         'user_id',
         'content',
-        'date',
+        'start',
+        'end',
     ];
 
     /**

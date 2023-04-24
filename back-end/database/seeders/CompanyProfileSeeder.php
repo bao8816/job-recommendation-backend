@@ -17,15 +17,16 @@ class CompanyProfileSeeder extends Seeder
     {
         $csv = fopen(base_path('database/seeding_data/company_profiles.csv'), 'r');
 
-        $firstline = true;
+        $first_line = true;
 
         while (($line = fgetcsv($csv)) !== false) {
-            if ($firstline) {
-                $firstline = false;
+            if ($first_line) {
+                $first_line = false;
                 continue;
             }
 
             $company_profile = new CompanyProfile();
+
             $company_profile->id = $line[0];
             $company_profile->name = $line[1];
             $company_profile->description = $line[3];
@@ -33,6 +34,7 @@ class CompanyProfileSeeder extends Seeder
             $company_profile->address = $line[5];
             $company_profile->created_at = now();
             $company_profile->updated_at = now();
+
             $company_profile->save();
         }
 

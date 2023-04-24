@@ -18,15 +18,16 @@ class EmployerAccountSeeder extends Seeder
     {
         $csv = fopen(base_path('database/seeding_data/employer_accounts.csv'), 'r');
 
-        $firstline = true;
+        $first_line = true;
 
         while (($line = fgetcsv($csv)) !== false) {
-            if ($firstline) {
-                $firstline = false;
+            if ($first_line) {
+                $first_line = false;
                 continue;
             }
 
             $employer_account = new EmployerAccount();
+
             $employer_account->id = $line[0];
             $employer_account->username = $line[1];
             $employer_account->password = Hash::make($line[2] . env('PASSWORD_SALT'));
@@ -35,7 +36,10 @@ class EmployerAccountSeeder extends Seeder
             $employer_account->last_login = null;
             $employer_account->created_at = now();
             $employer_account->updated_at = now();
+
             $employer_account->save();
         }
+
+        fclose($csv);
     }
 }

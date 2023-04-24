@@ -26,13 +26,15 @@ return new class extends Migration
             $table->foreignId('employer_id')->constrained('employer_accounts', 'id')->onDelete('cascade');
 
             $table->string('title');
-            $table->string('description');
+            $table->string('description', 10000);
             $table->integer('min_salary');
             $table->integer('max_salary');
             $table->integer('recruit_num');
             $table->string('position');
-            $table->integer('upvote');
-            $table->integer('downvote');
+            $table->integer('upvote')->default(0);
+            $table->integer('downvote')->default(0);
+            $table->string('experience');
+            $table->date('deadline');
             $table->timestamps();
 
         });

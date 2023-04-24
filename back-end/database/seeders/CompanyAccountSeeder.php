@@ -18,15 +18,16 @@ class CompanyAccountSeeder extends Seeder
     {
         $csv = fopen(base_path('database/seeding_data/company_accounts.csv'), 'r');
 
-        $firstline = true;
+        $first_line = true;
 
         while (($line = fgetcsv($csv)) !== false) {
-            if ($firstline) {
-                $firstline = false;
+            if ($first_line) {
+                $first_line = false;
                 continue;
             }
 
             $company_account = new CompanyAccount();
+
             $company_account->id = $line[0];
             $company_account->username = $line[1];
             $company_account->password = Hash::make($line[2] . env('PASSWORD_SALT'));
@@ -36,6 +37,7 @@ class CompanyAccountSeeder extends Seeder
             $company_account->last_login = null;
             $company_account->created_at = now();
             $company_account->updated_at = now();
+
             $company_account->save();
         }
 

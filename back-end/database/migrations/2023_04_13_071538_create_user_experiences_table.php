@@ -22,8 +22,9 @@ return new class extends Migration
             // Define foreign keys
             $table->foreignId('user_id')->constrained('user_accounts', 'id')->onDelete('cascade');
 
-            $table->string('content');
-            $table->dateTime('time');
+            $table->string('content', 10000);
+            $table->date('start');
+            $table->date('end');
             $table->timestamps();
 
         });
