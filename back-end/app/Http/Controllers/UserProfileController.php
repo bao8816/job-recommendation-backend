@@ -31,7 +31,7 @@ class UserProfileController extends ApiController
         }
     }
 
-    public function getUserProfileById(Request $request): JsonResponse
+    public function getUserProfile(Request $request): JsonResponse
     {
         try {
             $userProfile = UserProfile::where('id', $request->user_id)->paginate(1);

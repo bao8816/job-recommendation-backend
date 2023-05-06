@@ -9,10 +9,10 @@ use Illuminate\Http\Request;
 
 class JobLocationController extends ApiController
 {
-    public function getJobLocationById(string $job_location_id): JsonResponse
+    public function getJobLocationById(string $id): JsonResponse
     {
         try {
-            $job_location = JobLocation::where('id', $job_location_id)->paginate(1);
+            $job_location = JobLocation::where('id', $id)->paginate(1);
 
             if ($job_location === null) {
                 return $this->respondNotFound('No job location found');

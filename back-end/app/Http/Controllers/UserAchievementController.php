@@ -53,10 +53,10 @@ class UserAchievementController extends ApiController
         }
     }
 
-    public function getUserAchievementById(Request $request, string $user_achievement_id): JsonResponse
+    public function getUserAchievementById(Request $request, string $id): JsonResponse
     {
         try {
-            $userAchievement = UserAchievement::where('id', $user_achievement_id)->paginate(1);
+            $userAchievement = UserAchievement::where('id', $id)->paginate(1);
 
             if (!isset($userAchievement)) {
                 return $this->respondNotFound('User achievement not found');
@@ -92,10 +92,10 @@ class UserAchievementController extends ApiController
         }
     }
 
-    public function updateUserAchievement(Request $request, string $user_achievement_id): JsonResponse
+    public function updateUserAchievement(Request $request, string $id): JsonResponse
     {
         try {
-            $userAchievement = UserAchievement::where('id', $user_achievement_id)->first();
+            $userAchievement = UserAchievement::where('id', $id)->first();
 
             if (!isset($userAchievement)) {
                 return $this->respondNotFound('User achievement not found');
@@ -120,10 +120,10 @@ class UserAchievementController extends ApiController
         }
     }
 
-    public function deleteUserAchievement(Request $request, string $user_achievement_id): JsonResponse
+    public function deleteUserAchievement(Request $request, string $id): JsonResponse
     {
         try {
-            $userAchievement = UserAchievement::where('id', $user_achievement_id)->first();
+            $userAchievement = UserAchievement::where('id', $id)->first();
 
             if (!isset($userAchievement)) {
                 return $this->respondNotFound('User achievement not found');

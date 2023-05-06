@@ -53,10 +53,10 @@ class UserSkillController extends ApiController
         }
     }
 
-    public function getUserSkillById(Request $request, string $user_skill_id): JsonResponse
+    public function getUserSkillById(Request $request, string $id): JsonResponse
     {
         try {
-            $userSkill = UserSkill::where('id', $user_skill_id)->paginate(1);
+            $userSkill = UserSkill::where('id', $id)->paginate(1);
 
             if (count($userSkill) === 0) {
                 return $this->respondNotFound('No user skill found');
@@ -93,10 +93,10 @@ class UserSkillController extends ApiController
         }
     }
 
-    public function updateUserSkill(Request $request, string $user_skill_id): JsonResponse
+    public function updateUserSkill(Request $request, string $id): JsonResponse
     {
         try {
-            $userSkill = UserSkill::where('id', $user_skill_id)->first();
+            $userSkill = UserSkill::where('id', $id)->first();
 
             if (!$userSkill) {
                 return $this->respondNotFound('No user skill found');
@@ -121,10 +121,10 @@ class UserSkillController extends ApiController
         }
     }
 
-    public function deleteUserSkill(Request $request, string $user_skill_id): JsonResponse
+    public function deleteUserSkill(Request $request, string $id): JsonResponse
     {
         try {
-            $userSkill = UserSkill::where('id', $user_skill_id)->first();
+            $userSkill = UserSkill::where('id', $id)->first();
 
             if (!$userSkill) {
                 return $this->respondNotFound('No user skill found');

@@ -33,7 +33,7 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserAccountCon
 
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserProfileController::class)
     ->prefix('user_profiles')->group(function () {
-        Route::get('/{user_id}', 'getUserProfileById');
+        Route::get('/profile', 'getUserProfile');
         Route::get('/', 'getAllUserProfiles');
 
         Route::put('/', 'updateUserProfile');
@@ -42,74 +42,74 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserProfileCon
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserEducationController::class)
     ->prefix('user_educations')->group(function () {
         Route::get('/user/{user_id}', 'getUserEducationsByUserId');
-        Route::get('/{user_education_id}', 'getUserEducationById');
+        Route::get('/{id}', 'getUserEducationById');
         Route::get('/', 'getAllUserEducations');
 
         Route::post('/', 'createUserEducation');
 
-        Route::put('/{user_education_id}', 'updateUserEducation');
+        Route::put('/{id}', 'updateUserEducation');
 
-        Route::delete('/{user_education_id}', 'deleteUserEducation');
+        Route::delete('/{id}', 'deleteUserEducation');
     });
 
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserExperienceController::class)
     ->prefix('user_experiences')->group(function () {
         Route::get('/user/{user_id}', 'getUserExperiencesByUserId');
-        Route::get('/{user_experience_id}', 'getUserExperienceById');
+        Route::get('/{id}', 'getUserExperienceById');
         Route::get('/', 'getAllUserExperiences');
 
         Route::post('/', 'createUserExperience');
 
-        Route::put('/{user_experience_id}', 'updateUserExperience');
+        Route::put('/{id}', 'updateUserExperience');
 
-        Route::delete('/{user_experience_id}', 'deleteUserExperience');
+        Route::delete('/{id}', 'deleteUserExperience');
     });
 
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserAchievementController::class)
     ->prefix('user_achievements')->group(function () {
         Route::get('/user/{user_id}', 'getUserAchievementsByUserId');
-        Route::get('/{user_achievement_id}', 'getUserAchievementById');
+        Route::get('/{id}', 'getUserAchievementById');
         Route::get('/', 'getAllUserAchievements');
 
         Route::post('/', 'createUserAchievement');
 
-        Route::put('/{user_achievement_id}', 'updateUserAchievement');
+        Route::put('/{id}', 'updateUserAchievement');
 
-        Route::delete('/{user_achievement_id}', 'deleteUserAchievement');
+        Route::delete('/{id}', 'deleteUserAchievement');
     });
 
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserSkillController::class)
     ->prefix('user_skills')->group(function () {
         Route::get('/user/{user_id}', 'getUserSkillsByUserId');
-        Route::get('/{user_skill_id}', 'getUserSkillById');
+        Route::get('/{id}', 'getUserSkillById');
         Route::get('/', 'getAllUserSkills');
 
         Route::post('/', 'createUserSkill');
 
-        Route::put('/{user_skill_id}', 'updateUserSkill');
+        Route::put('/{id}', 'updateUserSkill');
 
-        Route::delete('/{user_skill_id}', 'deleteUserSkill');
+        Route::delete('/{id}', 'deleteUserSkill');
     });
 
 //------------------------------------Post------------------------------------
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(PostController::class)
     ->prefix('posts')->group(function () {
         Route::get('/user/{user_id}', 'getAllPostsByUserId');
-        Route::get('/{post_id}', 'getPostById');
+        Route::get('/{id}', 'getPostById');
         Route::get('/', 'getAllPosts');
 
         Route::post('/', 'createPost');
 
-        Route::put('/{post_id}', 'updatePost');
+        Route::put('/{id}', 'updatePost');
 
-        Route::delete('/{post_id}', 'deletePost');
+        Route::delete('/{id}', 'deletePost');
     });
 
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(PostReportController::class)
     ->prefix('post_reports')->group(function () {
         Route::get('/user/{user_id}', 'getAllPostReportsByUserId');
         Route::get('/post/{post_id}', 'getAllPostReportsByPostId');
-        Route::get('/{post_report_id}', 'getPostReportById');
+        Route::get('/{id}', 'getPostReportById');
         Route::get('/', 'getAllPostReports');
 
         Route::post('/', 'createPostReport');
@@ -119,28 +119,28 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(PostCommentCon
     ->prefix('post_comments')->group(function () {
         Route::get('/user/{user_id}', 'getAllPostCommentsByUserId');
         Route::get('/post/{post_id}', 'getAllPostCommentsByPostId');
-        Route::get('/{post_comment_id}', 'getPostCommentById');
+        Route::get('/{id}', 'getPostCommentById');
         Route::get('/', 'getAllPostComments');
 
         Route::post('/', 'createPostComment');
 
-        Route::delete('/{post_comment_id}', 'deletePostComment');
+        Route::delete('/{id}', 'deletePostComment');
     });
 
 
 //------------------------------------Job------------------------------------
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(JobController::class)
     ->prefix('jobs')->group(function () {
-        Route::get('/{job_id}', 'getJobById');
+        Route::get('/{id}', 'getJobById');
         Route::get('/', 'getAllJobs');
 
-        Route::put('/{job_id}', 'updateJobVotes');
+        Route::put('/{id}', 'updateJobVotes');
     });
 
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(JobLocationController::class)
     ->prefix('job_locations')->group(function () {
         Route::get('/job/{job_id}', 'getJobLocationsByJobId');
-        Route::get('/{job_location_id}', 'getJobLocationById');
+        Route::get('/{id}', 'getJobLocationById');
         Route::get('/', 'getAllJobLocations');
     });
 

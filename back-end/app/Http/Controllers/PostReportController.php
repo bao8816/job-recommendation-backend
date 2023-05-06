@@ -53,10 +53,10 @@ class PostReportController extends ApiController
         }
     }
 
-    public function getPostReportById(string $post_report_id): JsonResponse
+    public function getPostReportById(string $id): JsonResponse
     {
         try {
-            $postReport = PostReport::where('id', $post_report_id)->paginate(1);
+            $postReport = PostReport::where('id', $id)->paginate(1);
 
             if ($postReport === null) {
                 return $this->respondNotFound('No post report found');

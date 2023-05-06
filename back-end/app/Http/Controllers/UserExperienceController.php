@@ -53,10 +53,10 @@ class UserExperienceController extends ApiController
         }
     }
 
-    public function getUserExperienceById(Request $request, string $user_experience_id): JsonResponse
+    public function getUserExperienceById(Request $request, string $id): JsonResponse
     {
         try {
-            $userExperience = UserExperience::where('id', $user_experience_id)->paginate(1);
+            $userExperience = UserExperience::where('id', $id)->paginate(1);
 
             if (!isset($userExperience)) {
                 return $this->respondNotFound('User experience not found');
@@ -94,10 +94,10 @@ class UserExperienceController extends ApiController
         }
     }
 
-    public function updateUserExperience(Request $request, string $user_experience_id): JsonResponse
+    public function updateUserExperience(Request $request, string $id): JsonResponse
     {
         try {
-            $userExperience = UserExperience::where('id', $user_experience_id)->first();
+            $userExperience = UserExperience::where('id', $id)->first();
 
             if (!isset($userExperience)) {
                 return $this->respondNotFound('User experience not found');
@@ -123,10 +123,10 @@ class UserExperienceController extends ApiController
         }
     }
 
-    public function deleteUserExperience(Request $request, string $user_experience_id): JsonResponse
+    public function deleteUserExperience(Request $request, string $id): JsonResponse
     {
         try {
-            $userExperience = UserExperience::where('id', $user_experience_id)->first();
+            $userExperience = UserExperience::where('id', $id)->first();
 
             if (!isset($userExperience)) {
                 return $this->respondNotFound('User experience not found');

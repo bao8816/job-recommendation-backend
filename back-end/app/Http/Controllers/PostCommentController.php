@@ -45,10 +45,10 @@ class PostCommentController extends ApiController
         }
     }
 
-    public function getPostCommentById(string $post_comment_id): JsonResponse
+    public function getPostCommentById(string $id): JsonResponse
     {
         try {
-            $comment = PostComment::where('id', $post_comment_id)->paginate(1);
+            $comment = PostComment::where('id', $id)->paginate(1);
 
             if ($comment === null) {
                 return $this->respondNotFound('Comment not found');
@@ -98,10 +98,10 @@ class PostCommentController extends ApiController
         }
     }
 
-    public function deletePostComment(Request $request, string $post_comment_id): JsonResponse
+    public function deletePostComment(Request $request, string $id): JsonResponse
     {
         try {
-            $comment = PostComment::find($post_comment_id);
+            $comment = PostComment::where('id', $id)->first();
 
             if ($comment === null) {
                 return $this->respondNotFound('Comment not found');

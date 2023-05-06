@@ -53,10 +53,10 @@ class UserEducationController extends ApiController
         }
     }
 
-    public function getUserEducationById(Request $request, string $user_education_id): JsonResponse
+    public function getUserEducationById(Request $request, string $id): JsonResponse
     {
         try {
-            $userEducation = UserEducation::where('id', $user_education_id)->paginate(1);
+            $userEducation = UserEducation::where('id', $id)->paginate(1);
 
             if (!isset($userEducation)) {
                 return $this->respondNotFound('User education not found');
@@ -94,10 +94,10 @@ class UserEducationController extends ApiController
         }
     }
 
-    public function updateUserEducation(Request $request, string $user_education_id): JsonResponse
+    public function updateUserEducation(Request $request, string $id): JsonResponse
     {
         try {
-            $userEducation = UserEducation::where('id', $user_education_id)->first();
+            $userEducation = UserEducation::where('id', $id)->first();
 
             if (!isset($userEducation)) {
                 return $this->respondNotFound('User education not found');
@@ -123,10 +123,10 @@ class UserEducationController extends ApiController
         }
     }
 
-    public function deleteUserEducation(Request $request, string $user_education_id): JsonResponse
+    public function deleteUserEducation(Request $request, string $id): JsonResponse
     {
         try {
-            $userEducation = UserEducation::where('id', $user_education_id)->first();
+            $userEducation = UserEducation::where('id', $id)->first();
 
             if (!isset($userEducation)) {
                 return $this->respondNotFound('User education not found');

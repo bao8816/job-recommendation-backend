@@ -34,10 +34,10 @@ class PostController extends ApiController
         }
     }
 
-    public function getPostById(Request $request, string $post_id): JsonResponse
+    public function getPostById(Request $request, string $id): JsonResponse
     {
         try {
-            $post = Post::where('id', $post_id)->paginate(1);
+            $post = Post::where('id', $id)->paginate(1);
 
             if ($post === null) {
                 return $this->respondNotFound('No post found');
@@ -98,10 +98,10 @@ class PostController extends ApiController
         }
     }
 
-    public function updatePost(Request $request, string $post_id): JsonResponse
+    public function updatePost(Request $request, string $id): JsonResponse
     {
         try {
-            $post = Post::where('id', $post_id)->first();
+            $post = Post::where('id', $id)->first();
 
             if ($post === null) {
                 return $this->respondNotFound('No post found');
@@ -128,10 +128,10 @@ class PostController extends ApiController
         }
     }
 
-    public function deletePost(Request $request, string $post_id): JsonResponse
+    public function deletePost(Request $request, string $id): JsonResponse
     {
         try {
-            $post = Post::where('id', $post_id)->first();
+            $post = Post::where('id', $id)->first();
 
             if ($post === null) {
                 return $this->respondNotFound('No post found');

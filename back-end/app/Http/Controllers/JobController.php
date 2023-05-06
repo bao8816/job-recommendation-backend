@@ -31,10 +31,10 @@ class JobController extends ApiController
         }
     }
 
-    public function getJobById(string $job_id): JsonResponse
+    public function getJobById(string $id): JsonResponse
     {
         try {
-            $job = Job::where('id', $job_id)->paginate(1);
+            $job = Job::where('id', $id)->paginate(1);
 
             if ($job === null) {
                 return $this->respondNotFound('No job found');
@@ -51,10 +51,10 @@ class JobController extends ApiController
         }
     }
 
-    public function updateJobVotes(Request $request, string $job_id): JsonResponse
+    public function updateJobVotes(Request $request, string $id): JsonResponse
     {
         try {
-            $job = Job::where('id', $job_id)->first();
+            $job = Job::where('id', $id)->first();
 
             if ($job === null) {
                 return $this->respondNotFound('No job found');
