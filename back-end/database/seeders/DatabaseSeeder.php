@@ -36,6 +36,7 @@ class DatabaseSeeder extends Seeder
                 ApplicationSeeder::class,
                 PostSeeder::class,
                 PostReportSeeder::class,
+//                PostCommentSeeder::class,
                 JobReportSeeder::class,
                 CompanyReportSeeder::class,
             ]

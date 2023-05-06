@@ -30,6 +30,7 @@ return new class extends Migration
             $table->string('address', 1000);
             $table->string('email', 500);
             $table->string('phone', 20);
+            $table->softDeletes();
             $table->timestamps();
 
             $table->primary('id');

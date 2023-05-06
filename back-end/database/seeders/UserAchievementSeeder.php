@@ -29,7 +29,7 @@ class UserAchievementSeeder extends Seeder
 
             $user_achievement->id = $line[0];
             $user_achievement->user_id = $line[1];
-            $user_achievement->content = $line[2];
+            $user_achievement->description = $line[2];
             $user_achievement->created_at = now();
             $user_achievement->updated_at = now();
 

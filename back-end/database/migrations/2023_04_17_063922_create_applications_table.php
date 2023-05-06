@@ -28,8 +28,8 @@ return new class extends Migration
             $table->foreignId('cv_id')->constrained('cv', 'id')->onDelete('cascade');
 
             $table->string('status');
+            $table->softDeletes();
             $table->timestamps();
-
         });
     }
 

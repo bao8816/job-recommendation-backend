@@ -23,8 +23,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('user_accounts', 'id')->onDelete('cascade');
 
             $table->string('cv_path');
+            $table->softDeletes();
             $table->timestamps();
-
         });
     }
 

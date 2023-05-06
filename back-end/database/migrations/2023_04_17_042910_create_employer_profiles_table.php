@@ -26,8 +26,10 @@ return new class extends Migration
 
             $table->string('full_name', 500);
             $table->string('avatar', 2000)->default('https://i.imgur.com/1ZQZQ9r.png');
+            $table->softDeletes();
             $table->timestamps();
 
+            $table->primary('id');
         });
     }
 

@@ -28,8 +28,10 @@ return new class extends Migration
             $table->string('description', 10000);
             $table->string('site', 2000);
             $table->string('address', 1000);
+            $table->softDeletes();
             $table->timestamps();
 
+            $table->primary('id');
         });
     }
 

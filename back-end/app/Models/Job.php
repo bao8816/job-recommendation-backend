@@ -21,12 +21,6 @@ class Job extends Model
      * @var array
      */
     protected $fillable = [
-        'title',
-        'description',
-        'min_salary',
-        'max_salary',
-        'recruit_num',
-        'position',
         'upvote',
         'downvote',
     ];

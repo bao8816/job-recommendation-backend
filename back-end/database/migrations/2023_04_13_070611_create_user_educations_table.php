@@ -25,8 +25,8 @@ return new class extends Migration
             $table->string('university');
             $table->date('start');
             $table->date('end');
+            $table->softDeletes();
             $table->timestamps();
-
         });
     }
 

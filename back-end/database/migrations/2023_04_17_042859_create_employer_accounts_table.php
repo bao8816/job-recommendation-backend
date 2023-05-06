@@ -23,6 +23,7 @@ return new class extends Migration
             $table->boolean('is_banned')->default(0);
             $table->dateTime('locked_until')->nullable();
             $table->dateTime('last_login')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

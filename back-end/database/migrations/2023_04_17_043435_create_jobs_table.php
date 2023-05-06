@@ -35,8 +35,8 @@ return new class extends Migration
             $table->integer('downvote')->default(0);
             $table->string('experience');
             $table->date('deadline');
+            $table->softDeletes();
             $table->timestamps();
-
         });
     }
 

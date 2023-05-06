@@ -23,8 +23,8 @@ return new class extends Migration
             $table->foreignId('job_id')->constrained('jobs', 'id')->onDelete('cascade');
 
             $table->string('type');
+            $table->softDeletes();
             $table->timestamps();
-
         });
     }
 
