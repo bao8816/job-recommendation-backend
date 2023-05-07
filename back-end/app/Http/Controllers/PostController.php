@@ -13,15 +13,15 @@ class PostController extends ApiController
     public function createPost(Request $request): JsonResponse
     {
         try {
-            $cv_path = $request->cv_path;
             $title = $request->title;
             $content = $request->post_content;
 
             $post = new Post();
-            $post->cv_id = CV::where('cv_path', $cv_path)->first()->id;
+            $post->cv_id = $request->cv_id;
             $post->title = $title;
             $post->content = $content;
             $post->user_id = $request->user()->id;
+
             $post->save();
 
             return $this->respondCreated(
@@ -76,7 +76,7 @@ class PostController extends ApiController
         }
     }
 
-    public function getAllPostsByUserId(Request $request, string $user_id): JsonResponse
+    public function getPostsByUserId(Request $request, string $user_id): JsonResponse
     {
         try {
             $count_per_page = $request->count_per_page;

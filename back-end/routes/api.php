@@ -3,6 +3,9 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\JobLocationController;
+use App\Http\Controllers\JobReportController;
+use App\Http\Controllers\JobSkillController;
+use App\Http\Controllers\JobTypeController;
 use App\Http\Controllers\PostCommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostReportController;
@@ -25,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//------------------------------------User------------------------------------
+//------------------------------------USER------------------------------------
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserAccountController::class)
     ->prefix('user_accounts')->group(function () {
         Route::put('/password', 'updatePassword');
@@ -91,10 +94,10 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserSkillContr
         Route::delete('/{id}', 'deleteUserSkill');
     });
 
-//------------------------------------Post------------------------------------
+//------------------------------------POST------------------------------------
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(PostController::class)
     ->prefix('posts')->group(function () {
-        Route::get('/user/{user_id}', 'getAllPostsByUserId');
+        Route::get('/user/{user_id}', 'getPostsByUserId');
         Route::get('/{id}', 'getPostById');
         Route::get('/', 'getAllPosts');
 
@@ -107,18 +110,20 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(PostController
 
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(PostReportController::class)
     ->prefix('post_reports')->group(function () {
-        Route::get('/user/{user_id}', 'getAllPostReportsByUserId');
-        Route::get('/post/{post_id}', 'getAllPostReportsByPostId');
+        Route::get('/user/{user_id}', 'getPostReportsByUserId');
+        Route::get('/post/{post_id}', 'getPostReportsByPostId');
         Route::get('/{id}', 'getPostReportById');
         Route::get('/', 'getAllPostReports');
 
         Route::post('/', 'createPostReport');
+
+        Route::delete('/{id}', 'deletePostReport');
     });
 
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(PostCommentController::class)
     ->prefix('post_comments')->group(function () {
-        Route::get('/user/{user_id}', 'getAllPostCommentsByUserId');
-        Route::get('/post/{post_id}', 'getAllPostCommentsByPostId');
+        Route::get('/user/{user_id}', 'getPostCommentsByUserId');
+        Route::get('/post/{post_id}', 'getPostCommentsByPostId');
         Route::get('/{id}', 'getPostCommentById');
         Route::get('/', 'getAllPostComments');
 
@@ -128,7 +133,7 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(PostCommentCon
     });
 
 
-//------------------------------------Job------------------------------------
+//------------------------------------JOB------------------------------------
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(JobController::class)
     ->prefix('jobs')->group(function () {
         Route::get('/{id}', 'getJobById');
@@ -144,6 +149,34 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(JobLocationCon
         Route::get('/', 'getAllJobLocations');
     });
 
+Route::middleware(['auth:sanctum', 'abilities:user'])->controller(JobSkillController::class)
+    ->prefix('job_skills')->group(function () {
+        Route::get('/job/{job_id}', 'getJobSkillsByJobId');
+        Route::get('/{id}', 'getJobSkillById');
+        Route::get('/', 'getAllJobSkills');
+    });
+
+Route::middleware(['auth:sanctum', 'abilities:user'])->controller(JobTypeController::class)
+    ->prefix('job_types')->group(function () {
+        Route::get('/job/{job_id}', 'getJobTypesByJobId');
+        Route::get('/{id}', 'getJobTypeById');
+        Route::get('/', 'getAllJobTypes');
+    });
+
+Route::middleware(['auth:sanctum', 'abilities:user'])->controller(JobReportController::class)
+    ->prefix('job_reports')->group(function () {
+        Route::get('/user/{user_id}', 'getJobReportsByUserId');
+        Route::get('/job/{job_id}', 'getJobReportsByJobId');
+        Route::get('/{id}', 'getJobReportById');
+        Route::get('/', 'getAllJobReports');
+
+        Route::post('/', 'createJobReport');
+
+        Route::delete('/{id}', 'deleteJobReport');
+    });
+
+
+//------------------------------------AUTH------------------------------------
 Route::controller(AuthController::class)
     ->prefix('auth')->group(function () {
         Route::post('/sign-up', 'signUp');

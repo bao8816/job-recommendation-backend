@@ -20,6 +20,7 @@ class PostReportController extends ApiController
             $postReport->post_id = $post_id;
             $postReport->user_id = $user_id;
             $postReport->reason = $reason;
+
             $postReport->save();
 
             return $this->respondCreated(
@@ -73,7 +74,7 @@ class PostReportController extends ApiController
         }
     }
 
-    public function getAllPostReportsByPostId(Request $request, string $post_id): JsonResponse
+    public function getPostReportsByPostId(Request $request, string $post_id): JsonResponse
     {
         try {
             $count_per_page = $request->count_per_page;
@@ -95,7 +96,7 @@ class PostReportController extends ApiController
         }
     }
 
-    public function getAllPostReportsByUserId(Request $request, string $user_id): JsonResponse
+    public function getPostReportsByUserId(Request $request, string $user_id): JsonResponse
     {
         try {
             $count_per_page = $request->count_per_page;
@@ -111,6 +112,32 @@ class PostReportController extends ApiController
                     'postReport' => $postReport,
                 ]
                 , 'Successfully retrieved post report');
+        }
+        catch (Exception $exception) {
+            return $this->respondInternalServerError($exception->getMessage());
+        }
+    }
+
+    public function deletePostReport(Request $request, string $id): JsonResponse
+    {
+        try {
+            $postReport = PostReport::where('id', $id)->first();
+
+            if ($postReport === null) {
+                return $this->respondNotFound('No post report found');
+            }
+
+            if ($request->user()->id !== $postReport->user_id) {
+                return $this->respondUnauthorized('You are not authorized to delete this post report');
+            }
+
+            $postReport->delete();
+
+            return $this->respondWithData(
+                [
+                    'postReport' => $postReport,
+                ]
+                , 'Successfully deleted post report');
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());

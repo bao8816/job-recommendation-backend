@@ -16,6 +16,7 @@ class PostCommentController extends ApiController
             $comment->post_id = $request->post_id;
             $comment->user_id = $request->user()->id;
             $comment->content = $request->comment_content;
+
             $comment->save();
 
             return $this->respondCreated(
@@ -64,7 +65,7 @@ class PostCommentController extends ApiController
         }
     }
 
-    public function getAllPostCommentsByPostId(Request $request, string $post_id): JsonResponse
+    public function getPostCommentsByPostId(Request $request, string $post_id): JsonResponse
     {
         try {
             $count_per_page = $request->count_per_page;
@@ -81,7 +82,7 @@ class PostCommentController extends ApiController
         }
     }
 
-    public function getAllPostCommentsByUserId(Request $request, string $user_id): JsonResponse
+    public function getPostCommentsByUserId(Request $request, string $user_id): JsonResponse
     {
         try {
             $count_per_page = $request->count_per_page;
