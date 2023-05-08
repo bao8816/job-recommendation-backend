@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CompanyProfileController;
+use App\Http\Controllers\CompanyReportController;
+use App\Http\Controllers\EmployerProfileController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\JobLocationController;
 use App\Http\Controllers\JobReportController;
@@ -175,6 +178,34 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(JobReportContr
         Route::delete('/{id}', 'deleteJobReport');
     });
 
+
+//------------------------------------COMPANY------------------------------------
+Route::middleware(['auth:sanctum', 'abilities:user'])->controller(CompanyProfileController::class)
+    ->prefix('company-profiles')->group(function () {
+        Route::get('/{id}', 'getCompanyProfileById');
+        Route::get('/', 'getAllCompanyProfiles');
+    });
+
+Route::middleware(['auth:sanctum', 'abilities:user'])->controller(CompanyReportController::class)
+    ->prefix('company_reports')->group(function () {
+        Route::get('/user/{user_id}', 'getCompanyReportsByUserId');
+        Route::get('/company/{company_id}', 'getCompanyReportsByCompanyId');
+        Route::get('/{id}', 'getCompanyReportById');
+        Route::get('/', 'getAllCompanyReports');
+
+        Route::post('/', 'createCompanyReport');
+
+        Route::delete('/{id}', 'deleteCompanyReport');
+    });
+
+
+//------------------------------------EMPLOYER------------------------------------
+Route::middleware(['auth:sanctum', 'abilities:user'])->controller(EmployerProfileController::class)
+    ->prefix('employer-profiles')->group(function () {
+        Route::get('/company/{company_id}', 'getEmployerProfilesByCompanyId');
+        Route::get('/{id}', 'getEmployerProfileById');
+        Route::get('/', 'getAllEmployerProfiles');
+    });
 
 //------------------------------------AUTH------------------------------------
 Route::controller(AuthController::class)
