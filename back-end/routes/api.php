@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompanyProfileController;
 use App\Http\Controllers\CompanyReportController;
+use App\Http\Controllers\CVController;
 use App\Http\Controllers\EmployerProfileController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\JobLocationController;
@@ -33,12 +34,12 @@ use Illuminate\Support\Facades\Route;
 
 //------------------------------------USER------------------------------------
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserAccountController::class)
-    ->prefix('user_accounts')->group(function () {
+    ->prefix('user-accounts')->group(function () {
         Route::put('/password', 'updatePassword');
     });
 
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserProfileController::class)
-    ->prefix('user_profiles')->group(function () {
+    ->prefix('user-profiles')->group(function () {
         Route::get('/profile', 'getUserProfile');
         Route::get('/', 'getAllUserProfiles');
 
@@ -46,7 +47,7 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserProfileCon
     });
 
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserEducationController::class)
-    ->prefix('user_educations')->group(function () {
+    ->prefix('user-educations')->group(function () {
         Route::get('/user/{user_id}', 'getUserEducationsByUserId');
         Route::get('/{id}', 'getUserEducationById');
         Route::get('/', 'getAllUserEducations');
@@ -59,7 +60,7 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserEducationC
     });
 
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserExperienceController::class)
-    ->prefix('user_experiences')->group(function () {
+    ->prefix('user-experiences')->group(function () {
         Route::get('/user/{user_id}', 'getUserExperiencesByUserId');
         Route::get('/{id}', 'getUserExperienceById');
         Route::get('/', 'getAllUserExperiences');
@@ -72,7 +73,7 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserExperience
     });
 
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserAchievementController::class)
-    ->prefix('user_achievements')->group(function () {
+    ->prefix('user-achievements')->group(function () {
         Route::get('/user/{user_id}', 'getUserAchievementsByUserId');
         Route::get('/{id}', 'getUserAchievementById');
         Route::get('/', 'getAllUserAchievements');
@@ -85,7 +86,7 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserAchievemen
     });
 
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserSkillController::class)
-    ->prefix('user_skills')->group(function () {
+    ->prefix('user-skills')->group(function () {
         Route::get('/user/{user_id}', 'getUserSkillsByUserId');
         Route::get('/{id}', 'getUserSkillById');
         Route::get('/', 'getAllUserSkills');
@@ -112,7 +113,7 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(PostController
     });
 
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(PostReportController::class)
-    ->prefix('post_reports')->group(function () {
+    ->prefix('post-reports')->group(function () {
         Route::get('/user/{user_id}', 'getPostReportsByUserId');
         Route::get('/post/{post_id}', 'getPostReportsByPostId');
         Route::get('/{id}', 'getPostReportById');
@@ -124,7 +125,7 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(PostReportCont
     });
 
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(PostCommentController::class)
-    ->prefix('post_comments')->group(function () {
+    ->prefix('post-comments')->group(function () {
         Route::get('/user/{user_id}', 'getPostCommentsByUserId');
         Route::get('/post/{post_id}', 'getPostCommentsByPostId');
         Route::get('/{id}', 'getPostCommentById');
@@ -146,28 +147,28 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(JobController:
     });
 
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(JobLocationController::class)
-    ->prefix('job_locations')->group(function () {
+    ->prefix('job-locations')->group(function () {
         Route::get('/job/{job_id}', 'getJobLocationsByJobId');
         Route::get('/{id}', 'getJobLocationById');
         Route::get('/', 'getAllJobLocations');
     });
 
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(JobSkillController::class)
-    ->prefix('job_skills')->group(function () {
+    ->prefix('job-skills')->group(function () {
         Route::get('/job/{job_id}', 'getJobSkillsByJobId');
         Route::get('/{id}', 'getJobSkillById');
         Route::get('/', 'getAllJobSkills');
     });
 
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(JobTypeController::class)
-    ->prefix('job_types')->group(function () {
+    ->prefix('job-types')->group(function () {
         Route::get('/job/{job_id}', 'getJobTypesByJobId');
         Route::get('/{id}', 'getJobTypeById');
         Route::get('/', 'getAllJobTypes');
     });
 
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(JobReportController::class)
-    ->prefix('job_reports')->group(function () {
+    ->prefix('job-reports')->group(function () {
         Route::get('/user/{user_id}', 'getJobReportsByUserId');
         Route::get('/job/{job_id}', 'getJobReportsByJobId');
         Route::get('/{id}', 'getJobReportById');
@@ -187,7 +188,7 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(CompanyProfile
     });
 
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(CompanyReportController::class)
-    ->prefix('company_reports')->group(function () {
+    ->prefix('company-reports')->group(function () {
         Route::get('/user/{user_id}', 'getCompanyReportsByUserId');
         Route::get('/company/{company_id}', 'getCompanyReportsByCompanyId');
         Route::get('/{id}', 'getCompanyReportById');
@@ -196,6 +197,19 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(CompanyReportC
         Route::post('/', 'createCompanyReport');
 
         Route::delete('/{id}', 'deleteCompanyReport');
+    });
+
+Route::middleware(['auth:sanctum', 'abilities:user'])->controller(CVController::class)
+    ->prefix('cvs')->group(function () {
+        Route::get('/user/{user_id}', 'getCVsByUserId');
+        Route::get('/{id}', 'getCVById');
+        Route::get('/', 'getAllCVs');
+
+        Route::post('/', 'createCV');
+
+        Route::put('/{id}', 'updateCV');
+
+        Route::delete('/{id}', 'deleteCV');
     });
 
 
