@@ -113,6 +113,28 @@ class PostController extends ApiController
 
             $post->title = $request->title;
             $post->content = $request->post_content;
+            $post->save();
+
+            return $this->respondWithData(
+                [
+                    'post' => $post,
+                ]
+                , 'Successfully updated post');
+        }
+        catch (Exception $exception) {
+            return $this->respondInternalServerError($exception->getMessage());
+        }
+    }
+
+    public function updatePostVotes(Request $request, string $id): JsonResponse
+    {
+        try {
+            $post = Post::where('id', $id)->first();
+
+            if ($post === null) {
+                return $this->respondNotFound('No post found');
+            }
+
             $post->upvote = $request->upvote;
             $post->downvote = $request->downvote;
             $post->save();
@@ -121,7 +143,7 @@ class PostController extends ApiController
                 [
                     'post' => $post,
                 ]
-                , 'Successfully updated post');
+                , 'Successfully updated post votes');
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
