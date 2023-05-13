@@ -1,0 +1,11 @@
+﻿id,username,password,is_banned,created_at,updated_at
+1,NguyenVanA,123,0,4/3/2023,4/4/2023
+2,NguyenHoang,123,0,4/3/2023,4/4/2023
+3,TrongPhu,123,0,4/3/2023,4/4/2023
+4,MinhSang,123,0,4/3/2023,4/4/2023
+5,ThanhPhuong,123,0,4/3/2023,4/4/2023
+6,HoaPhuong,123,0,4/3/2023,4/4/2023
+7,BachKhoi,123,0,4/3/2023,4/4/2023
+8,LinhMin,123,0,4/3/2023,4/4/2023
+9,MinhKhang,123,0,4/3/2023,4/4/2023
+10,TuTrung,123,0,4/3/2023,4/4/2023

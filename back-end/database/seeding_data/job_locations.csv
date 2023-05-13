@@ -1,0 +1,28 @@
+﻿id,job_id,location,created_at,updated_at
+1,1,"['Hà Nội: Tầng 8, Tòa nhà 18/4, Số 8 Phạm Hùng, P Mai Dịch, Cầu Giấy']",4/3/2023,4/4/2023
+2,2,"['Hà Nội: Tầng 8, tòa nhà 18/4, số 8 Phạm Hùng, P Mai Dịch, Cầu Giấy']",4/3/2023,4/4/2023
+3,3,"['Hà Nội: Tầng 8, tòa nhà 18-4, số 8 Phạm Hùng, Mai Dịch, Cầu Giấy, Hà Nội, Cầu Giấy']",4/3/2023,4/4/2023
+4,4,"['Hà Nội: Tầng 10, Tòa nhà Center Building - 85 Vũ Trọng Phụng, Thanh Xuân']",4/3/2023,4/4/2023
+5,5,"['Hà Nội: Tầng 20, Tòa nhà Center Building - 85 Vũ Trọng Phụng, Thanh Xuân']",4/3/2023,4/4/2023
+6,6,"['Hà Nội : Tầng 20 Toà nhà Center Building - Hapulico Complex, Số 1 Nguyễn Huy Tưởng, Thanh Xuân']",4/3/2023,4/4/2023
+7,7,"['Hà Nội: Văn phòng ADP – HCM/ HN 193-195 Khâm Thiên, Đống Đa']",4/3/2023,4/4/2023
+8,8,"['Hà Nội: Tòa nhà Handico, Phạm Hùng, Nam Từ Liêm']",4/3/2023,4/4/2023
+9,9,"['Hồ Chí Minh: 30 Tân Thắng, Sơn Kỳ, Tân Phú, Tân Phú']",4/3/2023,4/4/2023
+10,10,"['Hồ Chí Minh: BCons Tower, 176/1-176/3 Nguyen Van Thuong, Ward 25, Binh Thanh District, HCMC, Vietnam, Bình Thạnh']",4/3/2023,4/4/2023
+11,11,"['Hà Nội: số 2/ 460 Khương Đình, Thanh Xuân']",4/3/2023,4/4/2023
+12,12,"['Hà Nội: 260 - 262 Bà Triệu, phường Lê Đại Hành, Hai Bà Trưng']",4/3/2023,4/4/2023
+13,13,"['Hà Nội: 229 Tây Sơn, Đống Đa, Hà Nội, Đống Đa']",4/3/2023,4/4/2023
+14,13,"['Hồ Chí Minh: 7/28 Thành Thái, phường 14, quận 10, HCM, Quận 10']",4/3/2023,4/4/2023
+15,14,"['Hà Nội: 229 Tây Sơn, Đống Đa, Hà Nội, Đống Đa']",4/3/2023,4/4/2023
+16,15,"['Bình Dương: 157C Chòm Sao, Phường Hưng Định, TP. Thuận An, Tỉnh Bình Dương, Thuận An']",4/3/2023,4/4/2023
+17,16,"['Hồ Chí Minh: 7/28 Thành Thái, phường 14, Quận 10']",4/3/2023,4/4/2023
+18,17,"['Hồ Chí Minh: Tầng 1, tòa nhà Rivera Park, 7/28 Thành Thái, Quận 10']",4/3/2023,4/4/2023
+19,18,"['Hồ Chí Minh: 7/28 Đ. Thành Thái, Phường 14, Quận 10, Thành phố Hồ Chí Minh]",4/3/2023,4/4/2023
+20,19,"['Hà Nội: Tầng 9, Tòa nhà Mipec, số 229 Tây Sơn, Phường Ngã Tư Sở, Quận Đống Đa, Hà Nội, Đống Đa']",4/3/2023,4/4/2023
+21,20,"['Đà Nẵng: Toà nhà AP Tek - 66A Lê Đình Lý, Phường Thạc Gián, Quận Thanh Khê, Đà Nẵng, Thanh Khê']",4/3/2023,4/4/2023
+22,21,"['Hồ Chí Minh: 7/28 Đ. Thành Thái, Phường 14, Quận 10, Thành phố Hồ Chí Minh']",4/3/2023,4/4/2023
+23,22,"['Hà Nội: Số 229, tầng 9 Tòa nhà Mipec Tây Sơn, Đống Đa, Hà Nội, Đống Đa']",4/3/2023,4/4/2023
+24,23,['Hồ Chí Minh'],4/3/2023,4/4/2023
+25,24,"['Hồ Chí Minh: 7/28 Thành Thái, Quận 10, Quận 10']",4/3/2023,4/4/2023
+26,25,"['Hồ Chí Minh: 2 Tôn Đức Thắng phường Bến Nghé Quận 1, Quận 1']",4/3/2023,4/4/2023
+27,26,"['Hồ Chí Minh: 2 Tôn Đức Thắng, phường Bến Nghé, Quận 1']",4/3/2023,4/4/2023
