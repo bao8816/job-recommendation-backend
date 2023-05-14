@@ -66,7 +66,7 @@ const JobFilterTab = () => {
                                             </span>
                                             <h4>
                                                 <Link
-                                                    href={`/job-single-v5/${item.id}`}
+                                                    href={`/job/${item.id}`}
                                                 >
                                                     {item.jobTitle}
                                                 </Link>
@@ -136,7 +136,7 @@ const JobFilterTab = () => {
                                             </span>
                                             <h4>
                                                 <Link
-                                                    href={`/job-single-v5/${item.id}`}
+                                                    href={`/job/${item.id}`}
                                                 >
                                                     {item.jobTitle}
                                                 </Link>
@@ -206,7 +206,7 @@ const JobFilterTab = () => {
                                             </span>
                                             <h4>
                                                 <Link
-                                                    href={`/job-single-v5/${item.id}`}
+                                                    href={`/job/${item.id}`}
                                                 >
                                                     {item.jobTitle}
                                                 </Link>
@@ -276,7 +276,7 @@ const JobFilterTab = () => {
                                             </span>
                                             <h4>
                                                 <Link
-                                                    href={`/job-single-v5/${item.id}`}
+                                                    href={`/job/${item.id}`}
                                                 >
                                                     {item.jobTitle}
                                                 </Link>
@@ -346,7 +346,7 @@ const JobFilterTab = () => {
                                             </span>
                                             <h4>
                                                 <Link
-                                                    href={`/job-single-v5/${item.id}`}
+                                                    href={`/job/${item.id}`}
                                                 >
                                                     {item.jobTitle}
                                                 </Link>
