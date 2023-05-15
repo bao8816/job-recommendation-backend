@@ -40,6 +40,7 @@ class AuthController extends ApiController
             //Create profile
             $profile = new UserProfile();
             $profile->id = $userAccount->id;
+            $profile->full_name = "Full Name";
             $profile->save();
 
             //Generate user token
