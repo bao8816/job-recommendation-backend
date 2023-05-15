@@ -1,6 +1,9 @@
 <?php
 
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AuthAdminController;
+use App\Http\Controllers\AuthCompanyController;
+use App\Http\Controllers\AuthEmployerController;
+use App\Http\Controllers\AuthUserController;
 use App\Http\Controllers\CompanyProfileController;
 use App\Http\Controllers\CompanyReportController;
 use App\Http\Controllers\CVController;
@@ -222,8 +225,26 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(EmployerProfil
     });
 
 //------------------------------------AUTH------------------------------------
-Route::controller(AuthController::class)
-    ->prefix('auth')->group(function () {
+Route::controller(AuthAdminController::class)
+    ->prefix('auth-admin')->group(function () {
+        Route::post('/sign-up', 'signUp');
+        Route::post('/sign-in', 'signIn');
+    });
+
+Route::controller(AuthCompanyController::class)
+    ->prefix('auth-company')->group(function () {
+        Route::post('/sign-up', 'signUp');
+        Route::post('/sign-in', 'signIn');
+    });
+
+Route::controller(AuthEmployerController::class)
+    ->prefix('auth-employer')->group(function () {
+        Route::post('/sign-up', 'signUp');
+        Route::post('/sign-in', 'signIn');
+    });
+
+Route::controller(AuthUserController::class)
+    ->prefix('auth-user')->group(function () {
         Route::post('/sign-up', 'signUp');
         Route::post('/sign-in', 'signIn');
     });

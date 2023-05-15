@@ -9,7 +9,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class AuthController extends ApiController
+class AuthUserController extends ApiController
 {
     private const TOKEN_PREFIX = 'Bearer ';
 
