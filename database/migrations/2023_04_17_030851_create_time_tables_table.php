@@ -18,7 +18,10 @@ return new class extends Migration
     {
         Schema::create('time_tables', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
+
+            // Define foreign keys
+            $table->foreignId('user_id')->constrained('user_accounts', 'id')->onDelete('cascade');
+
             $table->json('time_table')->nullable()->default(null);
             $table->timestamps();
         });

@@ -29,4 +29,9 @@ class CompanyAccount extends Model
     {
         return $this->hasOne(CompanyProfile::class, 'id', 'id');
     }
+
+    public function company_verification(): HasOne
+    {
+        return $this->hasOne(CompanyVerification::class, 'company_id', 'id');
+    }
 }
