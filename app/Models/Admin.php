@@ -11,8 +11,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Admin extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
-    protected $connection = 'mongodb';
-    protected $collection = 'admin_accounts';
+    protected $connection = 'mysql';
+    protected $table = 'admin_accounts';
 
     /**
      * The attributes that are mass assignable.

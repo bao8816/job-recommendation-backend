@@ -1,0 +1,701 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Job Website API",
+        "description": "Job Website API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api": {},
+        "/api/applications": {
+            "get": {
+                "tags": [
+                    "Applications"
+                ],
+                "summary": "Get all applications",
+                "operationId": "28bf69b3746c34b4be85ddf6f37dbad0",
+                "parameters": [
+                    {
+                        "name": "count_per_page",
+                        "in": "query",
+                        "description": "Number of applications per page",
+                        "required": false
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "application/json",
+                        "required": false
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer {token}",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved applications",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "applications": {
+                                            "current_page": 1,
+                                            "data": [
+                                                {
+                                                    "id": 1,
+                                                    "job_id": 1,
+                                                    "user_id": 2,
+                                                    "cv_id": 2,
+                                                    "status": "đang chờ",
+                                                    "deleted_at": null
+                                                },
+                                                {
+                                                    "id": 2,
+                                                    "job_id": 1,
+                                                    "user_id": 4,
+                                                    "cv_id": 4,
+                                                    "status": "đang chờ",
+                                                    "deleted_at": null
+                                                },
+                                                {
+                                                    "id": 3,
+                                                    "job_id": 1,
+                                                    "user_id": 5,
+                                                    "cv_id": 5,
+                                                    "status": "đang chờ",
+                                                    "deleted_at": null
+                                                },
+                                                {
+                                                    "id": 4,
+                                                    "job_id": 2,
+                                                    "user_id": 3,
+                                                    "cv_id": 3,
+                                                    "status": "đang chờ",
+                                                    "deleted_at": null
+                                                },
+                                                {
+                                                    "id": 5,
+                                                    "job_id": 10,
+                                                    "user_id": 2,
+                                                    "cv_id": 2,
+                                                    "status": "đang chờ",
+                                                    "deleted_at": null
+                                                },
+                                                {
+                                                    "id": 6,
+                                                    "job_id": 10,
+                                                    "user_id": 5,
+                                                    "cv_id": 5,
+                                                    "status": "đang chờ",
+                                                    "deleted_at": null
+                                                }
+                                            ],
+                                            "first_page_url": "http://localhost:8000/api/applications?page=1",
+                                            "from": 1,
+                                            "last_page": 1,
+                                            "last_page_url": "http://localhost:8000/api/applications?page=1",
+                                            "links": [
+                                                {
+                                                    "url": null,
+                                                    "label": "&laquo; Previous",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/applications?page=1",
+                                                    "label": "1",
+                                                    "active": true
+                                                },
+                                                {
+                                                    "url": null,
+                                                    "label": "Next &raquo;",
+                                                    "active": false
+                                                }
+                                            ],
+                                            "next_page_url": null,
+                                            "path": "http://localhost:8000/api/applications",
+                                            "per_page": 15,
+                                            "prev_page_url": null,
+                                            "to": 6,
+                                            "total": 6
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/applications/user/{user_id}": {
+            "get": {
+                "tags": [
+                    "Applications"
+                ],
+                "summary": "Get all applications by user id",
+                "operationId": "b41b62928f49b2793a17d2ebb5b9f283",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true
+                    },
+                    {
+                        "name": "count_per_page",
+                        "in": "query",
+                        "description": "Number of applications per page",
+                        "required": false
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "application/json",
+                        "required": false
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer {token}",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved applications",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "applications": {
+                                            "current_page": 1,
+                                            "data": [
+                                                {
+                                                    "id": 1,
+                                                    "job_id": 1,
+                                                    "user_id": 2,
+                                                    "cv_id": 2,
+                                                    "status": "đang chờ",
+                                                    "deleted_at": null
+                                                },
+                                                {
+                                                    "id": 5,
+                                                    "job_id": 10,
+                                                    "user_id": 2,
+                                                    "cv_id": 2,
+                                                    "status": "đang chờ",
+                                                    "deleted_at": null
+                                                }
+                                            ],
+                                            "first_page_url": "http://localhost:8000/api/applications/user/2?page=1",
+                                            "from": 1,
+                                            "last_page": 1,
+                                            "last_page_url": "http://localhost:8000/api/applications/user/2?page=1",
+                                            "links": [
+                                                {
+                                                    "url": null,
+                                                    "label": "&laquo; Previous",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/applications/user/2?page=1",
+                                                    "label": "1",
+                                                    "active": true
+                                                },
+                                                {
+                                                    "url": null,
+                                                    "label": "Next &raquo;",
+                                                    "active": false
+                                                }
+                                            ],
+                                            "next_page_url": null,
+                                            "path": "http://localhost:8000/api/applications/user/2",
+                                            "per_page": 15,
+                                            "prev_page_url": null,
+                                            "to": 2,
+                                            "total": 2
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth-admin/sign-in": {
+            "post": {
+                "tags": [
+                    "Auth Admin"
+                ],
+                "summary": "Sign in admin account",
+                "operationId": "5d1f8c0b9fba8f9435e50f7571e3eef6",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {},
+                            "example": {
+                                "username": "Admin",
+                                "password": "admin123"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sign in successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Đăng nhập thành công",
+                                    "data": {
+                                        "admin": {
+                                            "id": 1,
+                                            "username": "Admin",
+                                            "full_name": "Admin",
+                                            "avatar": "https://i.imgur.com/1Z1Z1Z1.png",
+                                            "is_banned": 0,
+                                            "locked_until": null,
+                                            "last_login": "2023-05-16T04:03:50.922574Z",
+                                            "deleted_at": null
+                                        },
+                                        "token": "Bearer 1|M03axF5GB3zWOj2Ce0eASES4gF6Yq9iPve97VGzF"
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": true,
+                                    "message": "Không tìm thấy tên đăng nhập",
+                                    "data": null,
+                                    "status_code": 400
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/auth-company/sign-up": {
+            "post": {
+                "tags": [
+                    "Auth Company"
+                ],
+                "summary": "Sign up company account",
+                "operationId": "e7aa188110c498461a67d53811496d21",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {},
+                            "example": {
+                                "username": "Company",
+                                "password": "company123",
+                                "password_confirmation": "company123"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Sign up successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Đăng ký thành công",
+                                    "data": {
+                                        "companyAccount": {
+                                            "username": "comp2",
+                                            "id": 12
+                                        },
+                                        "token": "Bearer 4|sacseaziyLhceKddmZw4KnRjvOq0an3XTJ22yGEz"
+                                    },
+                                    "status_code": 201
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": true,
+                                    "message": "Nhập lại mật khẩu không khớp",
+                                    "data": null,
+                                    "status_code": 400
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/auth-company/sign-in": {
+            "post": {
+                "tags": [
+                    "Auth Company"
+                ],
+                "summary": "Sign in company account",
+                "operationId": "092cafbd32f4c2c5f31645c8ba87dbb8",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {},
+                            "example": {
+                                "username": "Company",
+                                "password": "company123"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sign in successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Đăng nhập thành công",
+                                    "data": {
+                                        "companyAccount": {
+                                            "id": 12,
+                                            "username": "comp2",
+                                            "is_verified": 0,
+                                            "is_banned": 0,
+                                            "locked_until": null,
+                                            "last_login": "2023-05-18T06:02:37.629646Z",
+                                            "deleted_at": null
+                                        },
+                                        "token": "Bearer 7|gPmtRFws2KolgR6PqIXLO2LUEvS1Tqi1GcA8vG1k"
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": true,
+                                    "message": "Tên đăng nhập không tồn tại",
+                                    "data": null,
+                                    "status_code": 400
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/auth-employer/sign-in": {
+            "post": {
+                "tags": [
+                    "Auth Employer"
+                ],
+                "summary": "Sign in employer account",
+                "operationId": "220fd469cb13d67d24e57be3d18d5371",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {},
+                            "example": {
+                                "username": "Employer",
+                                "password": "employer123"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sign in successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Đăng nhập thành công",
+                                    "data": {
+                                        "employerAccount": {
+                                            "id": 1,
+                                            "username": "NguyenVanA",
+                                            "is_banned": 0,
+                                            "locked_until": null,
+                                            "last_login": "2023-05-18T06:19:05.366279Z",
+                                            "deleted_at": null
+                                        },
+                                        "token": "Bearer 8|nP6NtzbU1PF5935pQjTc2PgjCkmAYt0iPIPRq3kU"
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": true,
+                                    "message": "Tên đăng nhập không tồn tại",
+                                    "data": null,
+                                    "status_code": 400
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/auth-user/sign-up": {
+            "post": {
+                "tags": [
+                    "Auth User"
+                ],
+                "summary": "Sign up user account",
+                "operationId": "3d8e98b886869f9022dddec9cbffd542",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {},
+                            "example": {
+                                "username": "User",
+                                "password": "user123",
+                                "password_confirmation": "user123"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sign up successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Đăng ký thành công",
+                                    "data": {
+                                        "userAccount": {
+                                            "username": "user1",
+                                            "id": 72
+                                        },
+                                        "token": "Bearer 1|K3e4Q9QPDrZvhY9jklPMSeH2TuDxYBiA3LMWF0Kg"
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": true,
+                                    "message": "Nhập lại mật khẩu không khớp",
+                                    "data": null,
+                                    "status_code": 400
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/auth-user/sign-in": {
+            "post": {
+                "tags": [
+                    "Auth User"
+                ],
+                "summary": "Sign in user account",
+                "operationId": "2085e196014e1abbd67d1981507b9e66",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {},
+                            "example": {
+                                "username": "User",
+                                "password": "user123"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sign in successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Đăng nhập thành công",
+                                    "data": {
+                                        "userAccount": {
+                                            "id": 1,
+                                            "username": "VANDEP123",
+                                            "is_banned": 0,
+                                            "locked_until": null,
+                                            "last_login": null,
+                                            "deleted_at": null
+                                        },
+                                        "token": "Bearer 6|YMA2ulLxrCBwLnCK7wdaEDzh4Iam9VQqJUBh17NM"
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": true,
+                                    "message": "Tên đăng nhập không tồn tại",
+                                    "data": null,
+                                    "status_code": 400
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "responses": {
+            "Error": {
+                "description": "Xảy ra lỗi",
+                "content": {
+                    "application/json": {
+                        "schema": {},
+                        "example": {
+                            "error": true,
+                            "message": "Xảy ra lỗi",
+                            "data": null,
+                            "status_code": 404
+                        }
+                    }
+                }
+            },
+            "NotFound": {
+                "description": "Không tìm thấy",
+                "content": {
+                    "application/json": {
+                        "schema": {},
+                        "example": {
+                            "error": true,
+                            "message": "Không tìm thấy",
+                            "data": null,
+                            "status_code": 404
+                        }
+                    }
+                }
+            },
+            "InternalServerError": {
+                "description": "Lỗi server",
+                "content": {
+                    "application/json": {
+                        "schema": {},
+                        "example": {
+                            "error": true,
+                            "message": "Lỗi server",
+                            "data": null,
+                            "status_code": 500
+                        }
+                    }
+                }
+            },
+            "Unauthorized": {
+                "description": "Không có quyền",
+                "content": {
+                    "application/json": {
+                        "schema": {},
+                        "example": {
+                            "error": true,
+                            "message": "Không có quyền",
+                            "data": null,
+                            "status_code": 401
+                        }
+                    }
+                }
+            },
+            "Forbidden": {
+                "description": "Bị cấm",
+                "content": {
+                    "application/json": {
+                        "schema": {},
+                        "example": {
+                            "error": true,
+                            "message": "Bị cấm",
+                            "data": null,
+                            "status_code": 403
+                        }
+                    }
+                }
+            },
+            "BadRequest": {
+                "description": "Yêu cầu không hợp lệ",
+                "content": {
+                    "application/json": {
+                        "schema": {},
+                        "example": {
+                            "error": true,
+                            "message": "Yêu cầu không hợp lệ",
+                            "data": null,
+                            "status_code": 400
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

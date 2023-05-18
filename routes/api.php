@@ -216,7 +216,7 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(JobReportContr
 
 //------------------------------------COMPANY------------------------------------
 // Company Profile
-Route::middleware(['auth:sanctum', 'abilities:user'])->controller(CompanyProfileController::class)
+Route::middleware(['auth:sanctum'])->controller(CompanyProfileController::class)
     ->prefix('company-profiles')->group(function () {
         Route::get('/{id}', 'getCompanyProfileById');
         Route::get('/', 'getAllCompanyProfiles');
