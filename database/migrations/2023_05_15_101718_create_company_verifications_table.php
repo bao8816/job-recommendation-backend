@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     protected $connection = 'mysql';
-    protected $table = 'user_experiences';
+    protected $table = 'company_verifications';
 
     /**
      * Run the migrations.
@@ -16,18 +16,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_experiences', function (Blueprint $table) {
+        Schema::create('company_verifications', function (Blueprint $table) {
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_unicode_ci';
 
             $table->id();
 
             // Define foreign keys
-            $table->foreignId('user_id')->constrained('user_accounts', 'id')->onDelete('cascade');
+            $table->foreignId('company_id')->constrained('company_accounts', 'id')->onDelete('cascade');
 
-            $table->string('description', 10000);
-            $table->date('start');
-            $table->date('end');
+            $table->string('verification_url', 10000);
+            $table->string('status', 50)->default('Đang chờ');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -40,6 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_experiences');
+        Schema::dropIfExists('company_verifications');
     }
 };

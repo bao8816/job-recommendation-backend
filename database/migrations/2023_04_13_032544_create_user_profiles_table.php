@@ -23,13 +23,13 @@ return new class extends Migration
             // Define foreign keys
             $table->foreignId('id')->constrained('user_accounts', 'id')->onDelete('cascade');
 
-            $table->string('full_name', 500);
+            $table->string('full_name', 500)->default('Tên đầy đủ');
             $table->string('avatar', 2000)->default('https://i.imgur.com/1ZQZQ9r.png');
-            $table->date('date_of_birth');
-            $table->string('gender', 10);
-            $table->string('address', 1000);
-            $table->string('email', 500);
-            $table->string('phone', 20);
+            $table->date('date_of_birth')->nullable();
+            $table->string('gender', 10)->nullable();
+            $table->string('address', 1000)->nullable();
+            $table->string('email', 500)->nullable();
+            $table->string('phone', 20)->nullable();
             $table->softDeletes();
             $table->timestamps();
 

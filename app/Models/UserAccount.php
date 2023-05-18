@@ -88,4 +88,14 @@ class UserAccount extends Authenticatable
     {
         return $this->hasMany(PostComment::class, 'user_id', 'id');
     }
+
+    public function time_table(): HasMany
+    {
+        return $this->hasMany(TimeTable::class, 'user_id', 'id');
+    }
+
+    public function user_history(): HasMany
+    {
+        return $this->hasMany(UserHistory::class, 'user_id', 'id');
+    }
 }

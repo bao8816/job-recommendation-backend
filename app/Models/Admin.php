@@ -3,18 +3,16 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class EmployerAccount extends Model
+class Admin extends Authenticatable
 {
-    use HasFactory, SoftDeletes, HasApiTokens, Notifiable;
-
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
     protected $connection = 'mysql';
-    protected $table = 'employer_accounts';
+    protected $table = 'admin_accounts';
 
     /**
      * The attributes that are mass assignable.
@@ -22,8 +20,10 @@ class EmployerAccount extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'full_name',
         'username',
         'password',
+        'avatar',
     ];
 
     /**
@@ -36,9 +36,5 @@ class EmployerAccount extends Model
         'created_at',
         'updated_at',
     ];
-
-    public function jobs(): HasMany
-    {
-        return $this->hasMany(Job::class, 'employer_id', 'id');
-    }
 }
+

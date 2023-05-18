@@ -3,9 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Jenssegers\Mongodb\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Jenssegers\Mongodb\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class TimeTable extends Model
 {
@@ -26,6 +27,11 @@ class TimeTable extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(UserAccount::class, 'user_id', 'id');
+    }
 
 //    protected function timeTable(): Attribute
 //    {

@@ -1,13 +1,13 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Jenssegers\Mongodb\Schema\Blueprint;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    protected $connection = 'mongodb';
-    protected $collection = 'time_tables';
+    protected $connection = 'mysql';
+    protected $table = 'time_tables';
 
     /**
      * Run the migrations.
@@ -16,10 +16,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('time_tables');
         Schema::create('time_tables', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
+
+            // Define foreign keys
+            $table->foreignId('user_id')->constrained('user_accounts', 'id')->onDelete('cascade');
+
             $table->json('time_table')->nullable()->default(null);
             $table->timestamps();
         });

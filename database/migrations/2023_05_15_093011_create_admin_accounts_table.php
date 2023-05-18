@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     protected $connection = 'mysql';
-    protected $table = 'user_experiences';
+    protected $table = 'admin_accounts';
 
     /**
      * Run the migrations.
@@ -16,18 +16,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_experiences', function (Blueprint $table) {
+        Schema::create('admin_accounts', function (Blueprint $table) {
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_unicode_ci';
 
             $table->id();
-
-            // Define foreign keys
-            $table->foreignId('user_id')->constrained('user_accounts', 'id')->onDelete('cascade');
-
-            $table->string('description', 10000);
-            $table->date('start');
-            $table->date('end');
+            $table->string('username');
+            $table->string('password');
+            $table->string('full_name')->nullable();
+            $table->string('avatar')->nullable();
+            $table->boolean('is_banned')->default(0);
+            $table->dateTime('locked_until')->nullable();
+            $table->dateTime('last_login')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -40,6 +40,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_experiences');
+        Schema::dropIfExists('admin_accounts');
     }
 };
