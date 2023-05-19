@@ -16,7 +16,7 @@ Create .env file based on .env.example and config your database connection
 `php artisan migrate` to migrate database  
 (if you want to reset database, run `php artisan migrate:refresh`)
 
-`php artisan db:seed` to seed database
+`php artisan db:seed` to seed database  
 `php artisan migrate:fresh --seed` to reset and seed database (migration and seeding at the same time)
 
 ## Run project
