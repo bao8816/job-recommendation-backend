@@ -39,7 +39,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 //TODO: Authorize all routes
-//TODO: Create message class to response
 //------------------------------------USER------------------------------------
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserAccountController::class)
     ->prefix('user-accounts')->group(function () {
@@ -280,18 +279,32 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(EmployerProfil
 
 
 //------------------------------------APPLICATION------------------------------------
-Route::middleware(['auth:sanctum', 'abilities:user'])->controller(ApplicationController::class)
+// All role
+Route::middleware(['auth:sanctum'])->controller(ApplicationController::class)
     ->prefix('applications')->group(function () {
         Route::get('/user/{user_id}', 'getApplicationsByUserId');
         Route::get('/job/{job_id}', 'getApplicationsByJobId');
         Route::get('/{id}', 'getApplicationById');
         Route::get('/', 'getAllApplications');
+    });
 
-        Route::post('/', 'createApplication');
-
-        Route::put('/{id}', 'updateApplication');
-
+// Only moderator
+Route::middleware(['auth:sanctum', 'abilities:mod'])->controller(ApplicationController::class)
+    ->prefix('applications')->group(function () {
         Route::delete('/{id}', 'deleteApplication');
+    });
+
+// Only user
+Route::middleware(['auth:sanctum', 'abilities:user'])->controller(ApplicationController::class)
+    ->prefix('applications')->group(function () {
+        Route::post('/', 'createApplication');
+    });
+
+// Only company
+Route::middleware(['auth:sanctum', 'abilities:company,employer'])->controller(ApplicationController::class)
+    ->prefix('applications')->group(function () {
+        Route::put('/approve/{id}', 'approveApplication');
+        Route::put('/reject/{id}', 'rejectApplication');
     });
 
 //------------------------------------AUTH------------------------------------

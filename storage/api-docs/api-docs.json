@@ -139,6 +139,75 @@
                         "bearerAuth": []
                     }
                 ]
+            },
+            "post": {
+                "tags": [
+                    "Applications"
+                ],
+                "summary": "Create new application",
+                "operationId": "d78755a9c6d06a6665c9e706855f4f84",
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "application/json",
+                        "required": false
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer {token}",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "description": "Application data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {},
+                            "example": {
+                                "job_id": 1,
+                                "user_id": 2,
+                                "cv_id": 2,
+                                "status": "đang chờ"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successfully created application",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "application": {
+                                            "id": 1,
+                                            "job_id": 1,
+                                            "user_id": 2,
+                                            "cv_id": 2,
+                                            "status": "đang chờ",
+                                            "deleted_at": null
+                                        }
+                                    },
+                                    "status_code": 201
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/applications/user/{user_id}": {
@@ -237,6 +306,349 @@
                                 }
                             }
                         }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/applications/job/{job_id}": {
+            "get": {
+                "tags": [
+                    "Applications"
+                ],
+                "summary": "Get all applications by job id",
+                "operationId": "c03042e68bea208ca3065bb915b683f4",
+                "parameters": [
+                    {
+                        "name": "job_id",
+                        "in": "path",
+                        "description": "Job id",
+                        "required": true
+                    },
+                    {
+                        "name": "count_per_page",
+                        "in": "query",
+                        "description": "Number of applications per page",
+                        "required": false
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "application/json",
+                        "required": false
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer {token}",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved applications",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "applications": {
+                                            "current_page": 1,
+                                            "data": [
+                                                {
+                                                    "id": 1,
+                                                    "job_id": 1,
+                                                    "user_id": 2,
+                                                    "cv_id": 2,
+                                                    "status": "đang chờ",
+                                                    "deleted_at": null
+                                                },
+                                                {
+                                                    "id": 5,
+                                                    "job_id": 10,
+                                                    "user_id": 2,
+                                                    "cv_id": 2,
+                                                    "status": "đang chờ",
+                                                    "deleted_at": null
+                                                }
+                                            ],
+                                            "first_page_url": "http://localhost:8000/api/applications/job/2?page=1",
+                                            "from": 1,
+                                            "last_page": 1,
+                                            "last_page_url": "http://localhost:8000/api/applications/job/2?page=1",
+                                            "links": [
+                                                {
+                                                    "url": null,
+                                                    "label": "&laquo; Previous",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/applications/job/2?page=1",
+                                                    "label": "1",
+                                                    "active": true
+                                                },
+                                                {
+                                                    "url": null,
+                                                    "label": "Next &raquo;",
+                                                    "active": false
+                                                }
+                                            ],
+                                            "next_page_url": null,
+                                            "path": "http://localhost:8000/api/applications/job/2",
+                                            "per_page": 15,
+                                            "prev_page_url": null,
+                                            "to": 2,
+                                            "total": 2
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/applications/{id}": {
+            "get": {
+                "tags": [
+                    "Applications"
+                ],
+                "summary": "Get application by id",
+                "operationId": "6a812744af093d96583343d55d16c70d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Application id",
+                        "required": true
+                    },
+                    {
+                        "name": "count_per_page",
+                        "in": "query",
+                        "description": "Number of applications per page",
+                        "required": false
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "application/json",
+                        "required": false
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer {token}",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved application",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "application": {
+                                            "current_page": 1,
+                                            "data": [
+                                                {
+                                                    "id": 1,
+                                                    "job_id": 1,
+                                                    "user_id": 2,
+                                                    "cv_id": 2,
+                                                    "status": "đang chờ",
+                                                    "deleted_at": null
+                                                }
+                                            ],
+                                            "first_page_url": "http://localhost:8000/api/applications/1?page=1",
+                                            "from": 1,
+                                            "last_page": 1,
+                                            "last_page_url": "http://localhost:8000/api/applications/1?page=1",
+                                            "links": [
+                                                {
+                                                    "url": null,
+                                                    "label": "&laquo; Previous",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/applications/1?page=1",
+                                                    "label": "1",
+                                                    "active": true
+                                                },
+                                                {
+                                                    "url": null,
+                                                    "label": "Next &raquo;",
+                                                    "active": false
+                                                }
+                                            ],
+                                            "next_page_url": null,
+                                            "path": "http://localhost:8000/api/applications/1",
+                                            "per_page": 1,
+                                            "prev_page_url": null,
+                                            "to": 1,
+                                            "total": 1
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Applications"
+                ],
+                "summary": "Update application",
+                "operationId": "072822eed481bdb891a23e0ec205821a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Application id",
+                        "required": true
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "application/json",
+                        "required": false
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer {token}",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "description": "Application data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {},
+                            "example": {
+                                "cv_id": 2
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successfully updated application",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "application": {
+                                            "id": 1,
+                                            "job_id": 1,
+                                            "user_id": 2,
+                                            "cv_id": 2,
+                                            "status": "đang chờ",
+                                            "deleted_at": null
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Applications"
+                ],
+                "summary": "Delete application",
+                "operationId": "9dee21bc618d356c1671b3e263d2de7b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Application id",
+                        "required": true
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "application/json",
+                        "required": false
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer {token}",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully deleted application",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "application": {
+                                            "id": 1,
+                                            "job_id": 1,
+                                            "user_id": 2,
+                                            "cv_id": 2,
+                                            "status": "đang chờ",
+                                            "deleted_at": "2023-05-19T13:01:57.000000Z"
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
                     }
                 },
                 "security": [

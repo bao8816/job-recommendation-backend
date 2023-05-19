@@ -91,10 +91,10 @@ class AuthAdminController extends ApiController
             // Generate admin token
             $tokenName = env('ADMIN_AUTH_TOKEN');
             if ($admin->username == 'Admin') {
-                $token = $admin->createToken($tokenName, ['admin']);
+                $token = $admin->createToken($tokenName);
             }
             else {
-                $token = $admin->createToken($tokenName, ['moderator']);
+                $token = $admin->createToken($tokenName, ['mod']);
             }
 
             $admin->last_login = now();

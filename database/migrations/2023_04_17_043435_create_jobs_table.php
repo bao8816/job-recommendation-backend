@@ -31,8 +31,6 @@ return new class extends Migration
             $table->integer('max_salary');
             $table->integer('recruit_num');
             $table->string('position');
-            $table->integer('upvote')->default(0);
-            $table->integer('downvote')->default(0);
             $table->string('experience');
             $table->date('deadline');
             $table->softDeletes();
