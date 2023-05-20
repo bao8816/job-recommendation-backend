@@ -167,11 +167,15 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(PostCommentCon
 
 //------------------------------------JOB------------------------------------
 // Job
-Route::middleware(['auth:sanctum', 'abilities:user'])->controller(JobController::class)
+// All roles can get jobs (including guest)
+Route::controller(JobController::class)
     ->prefix('jobs')->group(function () {
         Route::get('/{id}', 'getJobById');
         Route::get('/', 'getAllJobs');
+    });
 
+Route::middleware(['auth:sanctum', 'abilities:user'])->controller(JobController::class)
+    ->prefix('jobs')->group(function () {
         Route::put('/{id}', 'updateJobVotes');
     });
 
@@ -184,7 +188,8 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(JobLocationCon
     });
 
 // Job Skill
-Route::middleware(['auth:sanctum', 'abilities:user'])->controller(JobSkillController::class)
+// All roles can get job skills (including guest)
+Route::controller(JobSkillController::class)
     ->prefix('job-skills')->group(function () {
         Route::get('/job/{job_id}', 'getJobSkillsByJobId');
         Route::get('/{id}', 'getJobSkillById');
@@ -192,7 +197,8 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(JobSkillContro
     });
 
 // Job Type
-Route::middleware(['auth:sanctum', 'abilities:user'])->controller(JobTypeController::class)
+// All roles can get job types (including guest)
+Route::controller(JobTypeController::class)
     ->prefix('job-types')->group(function () {
         Route::get('/job/{job_id}', 'getJobTypesByJobId');
         Route::get('/{id}', 'getJobTypeById');
@@ -215,7 +221,8 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(JobReportContr
 
 //------------------------------------COMPANY------------------------------------
 // Company Profile
-Route::middleware(['auth:sanctum'])->controller(CompanyProfileController::class)
+// All roles can access (including guest)
+Route::controller(CompanyProfileController::class)
     ->prefix('company-profiles')->group(function () {
         Route::get('/{id}', 'getCompanyProfileById');
         Route::get('/', 'getAllCompanyProfiles');
