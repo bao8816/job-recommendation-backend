@@ -525,78 +525,6 @@
                     }
                 ]
             },
-            "put": {
-                "tags": [
-                    "Applications"
-                ],
-                "summary": "Update application",
-                "operationId": "072822eed481bdb891a23e0ec205821a",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Application id",
-                        "required": true
-                    },
-                    {
-                        "name": "Accept",
-                        "in": "header",
-                        "description": "application/json",
-                        "required": false
-                    },
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer {token}",
-                        "required": true
-                    }
-                ],
-                "requestBody": {
-                    "description": "Application data",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {},
-                            "example": {
-                                "cv_id": 2
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Successfully updated application",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": {
-                                    "error": false,
-                                    "message": "Xử lí thành công",
-                                    "data": {
-                                        "application": {
-                                            "id": 1,
-                                            "job_id": 1,
-                                            "user_id": 2,
-                                            "cv_id": 2,
-                                            "status": "đang chờ",
-                                            "deleted_at": null
-                                        }
-                                    },
-                                    "status_code": 200
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/NotFound"
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            },
             "delete": {
                 "tags": [
                     "Applications"
@@ -640,6 +568,130 @@
                                             "cv_id": 2,
                                             "status": "đang chờ",
                                             "deleted_at": "2023-05-19T13:01:57.000000Z"
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/applications/approve/{id}": {
+            "put": {
+                "tags": [
+                    "Applications"
+                ],
+                "summary": "Approve application",
+                "operationId": "3815563394a80c1a904a4668095292e5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Application id",
+                        "required": true
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "application/json",
+                        "required": false
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer {token}",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully updated application",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "application": {
+                                            "id": 1,
+                                            "job_id": 1,
+                                            "user_id": 2,
+                                            "cv_id": 2,
+                                            "status": "đang xử lí",
+                                            "deleted_at": null
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/applications/reject/{id}": {
+            "put": {
+                "tags": [
+                    "Applications"
+                ],
+                "summary": "Reject application",
+                "operationId": "783d71d343c493a65bb8b27ee4a1b9c9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Application id",
+                        "required": true
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "application/json",
+                        "required": false
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer {token}",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully updated application",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "application": {
+                                            "id": 1,
+                                            "job_id": 1,
+                                            "user_id": 2,
+                                            "cv_id": 2,
+                                            "status": "đang xử lí",
+                                            "deleted_at": null
                                         }
                                     },
                                     "status_code": 200

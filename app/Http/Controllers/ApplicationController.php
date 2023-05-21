@@ -30,7 +30,7 @@ class ApplicationController extends ApiController
      *      @OA\Parameter(
      *          name="Authorization",
      *          in="header",
-     *          description="Bearer {token}",
+     *          description="Bearer {token} of all roles",
      *          required=true
      *      ),
      *      @OA\Response(
@@ -49,7 +49,7 @@ class ApplicationController extends ApiController
                                         "job_id": 1,
                                         "user_id": 2,
                                         "cv_id": 2,
-                                        "status": "đang chờ",
+                                        "status": "Đang chờ",
                                         "deleted_at": null
                                     },
                                     {
@@ -57,7 +57,7 @@ class ApplicationController extends ApiController
                                         "job_id": 1,
                                         "user_id": 4,
                                         "cv_id": 4,
-                                        "status": "đang chờ",
+                                        "status": "Đang chờ",
                                         "deleted_at": null
                                     },
                                     {
@@ -65,7 +65,7 @@ class ApplicationController extends ApiController
                                         "job_id": 1,
                                         "user_id": 5,
                                         "cv_id": 5,
-                                        "status": "đang chờ",
+                                        "status": "Đang chờ",
                                         "deleted_at": null
                                     },
                                     {
@@ -73,7 +73,7 @@ class ApplicationController extends ApiController
                                         "job_id": 2,
                                         "user_id": 3,
                                         "cv_id": 3,
-                                        "status": "đang chờ",
+                                        "status": "Đang chờ",
                                         "deleted_at": null
                                     },
                                     {
@@ -81,7 +81,7 @@ class ApplicationController extends ApiController
                                         "job_id": 10,
                                         "user_id": 2,
                                         "cv_id": 2,
-                                        "status": "đang chờ",
+                                        "status": "Đang chờ",
                                         "deleted_at": null
                                     },
                                     {
@@ -89,7 +89,7 @@ class ApplicationController extends ApiController
                                         "job_id": 10,
                                         "user_id": 5,
                                         "cv_id": 5,
-                                        "status": "đang chờ",
+                                        "status": "Đang chờ",
                                         "deleted_at": null
                                     }
                                 },
@@ -181,7 +181,7 @@ class ApplicationController extends ApiController
      *      @OA\Parameter(
      *          name="Authorization",
      *          in="header",
-     *          description="Bearer {token}",
+     *          description="Bearer {token} of all roles",
      *          required=true
      *      ),
      *      @OA\Response(
@@ -200,7 +200,7 @@ class ApplicationController extends ApiController
                                     "job_id": 1,
                                     "user_id": 2,
                                     "cv_id": 2,
-                                    "status": "đang chờ",
+                                    "status": "Đang chờ",
                                     "deleted_at": null
                                     },
                                     {
@@ -208,7 +208,7 @@ class ApplicationController extends ApiController
                                     "job_id": 10,
                                     "user_id": 2,
                                     "cv_id": 2,
-                                    "status": "đang chờ",
+                                    "status": "Đang chờ",
                                     "deleted_at": null
                                     }
                                 },
@@ -300,7 +300,7 @@ class ApplicationController extends ApiController
      *      @OA\Parameter(
      *          name="Authorization",
      *          in="header",
-     *          description="Bearer {token}",
+     *          description="Bearer {token} of all roles",
      *          required=true
      *      ),
      *      @OA\Response(
@@ -319,7 +319,7 @@ class ApplicationController extends ApiController
                                 "job_id": 1,
                                 "user_id": 2,
                                 "cv_id": 2,
-                                "status": "đang chờ",
+                                "status": "Đang chờ",
                                 "deleted_at": null
                                 },
                                 {
@@ -327,7 +327,7 @@ class ApplicationController extends ApiController
                                 "job_id": 10,
                                 "user_id": 2,
                                 "cv_id": 2,
-                                "status": "đang chờ",
+                                "status": "Đang chờ",
                                 "deleted_at": null
                                 }
                             },
@@ -419,7 +419,7 @@ class ApplicationController extends ApiController
      *      @OA\Parameter(
      *          name="Authorization",
      *          in="header",
-     *          description="Bearer {token}",
+     *          description="Bearer {token} of all roles",
      *          required=true
      *      ),
      *      @OA\Response(
@@ -438,7 +438,7 @@ class ApplicationController extends ApiController
                                 "job_id": 1,
                                 "user_id": 2,
                                 "cv_id": 2,
-                                "status": "đang chờ",
+                                "status": "Đang chờ",
                                 "deleted_at": null
                                 }
                             },
@@ -516,7 +516,7 @@ class ApplicationController extends ApiController
      *      @OA\Parameter(
      *          name="Authorization",
      *          in="header",
-     *          description="Bearer {token}",
+     *          description="Bearer {token} of user role",
      *          required=true
      *      ),
      *      @OA\RequestBody(
@@ -544,7 +544,7 @@ class ApplicationController extends ApiController
                             "job_id": 1,
                             "user_id": 2,
                             "cv_id": 2,
-                            "status": "đang chờ",
+                            "status": "Đang chờ",
                             "deleted_at": null
                             }
                         },
@@ -599,7 +599,7 @@ class ApplicationController extends ApiController
      *      @OA\Parameter(
      *          name="Authorization",
      *          in="header",
-     *          description="Bearer {token}",
+     *          description="Bearer {token} of company role",
      *          required=true
      *      ),
      *      @OA\Response(
@@ -615,7 +615,7 @@ class ApplicationController extends ApiController
                             "job_id": 1,
                             "user_id": 2,
                             "cv_id": 2,
-                            "status": "đang xử lí",
+                            "status": "Đã duyệt",
                             "deleted_at": null
                             }
                         },
@@ -672,7 +672,7 @@ class ApplicationController extends ApiController
      *      @OA\Parameter(
      *          name="Authorization",
      *          in="header",
-     *          description="Bearer {token}",
+     *          description="Bearer {token} of company role",
      *          required=true
      *      ),
      *      @OA\Response(
@@ -688,7 +688,7 @@ class ApplicationController extends ApiController
                                 "job_id": 1,
                                 "user_id": 2,
                                 "cv_id": 2,
-                                "status": "đang xử lí",
+                                "status": "Đã từ chối",
                                 "deleted_at": null
                             }
                         },
@@ -761,7 +761,7 @@ class ApplicationController extends ApiController
                             "job_id": 1,
                             "user_id": 2,
                             "cv_id": 2,
-                            "status": "đang chờ",
+                            "status": "Đang chờ",
                             "deleted_at": "2023-05-19T13:01:57.000000Z"
                             }
                         },
