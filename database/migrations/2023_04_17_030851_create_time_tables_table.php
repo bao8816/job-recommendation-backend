@@ -22,7 +22,8 @@ return new class extends Migration
             // Define foreign keys
             $table->foreignId('user_id')->constrained('user_accounts', 'id')->onDelete('cascade');
 
-            $table->json('time_table')->nullable()->default(null);
+            $table->string('coordinate');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -12,15 +12,12 @@ class TimeTable extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $connection = 'mongodb';
-    protected $collection = 'time_tables';
+    protected $connection = 'mysql';
+    protected $table = 'time_tables';
 
-    protected $casts = [
-        'time_table' => 'array',
-    ];
 
     protected $fillable = [
-        'time_table',
+        'coordinate',
     ];
 
     protected $hidden = [
@@ -32,12 +29,4 @@ class TimeTable extends Model
     {
         return $this->belongsTo(UserAccount::class, 'user_id', 'id');
     }
-
-//    protected function timeTable(): Attribute
-//    {
-//        return Attribute::make(
-//            get: fn ($value) => json_decode($value, true),
-//            set: fn ($value) => json_encode($value),
-//        );
-//    }
 }

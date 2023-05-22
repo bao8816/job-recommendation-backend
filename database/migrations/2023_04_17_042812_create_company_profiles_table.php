@@ -24,10 +24,11 @@ return new class extends Migration
             $table->foreignId('id')->constrained('company_accounts', 'id')->onDelete('cascade');
 
             $table->string('name', 500);
-            $table->string('logo', 2000)->default('https://i.imgur.com/1ZQZQ9r.png');
+            $table->string('logo', 2000)->default(env('DEFAULT_LOGO_URL', base_path('public/default_logo.png')));
             $table->string('description', 10000);
             $table->string('site', 2000);
             $table->string('address', 1000);
+            $table->string('size', 500)->nullable();
             $table->softDeletes();
             $table->timestamps();
 

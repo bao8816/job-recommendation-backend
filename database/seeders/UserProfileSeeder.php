@@ -29,11 +29,14 @@ class UserProfileSeeder extends Seeder
 
             $user_profile->id = $line[0];
             $user_profile->full_name = $line[1];
-            $user_profile->date_of_birth = $line[3] . '-01-01';
-            $user_profile->gender = $line[4];
-            $user_profile->address = $line[5];
-            $user_profile->email = $line[6];
-            $user_profile->phone = $line[7];
+            $user_profile->about_me = $line[3];
+            $user_profile->good_at_position = $line[4];
+            $user_profile->date_of_birth = $line[5] . '-01-01';
+            $user_profile->gender = $line[6];
+            $user_profile->address = $line[7];
+            $user_profile->email = $line[8];
+            $user_profile->phone = $line[9];
+            $user_profile->year_of_experience = $line[10];
             $user_profile->created_at = now();
             $user_profile->updated_at = now();
 
