@@ -89,7 +89,7 @@ class UserAccount extends Authenticatable
         return $this->hasMany(PostComment::class, 'user_id', 'id');
     }
 
-    public function time_table(): HasMany
+    public function time_tables(): HasMany
     {
         return $this->hasMany(TimeTable::class, 'user_id', 'id');
     }
