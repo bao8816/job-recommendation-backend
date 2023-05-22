@@ -41,6 +41,6 @@ class EmployerProfile extends Model
 
     public function company(): BelongsTo
     {
-        return $this->belongsTo(CompanyAccount::class, 'id', 'id');
+        return $this->belongsTo(CompanyAccount::class, 'company_id', 'id');
     }
 }

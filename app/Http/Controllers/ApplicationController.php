@@ -30,7 +30,7 @@ class ApplicationController extends ApiController
      *      @OA\Parameter(
      *          name="Authorization",
      *          in="header",
-     *          description="Bearer {token} of all roles",
+     *          description="Bearer {token}",
      *          required=true
      *      ),
      *      @OA\Response(
@@ -181,7 +181,7 @@ class ApplicationController extends ApiController
      *      @OA\Parameter(
      *          name="Authorization",
      *          in="header",
-     *          description="Bearer {token} of all roles",
+     *          description="Bearer {token}",
      *          required=true
      *      ),
      *      @OA\Response(
@@ -300,7 +300,7 @@ class ApplicationController extends ApiController
      *      @OA\Parameter(
      *          name="Authorization",
      *          in="header",
-     *          description="Bearer {token} of all roles",
+     *          description="Bearer {token}",
      *          required=true
      *      ),
      *      @OA\Response(
@@ -419,7 +419,7 @@ class ApplicationController extends ApiController
      *      @OA\Parameter(
      *          name="Authorization",
      *          in="header",
-     *          description="Bearer {token} of all roles",
+     *          description="Bearer {token}",
      *          required=true
      *      ),
      *      @OA\Response(
@@ -487,7 +487,7 @@ class ApplicationController extends ApiController
         try {
             $application = Application::where('id', $id)->paginate(1);
 
-            if ($application === null) {
+            if (count($application) === 0) {
                 return $this->respondNotFound();
             }
 
@@ -516,7 +516,7 @@ class ApplicationController extends ApiController
      *      @OA\Parameter(
      *          name="Authorization",
      *          in="header",
-     *          description="Bearer {token} of user role",
+     *          description="Bearer {token}",
      *          required=true
      *      ),
      *      @OA\RequestBody(
@@ -599,7 +599,7 @@ class ApplicationController extends ApiController
      *      @OA\Parameter(
      *          name="Authorization",
      *          in="header",
-     *          description="Bearer {token} of company role",
+     *          description="Bearer {token}",
      *          required=true
      *      ),
      *      @OA\Response(
@@ -672,7 +672,7 @@ class ApplicationController extends ApiController
      *      @OA\Parameter(
      *          name="Authorization",
      *          in="header",
-     *          description="Bearer {token} of company role",
+     *          description="Bearer {token}",
      *          required=true
      *      ),
      *      @OA\Response(

@@ -127,10 +127,6 @@ class PostReportController extends ApiController
                 return $this->respondNotFound('No post report found');
             }
 
-            if ($request->user()->id !== $postReport->user_id) {
-                return $this->respondUnauthorized('You are not authorized to delete this post report');
-            }
-
             $postReport->delete();
 
             return $this->respondWithData(

@@ -52,7 +52,7 @@
                                                     "job_id": 1,
                                                     "user_id": 2,
                                                     "cv_id": 2,
-                                                    "status": "đang chờ",
+                                                    "status": "Đang chờ",
                                                     "deleted_at": null
                                                 },
                                                 {
@@ -60,7 +60,7 @@
                                                     "job_id": 1,
                                                     "user_id": 4,
                                                     "cv_id": 4,
-                                                    "status": "đang chờ",
+                                                    "status": "Đang chờ",
                                                     "deleted_at": null
                                                 },
                                                 {
@@ -68,7 +68,7 @@
                                                     "job_id": 1,
                                                     "user_id": 5,
                                                     "cv_id": 5,
-                                                    "status": "đang chờ",
+                                                    "status": "Đang chờ",
                                                     "deleted_at": null
                                                 },
                                                 {
@@ -76,7 +76,7 @@
                                                     "job_id": 2,
                                                     "user_id": 3,
                                                     "cv_id": 3,
-                                                    "status": "đang chờ",
+                                                    "status": "Đang chờ",
                                                     "deleted_at": null
                                                 },
                                                 {
@@ -84,7 +84,7 @@
                                                     "job_id": 10,
                                                     "user_id": 2,
                                                     "cv_id": 2,
-                                                    "status": "đang chờ",
+                                                    "status": "Đang chờ",
                                                     "deleted_at": null
                                                 },
                                                 {
@@ -92,7 +92,7 @@
                                                     "job_id": 10,
                                                     "user_id": 5,
                                                     "cv_id": 5,
-                                                    "status": "đang chờ",
+                                                    "status": "Đang chờ",
                                                     "deleted_at": null
                                                 }
                                             ],
@@ -190,7 +190,7 @@
                                             "job_id": 1,
                                             "user_id": 2,
                                             "cv_id": 2,
-                                            "status": "đang chờ",
+                                            "status": "Đang chờ",
                                             "deleted_at": null
                                         }
                                     },
@@ -261,7 +261,7 @@
                                                     "job_id": 1,
                                                     "user_id": 2,
                                                     "cv_id": 2,
-                                                    "status": "đang chờ",
+                                                    "status": "Đang chờ",
                                                     "deleted_at": null
                                                 },
                                                 {
@@ -269,7 +269,7 @@
                                                     "job_id": 10,
                                                     "user_id": 2,
                                                     "cv_id": 2,
-                                                    "status": "đang chờ",
+                                                    "status": "Đang chờ",
                                                     "deleted_at": null
                                                 }
                                             ],
@@ -369,7 +369,7 @@
                                                     "job_id": 1,
                                                     "user_id": 2,
                                                     "cv_id": 2,
-                                                    "status": "đang chờ",
+                                                    "status": "Đang chờ",
                                                     "deleted_at": null
                                                 },
                                                 {
@@ -377,7 +377,7 @@
                                                     "job_id": 10,
                                                     "user_id": 2,
                                                     "cv_id": 2,
-                                                    "status": "đang chờ",
+                                                    "status": "Đang chờ",
                                                     "deleted_at": null
                                                 }
                                             ],
@@ -477,7 +477,7 @@
                                                     "job_id": 1,
                                                     "user_id": 2,
                                                     "cv_id": 2,
-                                                    "status": "đang chờ",
+                                                    "status": "Đang chờ",
                                                     "deleted_at": null
                                                 }
                                             ],
@@ -566,7 +566,7 @@
                                             "job_id": 1,
                                             "user_id": 2,
                                             "cv_id": 2,
-                                            "status": "đang chờ",
+                                            "status": "Đang chờ",
                                             "deleted_at": "2023-05-19T13:01:57.000000Z"
                                         }
                                     },
@@ -628,7 +628,7 @@
                                             "job_id": 1,
                                             "user_id": 2,
                                             "cv_id": 2,
-                                            "status": "đang xử lí",
+                                            "status": "Đã duyệt",
                                             "deleted_at": null
                                         }
                                     },
@@ -690,7 +690,7 @@
                                             "job_id": 1,
                                             "user_id": 2,
                                             "cv_id": 2,
-                                            "status": "đang xử lí",
+                                            "status": "Đã từ chối",
                                             "deleted_at": null
                                         }
                                     },
@@ -1071,6 +1071,242 @@
                         }
                     }
                 }
+            }
+        },
+        "/api/jobs": {
+            "get": {
+                "tags": [
+                    "Jobs"
+                ],
+                "summary": "Get all jobs",
+                "operationId": "68d830ecc9ecc1782e62a404ab6f8273",
+                "parameters": [
+                    {
+                        "name": "count_per_page",
+                        "in": "query",
+                        "description": "Number of applications per page",
+                        "required": false
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "application/json",
+                        "required": false
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer {token}",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved jobs",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Successfully retrieved jobs",
+                                    "data": {
+                                        "jobs": {
+                                            "current_page": 1,
+                                            "data": [
+                                                {
+                                                    "id": 1,
+                                                    "employer_id": 4,
+                                                    "title": "Trợ Lý Trưởng Phòng Xuất Nhập Khẩu",
+                                                    "description": "- Tư vấn tính năng, tiện ích và bán các sản phẩm điện thoại, máy tính bảng, Macbook tại Showroom. Không phải đi thị trường.- Phối hợp cùng team Marketing lên kế hoạch triển khai các Event hàng Tuần, Tháng và chương trình Chăm sóc sau Bán Hàng.- Các công việc khác được giao từ Quản lý. ",
+                                                    "benefit": "- Lương thỏa thuận (Tùy theo năng lực và kinh nghiệm). Ngoài ra còn chính sách thưởng hiệu quả làm việc.- Thưởng đột xuất theo thành tích đặc biệt và hoặc các sáng kiến cải tiến trong công việc.- Được hưởng đầy đủ quyền lợi của người lao động theo luật hiện hành (Bảo hiểm xã hội, Bảo hiểm y tế).- Được hưởng chế độ du lịch cùng Team, thưởng lễ Tết, thưởng theo doanh số kinh doanh của Công Ty.- Được tham gia đào tạo nâng cao chuyên sâu, chuyên môn và kỹ năng.- Cơ hội phát triển bản thân và thăng tiến trong tổ chức.- Môi trường làm việc năng động, thân thiện. Có cơ hội làm việc với nhiều đối tác lớn, uy tín.- Được hưởng năng suất hàng quý và tăng lương định kỳ. ",
+                                                    "requirement": "- Trợ lý Trưởng phòng Xuất nhập khẩu tối thiểu phải tốt nghiệp cử nhân ngành Kinh tế, Ngoại thương hoặc Kinh doanh quốc tế ngành Xuất nhập khẩu hoặc có kinh nghiệm từ 2 năm trở lên trong lĩnh vực này ở vị trí tương đương. Hoặc là dược sĩ và có kinh nghiệm làm việc ở vị trí tương đương.- Ưu tiên các ứng viên đã làm việc hoặc tiếp xúc với môi trường làm việc trong lĩnh vực dược phẩm (background kinh tế) hoặc công ty xuất nhật khẩu (background dược).- Trường hợp không đáp ứng toàn bộ MTCV và yêu cầu công việc nêu trên vẫn sẽ được đào tạo nhưng cần có ý chí mạnh mẽ, quyết tâm học việc, sự tập trung và khả năng chịu áp lực cao.- Có khả năng đàm phán và giao tiếp tốt, chịu áp lực công việc cao.- Có năng lực sắp xếp công việc, lên kế hoạch, báo cáo.- Có tiềm năng và hướng đến vị trí quản lý, điều hành, đưa ra được các đề xuất giúp phát triển phòng Xuất nhập khẩu tiến xa hơn và gắn với chiến lược công ty.- Có khả năng gắn kết, quan tâm, đánh giá và phát triển nguồn nhân lực trong phòng ban phục vụ cho sự phát triển của bản thân mỗi người, công việc và công ty theo giá trị cốt lõi của công ty.- Có kỹ năng sử dụng tiếng Anh, đặc biệt là kỹ năng viết tốt.- Có kỹ năng phân tích, tổng hợp tốt, đánh giá và đề xuất, tham mưu cho Hội đồng thành viên.- Có kỹ năng thuyết trình trước đám đông một cách rõ ràng, dễ hiểu, đạt được hiệu quả cao nhất.- Quyết đoán trong công việc, dám nghĩ dám làm, dám chịu trách nhiệm.- Có phẩm chất đạo đức tốt và trung thực. ",
+                                                    "min_salary": -1,
+                                                    "max_salary": -1,
+                                                    "recruit_num": 1,
+                                                    "position": "Toàn thời gian",
+                                                    "year_of_experience": "2",
+                                                    "deadline": "1970-01-01",
+                                                    "deleted_at": null,
+                                                    "job_locations": [
+                                                        {
+                                                            "id": 1,
+                                                            "job_id": 1,
+                                                            "location": "Hồ Chí Minh: 72 Bình Giã",
+                                                            "deleted_at": null
+                                                        }
+                                                    ],
+                                                    "job_skills": [
+                                                        {
+                                                            "id": 1,
+                                                            "job_id": 1,
+                                                            "skill": "PowerPoint",
+                                                            "deleted_at": null
+                                                        },
+                                                        {
+                                                            "id": 2,
+                                                            "job_id": 1,
+                                                            "skill": "Microsoft Excel",
+                                                            "deleted_at": null
+                                                        },
+                                                        {
+                                                            "id": 3,
+                                                            "job_id": 1,
+                                                            "skill": "Microsoft Word",
+                                                            "deleted_at": null
+                                                        }
+                                                    ],
+                                                    "job_types": [
+                                                        {
+                                                            "id": 1,
+                                                            "job_id": 1,
+                                                            "type": "Nhân viên",
+                                                            "deleted_at": null
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 2,
+                                                    "employer_id": 26,
+                                                    "title": "Chuyên Viên Sales / Kinh Doanh",
+                                                    "description": "- Lên kế hoạch, triển khai nội dung Fanpage theo Tuần, theo Tháng- Cập nhật nội dung và thông tin hiển thị trên trang Website- Chịu trách nhiệm chính trong việc lên Kế hoạch triển khai cho mỗi dự án- Đảm bảo tiến độ dự án, quản lý các deadline của Content và Design- Đo lường và báo cáo hiệu quả công việc hàng tuần, hàng tháng-Thiết kế Landing page trên nền tảng Ladipage (Không có kinh nghiệm sẽ được training)- Phối hợp cùng các bộ phận khác (trong trường hợp cần thiết) để hoàn thành đúng yêu cầu công việc của khách hàngTHỜI GIAN LÀM VIỆC:- Từ thứ 2 - Thứ 6: 08:00 - 17:30 , nghỉ trưa từ 12:00 - 13:30- Thứ 7: 8h00 - 12h00 ",
+                                                    "benefit": "• Nhận hoa hồng dễ dàng và cao nếu đạt được chỉ tiêu (đạt chỉ tiêu được thưởng từ 03 triệu trở lên)• Đóng BHXH theo từng tháng• Hỗ trợ 90 % học phí các khóa học khi học tại BMG• Khám sức khỏe bắt buộc hàng năm, du lịch• Môi trường cực kỳ thân thiện toàn 9X trở lên ",
+                                                    "requirement": "• Tốt nghiệp từ Cao đẳng trở lên\\r\\n\\r\\n• Ưu tiên ứng viên tốt nghiệp khối ngành Kinh tế, Quản trị kinh doanh, Marketing, thương mại,...• Có từ 3 năm kinh nghiệm Sales, tuổi đời từ 25 tuổi trở lên• Nhanh nhẹn, có kỹ năng giao tiếp tốt, khả năng đàm phán, thuyết phục khách hàng\\r\\n• Đã từng làm sales giáo dục là một lợi thế• Có ngoại hình sáng• Đam mê bán hàng ",
+                                                    "min_salary": -1,
+                                                    "max_salary": -1,
+                                                    "recruit_num": 2,
+                                                    "position": "Toàn thời gian",
+                                                    "year_of_experience": "2",
+                                                    "deadline": "1970-01-01",
+                                                    "deleted_at": null,
+                                                    "job_locations": [
+                                                        {
+                                                            "id": 2,
+                                                            "job_id": 2,
+                                                            "location": "Hồ Chí Minh: 596 Nguyễn Đình Chiểu",
+                                                            "deleted_at": null
+                                                        }
+                                                    ],
+                                                    "job_skills": [
+                                                        {
+                                                            "id": 4,
+                                                            "job_id": 2,
+                                                            "skill": "Kỹ năng Thuyết phục",
+                                                            "deleted_at": null
+                                                        }
+                                                    ],
+                                                    "job_types": [
+                                                        {
+                                                            "id": 2,
+                                                            "job_id": 2,
+                                                            "type": "Nhân viên",
+                                                            "deleted_at": null
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            "first_page_url": "http://localhost:8000/api/jobs?page=1",
+                                            "from": 1,
+                                            "last_page": 25,
+                                            "last_page_url": "http://localhost:8000/api/jobs?page=25",
+                                            "links": [
+                                                {
+                                                    "url": null,
+                                                    "label": "&laquo; Previous",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/jobs?page=1",
+                                                    "label": "1",
+                                                    "active": true
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/jobs?page=2",
+                                                    "label": "2",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/jobs?page=3",
+                                                    "label": "3",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/jobs?page=4",
+                                                    "label": "4",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/jobs?page=5",
+                                                    "label": "5",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/jobs?page=6",
+                                                    "label": "6",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/jobs?page=7",
+                                                    "label": "7",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/jobs?page=8",
+                                                    "label": "8",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/jobs?page=9",
+                                                    "label": "9",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/jobs?page=10",
+                                                    "label": "10",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": null,
+                                                    "label": "...",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/jobs?page=24",
+                                                    "label": "24",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/jobs?page=25",
+                                                    "label": "25",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/jobs?page=2",
+                                                    "label": "Next &raquo;",
+                                                    "active": false
+                                                }
+                                            ],
+                                            "next_page_url": "http://localhost:8000/api/jobs?page=2",
+                                            "path": "http://localhost:8000/api/jobs",
+                                            "per_page": 2,
+                                            "prev_page_url": null,
+                                            "to": 2,
+                                            "total": 50
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         }
     },
