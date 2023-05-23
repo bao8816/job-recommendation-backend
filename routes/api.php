@@ -264,6 +264,20 @@ Route::controller(JobLocationController::class)
         Route::get('/', 'getAllJobLocations');
     });
 
+// Only company and employer
+Route::middleware(['auth:sanctum', 'ability:company,employer'])->controller(JobLocationController::class)
+    ->prefix('job-locations')->group(function () {
+        Route::post('/', 'createJobLocation');
+
+        Route::put('/{id}', 'updateJobLocation');
+    });
+
+// Only company, employer and moderator
+Route::middleware(['auth:sanctum', 'ability:company,employer,mod'])->controller(JobLocationController::class)
+    ->prefix('job-locations')->group(function () {
+        Route::delete('/{id}', 'deleteJobLocation');
+    });
+
 // ----------Job Skill
 // All roles (including guest)
 Route::controller(JobSkillController::class)
