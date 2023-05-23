@@ -134,7 +134,7 @@ class AdminController extends ApiController
             return $this->respondWithData(
                 [
                     'mod' => $mod,
-                ]);
+                ], 'Xóa thành công');
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());

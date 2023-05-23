@@ -754,7 +754,7 @@ class ApplicationController extends ApiController
      *          @OA\JsonContent(
      *              example = {
                         "error": false,
-                        "message": "Xử lí thành công",
+                        "message": "Xoá thành công",
                         "data": {
                             "application": {
                             "id": 1,
@@ -790,7 +790,7 @@ class ApplicationController extends ApiController
             return $this->respondWithData(
                 [
                     'application' => $application,
-                ]);
+                ], 'Xóa thành công');
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());

@@ -1041,7 +1041,7 @@ class JobController extends ApiController
      *              example=
     {
     "error": false,
-    "message": "Xử lí thành công",
+    "message": "Xoá thành công",
     "data": {
     "job": {
     "id": 52,
@@ -1083,7 +1083,7 @@ class JobController extends ApiController
             return $this->respondWithData(
                 [
                     'job' => $job,
-                ]);
+                ], 'Xoá thành công');
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
