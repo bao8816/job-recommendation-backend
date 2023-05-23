@@ -394,7 +394,7 @@ class JobSkillController extends ApiController
      *              example=
     {
     "job_id": 1,
-    "reason": "abcdef"
+    "skill": "abcdef"
     }
      *          ),
      *      ),
@@ -471,7 +471,7 @@ class JobSkillController extends ApiController
      *              example=
     {
     "job_id": 1,
-    "reason": "abc"
+    "skill": "abc"
     }
      *          ),
      *      ),

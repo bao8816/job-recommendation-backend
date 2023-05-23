@@ -310,6 +310,20 @@ Route::controller(JobTypeController::class)
         Route::get('/', 'getAllJobTypes');
     });
 
+// Only company and employer
+Route::middleware(['auth:sanctum', 'ability:company,employer'])->controller(JobTypeController::class)
+    ->prefix('job-types')->group(function () {
+        Route::post('/', 'createJobType');
+
+        Route::put('/{id}', 'updateJobType');
+    });
+
+// Only company, employer and moderator
+Route::middleware(['auth:sanctum', 'ability:company,employer,mod'])->controller(JobTypeController::class)
+    ->prefix('job-types')->group(function () {
+        Route::delete('/{id}', 'deleteJobType');
+    });
+
 // ------------Job Report
 // All roles
 Route::middleware(['auth:sanctum'])->controller(JobReportController::class)
