@@ -40,6 +40,11 @@ class Job extends Model
         return $this->belongsTo(EmployerAccount::class, 'employer_id', 'id');
     }
 
+    public function employer_profile(): BelongsTo
+    {
+        return $this->belongsTo(EmployerProfile::class, 'employer_id', 'id');
+    }
+
     public function applications(): HasMany
     {
         return $this->hasMany(Application::class, 'job_id', 'id');

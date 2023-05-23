@@ -38,10 +38,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//TODO: Authorize all routes
 //------------------------------------USER------------------------------------
 
 // --------User Account
+//Only admin
+//TODO: implement admin abilities for user account
+
 // Only user
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserAccountController::class)
     ->prefix('user-accounts')->group(function () {
@@ -232,14 +234,24 @@ Route::middleware(['auth:sanctum', 'abilities:user,mod'])->controller(PostCommen
 // All roles (including guest)
 Route::controller(JobController::class)
     ->prefix('jobs')->group(function () {
+        Route::get('/company/{company_id}', 'getJobsByCompanyId');
+        Route::get('/employer/{employer_id}', 'getJobsByEmployerId');
         Route::get('/{id}', 'getJobById');
         Route::get('/', 'getAllJobs');
     });
 
-// Only user
-Route::middleware(['auth:sanctum', 'abilities:user'])->controller(JobController::class)
+// Only company and employer
+Route::middleware(['auth:sanctum', 'ability:company,employer'])->controller(JobController::class)
     ->prefix('jobs')->group(function () {
-        Route::put('/{id}', 'updateJobVotes');
+        Route::post('/', 'createJob');
+
+        Route::put('/{id}', 'updateJob');
+    });
+
+// Only company, employer and moderator
+Route::middleware(['auth:sanctum', 'ability:company,employer,mod'])->controller(JobController::class)
+    ->prefix('jobs')->group(function () {
+        Route::delete('/{id}', 'deleteJob');
     });
 
 // ---------Job Location
@@ -293,6 +305,9 @@ Route::middleware(['auth:sanctum', 'ability:user,mod'])->controller(JobReportCon
 
 
 //------------------------------------COMPANY------------------------------------
+// -----------Company Account
+//TODO: implement admin ability for company account
+
 // -----------Company Profile
 // All roles (including guest)
 Route::controller(CompanyProfileController::class)
@@ -330,8 +345,6 @@ Route::middleware(['auth:sanctum', 'ability:mod,company'])->controller(CompanyVe
         Route::get('/company/{company_id}', 'getCompanyVerificationsByCompanyId');
         Route::get('/{id}', 'getCompanyVerificationById');
         Route::get('/', 'getAllCompanyVerifications');
-
-        Route::post('/', 'createCompanyVerification');
     });
 
 // Only company
@@ -368,6 +381,10 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(CVController::
 
 
 //------------------------------------EMPLOYER------------------------------------
+// -----------Employer Account
+//TODO: implement admin ability for employer account
+
+// -----------Employer Profile
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(EmployerProfileController::class)
     ->prefix('employer-profiles')->group(function () {
         Route::get('/company/{company_id}', 'getEmployerProfilesByCompanyId');
