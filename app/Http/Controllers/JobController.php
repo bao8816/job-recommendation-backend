@@ -794,7 +794,7 @@ class JobController extends ApiController
 
     /**
      * @OA\Post(
-     *      path="/jobs",
+     *      path="/api/jobs",
      *      tags={"Jobs"},
      *      summary="Create a new job",
      *      description="Returns the job data",
@@ -905,7 +905,7 @@ class JobController extends ApiController
 
     /**
      * @OA\Put(
-     *      path="/jobs/{id}",
+     *      path="/api/jobs/{id}",
      *      tags={"Jobs"},
      *      summary="Update a job",
      *      description="Returns the job data",
@@ -1015,7 +1015,7 @@ class JobController extends ApiController
 
     /**
      * @OA\Delete(
-     *      path="/jobs/{id}",
+     *      path="/api/jobs/{id}",
      *      tags={"Jobs"},
      *      summary="Delete a job",
      *      description="Returns the job data",

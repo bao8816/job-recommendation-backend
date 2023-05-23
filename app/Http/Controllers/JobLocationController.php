@@ -376,7 +376,7 @@ class JobLocationController extends ApiController
      *          name="Authorization",
      *          in="header",
      *          description="Bearer {token}",
-     *          required=false
+     *          required=true,
      *      ),
      *      @OA\RequestBody(
      *          required=true,

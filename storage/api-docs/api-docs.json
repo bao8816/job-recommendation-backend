@@ -1191,6 +1191,82 @@
                         "$ref": "#/components/responses/NotFound"
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "Jobs"
+                ],
+                "summary": "Create a new job",
+                "description": "Returns the job data",
+                "operationId": "3a86217beb0014c759857698cc453f2b",
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "application/json",
+                        "required": false
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer {token}",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {},
+                            "example": {
+                                "title": "job title",
+                                "description": "job des",
+                                "benefit": "job ben",
+                                "requirement": "job req",
+                                "min_salary": "1",
+                                "max_salary": "2",
+                                "recruit_num": "3",
+                                "position": "pos",
+                                "year_of_experience": "2",
+                                "deadline": "2023-09-09"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successfully created job",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "job": {
+                                            "employer_id": 1,
+                                            "title": "job title",
+                                            "description": "job des",
+                                            "benefit": "job ben",
+                                            "requirement": "job req",
+                                            "min_salary": "1",
+                                            "max_salary": "2",
+                                            "recruit_num": "3",
+                                            "position": "pos",
+                                            "year_of_experience": "2",
+                                            "deadline": "2023-09-09",
+                                            "id": 51
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                }
             }
         },
         "/api/jobs/available": {
@@ -1773,94 +1849,14 @@
                         "$ref": "#/components/responses/NotFound"
                     }
                 }
-            }
-        },
-        "/jobs": {
-            "post": {
-                "tags": [
-                    "Jobs"
-                ],
-                "summary": "Create a new job",
-                "description": "Returns the job data",
-                "operationId": "04736b40fc1ada68609676dcc4aa626d",
-                "parameters": [
-                    {
-                        "name": "Accept",
-                        "in": "header",
-                        "description": "application/json",
-                        "required": false
-                    },
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer {token}",
-                        "required": true
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {},
-                            "example": {
-                                "title": "job title",
-                                "description": "job des",
-                                "benefit": "job ben",
-                                "requirement": "job req",
-                                "min_salary": "1",
-                                "max_salary": "2",
-                                "recruit_num": "3",
-                                "position": "pos",
-                                "year_of_experience": "2",
-                                "deadline": "2023-09-09"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Successfully created job",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": {
-                                    "error": false,
-                                    "message": "Xử lí thành công",
-                                    "data": {
-                                        "job": {
-                                            "employer_id": 1,
-                                            "title": "job title",
-                                            "description": "job des",
-                                            "benefit": "job ben",
-                                            "requirement": "job req",
-                                            "min_salary": "1",
-                                            "max_salary": "2",
-                                            "recruit_num": "3",
-                                            "position": "pos",
-                                            "year_of_experience": "2",
-                                            "deadline": "2023-09-09",
-                                            "id": 51
-                                        }
-                                    },
-                                    "status_code": 200
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/NotFound"
-                    }
-                }
-            }
-        },
-        "/jobs/{id}": {
+            },
             "put": {
                 "tags": [
                     "Jobs"
                 ],
                 "summary": "Update a job",
                 "description": "Returns the job data",
-                "operationId": "2d07fe37860a2848916a374a18af9761",
+                "operationId": "0f8b03f804495f06e813e1d5ad055e4e",
                 "parameters": [
                     {
                         "name": "id",
@@ -1943,7 +1939,7 @@
                 ],
                 "summary": "Delete a job",
                 "description": "Returns the job data",
-                "operationId": "d8f207ebbb08587422f56ad05735dd52",
+                "operationId": "591d3180ed19ed3082be80e58be6632b",
                 "parameters": [
                     {
                         "name": "id",
@@ -2439,7 +2435,7 @@
                         "name": "Authorization",
                         "in": "header",
                         "description": "Bearer {token}",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "requestBody": {
@@ -2477,6 +2473,603 @@
                     },
                     "400": {
                         "$ref": "#/components/responses/BadRequest"
+                    }
+                }
+            }
+        },
+        "/api/job-reports": {
+            "get": {
+                "tags": [
+                    "Job Reports"
+                ],
+                "summary": "Get all job reports",
+                "operationId": "21cde6e419e7103bc81c14061228cc52",
+                "parameters": [
+                    {
+                        "name": "count_per_page",
+                        "in": "query",
+                        "description": "Number of job reports per page",
+                        "required": false
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "application/json",
+                        "required": false
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer {token}",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved job reports",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "jobReports": {
+                                            "current_page": 1,
+                                            "data": [
+                                                {
+                                                    "id": 1,
+                                                    "job_id": 1,
+                                                    "user_id": 1,
+                                                    "reason": "Fake Job"
+                                                }
+                                            ],
+                                            "first_page_url": "http://localhost:8000/api/job-reports?page=1",
+                                            "from": 1,
+                                            "last_page": 22,
+                                            "last_page_url": "http://localhost:8000/api/job-reports?page=22",
+                                            "links": [
+                                                {
+                                                    "url": null,
+                                                    "label": "&laquo; Previous",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports?page=1",
+                                                    "label": "1",
+                                                    "active": true
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports?page=2",
+                                                    "label": "2",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports?page=3",
+                                                    "label": "3",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports?page=4",
+                                                    "label": "4",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports?page=5",
+                                                    "label": "5",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports?page=6",
+                                                    "label": "6",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports?page=7",
+                                                    "label": "7",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports?page=8",
+                                                    "label": "8",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports?page=9",
+                                                    "label": "9",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports?page=10",
+                                                    "label": "10",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": null,
+                                                    "label": "...",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports?page=21",
+                                                    "label": "21",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports?page=22",
+                                                    "label": "22",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports?page=2",
+                                                    "label": "Next &raquo;",
+                                                    "active": false
+                                                }
+                                            ],
+                                            "next_page_url": "http://localhost:8000/api/job-reports?page=2",
+                                            "path": "http://localhost:8000/api/job-reports",
+                                            "per_page": 1,
+                                            "prev_page_url": null,
+                                            "to": 1,
+                                            "total": 22
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Job Reports"
+                ],
+                "summary": "Create job report",
+                "operationId": "1a665b8301d0dbc0d119fdfccced5168",
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "application/json",
+                        "required": false
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer {token}",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {},
+                            "example": {
+                                "job_id": 1,
+                                "reason": "abcdef"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "$ref": "#/components/responses/BadRequest"
+                    }
+                }
+            }
+        },
+        "/api/job-reports/job/{job_id}": {
+            "get": {
+                "tags": [
+                    "Job Reports"
+                ],
+                "summary": "Get job reports by job id",
+                "operationId": "e97a5e35a1086d773154f97a8bd13af0",
+                "parameters": [
+                    {
+                        "name": "job_id",
+                        "in": "path",
+                        "description": "Job id",
+                        "required": true
+                    },
+                    {
+                        "name": "count_per_page",
+                        "in": "query",
+                        "description": "Number of job reports per page",
+                        "required": false
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "application/json",
+                        "required": false
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer {token}",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved job report",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "jobReports": {
+                                            "current_page": 1,
+                                            "data": [
+                                                {
+                                                    "id": 1,
+                                                    "job_id": 1,
+                                                    "user_id": 1,
+                                                    "reason": "Fake Job"
+                                                }
+                                            ],
+                                            "first_page_url": "http://localhost:8000/api/job-reports/job/1?page=1",
+                                            "from": 1,
+                                            "last_page": 9,
+                                            "last_page_url": "http://localhost:8000/api/job-reports/job/1?page=9",
+                                            "links": [
+                                                {
+                                                    "url": null,
+                                                    "label": "&laquo; Previous",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports/job/1?page=1",
+                                                    "label": "1",
+                                                    "active": true
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports/job/1?page=2",
+                                                    "label": "2",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports/job/1?page=3",
+                                                    "label": "3",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports/job/1?page=4",
+                                                    "label": "4",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports/job/1?page=5",
+                                                    "label": "5",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports/job/1?page=6",
+                                                    "label": "6",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports/job/1?page=7",
+                                                    "label": "7",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports/job/1?page=8",
+                                                    "label": "8",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports/job/1?page=9",
+                                                    "label": "9",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports/job/1?page=2",
+                                                    "label": "Next &raquo;",
+                                                    "active": false
+                                                }
+                                            ],
+                                            "next_page_url": "http://localhost:8000/api/job-reports/job/1?page=2",
+                                            "path": "http://localhost:8000/api/job-reports/job/1",
+                                            "per_page": 1,
+                                            "prev_page_url": null,
+                                            "to": 1,
+                                            "total": 9
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                }
+            }
+        },
+        "/api/job-reports/user/{user_id}": {
+            "get": {
+                "tags": [
+                    "Job Reports"
+                ],
+                "summary": "Get job reports by user id",
+                "operationId": "1da96ffb1a0b925d792dd20b4c6ea64f",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true
+                    },
+                    {
+                        "name": "count_per_page",
+                        "in": "query",
+                        "description": "Number of job reports per page",
+                        "required": false
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "application/json",
+                        "required": false
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer {token}",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved job report",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "jobReports": {
+                                            "current_page": 1,
+                                            "data": [
+                                                {
+                                                    "id": 1,
+                                                    "job_id": 1,
+                                                    "user_id": 1,
+                                                    "reason": "Fake Job"
+                                                }
+                                            ],
+                                            "first_page_url": "http://localhost:8000/api/job-reports/job/1?page=1",
+                                            "from": 1,
+                                            "last_page": 9,
+                                            "last_page_url": "http://localhost:8000/api/job-reports/job/1?page=9",
+                                            "links": [
+                                                {
+                                                    "url": null,
+                                                    "label": "&laquo; Previous",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports/job/1?page=1",
+                                                    "label": "1",
+                                                    "active": true
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports/job/1?page=2",
+                                                    "label": "2",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports/job/1?page=3",
+                                                    "label": "3",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports/job/1?page=4",
+                                                    "label": "4",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports/job/1?page=5",
+                                                    "label": "5",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports/job/1?page=6",
+                                                    "label": "6",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports/job/1?page=7",
+                                                    "label": "7",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports/job/1?page=8",
+                                                    "label": "8",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports/job/1?page=9",
+                                                    "label": "9",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports/job/1?page=2",
+                                                    "label": "Next &raquo;",
+                                                    "active": false
+                                                }
+                                            ],
+                                            "next_page_url": "http://localhost:8000/api/job-reports/job/1?page=2",
+                                            "path": "http://localhost:8000/api/job-reports/job/1",
+                                            "per_page": 1,
+                                            "prev_page_url": null,
+                                            "to": 1,
+                                            "total": 9
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                }
+            }
+        },
+        "/api/job-reports/{id}": {
+            "get": {
+                "tags": [
+                    "Job Reports"
+                ],
+                "summary": "Get job report by id",
+                "operationId": "499cdc49784281e12cb920ec8a0acb7f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Job report id",
+                        "required": true
+                    },
+                    {
+                        "name": "count_per_page",
+                        "in": "query",
+                        "description": "Number of job reports per page",
+                        "required": false
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "application/json",
+                        "required": false
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer {token}",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved job report",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "jobReport": {
+                                            "current_page": 1,
+                                            "data": [
+                                                {
+                                                    "id": 1,
+                                                    "job_id": 1,
+                                                    "user_id": 1,
+                                                    "reason": "Fake Job"
+                                                }
+                                            ],
+                                            "first_page_url": "http://localhost:8000/api/job-reports/1?page=1",
+                                            "from": 1,
+                                            "last_page": 1,
+                                            "last_page_url": "http://localhost:8000/api/job-reports/1?page=1",
+                                            "links": [
+                                                {
+                                                    "url": null,
+                                                    "label": "&laquo; Previous",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-reports/1?page=1",
+                                                    "label": "1",
+                                                    "active": true
+                                                },
+                                                {
+                                                    "url": null,
+                                                    "label": "Next &raquo;",
+                                                    "active": false
+                                                }
+                                            ],
+                                            "next_page_url": null,
+                                            "path": "http://localhost:8000/api/job-reports/1",
+                                            "per_page": 1,
+                                            "prev_page_url": null,
+                                            "to": 1,
+                                            "total": 1
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Job Reports"
+                ],
+                "summary": "Delete job report",
+                "operationId": "d631231bbcb1206ff089a03db72f7968",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Job report id",
+                        "required": true
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "application/json",
+                        "required": false
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer {token}",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully deleted job report",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xoá thành công",
+                                    "data": {
+                                        "jobReport": {
+                                            "id": 23,
+                                            "job_id": 1,
+                                            "user_id": 1,
+                                            "reason": "abcdef"
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
                     }
                 }
             }
