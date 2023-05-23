@@ -561,12 +561,6 @@ class JobController extends ApiController
      *          in="path",
      *      ),
      *      @OA\Parameter(
-     *          name="count_per_page",
-     *          in="query",
-     *          description="Number of applications per page",
-     *          required=false
-     *      ),
-     *      @OA\Parameter(
      *          name="Accept",
      *          in="header",
      *          description="application/json",
