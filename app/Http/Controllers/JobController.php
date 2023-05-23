@@ -908,13 +908,11 @@ class JobController extends ApiController
      *      path="/api/jobs/{id}",
      *      tags={"Jobs"},
      *      summary="Update a job",
-     *      description="Returns the job data",
      *      @OA\Parameter(
      *          name="id",
      *          description="Job id",
      *          required=true,
      *          in="path",
-     *          example="1"
      *      ),
      *      @OA\Parameter(
      *          name="Accept",

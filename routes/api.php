@@ -287,6 +287,20 @@ Route::controller(JobSkillController::class)
         Route::get('/', 'getAllJobSkills');
     });
 
+// Only company and employer
+Route::middleware(['auth:sanctum', 'ability:company,employer'])->controller(JobSkillController::class)
+    ->prefix('job-skills')->group(function () {
+        Route::post('/', 'createJobSkill');
+
+        Route::put('/{id}', 'updateJobSkill');
+    });
+
+// Only company, employer and moderator
+Route::middleware(['auth:sanctum', 'ability:company,employer,mod'])->controller(JobSkillController::class)
+    ->prefix('job-skills')->group(function () {
+        Route::delete('/{id}', 'deleteJobSkill');
+    });
+
 // ------------Job Type
 // All roles (including guest)
 Route::controller(JobTypeController::class)

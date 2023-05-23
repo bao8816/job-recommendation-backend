@@ -1855,15 +1855,13 @@
                     "Jobs"
                 ],
                 "summary": "Update a job",
-                "description": "Returns the job data",
                 "operationId": "0f8b03f804495f06e813e1d5ad055e4e",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
                         "description": "Job id",
-                        "required": true,
-                        "example": "1"
+                        "required": true
                     },
                     {
                         "name": "Accept",
@@ -3061,6 +3059,496 @@
                                             "job_id": 1,
                                             "user_id": 1,
                                             "reason": "abcdef"
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                }
+            }
+        },
+        "/api/job-skills": {
+            "get": {
+                "tags": [
+                    "Job Skills"
+                ],
+                "summary": "Get all job skills",
+                "operationId": "f231d2961e4be6bcafe2aedcba0b3ecc",
+                "parameters": [
+                    {
+                        "name": "count_per_page",
+                        "in": "query",
+                        "description": "Number of job skills per page",
+                        "required": false
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "application/json",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved job skills",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "jobSkills": {
+                                            "current_page": 1,
+                                            "data": [
+                                                {
+                                                    "id": 1,
+                                                    "job_id": 1,
+                                                    "skill": "PowerPoint"
+                                                }
+                                            ],
+                                            "first_page_url": "http://localhost:8000/api/job-skills?page=1",
+                                            "from": 1,
+                                            "last_page": 136,
+                                            "last_page_url": "http://localhost:8000/api/job-skills?page=136",
+                                            "links": [
+                                                {
+                                                    "url": null,
+                                                    "label": "&laquo; Previous",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-skills?page=1",
+                                                    "label": "1",
+                                                    "active": true
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-skills?page=2",
+                                                    "label": "2",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-skills?page=3",
+                                                    "label": "3",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-skills?page=4",
+                                                    "label": "4",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-skills?page=5",
+                                                    "label": "5",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-skills?page=6",
+                                                    "label": "6",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-skills?page=7",
+                                                    "label": "7",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-skills?page=8",
+                                                    "label": "8",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-skills?page=9",
+                                                    "label": "9",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-skills?page=10",
+                                                    "label": "10",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": null,
+                                                    "label": "...",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-skills?page=135",
+                                                    "label": "135",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-skills?page=136",
+                                                    "label": "136",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-skills?page=2",
+                                                    "label": "Next &raquo;",
+                                                    "active": false
+                                                }
+                                            ],
+                                            "next_page_url": "http://localhost:8000/api/job-skills?page=2",
+                                            "path": "http://localhost:8000/api/job-skills",
+                                            "per_page": 1,
+                                            "prev_page_url": null,
+                                            "to": 1,
+                                            "total": 136
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Job Skills"
+                ],
+                "summary": "Create job skill",
+                "operationId": "dc651498a3c150317d37bb9716cea4d5",
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "application/json",
+                        "required": false
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer {token}",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {},
+                            "example": {
+                                "job_id": 1,
+                                "reason": "abcdef"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successfully created job skill",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Tạo thành công",
+                                    "data": {
+                                        "jobSkill": {
+                                            "job_id": "1",
+                                            "skill": "abcdef",
+                                            "id": 137
+                                        }
+                                    },
+                                    "status_code": 201
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequest"
+                    }
+                }
+            }
+        },
+        "/api/job-skills/job/{job_id}": {
+            "get": {
+                "tags": [
+                    "Job Skills"
+                ],
+                "summary": "Get job skills by job id",
+                "operationId": "552e7cb9a2dbf9998565d6b442805745",
+                "parameters": [
+                    {
+                        "name": "job_id",
+                        "in": "path",
+                        "description": "Id of job",
+                        "required": true
+                    },
+                    {
+                        "name": "count_per_page",
+                        "in": "query",
+                        "description": "Number of job skills per page",
+                        "required": false
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "application/json",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved job skills",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "jobSkills": {
+                                            "current_page": 1,
+                                            "data": [
+                                                {
+                                                    "id": 1,
+                                                    "job_id": 1,
+                                                    "skill": "PowerPoint"
+                                                }
+                                            ],
+                                            "first_page_url": "http://localhost:8000/api/job-skills/job/1?page=1",
+                                            "from": 1,
+                                            "last_page": 3,
+                                            "last_page_url": "http://localhost:8000/api/job-skills/job/1?page=3",
+                                            "links": [
+                                                {
+                                                    "url": null,
+                                                    "label": "&laquo; Previous",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-skills/job/1?page=1",
+                                                    "label": "1",
+                                                    "active": true
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-skills/job/1?page=2",
+                                                    "label": "2",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-skills/job/1?page=3",
+                                                    "label": "3",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-skills/job/1?page=2",
+                                                    "label": "Next &raquo;",
+                                                    "active": false
+                                                }
+                                            ],
+                                            "next_page_url": "http://localhost:8000/api/job-skills/job/1?page=2",
+                                            "path": "http://localhost:8000/api/job-skills/job/1",
+                                            "per_page": 1,
+                                            "prev_page_url": null,
+                                            "to": 1,
+                                            "total": 3
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                }
+            }
+        },
+        "/api/job-skills/{id}": {
+            "get": {
+                "tags": [
+                    "Job Skills"
+                ],
+                "summary": "Get job skill by id",
+                "operationId": "f57b208780c3dad52ddb1268bcd337aa",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of job skill",
+                        "required": true
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "application/json",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved job skill",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "jobSkill": {
+                                            "current_page": 1,
+                                            "data": [
+                                                {
+                                                    "id": 1,
+                                                    "job_id": 1,
+                                                    "skill": "PowerPoint"
+                                                }
+                                            ],
+                                            "first_page_url": "http://localhost:8000/api/job-skills/1?page=1",
+                                            "from": 1,
+                                            "last_page": 1,
+                                            "last_page_url": "http://localhost:8000/api/job-skills/1?page=1",
+                                            "links": [
+                                                {
+                                                    "url": null,
+                                                    "label": "&laquo; Previous",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/job-skills/1?page=1",
+                                                    "label": "1",
+                                                    "active": true
+                                                },
+                                                {
+                                                    "url": null,
+                                                    "label": "Next &raquo;",
+                                                    "active": false
+                                                }
+                                            ],
+                                            "next_page_url": null,
+                                            "path": "http://localhost:8000/api/job-skills/1",
+                                            "per_page": 1,
+                                            "prev_page_url": null,
+                                            "to": 1,
+                                            "total": 1
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Job Skills"
+                ],
+                "summary": "Update job skill",
+                "operationId": "1ed4ada1c5adc148ef7b0eb851c75049",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of job skill",
+                        "required": true
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "application/json",
+                        "required": false
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer {token}",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {},
+                            "example": {
+                                "job_id": 1,
+                                "reason": "abc"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successfully created job skill",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "jobSkill": {
+                                            "id": 137,
+                                            "job_id": "1",
+                                            "skill": "abc"
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequest"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Job Skills"
+                ],
+                "summary": "Delete a job skill",
+                "operationId": "89f41ff27d0aeae599478713b8bf9128",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Job skill id",
+                        "required": true
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "application/json",
+                        "required": false
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer {token}",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully deleted job skill",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "jobSkill": {
+                                            "id": 137,
+                                            "job_id": 1,
+                                            "skill": "abc"
                                         }
                                     },
                                     "status_code": 200

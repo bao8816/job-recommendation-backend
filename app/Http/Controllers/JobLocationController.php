@@ -500,8 +500,8 @@ class JobLocationController extends ApiController
                 return $this->respondNotFound();
             }
 
-            $job_location->job_id = $request->job_id = null ? $job_location->job_id : $request->job_id;
-            $job_location->location = $request->location = null ? $job_location->location : $request->location;
+            $job_location->job_id = $request->job_id != null ? $request->job_id : $job_location->job_id;
+            $job_location->location = $request->location != null ? $request->location : $job_location->location;
             $job_location->save();
 
             return $this->respondWithData(
