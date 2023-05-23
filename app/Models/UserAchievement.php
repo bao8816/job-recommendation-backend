@@ -24,6 +24,17 @@ class UserAchievement extends Model
         'content',
     ];
 
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(UserAccount::class, 'user_id', 'id');

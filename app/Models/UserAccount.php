@@ -37,6 +37,7 @@ class UserAccount extends Authenticatable
         'password',
         'created_at',
         'updated_at',
+        'deleted_at',
     ];
 
     public function profile(): HasOne

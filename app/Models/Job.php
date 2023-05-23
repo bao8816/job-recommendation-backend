@@ -21,8 +21,16 @@ class Job extends Model
      * @var array
      */
     protected $fillable = [
-        'upvote',
-        'downvote',
+        'title',
+        'description',
+        'benefit',
+        'requirement',
+        'min_salary',
+        'max_salary',
+        'recruit_num',
+        'position',
+        'year_of_experience',
+        'deadline',
     ];
 
     /**
@@ -33,6 +41,7 @@ class Job extends Model
     protected $hidden = [
         'created_at',
         'updated_at',
+        'deleted_at'
     ];
 
     public function employer(): BelongsTo

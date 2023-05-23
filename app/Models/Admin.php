@@ -35,6 +35,7 @@ class Admin extends Authenticatable
         'password',
         'created_at',
         'updated_at',
+        'deleted_at'
     ];
 }
 

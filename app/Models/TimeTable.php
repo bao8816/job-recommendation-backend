@@ -15,14 +15,24 @@ class TimeTable extends Model
     protected $connection = 'mysql';
     protected $table = 'time_tables';
 
-
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'coordinate',
     ];
 
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
     protected $hidden = [
         'created_at',
         'updated_at',
+        'deleted_at',
     ];
 
     public function user(): BelongsTo

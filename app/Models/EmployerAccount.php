@@ -35,6 +35,7 @@ class EmployerAccount extends Model
         'password',
         'created_at',
         'updated_at',
+        'deleted_at',
     ];
 
     public function jobs(): HasMany

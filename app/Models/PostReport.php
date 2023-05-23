@@ -12,7 +12,18 @@ class PostReport extends Model
     use HasFactory, SoftDeletes;
 
     protected $connection = 'mysql';
-    protected $collection = 'post_reports';
+    protected $table = 'post_reports';
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
 
     public function post(): BelongsTo
     {
