@@ -18,7 +18,7 @@ class AdminSeeder extends Seeder
     {
         DB::table('admin_accounts')->insert([
             'username' => 'Admin',
-            'password' => Hash::make(env('ADMIN_INIT_PASSWORD') . env('PASSWORD_SALT')),
+            'password' => Hash::make(env('INIT_PASSWORD') . env('PASSWORD_SALT')),
             'full_name' => 'Admin',
             'avatar' => 'https://i.imgur.com/1Z1Z1Z1.png',
             'is_banned' => false,
