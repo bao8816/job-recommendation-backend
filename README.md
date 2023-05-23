@@ -4,20 +4,21 @@
 
 Install **php** and **composer** before running this project
 
-Create .env file based on .env.example and config your database connection
+**Create .env file based on .env.example and config your database connection**
 
-`cd back-end`  
+`cd {back-end-folder-path}` to go to back-end folder  
 `composer install` to install dependencies  
 `composer update` to update dependencies (optional)  
 `php artisan key:generate` to generate key
 
-## Migration and seeding (optional)
+## Migration and seeding 
 
 `php artisan migrate` to migrate database  
 (if you want to reset database, run `php artisan migrate:refresh`)
 
 `php artisan db:seed` to seed database  
-`php artisan migrate:fresh --seed` to reset and seed database (migration and seeding at the same time)
+
+**OR** you can run this command: `php artisan migrate:fresh --seed` to reset and seed database (migrate and seeding at the same time)
 
 ## Run project
 
