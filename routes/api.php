@@ -236,6 +236,7 @@ Route::controller(JobController::class)
     ->prefix('jobs')->group(function () {
         Route::get('/company/{company_id}', 'getJobsByCompanyId');
         Route::get('/employer/{employer_id}', 'getJobsByEmployerId');
+        Route::get('available', 'getAvailableJobs');
         Route::get('/{id}', 'getJobById');
         Route::get('/', 'getAllJobs');
     });
