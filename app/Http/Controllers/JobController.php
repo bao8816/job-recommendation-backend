@@ -872,8 +872,12 @@ class JobController extends ApiController
                 $job->employer_id = $request->user()->id;
             }
             else {
-                $temp_employer_id = EmployerProfile::where('company_id', $request->user()->id)->first()->id;
-                $job->employer_id = $temp_employer_id;
+                $temp_employer = EmployerProfile::where('company_id', $request->user()->id)->first();
+
+                if (!$temp_employer)
+                    return $this->respondBadRequest('Không tìm được thông tin tài khoản nhân viên');
+
+                $job->employer_id = $temp_employer->id;
             }
 
             $job->title = $request->title;
@@ -982,7 +986,7 @@ class JobController extends ApiController
         try {
             $job = Job::where('id', $id)->first();
 
-            if ($job === null) {
+            if (!$job) {
                 return $this->respondNotFound();
             }
 
@@ -1074,7 +1078,7 @@ class JobController extends ApiController
         try {
             $job = Job::where('id', $id)->first();
 
-            if ($job === null) {
+            if (!$job) {
                 return $this->respondNotFound();
             }
 

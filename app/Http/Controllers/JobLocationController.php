@@ -89,7 +89,7 @@ class JobLocationController extends ApiController
         try {
             $job_location = JobLocation::where('id', $id)->paginate(1);
 
-            if ($job_location === null) {
+            if (count($job_location) === 0) {
                 return $this->respondNotFound();
             }
 
@@ -191,7 +191,7 @@ class JobLocationController extends ApiController
 
             $job_location = JobLocation::where('job_id', $job_id)->paginate($count_per_page);
 
-            if ($job_location === null) {
+            if (count($job_location) === 0) {
                 return $this->respondNotFound();
             }
 
@@ -348,14 +348,13 @@ class JobLocationController extends ApiController
             $job_locations = JobLocation::paginate($count_per_page);
 
             if (count($job_locations) === 0) {
-                return $this->respondNotFound('No job locations found');
+                return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
                     'job_locations' => $job_locations,
-                ]
-            , 'Successfully retrieved job locations');
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
