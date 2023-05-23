@@ -46,22 +46,22 @@ use Illuminate\Support\Facades\Route;
 
 // Only user
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserAccountController::class)
-    ->prefix('user-accounts')->group(function () {
+    ->prefix('user')->group(function () {
         Route::put('/password', 'updatePassword');
     });
 
 // ---------User Profile
 // All roles
 Route::middleware(['auth:sanctum'])->controller(UserProfileController::class)
-    ->prefix('user-profiles')->group(function () {
-        Route::get('/profile', 'getUserProfile');
-        Route::get('/', 'getAllUserProfiles');
+    ->prefix('user')->group(function () {
+        Route::get('/profile/{id}', 'getUserProfile');
+        Route::get('/profiles', 'getAllUserProfiles');
     });
 
 // Only user
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserProfileController::class)
-    ->prefix('user-profiles')->group(function () {
-        Route::put('/', 'updateUserProfile');
+    ->prefix('user')->group(function () {
+        Route::put('/profile', 'updateUserProfile');
     });
 
 // ----------User Education

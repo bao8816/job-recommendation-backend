@@ -12,7 +12,7 @@ class UserProfileController extends ApiController
     public function getAllUserProfiles(Request $request): JsonResponse
     {
         try {
-            $count_per_page = $request->countPerPage;
+            $count_per_page = $request->count_per_page;
 
             $userProfiles = UserProfile::with('educations', 'cvs', 'experiences', 'achievements', 'skills', 'time_tables')
                 ->paginate($count_per_page);
@@ -32,10 +32,10 @@ class UserProfileController extends ApiController
         }
     }
 
-    public function getUserProfile(Request $request): JsonResponse
+    public function getUserProfile(Request $request, string $id): JsonResponse
     {
         try {
-            $userProfile = UserProfile::where('id', $request->user()->id)->with('educations', 'cvs', 'experiences', 'achievements', 'skills', 'time_tables')
+            $userProfile = UserProfile::where('id', $id)->with('educations', 'cvs', 'experiences', 'achievements', 'skills', 'time_tables')
                 ->paginate(1);
 
             if (!isset($userProfile)) {
