@@ -19,7 +19,7 @@ class JobController extends ApiController
      *      @OA\Parameter(
      *          name="count_per_page",
      *          in="query",
-     *          description="Number of applications per page",
+     *          description="Number of jobs per page",
      *          required=false
      *      ),
      *      @OA\Parameter(
@@ -155,7 +155,7 @@ class JobController extends ApiController
      *      @OA\Parameter(
      *          name="count_per_page",
      *          in="query",
-     *          description="Number of applications per page",
+     *          description="Number of jobs per page",
      *          required=false
      *      ),
      *      @OA\Parameter(
@@ -297,7 +297,7 @@ class JobController extends ApiController
      *      @OA\Parameter(
      *          name="count_per_page",
      *          in="query",
-     *          description="Number of applications per page",
+     *          description="Number of jobs per page",
      *          required=false
      *      ),
      *      @OA\Parameter(
@@ -491,7 +491,7 @@ class JobController extends ApiController
      *      @OA\Parameter(
      *          name="count_per_page",
      *          in="query",
-     *          description="Number of applications per page",
+     *          description="Number of jobs per page",
      *          required=false
      *      ),
      *      @OA\Parameter(
