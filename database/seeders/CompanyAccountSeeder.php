@@ -31,7 +31,7 @@ class CompanyAccountSeeder extends Seeder
             $company_account->id = $line[0];
             $company_account->username = $line[1];
             $company_account->password = Hash::make(env('INIT_PASSWORD') . env('PASSWORD_SALT'));
-            $company_account->is_verified = $line[3];
+            $company_account->is_verified = 1;
             $company_account->is_banned = $line[4];
             $company_account->locked_until = null;
             $company_account->last_login = null;
