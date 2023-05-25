@@ -607,7 +607,7 @@ class UserAchievementController extends ApiController
                 return $this->respondNotFound();
             }
 
-            if ($userAchievement->user_id !== $request->user()->id) {
+            if (!$request->user()->tokenCan('mod') && $userAchievement->user_id !== $request->user()->id) {
                 return $this->respondUnauthorized('Bạn không có quyền xóa thông tin này');
             }
 
