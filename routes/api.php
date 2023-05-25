@@ -81,6 +81,29 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserProfileCon
         Route::put('/profile', 'updateUserProfile');
     });
 
+// ----------User Achievement
+// All roles
+Route::middleware(['auth:sanctum'])->controller(UserAchievementController::class)
+    ->prefix('user-achievements')->group(function () {
+        Route::get('/user/{user_id}', 'getUserAchievementsByUserId');
+        Route::get('/{id}', 'getUserAchievementById');
+        Route::get('/', 'getAllUserAchievements');
+    });
+
+// Only user
+Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserAchievementController::class)
+    ->prefix('user-achievements')->group(function () {
+        Route::post('/', 'createUserAchievement');
+
+        Route::put('/{id}', 'updateUserAchievement');
+    });
+
+// User and mod
+Route::middleware(['auth:sanctum', 'ability:user,mod'])->controller(UserAchievementController::class)
+    ->prefix('user-achievements')->group(function () {
+        Route::delete('/{id}', 'deleteUserAchievement');
+    });
+
 // ----------User Education
 // All roles
 Route::middleware(['auth:sanctum'])->controller(UserEducationController::class)
@@ -96,7 +119,11 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserEducationC
         Route::post('/', 'createUserEducation');
 
         Route::put('/{id}', 'updateUserEducation');
+    });
 
+// User and mod
+Route::middleware(['auth:sanctum', 'ability:user,mod'])->controller(UserEducationController::class)
+    ->prefix('user-educations')->group(function () {
         Route::delete('/{id}', 'deleteUserEducation');
     });
 
@@ -115,27 +142,12 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserExperience
         Route::post('/', 'createUserExperience');
 
         Route::put('/{id}', 'updateUserExperience');
+    });
 
+// User and mod
+Route::middleware(['auth:sanctum', 'ability:user,mod'])->controller(UserExperienceController::class)
+    ->prefix('user-experiences')->group(function () {
         Route::delete('/{id}', 'deleteUserExperience');
-    });
-
-// ----------User Achievement
-// All roles
-Route::middleware(['auth:sanctum'])->controller(UserAchievementController::class)
-    ->prefix('user-achievements')->group(function () {
-        Route::get('/user/{user_id}', 'getUserAchievementsByUserId');
-        Route::get('/{id}', 'getUserAchievementById');
-        Route::get('/', 'getAllUserAchievements');
-    });
-
-// Only user
-Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserAchievementController::class)
-    ->prefix('user-achievements')->group(function () {
-        Route::post('/', 'createUserAchievement');
-
-        Route::put('/{id}', 'updateUserAchievement');
-
-        Route::delete('/{id}', 'deleteUserAchievement');
     });
 
 // ----------User Skill
@@ -153,7 +165,11 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserSkillContr
         Route::post('/', 'createUserSkill');
 
         Route::put('/{id}', 'updateUserSkill');
+    });
 
+// User and mod
+Route::middleware(['auth:sanctum', 'ability:user,mod'])->controller(UserSkillController::class)
+    ->prefix('user-skills')->group(function () {
         Route::delete('/{id}', 'deleteUserSkill');
     });
 
