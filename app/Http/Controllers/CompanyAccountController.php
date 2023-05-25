@@ -267,12 +267,12 @@ class CompanyAccountController extends ApiController
         try {
             $companyAccount = CompanyAccount::where('id', $id)->paginate(1);
 
-            if (!$request->user()->tokenCan('mod') && $request->user()->id != $id) {
-                return $this->respondUnauthorized('Bạn không có quyền truy cập vào tài khoản này');
-            }
-
             if (count($companyAccount) === 0) {
                 return $this->respondNotFound();
+            }
+
+            if (!$request->user()->tokenCan('mod') && $request->user()->id != $id) {
+                return $this->respondUnauthorized('Bạn không có quyền truy cập vào tài khoản này');
             }
 
             return $this->respondWithData(
