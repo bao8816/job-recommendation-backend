@@ -162,10 +162,9 @@ class AuthCompanyController extends ApiController
                 return $this->respondBadRequest('Mật khẩu không đúng');
             }
 
-            //TODO: Uncomment this when we have email verification
-//            if (!$companyAccount->is_verified) {
-//                return $this->respondBadRequest('Account is not verified');
-//            }
+            if (!$companyAccount->is_verified) {
+                return $this->respondBadRequest('Tài khoản chưa được xác thực');
+            }
 
             if ($companyAccount->is_banned) {
                 return $this->respondBadRequest('Tài khoản đã bị chặn');
