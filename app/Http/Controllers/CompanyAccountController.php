@@ -287,10 +287,22 @@ class CompanyAccountController extends ApiController
 
     /**
      *  @OA\Put(
-     *      path="/api/company-accounts/password",
+     *      path="/api/company/password",
      *      tags={"Company Account"},
      *      summary="Update company password",
      *      security={{"bearerAuth":{}}},
+     *      @OA\Parameter(
+     *          name="Accept",
+     *          in="header",
+     *          description="application/json",
+     *          required=false,
+     *      ),
+     *      @OA\Parameter(
+     *          name="Authorization",
+     *          in="header",
+     *          description="Bearer {token}",
+     *          required=true,
+     *      ),
      *      @OA\RequestBody(
      *          required=true,
      *          @OA\JsonContent(
@@ -353,7 +365,7 @@ class CompanyAccountController extends ApiController
                 return $this->respondBadRequest('Mật khẩu mới không khớp');
             }
 
-            $companyAccount->password = $new_password;
+            $companyAccount->password = Hash::make($new_password . env('PASSWORD_SALT'));
             $companyAccount->save();
 
             return $this->respondWithData(

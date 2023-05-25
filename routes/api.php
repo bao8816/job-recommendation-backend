@@ -42,13 +42,29 @@ use Illuminate\Support\Facades\Route;
 //------------------------------------USER------------------------------------
 
 // --------User Account
-//Only admin
-//TODO: implement admin abilities for user account
-
 // Only user
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserAccountController::class)
     ->prefix('user')->group(function () {
         Route::put('/password', 'updatePassword');
+    });
+
+// Only mod
+Route::middleware(['auth:sanctum', 'abilities:mod'])->controller(UserAccountController::class)
+    ->prefix('user-accounts')->group(function () {
+        Route::get('/', 'getAllUserAccounts');
+
+        Route::put('/ban/{id}', 'banUserAccount');
+        Route::put('/unban/{id}', 'unbanUserAccount');
+        Route::put('/lock/{id}', 'lockUserAccount');
+        Route::put('/unlock/{id}', 'unlockUserAccount');
+
+        Route::delete('/{id}', 'deleteUserAccount');
+    });
+
+// User and mod
+Route::middleware(['auth:sanctum', 'ability:user,mod'])->controller(UserAccountController::class)
+    ->prefix('user-accounts')->group(function () {
+        Route::get('/{id}', 'getUserAccountById');
     });
 
 // ---------User Profile
@@ -366,7 +382,7 @@ Route::middleware(['auth:sanctum', 'ability:mod'])->controller(CompanyAccountCon
 
 // Only company
 Route::middleware(['auth:sanctum', 'ability:company'])->controller(CompanyAccountController::class)
-    ->prefix('company-accounts')->group(function () {
+    ->prefix('company')->group(function () {
         Route::put('/password', 'updatePassword');
     });
 
