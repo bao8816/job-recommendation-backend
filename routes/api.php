@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthAdminController;
 use App\Http\Controllers\AuthCompanyController;
 use App\Http\Controllers\AuthEmployerController;
 use App\Http\Controllers\AuthUserController;
+use App\Http\Controllers\CompanyAccountController;
 use App\Http\Controllers\CompanyProfileController;
 use App\Http\Controllers\CompanyReportController;
 use App\Http\Controllers\CompanyVerificationController;
@@ -349,7 +350,31 @@ Route::middleware(['auth:sanctum', 'ability:user,mod'])->controller(JobReportCon
 
 //------------------------------------COMPANY------------------------------------
 // -----------Company Account
-//TODO: implement admin ability for company account
+// Only moderator
+Route::middleware(['auth:sanctum', 'ability:mod'])->controller(CompanyAccountController::class)
+    ->prefix('company-accounts')->group(function () {
+        Route::get('/', 'getAllCompanyAccounts');
+
+        Route::put('ban/{id}', 'banCompanyAccount');
+        Route::put('unban/{id}', 'unbanCompanyAccount');
+        Route::put('lock/{id}', 'lockCompanyAccount');
+        Route::put('unlock/{id}', 'unlockCompanyAccount');
+        Route::put('verify/{id}', 'verifyCompanyAccount');
+
+        Route::delete('/{id}', 'deleteCompanyAccount');
+    });
+
+// Only company
+Route::middleware(['auth:sanctum', 'ability:company'])->controller(CompanyAccountController::class)
+    ->prefix('company-accounts')->group(function () {
+        Route::put('/password', 'updatePassword');
+    });
+
+// Mod and company
+Route::middleware(['auth:sanctum', 'ability:mod,company'])->controller(CompanyAccountController::class)
+    ->prefix('company-accounts')->group(function () {
+        Route::get('/{id}', 'getCompanyAccountById');
+    });
 
 // -----------Company Profile
 // All roles (including guest)
@@ -357,6 +382,12 @@ Route::controller(CompanyProfileController::class)
     ->prefix('company-profiles')->group(function () {
         Route::get('/{id}', 'getCompanyProfileById');
         Route::get('/', 'getAllCompanyProfiles');
+    });
+
+// Only company
+Route::middleware(['auth:sanctum', 'ability:company'])->controller(CompanyProfileController::class)
+    ->prefix('company-profiles')->group(function () {
+        Route::put('/{id}', 'updateCompanyProfile');
     });
 
 // ------------Company Report

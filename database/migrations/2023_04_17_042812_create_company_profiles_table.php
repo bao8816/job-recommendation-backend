@@ -25,9 +25,9 @@ return new class extends Migration
 
             $table->string('name', 500);
             $table->string('logo', 2000)->default(env('DEFAULT_LOGO_URL', base_path('public/default_logo.png')));
-            $table->string('description', 10000);
-            $table->string('site', 2000);
-            $table->string('address', 1000);
+            $table->string('description', 10000)->nullable();
+            $table->string('site', 2000)->nullable();
+            $table->string('address', 1000)->nullable();
             $table->string('size', 500)->nullable();
             $table->softDeletes();
             $table->timestamps();
