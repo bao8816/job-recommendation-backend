@@ -19,7 +19,7 @@ class AuthCompanyController extends ApiController
      *      tags={"Auth Company"},
      *      @OA\RequestBody(
      *          @OA\JsonContent(
-     *              example={"username": "Company", "password": "company123", "password_confirmation": "company123"}
+     *              example={"username": "Company", "password": "company123", "confirm_password": "company123"}
      *          ),
      *          required=true,
      *      ),

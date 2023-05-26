@@ -20,7 +20,7 @@ class AuthUserController extends ApiController
      *      tags={"Auth User"},
      *      @OA\RequestBody(
      *          @OA\JsonContent(
-     *              example={"username": "User", "password": "user123", "password_confirmation": "user123"}
+     *              example={"username": "User", "password": "user123", "confirm_password": "user123"}
      *          ),
      *          required=true,
      *      ),
@@ -61,9 +61,9 @@ class AuthUserController extends ApiController
         try {
             $username = $request->username;
             $password = $request->password;
-            $confirm_passowrd = $request->confirm_password;
+            $confirm_password = $request->confirm_password;
 
-            if ($password != $confirm_passowrd) {
+            if ($password !== $confirm_password) {
                 return $this->respondBadRequest('Nhập lại mật khẩu không khớp');
             }
 

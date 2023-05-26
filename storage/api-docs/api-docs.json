@@ -788,7 +788,7 @@
                             "example": {
                                 "username": "Company",
                                 "password": "company123",
-                                "password_confirmation": "company123"
+                                "confirm_password": "company123"
                             }
                         }
                     }
@@ -969,7 +969,7 @@
                             "example": {
                                 "username": "User",
                                 "password": "user123",
-                                "password_confirmation": "user123"
+                                "confirm_password": "user123"
                             }
                         }
                     }
