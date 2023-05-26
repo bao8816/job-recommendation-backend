@@ -100,4 +100,9 @@ class UserProfile extends Model
     {
         return $this->hasMany(UserHistory::class, 'user_id', 'id');
     }
+
+    public function saved_jobs(): HasMany
+    {
+        return $this->hasMany(SavedJob::class, 'user_id', 'id');
+    }
 }

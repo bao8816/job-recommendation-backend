@@ -7,29 +7,27 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class UserExperience extends Model
+class SavedJob extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $connection = 'mysql';
-    protected $table = 'user_experiences';
+    protected $table = 'saved_jobs';
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $fillable = [
         'user_id',
-        'content',
-        'start',
-        'end',
+        'job_id',
     ];
 
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $hidden = [
         'created_at',
@@ -45,5 +43,10 @@ class UserExperience extends Model
     public function user_profile(): BelongsTo
     {
         return $this->belongsTo(UserProfile::class, 'user_id', 'user_id');
+    }
+
+    public function job(): BelongsTo
+    {
+        return $this->belongsTo(Job::class, 'job_id', 'id');
     }
 }

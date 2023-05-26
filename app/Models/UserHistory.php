@@ -39,6 +39,11 @@ class UserHistory extends Model
         return $this->belongsTo(UserAccount::class, 'id', 'user_id');
     }
 
+    public function user_profile(): BelongsTo
+    {
+        return $this->belongsTo(UserProfile::class, 'id', 'user_id');
+    }
+
     public function job(): BelongsTo
     {
         return $this->belongsTo(Job::class, 'id', 'job_id');

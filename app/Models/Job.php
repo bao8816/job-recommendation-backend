@@ -83,4 +83,9 @@ class Job extends Model
     {
         return $this->hasMany(UserHistory::class, 'job_id', 'id');
     }
+
+    public function saved_jobs(): HasMany
+    {
+        return $this->hasMany(SavedJob::class, 'job_id', 'id');
+    }
 }
