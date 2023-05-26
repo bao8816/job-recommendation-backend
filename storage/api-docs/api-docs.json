@@ -7216,6 +7216,532 @@
                     }
                 }
             }
+        },
+        "/api/user-skills": {
+            "get": {
+                "tags": [
+                    "User Skills"
+                ],
+                "summary": "Get all user skills",
+                "operationId": "95f92d23a43605f76051dae66fb51fc5",
+                "parameters": [
+                    {
+                        "name": "count_per_page",
+                        "in": "query",
+                        "description": "Number of user achievements per page",
+                        "required": false
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "Accept header",
+                        "required": false
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer {token}",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved user skills",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "userSkills": {
+                                            "current_page": 1,
+                                            "data": [
+                                                {
+                                                    "id": 1,
+                                                    "user_id": 1,
+                                                    "skill": "Quản lý đa nhiệm vụ"
+                                                }
+                                            ],
+                                            "first_page_url": "http://localhost:8000/api/user-skills?page=1",
+                                            "from": 1,
+                                            "last_page": 461,
+                                            "last_page_url": "http://localhost:8000/api/user-skills?page=461",
+                                            "links": [
+                                                {
+                                                    "url": null,
+                                                    "label": "&laquo; Previous",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/user-skills?page=1",
+                                                    "label": "1",
+                                                    "active": true
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/user-skills?page=2",
+                                                    "label": "2",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/user-skills?page=3",
+                                                    "label": "3",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/user-skills?page=4",
+                                                    "label": "4",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/user-skills?page=5",
+                                                    "label": "5",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/user-skills?page=6",
+                                                    "label": "6",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/user-skills?page=7",
+                                                    "label": "7",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/user-skills?page=8",
+                                                    "label": "8",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/user-skills?page=9",
+                                                    "label": "9",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/user-skills?page=10",
+                                                    "label": "10",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": null,
+                                                    "label": "...",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/user-skills?page=460",
+                                                    "label": "460",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/user-skills?page=461",
+                                                    "label": "461",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/user-skills?page=2",
+                                                    "label": "Next &raquo;",
+                                                    "active": false
+                                                }
+                                            ],
+                                            "next_page_url": "http://localhost:8000/api/user-skills?page=2",
+                                            "path": "http://localhost:8000/api/user-skills",
+                                            "per_page": 1,
+                                            "prev_page_url": null,
+                                            "to": 1,
+                                            "total": 461
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/user-skills/user/{user_id}": {
+            "get": {
+                "tags": [
+                    "User Skills"
+                ],
+                "summary": "Get user skills by user id",
+                "operationId": "6153342c123ebb00de1bb8095e5f8eba",
+                "parameters": [
+                    {
+                        "name": "count_per_page",
+                        "in": "query",
+                        "description": "Number of user achievements per page",
+                        "required": false
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "Accept header",
+                        "required": false
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer {token}",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User skills retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Successfully retrieved user skills",
+                                    "data": {
+                                        "userSkills": {
+                                            "current_page": 1,
+                                            "data": [
+                                                {
+                                                    "id": 1,
+                                                    "user_id": 1,
+                                                    "skill": "Quản lý đa nhiệm vụ"
+                                                }
+                                            ],
+                                            "first_page_url": "http://localhost:8000/api/user-skills/user/1?page=1",
+                                            "from": 1,
+                                            "last_page": 3,
+                                            "last_page_url": "http://localhost:8000/api/user-skills/user/1?page=3",
+                                            "links": [
+                                                {
+                                                    "url": null,
+                                                    "label": "&laquo; Previous",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/user-skills/user/1?page=1",
+                                                    "label": "1",
+                                                    "active": true
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/user-skills/user/1?page=2",
+                                                    "label": "2",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/user-skills/user/1?page=3",
+                                                    "label": "3",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/user-skills/user/1?page=2",
+                                                    "label": "Next &raquo;",
+                                                    "active": false
+                                                }
+                                            ],
+                                            "next_page_url": "http://localhost:8000/api/user-skills/user/1?page=2",
+                                            "path": "http://localhost:8000/api/user-skills/user/1",
+                                            "per_page": 1,
+                                            "prev_page_url": null,
+                                            "to": 1,
+                                            "total": 3
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/user-skills/{id}": {
+            "get": {
+                "tags": [
+                    "User Skills"
+                ],
+                "summary": "Get user skill by id",
+                "operationId": "be36f0a098bb26ec5bef0d5650fe8fe2",
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "Accept header",
+                        "required": false
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer {token}",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User skill retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "userSkill": {
+                                            "current_page": 1,
+                                            "data": [
+                                                {
+                                                    "id": 1,
+                                                    "user_id": 1,
+                                                    "skill": "Quản lý đa nhiệm vụ"
+                                                }
+                                            ],
+                                            "first_page_url": "http://localhost:8000/api/user-skills/1?page=1",
+                                            "from": 1,
+                                            "last_page": 1,
+                                            "last_page_url": "http://localhost:8000/api/user-skills/1?page=1",
+                                            "links": [
+                                                {
+                                                    "url": null,
+                                                    "label": "&laquo; Previous",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/user-skills/1?page=1",
+                                                    "label": "1",
+                                                    "active": true
+                                                },
+                                                {
+                                                    "url": null,
+                                                    "label": "Next &raquo;",
+                                                    "active": false
+                                                }
+                                            ],
+                                            "next_page_url": null,
+                                            "path": "http://localhost:8000/api/user-skills/1",
+                                            "per_page": 1,
+                                            "prev_page_url": null,
+                                            "to": 1,
+                                            "total": 1
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "User Skills"
+                ],
+                "summary": "Update user skill by id",
+                "operationId": "758736c744d6e8c669cd9dd0868e6413",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User skill id",
+                        "required": true
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "Accept header",
+                        "required": false
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer {token}",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {},
+                            "example": {
+                                "skill": "skill2"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "User skill updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "userSkill": {
+                                            "id": 462,
+                                            "user_id": 2,
+                                            "skill": "skill2"
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "User Skills"
+                ],
+                "summary": "Delete user skill by id",
+                "operationId": "3abfb2bdc21b65821fc40e852ba22d65",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User skill id",
+                        "required": true
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "Accept header",
+                        "required": false
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer {token}",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User skill deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xoá thành công",
+                                    "data": {
+                                        "userSkill": {
+                                            "id": 462,
+                                            "user_id": 2,
+                                            "skill": "skill2"
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/user-skills": {
+            "post": {
+                "tags": [
+                    "User Skills"
+                ],
+                "summary": "Create user skill",
+                "operationId": "66d28dee346e04b5fc7c2df891821395",
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "Accept header",
+                        "required": false
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer {token}",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {},
+                            "example": {
+                                "skill": "skill1"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "User skill created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Tạo thành công",
+                                    "data": {
+                                        "userSkill": {
+                                            "user_id": 2,
+                                            "skill": "skill1",
+                                            "id": 462
+                                        }
+                                    },
+                                    "status_code": 201
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
         }
     },
     "components": {
