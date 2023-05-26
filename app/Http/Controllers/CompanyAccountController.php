@@ -50,10 +50,19 @@ class CompanyAccountController extends ApiController
     {
     "id": 1,
     "username": "ltd10",
-    "is_verified": 0,
+    "is_verified": 1,
     "is_banned": 0,
     "locked_until": null,
-    "last_login": null
+    "last_login": null,
+    "profile": {
+    "id": 1,
+    "name": "TV TPI CO., LTD",
+    "logo": "https://i.imgur.com/hepj9ZS.png",
+    "description": "['TV TPI là tổ chức luôn mang sứ mệnh cung cấp cho người sử dụng thuốc các sản phẩm giá trị và chất lượng được đăng ký tại Châu Âu với giá thành hợp lý. Bên cạnh sự phát triển kinh doanh, chúng tôi luôn ý thức được rằng mỗi nhân sự là một mắt xích quan trọng, là nhân tài của tổ chức. Do đó, TV TPI luôn tìm kiếm những con người mong muốn phát triển bản thân, không ngừng học hỏi và góp phần tạo nên sự phát triển bền vững của công ty.', 'Sứ mệnh', 'TV TPI ra đời nhằm phụng sự cho người sử dụng thuốc tại Việt Nam và các nước Đông Nam Á qua việc cung cấp cho người sử dụng thuốc các sản phẩm giá trị và chất lượng được đăng ký tại Châu Âu với giá thành hợp lý.', 'Tầm nhìn', 'Đưa TV TPI nằm trong Top 1.000 công ty Dược vào năm 2027. Giữ vững là Công ty số 1 cung cấp các dịch vụ EU GMP cho tất cả các đối tác hoạt động tại Việt Nam. Là Công ty đầu tiên tại Việt Nam sở hữu số đăng ký thuốc “Generics” được sản xuất tại Việt Nam nhiều nhất tại Châu Âu.', 'Công Ty hoạt động trong lĩnh vực Kinh Doanh và Phân Phối các sản phẩm:']",
+    "site": "http://tvtpi.com.vn/",
+    "address": "72 Bình Giã, Phường 13, Quận Tân Bình, TP. HCM",
+    "size": "25-99"
+    }
     }
     },
     "first_page_url": "http://127.0.0.1:8000/api/company-accounts?page=1",
@@ -161,7 +170,7 @@ class CompanyAccountController extends ApiController
         try {
             $count_per_page = $request->count_per_page;
 
-            $companyAccounts = CompanyAccount::paginate($count_per_page);
+            $companyAccounts = CompanyAccount::with('profile')->paginate($count_per_page);
 
             if (count($companyAccounts) === 0) {
                 return $this->respondNotFound();
@@ -216,10 +225,19 @@ class CompanyAccountController extends ApiController
     {
     "id": 1,
     "username": "ltd10",
-    "is_verified": 0,
+    "is_verified": 1,
     "is_banned": 0,
     "locked_until": null,
-    "last_login": null
+    "last_login": null,
+    "profile": {
+    "id": 1,
+    "name": "TV TPI CO., LTD",
+    "logo": "https://i.imgur.com/hepj9ZS.png",
+    "description": "['TV TPI là tổ chức luôn mang sứ mệnh cung cấp cho người sử dụng thuốc các sản phẩm giá trị và chất lượng được đăng ký tại Châu Âu với giá thành hợp lý. Bên cạnh sự phát triển kinh doanh, chúng tôi luôn ý thức được rằng mỗi nhân sự là một mắt xích quan trọng, là nhân tài của tổ chức. Do đó, TV TPI luôn tìm kiếm những con người mong muốn phát triển bản thân, không ngừng học hỏi và góp phần tạo nên sự phát triển bền vững của công ty.', 'Sứ mệnh', 'TV TPI ra đời nhằm phụng sự cho người sử dụng thuốc tại Việt Nam và các nước Đông Nam Á qua việc cung cấp cho người sử dụng thuốc các sản phẩm giá trị và chất lượng được đăng ký tại Châu Âu với giá thành hợp lý.', 'Tầm nhìn', 'Đưa TV TPI nằm trong Top 1.000 công ty Dược vào năm 2027. Giữ vững là Công ty số 1 cung cấp các dịch vụ EU GMP cho tất cả các đối tác hoạt động tại Việt Nam. Là Công ty đầu tiên tại Việt Nam sở hữu số đăng ký thuốc “Generics” được sản xuất tại Việt Nam nhiều nhất tại Châu Âu.', 'Công Ty hoạt động trong lĩnh vực Kinh Doanh và Phân Phối các sản phẩm:']",
+    "site": "http://tvtpi.com.vn/",
+    "address": "72 Bình Giã, Phường 13, Quận Tân Bình, TP. HCM",
+    "size": "25-99"
+    }
     }
     },
     "first_page_url": "http://127.0.0.1:8000/api/company-accounts/1?page=1",
@@ -265,7 +283,7 @@ class CompanyAccountController extends ApiController
     public function getCompanyAccountById(Request $request, string $id): JsonResponse
     {
         try {
-            $companyAccount = CompanyAccount::where('id', $id)->paginate(1);
+            $companyAccount = CompanyAccount::where('id', $id)->with('profile')->paginate(1);
 
             if (count($companyAccount) === 0) {
                 return $this->respondNotFound();
