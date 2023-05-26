@@ -38,7 +38,7 @@ class JobSeeder extends Seeder
             $job->recruit_num = $line[8];
             $job->position = $line[9];
             $job->year_of_experience = $line[12];
-            $job->deadline = date('Y-m-d', strtotime($line[11]));
+            $job->deadline = date('Y-m-d', strtotime($line[13]));
             $job->created_at = now();
             $job->updated_at = now();
 
