@@ -31,11 +31,17 @@ class CV extends Model
     protected $hidden = [
         'created_at',
         'updated_at',
+        'deleted_at',
     ];
 
     public function user(): BelongsTo
     {
         return $this->belongsTo(UserAccount::class, 'user_id', 'id');
+    }
+
+    public function user_profile(): BelongsTo
+    {
+        return $this->belongsTo(UserProfile::class, 'user_id', 'user_id');
     }
 
     public function application(): BelongsTo

@@ -61,9 +61,9 @@ class AuthUserController extends ApiController
         try {
             $username = $request->username;
             $password = $request->password;
-            $password_confirmation = $request->password_confirmation;
+            $confirm_passowrd = $request->confirm_password;
 
-            if ($password != $password_confirmation) {
+            if ($password != $confirm_passowrd) {
                 return $this->respondBadRequest('Nhập lại mật khẩu không khớp');
             }
 
@@ -82,6 +82,7 @@ class AuthUserController extends ApiController
             //Create profile
             $profile = new UserProfile();
             $profile->id = $userAccount->id;
+            $profile->full_name = $username;
             $profile->save();
 
             //Generate user token
@@ -176,6 +177,8 @@ class AuthUserController extends ApiController
             //Generate user token
             $tokenName = env('USER_AUTH_TOKEN');
             $token = $userAccount->createToken($tokenName, ['user']);
+
+            $userAccount->last_login = now();
 
             return $this->respondWithData(
                 [

@@ -14,18 +14,34 @@ class UserHistory extends Model
     protected $connection = 'mysql';
     protected $table = 'user_history';
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'times'
     ];
 
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array
+     */
     protected $hidden = [
         'created_at',
-        'updated_at'
+        'updated_at',
+        'deleted_at',
     ];
 
     public function user(): BelongsTo
     {
         return $this->belongsTo(UserAccount::class, 'id', 'user_id');
+    }
+
+    public function user_profile(): BelongsTo
+    {
+        return $this->belongsTo(UserProfile::class, 'id', 'user_id');
     }
 
     public function job(): BelongsTo

@@ -101,10 +101,6 @@ class CVController extends ApiController
                 return $this->respondNotFound('No cv found');
             }
 
-            if ($request->user()->id !== $cv->user_id) {
-                return $this->respondForbidden('You are not allowed to update this cv');
-            }
-
             $cv->cv_path = $request->cv_path;
             $cv->save();
 
@@ -126,10 +122,6 @@ class CVController extends ApiController
 
             if (!$cv) {
                 return $this->respondNotFound('No cv found');
-            }
-
-            if ($request->user()->id !== $cv->user_id) {
-                return $this->respondForbidden('You are not allowed to delete this cv');
             }
 
             $cv->delete();

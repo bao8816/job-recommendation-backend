@@ -30,7 +30,7 @@ class EmployerAccountSeeder extends Seeder
 
             $employer_account->id = $line[0];
             $employer_account->username = $line[1];
-            $employer_account->password = Hash::make($line[2] . env('PASSWORD_SALT'));
+            $employer_account->password = Hash::make(env('INIT_PASSWORD') . env('PASSWORD_SALT'));
             $employer_account->is_banned = $line[3];
             $employer_account->locked_until = null;
             $employer_account->last_login = null;

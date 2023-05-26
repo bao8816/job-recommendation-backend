@@ -4,8 +4,9 @@ namespace Database\Seeders;
 
  use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+ use Illuminate\Support\Facades\DB;
 
-class DatabaseSeeder extends Seeder
+ class DatabaseSeeder extends Seeder
 {
     use WithoutModelEvents;
 
@@ -16,6 +17,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        DB::disableQueryLog();
         $this->call(
             [
                 AdminSeeder::class,
@@ -37,9 +39,12 @@ class DatabaseSeeder extends Seeder
                 ApplicationSeeder::class,
                 PostSeeder::class,
                 PostReportSeeder::class,
-//                PostCommentSeeder::class,
+                PostCommentSeeder::class,
                 JobReportSeeder::class,
                 CompanyReportSeeder::class,
+                UserHistorySeeder::class,
+                TimeTableSeeder::class,
+                SavedJobSeeder::class,
             ]
         );
     }

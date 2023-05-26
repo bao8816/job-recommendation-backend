@@ -12,9 +12,10 @@ class UserProfileController extends ApiController
     public function getAllUserProfiles(Request $request): JsonResponse
     {
         try {
-            $count_per_page = $request->countPerPage;
+            $count_per_page = $request->count_per_page;
 
-            $userProfiles = UserProfile::paginate($count_per_page);
+            $userProfiles = UserProfile::with('educations', 'cvs', 'experiences', 'achievements', 'skills', 'time_tables')
+                ->paginate($count_per_page);
 
             if (count($userProfiles) === 0) {
                 return $this->respondNotFound('No user profiles found');
@@ -31,10 +32,11 @@ class UserProfileController extends ApiController
         }
     }
 
-    public function getUserProfile(Request $request): JsonResponse
+    public function getUserProfile(Request $request, string $id): JsonResponse
     {
         try {
-            $userProfile = UserProfile::where('id', $request->user_id)->paginate(1);
+            $userProfile = UserProfile::where('id', $id)->with('educations', 'cvs', 'experiences', 'achievements', 'skills', 'time_tables')
+                ->paginate(1);
 
             if (!isset($userProfile)) {
                 return $this->respondNotFound('User profile not found');

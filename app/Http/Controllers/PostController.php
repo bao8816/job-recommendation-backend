@@ -107,10 +107,6 @@ class PostController extends ApiController
                 return $this->respondNotFound('No post found');
             }
 
-            if ($request->user()->id !== $post->user_id) {
-                return $this->respondUnauthorized('You are not authorized to update this post');
-            }
-
             $post->title = $request->title;
             $post->content = $request->post_content;
             $post->save();
@@ -157,10 +153,6 @@ class PostController extends ApiController
 
             if ($post === null) {
                 return $this->respondNotFound('No post found');
-            }
-
-            if ($request->user()->id !== $post->user_id) {
-                return $this->respondUnauthorized('You are not authorized to delete this post');
             }
 
             $post->delete();

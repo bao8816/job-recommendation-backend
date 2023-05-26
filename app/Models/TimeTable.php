@@ -12,32 +12,31 @@ class TimeTable extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $connection = 'mongodb';
-    protected $collection = 'time_tables';
+    protected $connection = 'mysql';
+    protected $table = 'time_tables';
 
-    protected $casts = [
-        'time_table' => 'array',
-    ];
-
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
-        'time_table',
+        'coordinate',
     ];
 
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
     protected $hidden = [
         'created_at',
         'updated_at',
+        'deleted_at',
     ];
 
     public function user(): BelongsTo
     {
         return $this->belongsTo(UserAccount::class, 'user_id', 'id');
     }
-
-//    protected function timeTable(): Attribute
-//    {
-//        return Attribute::make(
-//            get: fn ($value) => json_decode($value, true),
-//            set: fn ($value) => json_encode($value),
-//        );
-//    }
 }

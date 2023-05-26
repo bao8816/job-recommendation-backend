@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -37,6 +36,7 @@ class UserAccount extends Authenticatable
         'password',
         'created_at',
         'updated_at',
+        'deleted_at',
     ];
 
     public function profile(): HasOne
@@ -89,7 +89,7 @@ class UserAccount extends Authenticatable
         return $this->hasMany(PostComment::class, 'user_id', 'id');
     }
 
-    public function time_table(): HasMany
+    public function time_tables(): HasMany
     {
         return $this->hasMany(TimeTable::class, 'user_id', 'id');
     }
@@ -97,5 +97,10 @@ class UserAccount extends Authenticatable
     public function user_history(): HasMany
     {
         return $this->hasMany(UserHistory::class, 'user_id', 'id');
+    }
+
+    public function saved_jobs(): HasMany
+    {
+        return $this->hasMany(SavedJob::class, 'user_id', 'id');
     }
 }

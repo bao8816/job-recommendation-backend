@@ -31,7 +31,7 @@ class ApplicationSeeder extends Seeder
             $application->job_id = $line[1];
             $application->user_id = $line[2];
             $application->cv_id = $line[3];
-            $application->status = $line[4];
+            $application->status = "Đang chờ";
             $application->created_at = now();
             $application->updated_at = now();
 

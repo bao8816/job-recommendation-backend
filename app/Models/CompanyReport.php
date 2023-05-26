@@ -14,6 +14,17 @@ class CompanyReport extends Model
     protected $connection = 'mysql';
     protected $table = 'company_reports';
 
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
     public function company(): BelongsTo
     {
         return $this->belongsTo(CompanyAccount::class, 'company_id', 'id');

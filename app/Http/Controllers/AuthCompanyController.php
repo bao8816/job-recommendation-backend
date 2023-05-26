@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CompanyAccount;
+use App\Models\CompanyProfile;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -59,10 +60,10 @@ class AuthCompanyController extends ApiController
         try {
             $username = $request->username;
             $password = $request->password;
-            $password_confirmation = $request->password_confirmation;
-            $passwordSalt = $password . env('PASSWORD_SALT');
+            $confirm_password = $request->confirm_password;
+            $password_salt = $password . env('PASSWORD_SALT');
 
-            if ($password != $password_confirmation) {
+            if ($password != $confirm_password) {
                 return $this->respondBadRequest('Nhập lại mật khẩu không khớp');
             }
 
@@ -70,16 +71,21 @@ class AuthCompanyController extends ApiController
                 return $this->respondBadRequest('Tên đăng nhập đã tồn tại');
             }
 
-            $hashedPassword = Hash::make($passwordSalt);
+            $hashed_password = Hash::make($password_salt);
 
             $companyAccount = new CompanyAccount();
             $companyAccount->username = $username;
-            $companyAccount->password = $hashedPassword;
+            $companyAccount->password = $hashed_password;
             $companyAccount->save();
 
             // Generate company token
             $tokenName = env('COMPANY_AUTH_TOKEN');
             $token = $companyAccount->createToken($tokenName, ['company']);
+
+            $profile = new CompanyProfile();
+            $profile->id = $companyAccount->id;
+            $profile->name = $username;
+            $profile->save();
 
             return $this->respondWithData(
                 [
@@ -156,10 +162,9 @@ class AuthCompanyController extends ApiController
                 return $this->respondBadRequest('Mật khẩu không đúng');
             }
 
-            //TODO: Uncomment this when we have email verification
-//            if (!$companyAccount->is_verified) {
-//                return $this->respondBadRequest('Account is not verified');
-//            }
+            if (!$companyAccount->is_verified) {
+                return $this->respondBadRequest('Tài khoản chưa được xác thực');
+            }
 
             if ($companyAccount->is_banned) {
                 return $this->respondBadRequest('Tài khoản đã bị chặn');

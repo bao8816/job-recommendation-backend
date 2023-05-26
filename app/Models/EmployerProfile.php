@@ -32,6 +32,7 @@ class EmployerProfile extends Model
     protected $hidden = [
         'created_at',
         'updated_at',
+        'deleted_at',
     ];
 
     public function account(): BelongsTo
@@ -41,6 +42,6 @@ class EmployerProfile extends Model
 
     public function company(): BelongsTo
     {
-        return $this->belongsTo(CompanyAccount::class, 'id', 'id');
+        return $this->belongsTo(CompanyAccount::class, 'company_id', 'id');
     }
 }

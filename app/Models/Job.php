@@ -21,8 +21,16 @@ class Job extends Model
      * @var array
      */
     protected $fillable = [
-        'upvote',
-        'downvote',
+        'title',
+        'description',
+        'benefit',
+        'requirement',
+        'min_salary',
+        'max_salary',
+        'recruit_num',
+        'position',
+        'year_of_experience',
+        'deadline',
     ];
 
     /**
@@ -33,11 +41,17 @@ class Job extends Model
     protected $hidden = [
         'created_at',
         'updated_at',
+        'deleted_at'
     ];
 
     public function employer(): BelongsTo
     {
         return $this->belongsTo(EmployerAccount::class, 'employer_id', 'id');
+    }
+
+    public function employer_profile(): BelongsTo
+    {
+        return $this->belongsTo(EmployerProfile::class, 'employer_id', 'id');
     }
 
     public function applications(): HasMany
@@ -68,5 +82,10 @@ class Job extends Model
     public function user_history(): HasMany
     {
         return $this->hasMany(UserHistory::class, 'job_id', 'id');
+    }
+
+    public function saved_jobs(): HasMany
+    {
+        return $this->hasMany(SavedJob::class, 'job_id', 'id');
     }
 }

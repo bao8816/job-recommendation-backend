@@ -30,7 +30,7 @@ class UserAccountSeeder extends Seeder
 
             $user_account->id = $line[0];
             $user_account->username = $line[1];
-            $user_account->password = Hash::make($line[2] . env('PASSWORD_SALT'));
+            $user_account->password = Hash::make(env('INIT_PASSWORD') . env('PASSWORD_SALT'));
             $user_account->is_banned = $line[3];
             $user_account->locked_until = null;
             $user_account->last_login = null;

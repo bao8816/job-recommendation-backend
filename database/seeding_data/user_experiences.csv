@@ -61,9 +61,985 @@ Xây dựng các tính năng di động.
 Thiết kế, xây dựng và duy trì các ứng dụng.
 - Chẩn đoán và sửa lỗi và tắc nghẽn hiệu suất
 cho hiệu suất mà cảm thấy tự nhiên.",4/4/2023,4/5/2023
-6,9,Software Engineer Intern (Web) Codelynx Software Services Ltd.,12/1/2020,4/1/2021,"Công việc chính:
+6,9,Software Engineer Intern (Web) Codelynx Software Services Ltd.,12/1/2020,1/20/1900,"Công việc chính:
 - Vai trò: Front-end Developer.
 - Ngăn xếp công nghệ: ReactJS, Redux, HTML, CSS và
 JavaScript.
 - Phát triển trang web Q&ampA cho ReactJS Việt Nam
 Cộng đồng.",4/5/2023,4/6/2023
+7,1,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"BUSINESS ANALYST, TESTER tại TECHPLUS SOLUTION
+Từ Tháng Hai – Tháng Chín 2020
+Hệ thống ngân hàng lõi
+o Xem xét, phân tích và tư vấn về các thông số kỹ thuật và yêu cầu
+o Thực hiện kiểm tra thủ công cho các ứng dụng
+o Ghi nhật ký lỗi và theo dõi để đóng cửa, làm việc với sự phát triển",4/5/2023,4/6/2023
+8,2,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"• Tên dự án: XSMART Link
+• Mô tả: Đây là website bán đồng hồ, bao gồm các chức năng như giỏ hàng, đăng ký, đăng nhập,
+Lọc theo giá, lọc theo thương hiệu cũng như sản phẩm.
+• Công nghệ: React.js, Redux, SASS, Strapi
+• Tên dự án: FPT Shop Clone Link
+• Mô tả: Đây là website dựa trên ý tưởng của FPT shop, bao gồm giỏ hàng, đặt hàng qua điện thoại
+số, lọc theo giá và sản phẩm.
+• Công nghệ: React.js, Redux, SASS, Strapi",4/5/2023,4/6/2023
+9,3,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Tháng 10 - 2021: Lập trình giao diện và thiết kế trò chơi T - rex
+Tạo một trò chơi khủng long đang chạy. Có các chức năng cơ bản như đặt tên nhân vật, chọn nhân vật, xem hướng dẫn, chơi game, khủng long nhảy qua chướng ngại vật và ăn thịt để lấy điểm ...
+Công nghệ: C#.
+Công việc: Code chức năng nhảy của khủng long và bắt đầu đếm, hỗ
+trợ Code các chức năng nhỏ trong game.
+
+Tháng 09 - 2021: Hệ thống quản lý rạp chiếu phim
+Phân tích thiết kế hệ thống quản lý rạp chiếu phim, mô tả chức năng cần thiết của hệ thống, phân tích luồng dữ liệu của các chức năng và vẽ sơ đồ ERD, DFD của các chức năng.
+Công nghệ: Draw.IO, C#.
+Công việc: Mô tả nghiệp vụ, mô tả chức năng, thiết kế sơ đồ FHD,
+DFD, ERD, hỗ trợ nhóm trưởng và các thành viên.",4/5/2023,4/6/2023
+10,4,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Hrsol: Quản trị nhân sự cho doanh nghiệp
+Phân tích các chức năng và hoạt động kinh doanh
+Xử lý giao diện người dùng: React, Javascript, Typescript, SCSS, Ant
+Thiết kế, Redux, Thành phần tạo kiểu, Thiết kế nguyên tử, Bản đồ chim bồ câu,
+Mã nguồn thiết lập Hrsol-kit: React, Typescript, Rollup, Storybook
+Giao tiếp với backend để xử lý api: Axios
+Linters formatters: ESLint, Prettier
+Gói mô-đun: Webpack, Esbuild, Craco
+Kiểm tra E2E: Cypress - Phong cách BDD
+Happy Hotel: đặt phòng khách sạn tại Nhật Bản
+Phân tích yêu cầu từ khách hàng
+Xử lý chức năng theo yêu cầu
+Công nghệ được sử dụng: NextJS, Typescript, Redux, SCSS, Axios,...
+
+Thiết kế website đóng vai trò quản lý các phòng ban trong LBM
+công ty, quản lý hoạt động kinh doanh, quản lý hiệu quả kinh doanh
+giữa các phòng ban.
+Mã hóa giao diện, điều chỉnh khả năng phản hồi, điều chỉnh UI / UX cho phù hợp
+Chức năng
+Lấy dữ liệu từ API, xây dựng chức năng đăng nhập, chức năng tìm kiếm, phân trang.
+Vẽ biểu đồ với ChartJS để hiển thị hiệu quả kinh doanh.
+Công nghệ sử dụng: PHP, HTML, CSS, Javascript, Jquery, ChartJS,
+Khởi động
+Mã giao diện website giới thiệu Team
+Mã giao diện Code-Tour 2021
+Tìm hiểu về Docker và NodeJS
+Công nghệ sử dụng: ReactJS, NodeJS, Ant Design, Material UI
+Giải pháp công nghệ Citynow
+
+Công ty Cổ phần Đầu tư LBM
+Tập đoàn VNG
+GIAO DIỆN NGƯỜI DÙNG
+",4/5/2023,4/6/2023
+11,5,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Phiên bản Tic-Tac-Toe Bạn làm ai
+chọn?
+
+Ngôn ngữ: OOP - C++
+Quy mô đội: 3
+Đó là một trò chơi tic-tac-toe với phong cách mới được thiết kế để
+Theo dõi một gameshow nổi tiếng.
+
+Mật mã RSA
+
+Ngôn ngữ: C++
+Mật mã RSA chỉ với STL của CPP.
+
+Web Scrapping x Cosin Similarity
+
+Ngôn ngữ: Python
+Tìm kiếm dữ liệu văn bản web (trên Google), loại bỏ, tìm kiếm
+Các câu / đoạn / từ tương tự với đầu vào của bạn
+dựa trên điểm Cosine Similarity.
+Language: OOP - C++
+Team size: 3
+It’s a tic-tac-toe game with a new style that is designed to
+follow a famous gameshow.
+
+RSA Cryptography
+
+Language: C++
+RSA cryptography with CPP’s STL only.
+
+Web Scrapping x Cosine Similarity
+
+Language: Python
+Web text data searching (on Google), scrapping, finding
+similar sentences/paragraphs/words with your input
+based on Cosine Similarity score.",4/5/2023,4/6/2023
+12,6,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,NO,4/5/2023,4/6/2023
+13,7,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Nhận dạng tên thuốc từ đơn thuốc dựa trên phương pháp OCR W | Tháng Tư 2022
+∗ Dự án này là để giúp người dùng tìm hiểu công dụng của thuốc generic trên hóa đơn thuốc của họ, nó cũng giúp họ lập kế hoạch
+Lên lịch nhắc nhở dùng thuốc.
+∗ trình OCR bao gồm 2 phần: phát hiện (sử dụng PaddleOCR) và nhận dạng (sử dụng VietOCR).
+∗ Để trích xuất thông tin chính (trong trường hợp này là brandname, generic, cách sử dụng, số lượng trên hóa đơn), chúng tôi
+quyết định sử dụng LayoutLMv3, hiện là SOTA trong trường Trích xuất thông tin chính (theo
+Papperwithcode).
+∗ tôi đã sử dụng Google Colab để đào tạo mô hình này.
+Phát hiện đối tượng W | Python, TensorFlow, Yolov5 Tháng Tư 2022
+∗ Phát hiện đối tượng bằng dữ liệu Visdrone 2019.
+∗ Visdrone là một điểm chuẩn quy mô lớn với sự thật mặt đất được chú thích cẩn thận cho các máy tính quan trọng khác nhau
+nhiệm vụ tầm nhìn, để làm cho tầm nhìn đáp ứng máy bay không người lái.
+∗ Yolov5 là AI thị giác được yêu thích nhất thế giới trước khi xuất hiện Yolov6 và Yolov7, đại diện cho Ultralytics
+nghiên cứu nguồn mở về các phương pháp AI tầm nhìn trong tương lai, kết hợp các bài học kinh nghiệm và thực tiễn tốt nhất đã phát triển
+qua hàng ngàn giờ nghiên cứu và phát triển.
+∗ tôi đã sử dụng Google Colab để đào tạo mô hình này.
+∗ Một ứng dụng đã được xây dựng để phát hiện đối tượng xuất hiện trên máy ảnh.",4/5/2023,4/6/2023
+14,8,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Tháng Mười 2021 - Tháng Mười Hai 2021 Lập trình giao diện và thiết kế trò chơi T - rex
+
+Mô tả: Thực hiện các chức năng cơ bản như đặt tên nhân vật, chọn nhân vật, xem hướng dẫn, chơi
+Trò chơi, khủng long nhảy qua chướng ngại vật và ăn thịt để lấy điểm.
+Cách sử dụng: C#, Winform
+Liên kết: https://by.com.vn/jU8up
+Tháng Chín 2021 - Jan 2022 Hệ thống quản lý rạp chiếu phim
+
+Mô tả: Mô tả các chức năng cần thiết của hệ thống, phân tích luồng dữ liệu của các chức năng,
+bản vẽ sơ đồ ERD và DFD của các hàm.
+Cách sử dụng: Draw.IO, C#.
+Liên kết: https://by.com.vn/uCPhv",4/5/2023,4/6/2023
+15,9,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Nhà phát triển front-end &; Nhà thiết kế UI / UX
+SaoLa - Nền tảng bảo vệ động vật hoang dã
+Tháng Mười Một 2021
+- Vai trò: Front-end Developer &; UI/UX Designer.
+- Tech stacks: Figma, ReactJS, Redux, JavaScript.
+- Thiết kế &; thực hiện UI / UX của web di động
+.app.
+
+- Dự án này cũng là giải pháp chiến thắng của Zoo-
+Hackathon Vietnam 2021 và đội ngũ của chúng tôi đã trở thành một
+
+của những người tham gia ZooHackathon Global 2021.
+Nhà phát triển di động &; Nhà thiết kế UI / UX
+Unisab - Ứng dụng thông tin sinh viên
+Tháng Năm 2021 - Hiện tại
+- Vai trò: Mobile Developer &; UI/UX Designer.
+- Ngăn xếp công nghệ: Figma, React Native, Redux, Google
+Firebase, JavaScript.
+- Thiết kế & triển khai UI / UX của ứng dụng di động.
+- Xuất bản ứng dụng lên Cửa hàng Google Play.
+- Xem bản demo và công việc của tôi trên GitHub và Google Play.
+Nhà phát triển di động &; Nhà thiết kế UI / UX
+Stylix - Ứng dụng thử quần áo ảo
+Tháng Năm 2021 - Tháng Tám 2021
+- Vai trò: Mobile Developer &; UI/UX Designer.
+- Tech stacks: Figma, React Native, JavaScript.
+- Thiết kế và triển khai UI/UX của ứng dụng di động.
+- Xem tác phẩm của tôi trên Figma.
+Nhà phát triển di động
+Ninja trái cây
+Tháng Hai 2022
+- Vai trò: Mobile Developer.
+- Tech stacks: React Native với thư viện Matter-JS,
+và JavaScript.
+- Tạo một bản sao của trò chơi Fruit Ninja.
+- Xem tác phẩm của tôi trên GitHub.
+Nhà phát triển trò chơi
+Đường Crossy
+Tháng Mười Hai 2020 - Tháng Giêng 2021
+- Vai trò: Nhà phát triển trò chơi.
+- Tech stacks: C++ với thư viện SFML.
+- Tạo một trò chơi tương tác, băng qua đường vô tận
+với đồ họa hoàn chỉnh.",4/5/2023,4/6/2023
+16,10,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Xây dựng website Nhà sách cho phép khách hàng duyệt sách, xem
+chi tiết, tìm kiếm sách, viết đánh giá và đăng ký tài khoản và mua sách,
+Xây dựng bảng quản trị cho phép người quản lý quản lý sách, khách hàng,
+Đánh giá và đơn đặt hàng
+Sử dụng Hibernate framework với JPA cho lớp truy cập dữ liệu
+Sử dụng JSP và JSTL cho lớp view
+Sử dụng HTML, CSS, Javascript và jQuery cho lớp view (Basic, The website
+chưa phản hồi cho các thiết bị khác)",4/5/2023,4/6/2023
+17,11,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"NHẬP LIỆU, PHUONG CHI SOFTWARE COMPANY",4/5/2023,4/6/2023
+18,12,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Ứng dụng trò chuyện
+Tính năng chi tiết: https://github.com/tuantmfullstack/chat-app-mern
+Trang web demo: https://timely-valkyrie-9365c6.netlify.app
+Những đặc điểm chính:
+- Chat Realtime: gửi, nhận tin nhắn ngay lập tức
+- Xác thực: đăng nhập, đăng ký, quên mật khẩu
+- Tính năng tin nhắn: hỗ trợ văn bản, hình ảnh,
+Các
+- Những thứ khác: Sử dụng biểu tượng cảm xúc cho các thông điệp hấp dẫn, trong
+cuộn nite
+
+Tháng Mười 25, 2022 - Tháng Chín 9, 2022
+Bản sao Jira
+Tính năng chi tiết: https://github.com/tuantmfullstack/jira-demo
+Trang web demo: https://effortless-buttercream-c3880c.netlify.app
+Những đặc điểm chính:
+- Dự án: tạo, tải lên, xóa, cài đặt danh mục
+- Xác thực: Đăng nhập, đăng ký bằng tên người dùng &; mật khẩu, Google,
+...
+- Nhiệm vụ: Sử dụng kéo và thả để đặt trạng thái nhiệm vụ, giao nhiều
+Người dùng...
+- Khác: Lọc tác vụ theo tên, người dùng, trình soạn thảo văn bản đa dạng thức
+Tháng Mười 25, 2022 - Tháng Chín 9, 2022
+",4/5/2023,4/6/2023
+19,13,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"2022-01 Trò chuyện Web
+
+- Front-end: ReactJS
+- Backend: NodeJS, MongoDB, socket
+
+Một trang web trò chuyện, mà người dùng có thể nghe nhạc, tạo danh sách phát của riêng bạn
+
+Bài hát và thêm bài hát vào bài hát yêu thích của bạn
+Mô tả dự án:
+Công nghệ:
+
+Github: https://github.com/MNguyen1302/ChatApp
+
+2022-04 Cửa hàng giày dép
+
+- Front-end: HTML, CSS và Javascript
+- Phụ trợ: PHP và MySQL
+
+Một trang web giày, mà người dùng có thể đặt hàng và mua sản phẩm. Ngoài ra
+
+Quản trị viên cũng có thể quản lý sản phẩm và đơn đặt hàng.
+Mô tả dự án:
+Công nghệ:
+
+Github: https://github.com/MNguyen1302/ShoesShop",4/5/2023,4/6/2023
+20,14,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"DNS Phone
+Portfolio
+Final project dùng Javascript",4/5/2023,4/6/2023
+21,15,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Lập trình viên thực tập Fontend tại CMC TS
+● Phân tích tài liệu yêu cầu.
+● Tạo kịch bản kiểm thử và trường hợp kiểm thử dựa trên
+yêu cầu / đặc điểm kỹ thuật.
+● Mã hóa
+● Sửa lỗi trên Jira.
+● Lập báo cáo
+● Mã phòng thu trực quan
+● Người đưa thư
+● Jira
+",4/5/2023,4/6/2023
+22,16,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Trò chơi bài
+Vị trí Full-stack Developer
+Trách nhiệm Thêm một số tính năng vào trò chơi
+Sửa một số lỗi
+Công nghệ đang sử dụng Frontend: Cocos Creator (HTML, CSS, JS)
+Phụ trợ: NodeJS, Nginx, pm2, MongoDB
+
+MAICO GROUP company (Cong ty TNHH MAICO GROUP)
+Vị trí Front-end Developer
+Trách nhiệm: Tạo ứng dụng front-end
+Công nghệ đang sử dụng Frontend: HTML, CSS, JS, NuxtJS/VueJS, Apollo client
+Backend: Máy chủ API GraphQL công khai
+
+Maico.vn
+Vị trí Fullstack Developer
+Trách nhiệm Tạo UI, tính năng cho front-end
+Đề xuất một số tính năng cho trang web
+Làm nhiệm vụ do tiền bối giao
+Công nghệ đang sử dụng Frontend: HTML, CSS, JS, NuxtJS, Apollo Client
+Phụ trợ: C # (.NET 5 với ASP.NET CORE), PostgresQL
+
+Hackathon UTE - troviet
+Vị trí Fullstack Developer DevOps
+Trách nhiệm Quản lý dự án, và đảm bảo dự án hoạt động tốt trong môi trường sản xuất.
+Triển khai các ứng dụng front-end và back-end.
+Công nghệ đang sử dụng Frontend: HTML, CSS, JS (Typescrypt), React/NextJS, Redux.
+Backend: NodeJS, MongoDB, AWS S3",4/5/2023,4/6/2023
+23,17,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Tự học
+Tự làm project cá nhân
+Hiện nay - Hiện nay
+Các sản phẩm tự làm: Website bán đồ chơi trẻ em.
+Live:
+Công nghệ sử dụng:
+Front End: Viết bằng ReactJS, dùng axios để gọi API lấy data và
+render ra dữ liệu, đồng thời CRUD dữ liệu. Dùng Redux và JWT để
+authentication và authorization. Người dùng có thể xem sản
+phẩm, thêm sản phẩm vào giỏ và tiến hành mua hàng. Ngoài ra
+còn kết hợp Boostrap để dựng UI. Website đã được responsive
+trên các loại thiết bị.
+Github:
+Back End: Sử dụng ExpressJS để xây dựng Server và MYSQL để
+làm việc với Database, Sử dụng JWT để xác thực dữ liệu từ phía
+client. Server được viết theo mô hình MVC nhằm tối ưu hóa code.
+Deployment: Với database, sử dụng supabase, BE sử dụng render
+và FE thì sử dụng vercel.
+Github:
+Biết làm việc với Git, Github để quản lý Source Code
+Link Github:
+Công ty MBSTORE
+Thực tập sinh
+8/2022 - 10/2022
+- Quản lý kho hàng, làm các công việc liên quan đến phần cứng
+máy tính",4/5/2023,4/6/2023
+24,18,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"XÂY DỰNG WEBSITE BÁN LAPTOP (website)
+- Frontend: Bootstrap 5, Jquery 3.4.1
+- Framework: ASP .NET MVC5
+- Backend: C#, SQL server
+XÂY DỰNG WEBSITE BÁN CAFE
+- Frontend: Boostrap 3, 4
+- Framework: ASP .NET MVC5
+- Backend: C#, SQL server
+XÂY DỰNG WEBSITE BÁN LAPTOP
+- Frontend: Boostrap 4, javascript
+- Backend: Java ( java servlet ), SQL server",4/5/2023,4/6/2023
+25,19,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Website quản lý thư viện trực tuyến
+Quản lý thư viện trực tuyến
+Website quảng bá, giới thiệu
+hình ảnh của thư viện cho độc giả,
+cung cấp thông tin, số lượng
+sách, phân loại sách, v.v. Để giúp đỡ
+Độc giả thuận tiện tra cứu.
+Chương trình hiện đang theo
+phát triển.
+Lập trình HTML, CSS, JS.
+Liên kết ứng dụng:
+https://github.com/nguyentrong
+quy11092001/KLTN.git",4/5/2023,4/6/2023
+26,20,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"CÔNG VIỆC HÀNG NGÀY
+Vị trí công việc Quản lý và phát triển dự án
+Vai trò trong nhóm Lập trình viên chính
+Quản lý dự án
+Công nghệ sử dụng Pugjs, Sass, Gulp, JavaScript
+
+Trang đích studio mộng mơ (https://duypham000.github.io/DreamyStudio/)
+Số thành viên 1
+Vị trí công việc Quản lý và phát triển dự án
+Vai trò trong nhóm Lập trinh viên chính
+Quản lý dự án
+Công nghệ sử dụng HTML, SASS, ReactJs
+
+Quản lý cafe
+Vị trí công việc Quản lý dự án
+Vai trò trong nhóm Quản lý và phát triển dự án
+Giải thích chi tiết toàn bộ mọi thứ về dự án cho khách hàng
+Công nghệ sử dụng C# Winform
+Máy chủ MySQL
+
+Quản lý vé xe
+Vị trí công việc Quản lý và phát triển dự án
+Vai trò trong nhóm Quản lý và phát triển dự án
+Giải thích chi tiết toàn bộ mọi thứ về dự án cho khách hàng
+Công nghệ sử dụng C# Winform
+Máy chủ MySQL",4/5/2023,4/6/2023
+27,21,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Dự đoán lãi suất  ngân hàng
+
+https://drive.google.com/drive/folders/1xQqDe-t5I6bK4snSVMxlkRGw-
+iq6jkD9?usp=sharing
+
+ Dự báo doanh số bán hàng của Walmart
+https://drive.google.com/drive/folders/1klqc0rm7OuUjI21XfuT_dCEfJfi_X8MV?usp=sharing
+ Đánh giá hiệu suất của các khung AutoML
+https://drive.google.com/drive/folders/1I113_-
+LVQCur_ECFHqBSBV_m70Wx2ut_?usp=chia sẻ",4/5/2023,4/6/2023
+28,22,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Giao đồ ăn
+MÃ NGUỒN:
+SỐNG:
+Mô tả:
+-Dự án này là một trang web đặt đồ ăn trực tuyến cho phép người dùng
+Chọn sản phẩm mà không cần đến cửa hàng trực tiếp.
+-Dự án này có các tính năng chính như:
++ Đăng ký, đăng nhập bằng Firebase.
++ Lọc sản phẩm, tìm sản phẩm, trưng bày sản phẩm trong giỏ hàng.
++ Xem thông tin chi tiết sản phẩm, phân trang.
++ Giao diện đẹp, trải nghiệm người dùng tốt.
++ Responsive: hỗ trợ nhiều màn hình.
+Công nghệ:
+• React / Hooks / Router V6 / Redux toolkit / Bootstrap /
+SCSS / Căn cứ hỏa lực
+
+Phim Netflix
+MÃ NGUỒN:
+SỐNG:
+Mô tả:
+-Dự án này là một trang web thông tin phim trực tuyến dựa trên
+API có sẵn do api.themoviedb.org cung cấp
+-Dự án này có các tính năng chính sau:
++ Đăng ký, đăng nhập và lưu dữ liệu người dùng vào cơ sở dữ liệu (Firebase).
++ Phân loại phim, truyền hình theo danh mục do api cung cấp (phim, truyền hình
+hàng loạt).
++ Xem thông tin phim chi tiết (mô tả, diễn viên, thể loại,
+trailer).
++ Tìm kiếm, phân trang dựa trên các params do api cung cấp.
++ Thêm, xóa các bộ phim yêu thích theo dữ liệu người dùng.
++ Giao diện đẹp, trải nghiệm người dùng tốt.
++ Responsive: hỗ trợ nhiều màn hình.
+Công nghệ:
+• React / Hooks / Router V6 / Redux toolkit / Bootstrap /
+SCSS / Căn cứ hỏa lực",4/5/2023,4/6/2023
+29,23,Đồ án môn học và cá nhân,3/1/2021,3/1/2021," học Khoa học 2020-2021
+Trình tạo dữ liệu sinh viên giả:
+- Hiểu được kiến trúc 3 lớp của một ứng dụng thông thường.
+- Thực hành tạo các lớp học đơn giản.
+Mẫu thiết kế cơ bản
+Hiểu, giải thích, thực hiện bốn mẫu thiết kế cơ bản:
+1. Singleton
+2. Nhà máy
+3. Nguyên mẫu
+4. Người xây dựng
+OOP (Dự án):
+
+Trường ĐH Khoa học Tự nhiên 2/2022-nay
+Phân đoạn phiên bản dựa trên Mask RCNN.
+Phát hiện hành vi bất thường dựa trên SVDD.
+Trong sơn.
+Tranh Fractal.",4/5/2023,4/6/2023
+30,24,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Ứng dụng trò chuyện
+Tính năng chi tiết: https://github.com/tuantmfullstack/chat-app-mern
+Trang web demo: https://timely-valkyrie-9365c6.netlify.app
+Những đặc điểm chính:
+- Chat Realtime: gửi, nhận tin nhắn ngay lập tức
+- Xác thực: đăng nhập, đăng ký, quên mật khẩu
+- Tính năng tin nhắn: hỗ trợ văn bản, hình ảnh,
+Các
+- Những thứ khác: Sử dụng biểu tượng cảm xúc cho các thông điệp hấp dẫn, trong
+cuộn nite
+
+Tháng Mười 25, 2022 - Tháng Chín 9, 2022
+Bản sao Jira
+Tính năng chi tiết: https://github.com/tuantmfullstack/jira-demo
+Trang web demo: https://effortless-buttercream-c3880c.netlify.app
+Những đặc điểm chính:
+- Dự án: tạo, tải lên, xóa, cài đặt danh mục
+- Xác thực: Đăng nhập, đăng ký bằng tên người dùng &; mật khẩu, Google,
+...
+- Nhiệm vụ: Sử dụng kéo và thả để đặt trạng thái nhiệm vụ, giao nhiều
+Người dùng...
+- Khác: Lọc tác vụ theo tên, người dùng, trình soạn thảo văn bản đa dạng thức
+Tháng Mười 25, 2022 - Tháng Chín 9, 2022
+Đặt tour
+Tính năng chi tiết: https://github.com/tuantmfullstack/natours-mern
+Trang web demo: https://timely-valkyrie-9365c6.netlify.app
+Những đặc điểm chính:
+- Xác thực: Đăng nhập, đăng ký, quên mật khẩu,...
+- Ủy quyền: Vai trò, hạn chế người dùng những gì họ có thể làm,...
+- An ninh: Ngăn chặn các cuộc tấn công nguy hiểm, vệ sinh,...
+- Tour: CRUD, Filter tour
+- Người dùng: Cập nhật thông tin, đánh giá, đặt chỗ
+- Khác: Xử lý lỗi,
+
+tải lên, Mapbox,...",4/5/2023,4/6/2023
+31,25,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"DU LỊCH VIỆT NAM
+https://vietnam-travel.netlify.app/
+Dự án này là một trang web nơi khách truy cập có thể nhận được chi tiết
+thông tin, tin tức mới nhất &; lời khuyên hữu ích về thị thực, điểm đến,
+ẩm thực &; làm gì ở Việt Nam.
+• Phản ứng / TailwindCSS / Bộ định tuyến Dom V6
+
+Điện thoại
++84 366 270 052
+Email
+namnguyenthanh.developer@gmail.com
+Trang mạng
+https://namdeveloper.netlify.app/
+Địa chỉ
+Ho Chi Minh City, Vietnam
+
+THƯƠNG MẠI ĐIỆN TỬ REVERIE
+https://reverie-watch.netlify.app/
+Đồng hồ Reverie là một trang web thương mại điện tử bán hàng xa xỉ
+Đồng hồ. Dự án này có các tính năng chính như: đầy đủ
+đáp ứng, đăng ký, đăng nhập, đăng xuất PayPal thanh toán, khách hàng
+đánh giá, lọc sản phẩm, phân trang...
+• Phản ứng / Hooks / ContextAPI / TailwindCSS
+• Nút / Express / MongoDB / Jwt / Cloudinary
+DANH MỤC ĐẦU TƯ CÁ NHÂN
+https://namdeveloper.netlify.app/
+Dự án này là dự án đầu tiên tôi xây dựng sau khi đột phá
+Hướng dẫn địa ngục. Tôi được truyền cảm hứng từ nhiều nhà phát triển tuyệt vời mà tôi có
+học hỏi từ Youtube, Udemy &; Freecodecamp.
+• Hoạt hình React / CSS / Animista",4/5/2023,4/6/2023
+32,26,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Xây dựng giao diện với HTML5, CSS3/SASS, Tailwind CSS
+Sử dụng Nextjs, Nodejs để phát triển website
+Sử dụng Mongodb để lưu trữ dữ liệu
+",4/5/2023,4/6/2023
+33,27,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"XÂY DỰNG ỨNG DỤNG TRACKING DỰA TRÊN ỨNG DỤNG
+OSMAND
+Công nghệ sử dụng : Java, OpenStreetMap, SQLite, GPS
+Công cụ lập trình: Android Studio
+Tính năng ứng dụng: Tracking, Upload to Openstreetmap, Export
+Database,...
+XẬY DỰNG ỨNG DỤNG THƯ VIỆN ẢNH TRỰC TUYẾN HALOGRAM
+Công nghệ sử dụng : Flutter , Firebase
+Công cụ lập trình: Android Studio
+Tính năng ứng dụng: Tải lên ảnh và nội dung, Bình luận, Thả tim,
+Gán vị trí,...
+XẬY DỰNG ỨNG DỤNG TRÌNH GHI MÀN HÌNH SCREEN RECORDER
+Công nghệ sử dụng : C# WPF, API
+Công cụ lập trình: Visual Studio
+Tính năng ứng dụng: Ghi màn hình, vẽ trên màn hình,....",4/5/2023,4/6/2023
+34,28,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Dự án Lớp học thân thiện
+Quản lý dự án,
+Front-End Developer Tháng Chín 2021 - Tháng Một 2022
+- Dự án nhóm trong môn Giới thiệu Kỹ thuật phần mềm
+- Mục đích: xây dựng một ứng dụng web E-Learning hoàn chỉnh cho giáo viên và học sinh
+- Quy mô nhóm: 5 --- 3 Front-End Developers, 2 Back-End Developer
+- Sử dụng kỹ thuật trong Front-End: React Hooks, Redux, Material UI, HTML5,
+SCSS, JS, Bootstrap 4, Axios
+- Kinh nghiệm: biết quy trình sản xuất hoạt động như thế nào, quản lý đội ngũ như một
+Project Manager, học kiểm thử tự động và áp dụng vào dự án này,...
+- Model: Scrum + RUP, tách project thành 6 sprint
+- Đối tượng chịu trách nhiệm:
++ Lập kế hoạch, chuẩn bị hồ sơ và lựa chọn kỹ thuật cho nhóm
++ Tổ chức cấu trúc và quản lý tất cả các nguồn Front-End
++ Thiết kế giao diện người dùng và bố cục mã cho Trang chủ, Đăng nhập, Đăng ký, Chỉ định
+Bài tập về nhà, chi tiết bài tập về nhà,...
+- Mã nguồn: https://github.com/duyonix/friendly_classroom
+- Bản demo: https://friendlyclassroom.vercel.app/
+Dự án Movie Booking Ticket
+Front-End Devloper Tháng Tư 2021 - Tháng Sáu 2021
+- Đồ án tốt nghiệp Học viện Cybersoft
+- Mục đích: sao chép tất cả các tickets.vn web
+- Quy mô đội: 3
+- Kỹ thuật: React Hooks, Redux, HTML5, CSS3, JS, Bootstrap 4, Material UI,
+Tiên đề
+- Kinh nghiệm: gọi API để tương tác với Back-End trong một dự án thực tế, phân tích và
+thiết kế UI/UX của web, sử dụng git để hợp tác với đồng đội
+- Trách nhiệm: Hoàn thành 2/3 mã bố trí nhà và tất cả phiếu đặt chỗ
+Bố trí, xử lý một số thành phần trong bố cục khác
+- Mã nguồn: https://github.com/duyonix/onixmovie
+- Bản demo: https://onixmovie.vercel.app/
+Dự án nhỏ Udemy
+Front-End Devloper Tháng Mười Hai 2020 - Tháng Một 2021
+- Dự án cá nhân để sao chép trang chủ của web Udemy
+- Kỹ thuật: SCSS, Bootstrap 4, HTML5,
+- Kinh nghiệm: Tổ chức cấu trúc cho SCSS, đáp ứng đầy đủ bố cục
+- Mã nguồn: https://github.com/duyonix/Udemy
+- Bản demo: https://duyonix.github.io/Udemy/
+Dự án khác
+Một số dự án nghiên cứu trong github của tôi:
+https://github.com/duyonix Tháng Mười Một 2020 - Hiện tại
+- Danh sách việc cần làm
+- Bàu Cua
+- Hóa đơn Uber
+- FoodApp với Android Studio: Java
+- AI-Lab1 - Thuật toán ra quyết định: Julia
+- AI-Lab2 - Logic mệnh đề: Python",4/5/2023,4/6/2023
+35,29,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Xây dựng trang thương mại điện tử bán
+đồng hồ :
+
+11/2021 - 1/2022
+làm việc với API , git , bitbucket , jira , lắng nghe feedback để cải thiện
+trang.
+Sử dụng :
+
++ Ngôn ngữ chính Javascript ,css , scss, styled-components, html, ant-
+design.
+
++ Framework : reactjs .
+
+Https://Github.Com/Tienanh2106/Shop.Git
+sử dụng :
++ HTML, CSS thuần , js
+
+Https://Github.Com/Tienanh2106/W3_band.Git
+sử dụng :
++ HTML, CSS thuần , js
+
+Https://Github.Com/Tienanh2106/Da_store.Git
+- Đây là trang thương mại điện tử bán đồng hồ, theo mô hình MVC.
+- Các chức năng có trong trang wed:
++ Xem chi tiết sản phẩm, thêm yêu thích , tìm kiếm .
++ Đặt hàng, giỏ hàng , xem hóa đơn.
++ Danh mục sản phẩm , trang tài khoản.
++ Đăng nhập, đăng xuất , đổi mật khẩu .
++ Trang admin quản lý toàn bộ hệ thống.
++ ....
+- Trang wed có một trang admin giúp quản lý toàn bộ sản phẩm bán ra,
+quản lý đc các hình ảnh quảng cáo cho nhãn hàng, quản lý toàn bộ thành
+viên đã đăng ký, ... chương trình được viết trên sublime text và dùng
+xampp để chạy.
+- Phần thực hiện :
++ Forntend: HTML , CSS , sử dụng mySQL .
+
++ Backend: PHP .
+
+Dự án : dinoland - blockchain project 1/2/2022 - 14/7/2022
+Dinoland
+Trang chủ :
+Trang wed :
+Vai trò : thực tập sinh phát triển giao diện wed bằng ngôn ngữ ReactJs ,
+thiết kế giao diện trên điện thoại , phối hợp với back-end , có kinh nghiệm
+làm việc với API , git , bitbucket , jira , lắng nghe feedback để cải thiện
+trang.
+Sử dụng :
+
++ Ngôn ngữ chính Javascript ,css , scss, styled-components, html, ant-
+design.
+
++ Framework : reactjs .
+
+Https://Github.Com/Tienanh2106/Shop.Git
+sử dụng :
++ HTML, CSS thuần , js",4/5/2023,4/6/2023
+36,30,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"* Dự án: Xây dựng và đánh giá cảm xúc theo
+bộ dữ liệu Nhận xét và phản hồi của khách hàng
+khi mua mỹ phẩm trên các sàn thương mại điện tử.
+- Xây dựng phản hồi thương mại điện tử của mỹ phẩm
+Tập dữ liệu (CECF), sử dụng máy học truyền thống
+các phương pháp như: Hồi quy logistic, Quyết định
+Tree, SVM, Naive Bayes để đánh giá tập dữ liệu.
+- Sử dụng: Google colab, Python
+* Dự án: Công nhận thực thể được đặt tên trên năm
+miền của tập dữ liệu CrossNER.
+- Tìm hiểu về các bộ dữ liệu CrossNER có sẵn, sử dụng
+
+các mô hình deep learning như: Bi-LSTM, Bi-Gru, Bi-
+LSTM + CNN, Bi-Gru + CNN, XML-RoBERTa cái này
+
+Đánh giá và so sánh với kết quả trong bản gốc
+bài báo của tác giả.
+- Sử dụng: Google colab, Python
+* Dự án: Xây dựng app đặt đồ ăn nhanh
+- Xây dựng ứng dụng thức ăn nhanh với các tính năng đơn giản
+- Sử dụng: Xamarin Forms, Firebase
+Kỹ năng có được thông qua công việc và dự án:
+- Khả năng tìm và hiểu bài viết
+- Có khả năng trình bày, giải thích ý tưởng, suy nghĩ và lý luận
+- Có khả năng làm việc theo nhóm
+- Khả năng tỉ mỉ, kiểm tra sai sót",4/5/2023,4/6/2023
+37,31,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Thành viên của Nhà phát triển
+HANU GDSC
+Tôi và nhóm của tôi đã thực hiện một dự án gọi là HiCode đó là
+Một ứng dụng web thẩm phán trực tuyến. Tôi chịu trách nhiệm về coder auth
+của phần phụ trợ. Chúng tôi đang trên đường hoàn thành từng API
+Giới thiệu về HiCode:
+Liên kết:
+Sử dụng Spring boot &; MySQL để thực hiện bất kỳ doanh nghiệp nào
+dịch vụ
+Nó tuân theo Domain Driven Design",4/5/2023,4/6/2023
+38,32,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Huimitu - Trang web thương mại điện tử
+Phát triển trang web thương mại điện tử tích hợp thanh toán
+phương pháp (ví dụ: Momo, PayPal)
+Chạy khai thác vật phẩm thường xuyên với KNIME cho
+đề xuất và trực quan hóa dữ liệu thống kê với Tableau
+Github: Kho lưu trữ Huimitu
+Youtube: Trình diễn Huimitu
+Trang mạng: Trang web Huimitu
+Đặt cọc DVP Token
+Phát triển trang web để đặt cọc mã thông báo có thể thay thế
+Tạo hợp đồng thông minh NEAR với Rust, bao gồm:
+Mã thông báo có thể thay thế
+Đình công hợp đồng
+Hợp đồng vòi
+Github: Kho lưu trữ đặt cọc DVP
+Trang web: Trang web đặt cọc DVP
+BeeKey
+Phát triển ứng dụng Android để thuê freelancer
+Thực hành sử dụng quy trình phát triển phần mềm Scrum
+Github: Kho lưu trữ BeeKey
+Youtube: Trình diễn BeeKey",4/5/2023,4/6/2023
+39,33,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Mạng xã hội
+- Kỹ thuật : Java, MySQL
+- Github: https://github.com/hoangnhat0710/Social-Network
+.
+. Thiết kế, phát triển và triển khai phụ trợ.
+Social Network API được tạo bằng Spring Boot framework.
+Kiểm tra trực tuyến
+- Kỹ thuật : Java, MySQL
+- Github: https://github.com/hoangnhat0710/Online-Test
+. Dự án này chứa một số API cơ bản trong ngữ cảnh của một
+trang web thi trắc nghiệm trực tuyến.
+API thương mại điện tử
+- Kỹ thuật : Java, MySQL
+- Github: https://github.com/hoangnhat0710/E-commerce-API
+. Thương mại điện tử REST API dựa trên Java Spring Boot, Hibernate.",4/5/2023,4/6/2023
+40,34,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Ứng dụng Clone Fiverr
+Công nghệ sử dụng
+- HTML5, CSS3, SASS, Material UI, Responsive.
+- Javascript, Axios.
+- Reacjs, Redux, Redux Toolkit, React Router Dom v6.
+
+Ứng dụng đặt phim
+Công nghệ sử dụng
+- HTML5, CSS3, SASS, Material UI, Responsive.
+- Javascript, Axios.
+- Reacjs, Redux, Redux Toolkit, React Router Dom.
+
+Tầm nhìn của Clone Corp
+Công nghệ sử dụng
+- HTML5, CSS3, Boostrap 4
+- Animate, Wowjs, Swiper, Lightbox Overlay, Magnific Popup",4/5/2023,4/6/2023
+41,35,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"TPX - Bán trái cây trực tuyến
+Tháng Hai 2022 - Tháng Tư 2022
+
+Ứng dụng web
+- Làm việc như fullstack developer để xây dựng một ứng dụng web thương mại điện tử cho
+trang web khách hàng.
+- Dự án dành cho Khóa học CSC13008 - Phát triển ứng dụng web.
+- Kỹ năng: NodeJS, mySQL, ExpressJS.
+
+Thể dục247
+Tháng Mười Một 2021 - Tháng Giêng 2022
+
+Ứng dụng di động
+- Thiết kế và xây dựng giao diện người dùng cho ứng dụng cho phép người dùng thực hiện theo
+các bài tập đã cho và theo dõi sự tiến bộ của họ.
+- Dự án dành cho Khóa học CSC13002- Giới thiệu về phần mềm
+Công trình.
+- Kỹ năng: Figma, Photoshop.
+
+Bán điện thoại trực tuyến
+Tháng Mười Một 2021 - Tháng Giêng 2022
+
+Ứng dụng web
+- Tham gia thiết kế cơ sở dữ liệu cũng như thiết kế và xây dựng giao diện người dùng cho app mà
+giúp người dùng mua điện thoại trực tuyến.
+- Dự án dành cho Khóa học CSC12002 - Cơ sở dữ liệu nâng cao.
+- Kỹ năng: Figma, Photoshop.
+
+Hệ thống tưới cây thông minh
+Tháng Bảy 2021 - Tháng Tám 2021
+
+IoT, Ứng dụng web
+- Xử lý gửi thông báo đến điện thoại của người dùng, thiết kế bản vẽ và 3D
+Mô hình cho hệ thống tưới nước thông minh.
+- Kỹ năng: Photoshop, Fusion360, Node-red, IFTTT
+",4/5/2023,4/6/2023
+42,36,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Trang web phim TMDB (Dự án cá nhân)Trách nhiệm của tôi
+- Chịu trách nhiệm về Giao diện Website.
+- Làm việc với API TMDB.
+- Chức năng chính:
++ Tìm kiếm
++ Chiếu trailer phim.
++ Hiển thị danh sách phim theo thể loại.
+Các công nghệ được sử dụng - ReactJS (React hooks, Redux/Redux Toolkit)
+
+Dự báo thời tiết (Dự án cá nhân)
+Trách nhiệm của tôi
+- Chịu trách nhiệm về Giao diện Website.
+- Làm việc với API.
+- Chức năng chính:
++ Tìm kiếm thành phố theo chìa khóa.
++ Nhận dự báo của thành phố.
++ Hiển thị chi tiết dự báo.
+Các công nghệ được sử dụng - ReactJS (React hooks, Redux/Redux Toolkit)
+
+ChatBox (Dự án cá nhân)
+Các công nghệ được sử dụng - ReactJS (React hooks, Firebase)",4/5/2023,4/6/2023
+43,37,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Phân tích mạng lưới tổ chức
+Thực tập FPT Telecom 09-05-2022 - 09-08-2022
+Phân tích mạng lưới tổ chức là một phương pháp mô tả các mối quan hệ
+trong các tổ chức bằng cách đại diện cho mối quan hệ giữa các cá nhân
+thông qua hành vi tương tác trong cuộc sống hàng ngày.
+Mục đích:
+- ONA được sử dụng để xác định hiệu quả của một tổ chức
+Hoạt động.
+- Các nhà lãnh đạo quan sát ONA có thể giúp họ hiểu cách họ
+Các tổ chức làm việc và cộng tác, và ai là người chủ chốt mà họ
+cần phải làm việc với.
+- Các dự án và tình hình nhân sự tại từng vai trò công việc của
+tổ chức.
+- Phân biệt giữa nhân viên chính thức và thực tập sinh.
+- Có thể đánh giá hiệu suất của nhân viên, liệu họ có hiệu quả hay không
+Kết nối các thành viên trong nhóm, cộng tác và chia sẻ kiến thức với
+Thúc đẩy năng suất hoặc thúc đẩy đổi mới.
+- Tìm hiểu xem nhóm / người nào có xu hướng tách biệt với phần còn lại
+lên với các giải pháp.
+- Mô hình ONA có thể tìm thấy các vấn đề trong tổ chức ngay cả khi chúng
+không muốn tiết lộ nó",4/5/2023,4/6/2023
+44,38,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"PHP, Mongo DB, Solr, HTML, CSS, javascript,...
+- Chuyển đổi từ MongoDB sang Oracle
+
+K12 TRỰC TUYẾN | Nhà phát triển back-end
+Mô tả:__________:
+- Phần mềm ôn thi trực tuyến cho tất cả các đơn vị nhà trường
+Trách nhiệm:
+- Phân tích và thiết kế hệ thống
+- Tối ưu hóa code
+- Giao tiếp và hỗ trợ khách hàng
+- Xây dựng chức năng quản lý đề thi, đề thi cho giáo viên, ngân hàng câu hỏi,...
+- Xây dựng chức năng đề thi, chấm thi cho học sinh
+- Tích hợp API để lấy dữ liệu giáo viên và học sinh từ Cơ sở dữ liệu ngành
+- Tích hợp API đồng bộ điểm số của học sinh với hệ thống SMAS",4/5/2023,4/6/2023
+45,39,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Lập trình viên Fullstack trong Công ty Tech JDI
+
+Sản phẩm Fintech từ Singapore kết nối
+giữa các chuyên gia quản lý tài sản,
+Cố vấn tài chính và khách hàng của họ bằng cách
+Tự động hóa và trực quan hóa dữ liệu chuyên sâu
+với ReactJS.
+Về phía máy chủ, tôi đã sử dụng NodeJS để viết mã,
+MongoDB, AWS S3 để kết nối và lưu trữ dữ liệu.
+2. Simply Weatlh - Lập trình viên Fullstack
+Đây là một ứng dụng di động tạo ra
+Cơ hội cho mọi người bằng cách kết nối với
+người dùng khác là mạng đáng tin cậy, hỗ trợ CNTT
+Trò chuyện với người khác trong thời gian thực.
+Triển khai và quản lý máy chủ trên EC2.
+
+Giúp đồng đội sửa một số lỗi ở phía trước-
+Kết thúc để cải thiện và học hỏi mới
+
+kỹ năng kỹ thuật (React Native, Typescript)
+Back-end: NodeJS (Express), Socket.io
+Cơ sở dữ liệu: MongoDB
+Đám mây: AWS (S3, SES), firebase.
+1. ReferReach - Back-end Developer",4/5/2023,4/6/2023
+46,40,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"https://github.com/muonroi/ConnectVN.Social_Network
+- Viết API dựa trên ABP Framework
+- Cơ sở dữ liệu được thiết kế bằng cách sử dụng mã đầu tiên
+- Xác thực
+- Đăng nhập, đăng ký
+- Gửi mail xác minh khi đăng ký tài khoản
+- Viết API cho các hàm như CRUD
+- Thông báo của người dùng khi câu chuyện yêu thích được xuất bản.
+- Sử dụng Swagger để quản lý API.
+
+https://github.com/muonroi/QuanLyKho
+- Viết API cho các hàm như CRUD
+- Đơn đặt hàng xuất khẩu, cũng như hiển thị danh sách sản phẩm
+
+LE ANH PHI
+BACK END DEVELOPER (.NET)
+
+- Đăng nhập, đăng ký
+-Thống kê
+- Sắp xếp sản phẩm theo danh mục
+- Sử dụng Swagger để quản lý API",4/5/2023,4/6/2023
+47,41,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Đạt được và áp dụng Flutter vào giao diện người dùng mã từ các thiết kế, hoạt ảnh Flutter cho UX tốt hơn,
+Thực hiện với Bloc Pattern &; Stream Builder.
+Tương tác với các chức năng đồng bộ &; quản lý nhà nước.
+Thích nghi với cấu trúc dự án của công ty, nghiên cứu và tương tác với microservices, CQRS
+pattern, Mockito framework, Java protobuf, triển khai các sự kiện CRUD, viết Unit Test với
+Mockito framework, kết hợp với Java Spring Boot.
+Tối ưu hóa mã trước đó, khởi chạy AWS SDK để triển khai các chức năng tính năng cần
+tương tác với AWS.
+Mặt trước (Flutter &; Dart):
+
+Back-end (Java):
+
+Nghiên cứu các quy ước mã.
+Khởi động PoC cho các tính năng mới.
+Đóng góp trong thiết kế cơ sở dữ liệu, phản hồi UI / UX, luồng trò chuyện, vuốt hẹn hò, xã hội
+kết nối mạng, v.v.
+Amazon Web Service: Cam kết mã, Xây dựng mã, S3, Elastic Container Service, Athena.",4/5/2023,4/6/2023
+48,42,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Mô tả: Ứng dụng học lập trình trực tuyến
+Số lượng thành viên: 1
+Vị trí phát triển
+Công nghệ đang sử dụng - Frontend: ReactJS, Redux
+
+- Phụ trợ: Nodejs (Express), Mongodb
+
+Mã nguồn - Khách hàng: https://github.com/mavietha7z/frontend_clone_f8
+- Quản trị viên: https://github.com/mavietha7z/admin_clone_f8
+
+Link deploy - Client: https://2cm.vn/
+- Quản trị viên: https://admin.2cm.vn/
+",4/5/2023,4/6/2023
+49,43,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"công nghệ: Flutter, NdeJS, PHP, MySQL
+Respnsibilities: Xây dựng, xử lý &giao diện mật và phía máy chủ
+fr syste%
+ Build &bile U) sử dụng Flutte
+ Xử lý thay đổi giao diện với Flutte
+ Xây dựng AP) fr syste &; sử dụng NdeJ (
+ Xử lý dữ liệu tương tác n giao diện thông qua API
+",4/5/2023,4/6/2023
+50,44,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,Không có,4/5/2023,4/6/2023
+51,45,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Trợ giảng
+Thứ sáu
+18 Tháng Bảy 2022 - 30
+Tháng Mười 2022
+
+/ Cisco CCNA cấp 1 (Giấy cấp 5 sử dụng Packet
+Bộ đánh dấu)
+và Advance Network Technologies (giấy cấp 7
+sử dụng OMNet ++)
+
+(Cisco CCNA 1) Giải thích các công nghệ mạng, phần cứng router cho học sinh.
+(Cisco CCNA 1) Giúp học sinh có thể hiểu cấu hình cài đặt ban đầu trên
+thiết bị mạng. Thực hiện kết nối mạng cơ bản giữa các thiết bị.
+(OMNet ++) Hỗ trợ học sinh trên lớp thực hành về thiết kế,
+triển khai và triển khai Gigabit Ethernet, ATM, Frame Relay, MPLS,
+và mạng quang hiện đại.
+(OMNet ++) Làm việc với sinh viên để hiểu nhu cầu và cung cấp
+khái niệm về mô hình chất lượng dịch vụ (QoS) và các vấn đề và thách thức khác nhau
+trong việc cung cấp QoS IP.
+Trợ lý nghiên cứu (sử dụng OMNet ++)
+Thứ sáu
+18 Nov 2022 - 23 Dec 2022 / Cơ sở AUT
+Sử dụng Omnet++ để thiết kế và chạy mô hình cơ bản (Infrastructure network)
+bao gồm: Bộ dịch vụ cơ bản (BSS) &Bộ dịch vụ mở rộng (ESS).",4/5/2023,4/6/2023
+52,46,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Xây dựng Angular WebSite
+Chủ đầu tư 04/2022 - 05/2022
+Xây dựng ứng dụng website bằng Angular
+- Số lượng thành viên: 01
+- Mô tả: Xây dựng giao diện người dùng Website, mẫu đăng ký, đăng nhập
+hình thức, giỏ hàng, chi tiết sản phẩm.....
+-Công nghệ được sử dụng: Angular, HTML, CSS, JavaScript, bootstrap và Star
+UML, Mã Visual Studio
+-Xem trước liên kết
+Sản phẩm:
+
+Xây dựng website PHP Quản lý điểm trường
+Chủ đầu tư 11/2021 - 01/2022
+- Xây dựng ứng dụng website php
+- Số lượng thành viên: 02
+- Mô tả: Xây dựng giao diện người dùng, hàm web CODE, sử dụng XAMPP, sử dụng mã php
+và My SQL
+- Công nghệ sử dụng: Visual Studio 2019, xampp, Visual Code
+-Liên kết
+Nguồn:
+
+NGỌC ITS ON
+NHÀ PHÁT TRIỂN FRONTEND MỚI HƠN
+
+https://www.facebook.com/lengocson2000/
+
+https://drive.google.com/drive/folders/1HxO67S6q5S9ZxwVpN
+VNawcCDkThy1eMQ
+
+https://drive.google.com/drive/folders/1047quGhmKZt0Jsr9jyf2
+AkeULkIE2pvq",4/5/2023,4/6/2023
+53,47,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Lấy cảm hứng từ Yahoo! Auctions, Horizon cung cấp
+nền tảng đấu giá quốc gia dành cho khách hàng (hoàn thành 80%).
+Tôi đã xử lý các nhiệm vụ liên quan đến cơ sở dữ liệu cùng với việc phát triển
+các API RESTful.
+Công cụ: HTML5, CSS, JavaScript, Handlebars, Tailwind CSS,
+NodeJS, ExpressJS, MySQL, Cloudinary, Heroku.
+Đây hiện là một dự án tự học, với lý do chính là
+để sử dụng RapidAPI để tìm nạp dữ liệu từ API Tìm kiếm của Google.
+",4/5/2023,4/6/2023
+54,48,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"DỰ ÁN CÁ NHÂN | Làm trò chơi
+Xây dựng trò chơi 2D đầu tiên của tôi, được gọi là Boucing Ball bằng cách sử dụng giao diện đồ họa, raster
+đồ họa, đồ họa vector.
+Hiểu lý thuyết về tạo trò chơi, cách thức hoạt động của công cụ trong một dự án trò chơi.
+Được bóp nghẹt với nguyên tắc OOP.
+07 - 2017
+DỰ ÁN TƯ NHÂN | Xây dựng thiệp chúc mừng sinh nhật bằng HTML
+Tra cứu một số nguồn mã tương tự có sẵn để tự mình tùy chỉnh dự án.
+05/2021 - NAY
+TRUNG TÂM NGOẠI NGỮ NEWSKY | Giáo viên tiếng Anh trực tuyến & ngoại tuyến
+Trách nhiệm chínhĐào tạo IELTS cho nhiều cấp độ người học khác nhau (từ Sơ cấp đến
+Trung cấp) dựa trên tài liệu tự chuẩn bịDạy tiếng Anh giao tiếp cho
+sinh viên đại học và công nhân cổ trắng với giáo trình có sẵn
+Đào tạo người được phỏng vấn cho các đơn xin VISA Mỹ
+Thành tích và kỹ năng đạt được IELTS và Giao tiếp có kinh nghiệm
+Hấp dẫn các lớp học sắp tới phong phú.
+",4/5/2023,4/6/2023
+55,49,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Karsale | Thu thập và phân tích dữ liệu | Github | 1/2022 – 3/2022
+• Hợp tác với 2 nhà phân tích kinh doanh và 1 người quản lý dự án để cải thiện [Karsale]
+hiệu suất đề xuất giá xe, do đó tăng doanh thu của [Karsale]
+• Tạo một công cụ python để lấy dữ liệu từ các trang web bán xe, phát triển có tác động
+bảng điều khiển bằng Python, Matplotlib và Tableau để xác định các chỉ số chính và chuyển đổi
+dữ liệu thô thành có ý nghĩa, sử dụng ML / DL để tạo mô hình có tác động cho dự báo và
+Đóng góp cho chiến lược của công ty
+• Góp phần tăng doanh số bán hàng lên 25% trên mỗi sản phẩm và giảm giỏ hàng
+27% bị bỏ rơi
+Youtube | Phân tích và trực quan hóa dữ liệu | Streamlit | 3/2022 – 4/2022
+• Phát triển trang web bảng điều khiển có tác động mạnh mẽ bằng cách sử dụng dữ liệu từ Kaggle transform raw
+dữ liệu thành dữ liệu có ý nghĩa để xác định Video và Chương trình video riêng lẻ nào
+đã thực hiện tốt giúp người dùng YouTube biết đâu là sức mạnh tốt nhất cho video tiếp theo
+do đó làm tăng chất lượng của kênh
+DỰ ÁN
+Dự án trực quan hóa dữ liệu
+Tạo bảng điều khiển trong tableau
+Để phân tích tiền lương giữa
+Đàn ông và phụ nữ trong
+Công ty từ năm 2000 đến năm 2022
+
+Phân tích dữ liệu thăm dò
+Dự án
+
+Phân tích giá xe ô tô trong
+Thống kê sử dụng thị trường Mỹ
+Phương pháp để tạo ra tốt nhất
+Mô hình dự báo giá
+
+Dự án tại Bách Khoa
+Đại học
+Phân tích giá nhà bằng cách sử dụng
+Minitab để tạo ra tốt nhất
+phương pháp dự báo và hơn thế nữa
+Tạo giá nhà tốt nhất
+Gợi ý cho khách hàng",4/5/2023,4/6/2023
+56,50,Đồ án môn học và cá nhân,3/1/2021,3/1/2021,"Tóm tắt: Ứng dụng này sẽ cung cấp cho bạn một bộ phim sắp tới, nổi tiếng mà bạn có thể dễ dàng lựa chọn
+từ.
+Công nghệ: Kotlin, REST API, MVVM Architecture, ROOM Database
+",4/5/2023,4/6/2023

@@ -108,10 +108,6 @@ class PostCommentController extends ApiController
                 return $this->respondNotFound('Comment not found');
             }
 
-            if ($comment->user_id !== $request->user()->id) {
-                return $this->respondForbidden('You are not authorized to delete this comment');
-            }
-
             $comment->delete();
 
             return $this->respondWithData(
