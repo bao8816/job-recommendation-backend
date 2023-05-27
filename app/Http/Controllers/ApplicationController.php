@@ -133,12 +133,13 @@ class ApplicationController extends ApiController
      *      ),
      *  ),
      */
-    public function getAllApplications(Request $request): JsonResponse
+    public function getApplications(Request $request): JsonResponse
     {
         try {
             $count_per_page = $request->count_per_page;
 
-            $applications = Application::paginate($count_per_page);
+            $applications = Application::filter($request, Application::query())
+                ->paginate($count_per_page);
 
             if (count($applications) === 0) {
                 return $this->respondNotFound();

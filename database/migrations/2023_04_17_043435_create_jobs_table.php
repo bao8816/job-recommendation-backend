@@ -33,7 +33,8 @@ return new class extends Migration
             $table->integer('max_salary');
             $table->integer('recruit_num');
             $table->string('position');
-            $table->string('year_of_experience');
+            $table->integer('min_yoe');
+            $table->integer('max_yoe');
             $table->date('deadline');
             $table->softDeletes();
             $table->timestamps();

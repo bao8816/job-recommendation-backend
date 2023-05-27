@@ -267,11 +267,8 @@ Route::middleware(['auth:sanctum', 'abilities:user,mod'])->controller(PostCommen
 // All roles (including guest)
 Route::controller(JobController::class)
     ->prefix('jobs')->group(function () {
-        Route::get('/company/{company_id}', 'getJobsByCompanyId');
-        Route::get('/employer/{employer_id}', 'getJobsByEmployerId');
-        Route::get('available', 'getAvailableJobs');
         Route::get('/{id}', 'getJobById');
-        Route::get('/', 'getAllJobs');
+        Route::get('/', 'getJobs');
     });
 
 // Only company and employer
@@ -506,7 +503,7 @@ Route::middleware(['auth:sanctum'])->controller(ApplicationController::class)
         Route::get('/user/{user_id}', 'getApplicationsByUserId');
         Route::get('/job/{job_id}', 'getApplicationsByJobId');
         Route::get('/{id}', 'getApplicationById');
-        Route::get('/', 'getAllApplications');
+        Route::get('/', 'getApplications');
     });
 
 // Only moderator
