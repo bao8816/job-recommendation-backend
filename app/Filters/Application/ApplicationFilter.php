@@ -10,5 +10,6 @@ class ApplicationFilter extends AbstractFilter
         'company_id' => CompanyFilter::class,
         'job_id' => JobFilter::class,
         'user_id' => UserFilter::class,
+        'status' => StatusFilter::class,
     ];
 }
