@@ -13,7 +13,7 @@
                     "Applications"
                 ],
                 "summary": "Get all applications",
-                "operationId": "28bf69b3746c34b4be85ddf6f37dbad0",
+                "operationId": "5254cac36eca0d95db405ae485811969",
                 "parameters": [
                     {
                         "name": "count_per_page",
@@ -53,7 +53,48 @@
                                                     "user_id": 2,
                                                     "cv_id": 2,
                                                     "status": "Đang chờ",
-                                                    "deleted_at": null
+                                                    "job": {
+                                                        "id": 1,
+                                                        "employer_id": 4,
+                                                        "title": "Trợ Lý Trưởng Phòng Xuất Nhập Khẩu",
+                                                        "description": "- Tư vấn tính năng, tiện ích và bán các sản phẩm điện thoại, máy tính bảng, Macbook tại Showroom. Không phải đi thị trường.- Phối hợp cùng team Marketing lên kế hoạch triển khai các Event hàng Tuần, Tháng và chương trình Chăm sóc sau Bán Hàng.- Các công việc khác được giao từ Quản lý. ",
+                                                        "benefit": "- Lương thỏa thuận (Tùy theo năng lực và kinh nghiệm). Ngoài ra còn chính sách thưởng hiệu quả làm việc.- Thưởng đột xuất theo thành tích đặc biệt và hoặc các sáng kiến cải tiến trong công việc.- Được hưởng đầy đủ quyền lợi của người lao động theo luật hiện hành (Bảo hiểm xã hội, Bảo hiểm y tế).- Được hưởng chế độ du lịch cùng Team, thưởng lễ Tết, thưởng theo doanh số kinh doanh của Công Ty.- Được tham gia đào tạo nâng cao chuyên sâu, chuyên môn và kỹ năng.- Cơ hội phát triển bản thân và thăng tiến trong tổ chức.- Môi trường làm việc năng động, thân thiện. Có cơ hội làm việc với nhiều đối tác lớn, uy tín.- Được hưởng năng suất hàng quý và tăng lương định kỳ. ",
+                                                        "requirement": "- Trợ lý Trưởng phòng Xuất nhập khẩu tối thiểu phải tốt nghiệp cử nhân ngành Kinh tế, Ngoại thương hoặc Kinh doanh quốc tế ngành Xuất nhập khẩu hoặc có kinh nghiệm từ 2 năm trở lên trong lĩnh vực này ở vị trí tương đương. Hoặc là dược sĩ và có kinh nghiệm làm việc ở vị trí tương đương.- Ưu tiên các ứng viên đã làm việc hoặc tiếp xúc với môi trường làm việc trong lĩnh vực dược phẩm (background kinh tế) hoặc công ty xuất nhật khẩu (background dược).- Trường hợp không đáp ứng toàn bộ MTCV và yêu cầu công việc nêu trên vẫn sẽ được đào tạo nhưng cần có ý chí mạnh mẽ, quyết tâm học việc, sự tập trung và khả năng chịu áp lực cao.- Có khả năng đàm phán và giao tiếp tốt, chịu áp lực công việc cao.- Có năng lực sắp xếp công việc, lên kế hoạch, báo cáo.- Có tiềm năng và hướng đến vị trí quản lý, điều hành, đưa ra được các đề xuất giúp phát triển phòng Xuất nhập khẩu tiến xa hơn và gắn với chiến lược công ty.- Có khả năng gắn kết, quan tâm, đánh giá và phát triển nguồn nhân lực trong phòng ban phục vụ cho sự phát triển của bản thân mỗi người, công việc và công ty theo giá trị cốt lõi của công ty.- Có kỹ năng sử dụng tiếng Anh, đặc biệt là kỹ năng viết tốt.- Có kỹ năng phân tích, tổng hợp tốt, đánh giá và đề xuất, tham mưu cho Hội đồng thành viên.- Có kỹ năng thuyết trình trước đám đông một cách rõ ràng, dễ hiểu, đạt được hiệu quả cao nhất.- Quyết đoán trong công việc, dám nghĩ dám làm, dám chịu trách nhiệm.- Có phẩm chất đạo đức tốt và trung thực. ",
+                                                        "min_salary": -1,
+                                                        "max_salary": -1,
+                                                        "recruit_num": 1,
+                                                        "position": "Toàn thời gian",
+                                                        "year_of_experience": "2",
+                                                        "deadline": "2024-09-01",
+                                                        "employer_profile": {
+                                                            "id": 4,
+                                                            "company_id": 5,
+                                                            "full_name": "Trinh Minh Sang",
+                                                            "avatar": "https://i.imgur.com/hepj9ZS.png",
+                                                            "company_profile": {
+                                                                "id": 5,
+                                                                "name": "CÔNG TY TNHH TRIỆU ĐIỀN",
+                                                                "logo": "https://i.imgur.com/hepj9ZS.png",
+                                                                "description": "none",
+                                                                "site": "không có",
+                                                                "address": "Tòa Ruby 1, Giang Biên, Long Biên, Hà Nội",
+                                                                "size": "25-99"
+                                                            }
+                                                        }
+                                                    },
+                                                    "user_profile": {
+                                                        "id": 2,
+                                                        "full_name": "NGO HONG CHAN",
+                                                        "avatar": "https://i.imgur.com/hepj9ZS.png",
+                                                        "about_me": "Giỏi giao tiếp, làm việc độc lập, làm việc nhóm, giải quyết vấn đề, Trách nhiệm cao, thân thiện, trung thực và chăm chỉ. Có thể làm việc dưới áp lực cao\\n",
+                                                        "good_at_position": "Full-Stack Developer",
+                                                        "year_of_experience": "0",
+                                                        "date_of_birth": "2000-01-01",
+                                                        "gender": "Nam",
+                                                        "address": "TPHCM",
+                                                        "email": "ngohongchan12a4@gmail.com",
+                                                        "phone": "(+84)768729814"
+                                                    }
                                                 },
                                                 {
                                                     "id": 2,
@@ -61,45 +102,54 @@
                                                     "user_id": 4,
                                                     "cv_id": 4,
                                                     "status": "Đang chờ",
-                                                    "deleted_at": null
-                                                },
-                                                {
-                                                    "id": 3,
-                                                    "job_id": 1,
-                                                    "user_id": 5,
-                                                    "cv_id": 5,
-                                                    "status": "Đang chờ",
-                                                    "deleted_at": null
-                                                },
-                                                {
-                                                    "id": 4,
-                                                    "job_id": 2,
-                                                    "user_id": 3,
-                                                    "cv_id": 3,
-                                                    "status": "Đang chờ",
-                                                    "deleted_at": null
-                                                },
-                                                {
-                                                    "id": 5,
-                                                    "job_id": 10,
-                                                    "user_id": 2,
-                                                    "cv_id": 2,
-                                                    "status": "Đang chờ",
-                                                    "deleted_at": null
-                                                },
-                                                {
-                                                    "id": 6,
-                                                    "job_id": 10,
-                                                    "user_id": 5,
-                                                    "cv_id": 5,
-                                                    "status": "Đang chờ",
-                                                    "deleted_at": null
+                                                    "job": {
+                                                        "id": 1,
+                                                        "employer_id": 4,
+                                                        "title": "Trợ Lý Trưởng Phòng Xuất Nhập Khẩu",
+                                                        "description": "- Tư vấn tính năng, tiện ích và bán các sản phẩm điện thoại, máy tính bảng, Macbook tại Showroom. Không phải đi thị trường.- Phối hợp cùng team Marketing lên kế hoạch triển khai các Event hàng Tuần, Tháng và chương trình Chăm sóc sau Bán Hàng.- Các công việc khác được giao từ Quản lý. ",
+                                                        "benefit": "- Lương thỏa thuận (Tùy theo năng lực và kinh nghiệm). Ngoài ra còn chính sách thưởng hiệu quả làm việc.- Thưởng đột xuất theo thành tích đặc biệt và hoặc các sáng kiến cải tiến trong công việc.- Được hưởng đầy đủ quyền lợi của người lao động theo luật hiện hành (Bảo hiểm xã hội, Bảo hiểm y tế).- Được hưởng chế độ du lịch cùng Team, thưởng lễ Tết, thưởng theo doanh số kinh doanh của Công Ty.- Được tham gia đào tạo nâng cao chuyên sâu, chuyên môn và kỹ năng.- Cơ hội phát triển bản thân và thăng tiến trong tổ chức.- Môi trường làm việc năng động, thân thiện. Có cơ hội làm việc với nhiều đối tác lớn, uy tín.- Được hưởng năng suất hàng quý và tăng lương định kỳ. ",
+                                                        "requirement": "- Trợ lý Trưởng phòng Xuất nhập khẩu tối thiểu phải tốt nghiệp cử nhân ngành Kinh tế, Ngoại thương hoặc Kinh doanh quốc tế ngành Xuất nhập khẩu hoặc có kinh nghiệm từ 2 năm trở lên trong lĩnh vực này ở vị trí tương đương. Hoặc là dược sĩ và có kinh nghiệm làm việc ở vị trí tương đương.- Ưu tiên các ứng viên đã làm việc hoặc tiếp xúc với môi trường làm việc trong lĩnh vực dược phẩm (background kinh tế) hoặc công ty xuất nhật khẩu (background dược).- Trường hợp không đáp ứng toàn bộ MTCV và yêu cầu công việc nêu trên vẫn sẽ được đào tạo nhưng cần có ý chí mạnh mẽ, quyết tâm học việc, sự tập trung và khả năng chịu áp lực cao.- Có khả năng đàm phán và giao tiếp tốt, chịu áp lực công việc cao.- Có năng lực sắp xếp công việc, lên kế hoạch, báo cáo.- Có tiềm năng và hướng đến vị trí quản lý, điều hành, đưa ra được các đề xuất giúp phát triển phòng Xuất nhập khẩu tiến xa hơn và gắn với chiến lược công ty.- Có khả năng gắn kết, quan tâm, đánh giá và phát triển nguồn nhân lực trong phòng ban phục vụ cho sự phát triển của bản thân mỗi người, công việc và công ty theo giá trị cốt lõi của công ty.- Có kỹ năng sử dụng tiếng Anh, đặc biệt là kỹ năng viết tốt.- Có kỹ năng phân tích, tổng hợp tốt, đánh giá và đề xuất, tham mưu cho Hội đồng thành viên.- Có kỹ năng thuyết trình trước đám đông một cách rõ ràng, dễ hiểu, đạt được hiệu quả cao nhất.- Quyết đoán trong công việc, dám nghĩ dám làm, dám chịu trách nhiệm.- Có phẩm chất đạo đức tốt và trung thực. ",
+                                                        "min_salary": -1,
+                                                        "max_salary": -1,
+                                                        "recruit_num": 1,
+                                                        "position": "Toàn thời gian",
+                                                        "year_of_experience": "2",
+                                                        "deadline": "2024-09-01",
+                                                        "employer_profile": {
+                                                            "id": 4,
+                                                            "company_id": 5,
+                                                            "full_name": "Trinh Minh Sang",
+                                                            "avatar": "https://i.imgur.com/hepj9ZS.png",
+                                                            "company_profile": {
+                                                                "id": 5,
+                                                                "name": "CÔNG TY TNHH TRIỆU ĐIỀN",
+                                                                "logo": "https://i.imgur.com/hepj9ZS.png",
+                                                                "description": "none",
+                                                                "site": "không có",
+                                                                "address": "Tòa Ruby 1, Giang Biên, Long Biên, Hà Nội",
+                                                                "size": "25-99"
+                                                            }
+                                                        }
+                                                    },
+                                                    "user_profile": {
+                                                        "id": 4,
+                                                        "full_name": "BÙI ANH THƯ",
+                                                        "avatar": "https://i.imgur.com/hepj9ZS.png",
+                                                        "about_me": "Tôi là một lập trình viên frontend với gần 2 năm kinh nghiệm về Reactjs, Javascript. Tôi luôn thích học hỏi các công nghệ mới, sẵn sàng giải quyết các vấn đề trong Web. Mong muốn trở thành lập trình viên Fullstack trong 2 năm tới",
+                                                        "good_at_position": "Frontend Developer",
+                                                        "year_of_experience": "2",
+                                                        "date_of_birth": "2001-01-01",
+                                                        "gender": "Nữ",
+                                                        "address": "TPHCM",
+                                                        "email": "thuanhbui2411@gmail.com",
+                                                        "phone": "(+84)989713105"
+                                                    }
                                                 }
                                             ],
                                             "first_page_url": "http://localhost:8000/api/applications?page=1",
                                             "from": 1,
-                                            "last_page": 1,
-                                            "last_page_url": "http://localhost:8000/api/applications?page=1",
+                                            "last_page": 3,
+                                            "last_page_url": "http://localhost:8000/api/applications?page=3",
                                             "links": [
                                                 {
                                                     "url": null,
@@ -112,16 +162,26 @@
                                                     "active": true
                                                 },
                                                 {
-                                                    "url": null,
+                                                    "url": "http://localhost:8000/api/applications?page=2",
+                                                    "label": "2",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/applications?page=3",
+                                                    "label": "3",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/applications?page=2",
                                                     "label": "Next &raquo;",
                                                     "active": false
                                                 }
                                             ],
-                                            "next_page_url": null,
+                                            "next_page_url": "http://localhost:8000/api/applications?page=2",
                                             "path": "http://localhost:8000/api/applications",
-                                            "per_page": 15,
+                                            "per_page": 2,
                                             "prev_page_url": null,
-                                            "to": 6,
+                                            "to": 2,
                                             "total": 6
                                         }
                                     },
@@ -195,222 +255,6 @@
                                         }
                                     },
                                     "status_code": 201
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/NotFound"
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/api/applications/user/{user_id}": {
-            "get": {
-                "tags": [
-                    "Applications"
-                ],
-                "summary": "Get all applications by user id",
-                "operationId": "b41b62928f49b2793a17d2ebb5b9f283",
-                "parameters": [
-                    {
-                        "name": "user_id",
-                        "in": "path",
-                        "description": "User id",
-                        "required": true
-                    },
-                    {
-                        "name": "count_per_page",
-                        "in": "query",
-                        "description": "Number of applications per page",
-                        "required": false
-                    },
-                    {
-                        "name": "Accept",
-                        "in": "header",
-                        "description": "application/json",
-                        "required": false
-                    },
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer {token}",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successfully retrieved applications",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": {
-                                    "error": false,
-                                    "message": "Xử lí thành công",
-                                    "data": {
-                                        "applications": {
-                                            "current_page": 1,
-                                            "data": [
-                                                {
-                                                    "id": 1,
-                                                    "job_id": 1,
-                                                    "user_id": 2,
-                                                    "cv_id": 2,
-                                                    "status": "Đang chờ",
-                                                    "deleted_at": null
-                                                },
-                                                {
-                                                    "id": 5,
-                                                    "job_id": 10,
-                                                    "user_id": 2,
-                                                    "cv_id": 2,
-                                                    "status": "Đang chờ",
-                                                    "deleted_at": null
-                                                }
-                                            ],
-                                            "first_page_url": "http://localhost:8000/api/applications/user/2?page=1",
-                                            "from": 1,
-                                            "last_page": 1,
-                                            "last_page_url": "http://localhost:8000/api/applications/user/2?page=1",
-                                            "links": [
-                                                {
-                                                    "url": null,
-                                                    "label": "&laquo; Previous",
-                                                    "active": false
-                                                },
-                                                {
-                                                    "url": "http://localhost:8000/api/applications/user/2?page=1",
-                                                    "label": "1",
-                                                    "active": true
-                                                },
-                                                {
-                                                    "url": null,
-                                                    "label": "Next &raquo;",
-                                                    "active": false
-                                                }
-                                            ],
-                                            "next_page_url": null,
-                                            "path": "http://localhost:8000/api/applications/user/2",
-                                            "per_page": 15,
-                                            "prev_page_url": null,
-                                            "to": 2,
-                                            "total": 2
-                                        }
-                                    },
-                                    "status_code": 200
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/NotFound"
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/api/applications/job/{job_id}": {
-            "get": {
-                "tags": [
-                    "Applications"
-                ],
-                "summary": "Get all applications by job id",
-                "operationId": "c03042e68bea208ca3065bb915b683f4",
-                "parameters": [
-                    {
-                        "name": "job_id",
-                        "in": "path",
-                        "description": "Job id",
-                        "required": true
-                    },
-                    {
-                        "name": "count_per_page",
-                        "in": "query",
-                        "description": "Number of applications per page",
-                        "required": false
-                    },
-                    {
-                        "name": "Accept",
-                        "in": "header",
-                        "description": "application/json",
-                        "required": false
-                    },
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer {token}",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successfully retrieved applications",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": {
-                                    "error": false,
-                                    "message": "Xử lí thành công",
-                                    "data": {
-                                        "applications": {
-                                            "current_page": 1,
-                                            "data": [
-                                                {
-                                                    "id": 1,
-                                                    "job_id": 1,
-                                                    "user_id": 2,
-                                                    "cv_id": 2,
-                                                    "status": "Đang chờ",
-                                                    "deleted_at": null
-                                                },
-                                                {
-                                                    "id": 5,
-                                                    "job_id": 10,
-                                                    "user_id": 2,
-                                                    "cv_id": 2,
-                                                    "status": "Đang chờ",
-                                                    "deleted_at": null
-                                                }
-                                            ],
-                                            "first_page_url": "http://localhost:8000/api/applications/job/2?page=1",
-                                            "from": 1,
-                                            "last_page": 1,
-                                            "last_page_url": "http://localhost:8000/api/applications/job/2?page=1",
-                                            "links": [
-                                                {
-                                                    "url": null,
-                                                    "label": "&laquo; Previous",
-                                                    "active": false
-                                                },
-                                                {
-                                                    "url": "http://localhost:8000/api/applications/job/2?page=1",
-                                                    "label": "1",
-                                                    "active": true
-                                                },
-                                                {
-                                                    "url": null,
-                                                    "label": "Next &raquo;",
-                                                    "active": false
-                                                }
-                                            ],
-                                            "next_page_url": null,
-                                            "path": "http://localhost:8000/api/applications/job/2",
-                                            "per_page": 15,
-                                            "prev_page_url": null,
-                                            "to": 2,
-                                            "total": 2
-                                        }
-                                    },
-                                    "status_code": 200
                                 }
                             }
                         }
@@ -2092,7 +1936,7 @@
                     "Jobs"
                 ],
                 "summary": "Get all jobs",
-                "operationId": "68d830ecc9ecc1782e62a404ab6f8273",
+                "operationId": "76bfd86dedad50b50047a697dd398cf5",
                 "parameters": [
                     {
                         "name": "count_per_page",
@@ -2282,468 +2126,6 @@
                 }
             }
         },
-        "/api/jobs/available": {
-            "get": {
-                "tags": [
-                    "Jobs"
-                ],
-                "summary": "Get all jobs available",
-                "operationId": "fbf7e71bbbbecbdc93f6b480f6dca95e",
-                "parameters": [
-                    {
-                        "name": "count_per_page",
-                        "in": "query",
-                        "description": "Number of jobs per page",
-                        "required": false
-                    },
-                    {
-                        "name": "Accept",
-                        "in": "header",
-                        "description": "application/json",
-                        "required": false
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successfully retrieved jobs",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": {
-                                    "error": false,
-                                    "message": "Xử lí thành công",
-                                    "data": {
-                                        "job": {
-                                            "current_page": 1,
-                                            "data": [
-                                                {
-                                                    "id": 1,
-                                                    "employer_id": 4,
-                                                    "title": "Trợ Lý Trưởng Phòng Xuất Nhập Khẩu",
-                                                    "description": "- Tư vấn tính năng, tiện ích và bán các sản phẩm điện thoại, máy tính bảng, Macbook tại Showroom. Không phải đi thị trường.- Phối hợp cùng team Marketing lên kế hoạch triển khai các Event hàng Tuần, Tháng và chương trình Chăm sóc sau Bán Hàng.- Các công việc khác được giao từ Quản lý. ",
-                                                    "benefit": "- Lương thỏa thuận (Tùy theo năng lực và kinh nghiệm). Ngoài ra còn chính sách thưởng hiệu quả làm việc.- Thưởng đột xuất theo thành tích đặc biệt và hoặc các sáng kiến cải tiến trong công việc.- Được hưởng đầy đủ quyền lợi của người lao động theo luật hiện hành (Bảo hiểm xã hội, Bảo hiểm y tế).- Được hưởng chế độ du lịch cùng Team, thưởng lễ Tết, thưởng theo doanh số kinh doanh của Công Ty.- Được tham gia đào tạo nâng cao chuyên sâu, chuyên môn và kỹ năng.- Cơ hội phát triển bản thân và thăng tiến trong tổ chức.- Môi trường làm việc năng động, thân thiện. Có cơ hội làm việc với nhiều đối tác lớn, uy tín.- Được hưởng năng suất hàng quý và tăng lương định kỳ. ",
-                                                    "requirement": "- Trợ lý Trưởng phòng Xuất nhập khẩu tối thiểu phải tốt nghiệp cử nhân ngành Kinh tế, Ngoại thương hoặc Kinh doanh quốc tế ngành Xuất nhập khẩu hoặc có kinh nghiệm từ 2 năm trở lên trong lĩnh vực này ở vị trí tương đương. Hoặc là dược sĩ và có kinh nghiệm làm việc ở vị trí tương đương.- Ưu tiên các ứng viên đã làm việc hoặc tiếp xúc với môi trường làm việc trong lĩnh vực dược phẩm (background kinh tế) hoặc công ty xuất nhật khẩu (background dược).- Trường hợp không đáp ứng toàn bộ MTCV và yêu cầu công việc nêu trên vẫn sẽ được đào tạo nhưng cần có ý chí mạnh mẽ, quyết tâm học việc, sự tập trung và khả năng chịu áp lực cao.- Có khả năng đàm phán và giao tiếp tốt, chịu áp lực công việc cao.- Có năng lực sắp xếp công việc, lên kế hoạch, báo cáo.- Có tiềm năng và hướng đến vị trí quản lý, điều hành, đưa ra được các đề xuất giúp phát triển phòng Xuất nhập khẩu tiến xa hơn và gắn với chiến lược công ty.- Có khả năng gắn kết, quan tâm, đánh giá và phát triển nguồn nhân lực trong phòng ban phục vụ cho sự phát triển của bản thân mỗi người, công việc và công ty theo giá trị cốt lõi của công ty.- Có kỹ năng sử dụng tiếng Anh, đặc biệt là kỹ năng viết tốt.- Có kỹ năng phân tích, tổng hợp tốt, đánh giá và đề xuất, tham mưu cho Hội đồng thành viên.- Có kỹ năng thuyết trình trước đám đông một cách rõ ràng, dễ hiểu, đạt được hiệu quả cao nhất.- Quyết đoán trong công việc, dám nghĩ dám làm, dám chịu trách nhiệm.- Có phẩm chất đạo đức tốt và trung thực. ",
-                                                    "min_salary": -1,
-                                                    "max_salary": -1,
-                                                    "recruit_num": 1,
-                                                    "position": "Toàn thời gian",
-                                                    "year_of_experience": "2",
-                                                    "deadline": "1970-01-01",
-                                                    "job_locations": [
-                                                        {
-                                                            "id": 1,
-                                                            "job_id": 1,
-                                                            "location": "Hồ Chí Minh: 72 Bình Giã"
-                                                        }
-                                                    ],
-                                                    "job_skills": [
-                                                        {
-                                                            "id": 1,
-                                                            "job_id": 1,
-                                                            "skill": "PowerPoint"
-                                                        },
-                                                        {
-                                                            "id": 2,
-                                                            "job_id": 1,
-                                                            "skill": "Microsoft Excel"
-                                                        },
-                                                        {
-                                                            "id": 3,
-                                                            "job_id": 1,
-                                                            "skill": "Microsoft Word"
-                                                        }
-                                                    ],
-                                                    "job_types": [
-                                                        {
-                                                            "id": 1,
-                                                            "job_id": 1,
-                                                            "type": "Nhân viên"
-                                                        }
-                                                    ]
-                                                }
-                                            ],
-                                            "first_page_url": "http://localhost:8000/api/jobs/1?page=1",
-                                            "from": 1,
-                                            "last_page": 1,
-                                            "last_page_url": "http://localhost:8000/api/jobs/1?page=1",
-                                            "links": [
-                                                {
-                                                    "url": null,
-                                                    "label": "&laquo; Previous",
-                                                    "active": false
-                                                },
-                                                {
-                                                    "url": "http://localhost:8000/api/jobs/1?page=1",
-                                                    "label": "1",
-                                                    "active": true
-                                                },
-                                                {
-                                                    "url": null,
-                                                    "label": "Next &raquo;",
-                                                    "active": false
-                                                }
-                                            ],
-                                            "next_page_url": null,
-                                            "path": "http://localhost:8000/api/jobs/1",
-                                            "per_page": 1,
-                                            "prev_page_url": null,
-                                            "to": 1,
-                                            "total": 1
-                                        }
-                                    },
-                                    "status_code": 200
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/NotFound"
-                    }
-                }
-            }
-        },
-        "/api/jobs/company/{company_id}": {
-            "get": {
-                "tags": [
-                    "Jobs"
-                ],
-                "summary": "Get all jobs by company id",
-                "operationId": "926f1caccca010ac9591c8c06abe1dd4",
-                "parameters": [
-                    {
-                        "name": "company_id",
-                        "in": "path",
-                        "description": "Company id",
-                        "required": true
-                    },
-                    {
-                        "name": "count_per_page",
-                        "in": "query",
-                        "description": "Number of jobs per page",
-                        "required": false
-                    },
-                    {
-                        "name": "Accept",
-                        "in": "header",
-                        "description": "application/json",
-                        "required": false
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successfully retrieved jobs",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": {
-                                    "error": false,
-                                    "message": "Xử lí thành công",
-                                    "data": {
-                                        "jobs": {
-                                            "current_page": 1,
-                                            "data": [
-                                                {
-                                                    "id": 41,
-                                                    "employer_id": 10,
-                                                    "title": "Nhân Viên Telesale",
-                                                    "description": "Tiếp nhận thông tin từ chuyên viên thiết kế Heating, Ventilating, and Air Conditioning, nghe hướng dẫn thực hiện công việc từ Chuyên viên, Chủ trì, hoặc Trưởng nhóm, cụ thể:Vẽ hệ thống mặt bằng và sơ đồ single-split trong căn hộ mẫu, điển hình, vẽ thực hiện theo mẫu đã thiết kế sẵn bao gồm:- Điều hòa âm trần nối ống gió trong căn hộ (vẽ ống mềm và phụ kiện)- Dàn lạnh treo tường trong căn hộ- Dàn lạnh cassetle trong căn hộ- Hệ thống thoát nước ngưng- Hệ thống ống gas- Hệ thống thoát mùi wc- Hệ thống thoát khói bếp- Hệ thống cấp gió tươi ",
-                                                    "benefit": "Được làm việc trong môi trường trẻ trung năng độngChưa có kinh nghiệm sẽ được đào tạoĐược hưởng nhiều chế độ + thưởng hấp dẫn ",
-                                                    "requirement": "Sinh viên các trường Đại học, Cao đẳng hoặc Trung cấp tại Hà NộiCó laptop cá nhânCó khả năng giao tiếp tốt, linh hoạt, giọng nói dễ nghe, không nói ngọng. ",
-                                                    "min_salary": -1,
-                                                    "max_salary": -1,
-                                                    "recruit_num": 4,
-                                                    "position": "Bán thời gian",
-                                                    "year_of_experience": "0",
-                                                    "deadline": "1970-01-01",
-                                                    "job_locations": [
-                                                        {
-                                                            "id": 47,
-                                                            "job_id": 41,
-                                                            "location": "Hà Tĩnh: Số 7"
-                                                        }
-                                                    ],
-                                                    "job_skills": [
-                                                        {
-                                                            "id": 114,
-                                                            "job_id": 41,
-                                                            "skill": "IT Helpdesk"
-                                                        }
-                                                    ],
-                                                    "job_types": [
-                                                        {
-                                                            "id": 42,
-                                                            "job_id": 41,
-                                                            "type": "Thực tập sinh"
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    "id": 9,
-                                                    "employer_id": 18,
-                                                    "title": "Nhân Viên Kinh Doanh Ngành Vận Tải Đường Bộ",
-                                                    "description": "- Quản lý tài khoản bán hàng online của công ty trên sàn thương mại điện tử Shopee- Đăng & tối ưu sản phẩm chuẩn SEO- Trang trí gian hàng, cập nhật thông tin gian hàng và theo dõi lượng truy cập để tối ưu hóa độ hiển thị.- Theo dõi các chương trình khuyến mãi và đưa ra các chương trình marketing phù hợp để thúc đẩy tăng doanh số bán hàng.- Tổng hợp, phân tích, báo cáo kết quả kinh doanh theo từng chương trình, từng quý.- Thu thập, phân tích các dữ liệu liênquan đến xu hướng của thị trường nhằm có những kế hoạch, thích nghi và tối đa hóa tiềm năng bán hàng. ",
-                                                    "benefit": "Lương thỏa thuận theo năng lựcĐóng BHXH, BHYT đầy đủ theo quy định của nhà nước.Tham gia các hoạt động teambuilding, du lịch hàng năm cùng công tyMôi trường làm việc trẻ, năng động, chuyên nghiệp ",
-                                                    "requirement": "Tốt nghiệp cao đẳng , đại học có liên quan : Giao thông vận tải , Quản trị kinh doanh , ......Yêu cầu Excel thông thạo.Có kỹ năng tổ chức và quản lý tốt, nắm bắt tâm lý và khả năng của các lái xe, điều hành, bố trí, phân công, theo dõi lộ trình lái xe hợp lý nhất.Khả năng xử lý tình huống phát sinh trong quá trình vận chuyển như: Hỏng xe, tai nạn, hàng hóa…Kỹ năng phân tích, thuyết trình & báo cáo tốt.Trung thực, khách quan, có tinh thần học hỏi, cầu tiến và trách nhiệm cao.Chịu được áp lực công việc cao, thời gian làm việc áp lực. ",
-                                                    "min_salary": -1,
-                                                    "max_salary": -1,
-                                                    "recruit_num": 2,
-                                                    "position": "Bán thời gian",
-                                                    "year_of_experience": "2",
-                                                    "deadline": "1970-01-01",
-                                                    "job_locations": [
-                                                        {
-                                                            "id": 12,
-                                                            "job_id": 9,
-                                                            "location": "Hồ Chí Minh: 79 Tô Ký"
-                                                        },
-                                                        {
-                                                            "id": 13,
-                                                            "job_id": 9,
-                                                            "location": "Hồ Chí Minh: Cầu Vượt Quang Trung"
-                                                        }
-                                                    ],
-                                                    "job_skills": [
-                                                        {
-                                                            "id": 24,
-                                                            "job_id": 9,
-                                                            "skill": "Word"
-                                                        },
-                                                        {
-                                                            "id": 25,
-                                                            "job_id": 9,
-                                                            "skill": "PowerPoint"
-                                                        },
-                                                        {
-                                                            "id": 26,
-                                                            "job_id": 9,
-                                                            "skill": "Excel cơ bản"
-                                                        }
-                                                    ],
-                                                    "job_types": [
-                                                        {
-                                                            "id": 9,
-                                                            "job_id": 9,
-                                                            "type": "Trưởng nhóm"
-                                                        }
-                                                    ]
-                                                }
-                                            ],
-                                            "first_page_url": "http://localhost:8000/api/jobs/company/2?page=1",
-                                            "from": 1,
-                                            "last_page": 3,
-                                            "last_page_url": "http://localhost:8000/api/jobs/company/2?page=3",
-                                            "links": [
-                                                {
-                                                    "url": null,
-                                                    "label": "&laquo; Previous",
-                                                    "active": false
-                                                },
-                                                {
-                                                    "url": "http://localhost:8000/api/jobs/company/2?page=1",
-                                                    "label": "1",
-                                                    "active": true
-                                                },
-                                                {
-                                                    "url": "http://localhost:8000/api/jobs/company/2?page=2",
-                                                    "label": "2",
-                                                    "active": false
-                                                },
-                                                {
-                                                    "url": "http://localhost:8000/api/jobs/company/2?page=3",
-                                                    "label": "3",
-                                                    "active": false
-                                                },
-                                                {
-                                                    "url": "http://localhost:8000/api/jobs/company/2?page=2",
-                                                    "label": "Next &raquo;",
-                                                    "active": false
-                                                }
-                                            ],
-                                            "next_page_url": "http://localhost:8000/api/jobs/company/2?page=2",
-                                            "path": "http://localhost:8000/api/jobs/company/2",
-                                            "per_page": 2,
-                                            "prev_page_url": null,
-                                            "to": 2,
-                                            "total": 5
-                                        }
-                                    },
-                                    "status_code": 200
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/NotFound"
-                    }
-                }
-            }
-        },
-        "/api/jobs/employer/{employer_id}": {
-            "get": {
-                "tags": [
-                    "Jobs"
-                ],
-                "summary": "Get jobs by employer id",
-                "operationId": "9708dcfbf49e441e63e6394ee0762b40",
-                "parameters": [
-                    {
-                        "name": "employer_id",
-                        "in": "path",
-                        "description": "Employer id",
-                        "required": true
-                    },
-                    {
-                        "name": "count_per_page",
-                        "in": "query",
-                        "description": "Number of jobs per page",
-                        "required": false
-                    },
-                    {
-                        "name": "Accept",
-                        "in": "header",
-                        "description": "application/json",
-                        "required": false
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Jobs retrieved successfully",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": {
-                                    "error": false,
-                                    "message": "Xử lí thành công",
-                                    "data": {
-                                        "jobs": {
-                                            "current_page": 1,
-                                            "data": [
-                                                {
-                                                    "id": 35,
-                                                    "employer_id": 2,
-                                                    "title": "Stock Controlling Supervisor",
-                                                    "description": "Phân tích đối thủ cạnh tranh, khảo sát từ khóa, lập kế hoạch SEO cho dự án website.Đề xuất kế hoạch và thực hiện tối ưu onpage, audit site, offpage …. để tăng thứ hạng website.Theo dõi sự phát triển của website, hiệu quả chiến dịch SEO, đề xuất phương án cải thiện nếu cần.Set up hệ thống vệ tinh và quản trị website vệ tinh.Phối hợp triển khai các chiến dịch, kế hoạch quảng cáo trên hệ thống nền tảng Online.Lập báo cáo thường kỳ theo tháng về kết quả SEO. ",
-                                                    "benefit": "- Mon - Fri, off Sat & Sunday- Meal allowance: 50,000 VND/working day- SHUI on full salary package- 13rd salary ++- Add-on health insurance PTI- Dynamic working environment- Open for career Path ",
-                                                    "requirement": "Bachelor Degree – Business Administration, Economics, Logistic2 years working experience in the similar position (especially Retail field)Strong communication, hardworking and carefulStrong analytical ability and good in data/ figures.Good at MS OfficeEnglish communication ",
-                                                    "min_salary": -1,
-                                                    "max_salary": -1,
-                                                    "recruit_num": 1,
-                                                    "position": "Toàn thời gian",
-                                                    "year_of_experience": "2",
-                                                    "deadline": "1970-01-01",
-                                                    "job_locations": [
-                                                        {
-                                                            "id": 41,
-                                                            "job_id": 35,
-                                                            "location": "Hồ Chí Minh: 2b Phan Thúc Duyện phường 4 Tân Bình HCM"
-                                                        }
-                                                    ],
-                                                    "job_skills": [
-                                                        {
-                                                            "id": 96,
-                                                            "job_id": 35,
-                                                            "skill": "Data Analysis"
-                                                        }
-                                                    ],
-                                                    "job_types": [
-                                                        {
-                                                            "id": 36,
-                                                            "job_id": 35,
-                                                            "type": "Nhân viên"
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    "id": 36,
-                                                    "employer_id": 2,
-                                                    "title": "Đào Tạo Quản Lý Canteen Tập Sự (8-10 Triệu)",
-                                                    "description": "- Chịu trách nhiệm phát triển các Khách hàng mới là đại lý, cửa hàng tạp hóa, siêu thị tiện lợi- Thực hiện việc đi thăm, khảo sát các đại lý hàng ngày tại khu vực phụ trách bằng xe máy.- Đảm bảo đầy đủ lượt khảo sát theo chỉ tiêu do Quản lý phát triển thị trường giao cho.- Truyền tải và đóng góp các ý kiến phản hồi để ngày càng hoàn thiện sản phẩm cho Khách hàng. ",
-                                                    "benefit": "Phúc lợi, chế độ đầy đủ (BHXH, thưởng, trợ cấp, phép năm,...)Miễn phí cơm trưaCơ hội tham gia các khóa đào tạo quản lýLương tháng 13/ Review lương hằng năm ",
-                                                    "requirement": "- Tốt nghiệp Đại học, Cao đẳng chuyên ngành Công nghệ thực phẩm, Quản trị kinh doanh, Quản lý công nghiệp.- Độ tuổi từ 22 – 25- Nhận đào tạo không cần kinh nghiệm- Thành thạo vi tính văn phòng, khả năng tổng hợp, thống kê, và báo cáo số liệu.- Làm việc tại các cơ sở canteen/ nhà máy ",
-                                                    "min_salary": -1,
-                                                    "max_salary": -1,
-                                                    "recruit_num": 10,
-                                                    "position": "Toàn thời gian",
-                                                    "year_of_experience": "<1",
-                                                    "deadline": "1970-01-01",
-                                                    "job_locations": [
-                                                        {
-                                                            "id": 42,
-                                                            "job_id": 36,
-                                                            "location": "Hà Nội: Địa điểm kinh doanh khu vực Đống Đa"
-                                                        }
-                                                    ],
-                                                    "job_skills": [
-                                                        {
-                                                            "id": 97,
-                                                            "job_id": 36,
-                                                            "skill": "Kỹ năng giao tiếp"
-                                                        },
-                                                        {
-                                                            "id": 98,
-                                                            "job_id": 36,
-                                                            "skill": "Tin học văn phòng"
-                                                        },
-                                                        {
-                                                            "id": 99,
-                                                            "job_id": 36,
-                                                            "skill": "Xử lý tình huống"
-                                                        },
-                                                        {
-                                                            "id": 100,
-                                                            "job_id": 36,
-                                                            "skill": "Kỹ năng quản lý công việc"
-                                                        }
-                                                    ],
-                                                    "job_types": [
-                                                        {
-                                                            "id": 37,
-                                                            "job_id": 36,
-                                                            "type": "Nhân viên"
-                                                        }
-                                                    ]
-                                                }
-                                            ],
-                                            "first_page_url": "http://localhost:8000/api/jobs/employer/2?page=1",
-                                            "from": 1,
-                                            "last_page": 1,
-                                            "last_page_url": "http://localhost:8000/api/jobs/employer/2?page=1",
-                                            "links": [
-                                                {
-                                                    "url": null,
-                                                    "label": "&laquo; Previous",
-                                                    "active": false
-                                                },
-                                                {
-                                                    "url": "http://localhost:8000/api/jobs/employer/2?page=1",
-                                                    "label": "1",
-                                                    "active": true
-                                                },
-                                                {
-                                                    "url": null,
-                                                    "label": "Next &raquo;",
-                                                    "active": false
-                                                }
-                                            ],
-                                            "next_page_url": null,
-                                            "path": "http://localhost:8000/api/jobs/employer/2",
-                                            "per_page": 2,
-                                            "prev_page_url": null,
-                                            "to": 2,
-                                            "total": 2
-                                        }
-                                    },
-                                    "status_code": 200
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "$ref": "#/components/responses/NotFound"
-                    }
-                }
-            }
-        },
         "/api/jobs/{id}": {
             "get": {
                 "tags": [
@@ -2776,81 +2158,49 @@
                                     "message": "Xử lí thành công",
                                     "data": {
                                         "job": {
-                                            "current_page": 1,
-                                            "data": [
+                                            "id": 1,
+                                            "employer_id": 4,
+                                            "title": "Trợ Lý Trưởng Phòng Xuất Nhập Khẩu",
+                                            "description": "- Tư vấn tính năng, tiện ích và bán các sản phẩm điện thoại, máy tính bảng, Macbook tại Showroom. Không phải đi thị trường.- Phối hợp cùng team Marketing lên kế hoạch triển khai các Event hàng Tuần, Tháng và chương trình Chăm sóc sau Bán Hàng.- Các công việc khác được giao từ Quản lý. ",
+                                            "benefit": "- Lương thỏa thuận (Tùy theo năng lực và kinh nghiệm). Ngoài ra còn chính sách thưởng hiệu quả làm việc.- Thưởng đột xuất theo thành tích đặc biệt và hoặc các sáng kiến cải tiến trong công việc.- Được hưởng đầy đủ quyền lợi của người lao động theo luật hiện hành (Bảo hiểm xã hội, Bảo hiểm y tế).- Được hưởng chế độ du lịch cùng Team, thưởng lễ Tết, thưởng theo doanh số kinh doanh của Công Ty.- Được tham gia đào tạo nâng cao chuyên sâu, chuyên môn và kỹ năng.- Cơ hội phát triển bản thân và thăng tiến trong tổ chức.- Môi trường làm việc năng động, thân thiện. Có cơ hội làm việc với nhiều đối tác lớn, uy tín.- Được hưởng năng suất hàng quý và tăng lương định kỳ. ",
+                                            "requirement": "- Trợ lý Trưởng phòng Xuất nhập khẩu tối thiểu phải tốt nghiệp cử nhân ngành Kinh tế, Ngoại thương hoặc Kinh doanh quốc tế ngành Xuất nhập khẩu hoặc có kinh nghiệm từ 2 năm trở lên trong lĩnh vực này ở vị trí tương đương. Hoặc là dược sĩ và có kinh nghiệm làm việc ở vị trí tương đương.- Ưu tiên các ứng viên đã làm việc hoặc tiếp xúc với môi trường làm việc trong lĩnh vực dược phẩm (background kinh tế) hoặc công ty xuất nhật khẩu (background dược).- Trường hợp không đáp ứng toàn bộ MTCV và yêu cầu công việc nêu trên vẫn sẽ được đào tạo nhưng cần có ý chí mạnh mẽ, quyết tâm học việc, sự tập trung và khả năng chịu áp lực cao.- Có khả năng đàm phán và giao tiếp tốt, chịu áp lực công việc cao.- Có năng lực sắp xếp công việc, lên kế hoạch, báo cáo.- Có tiềm năng và hướng đến vị trí quản lý, điều hành, đưa ra được các đề xuất giúp phát triển phòng Xuất nhập khẩu tiến xa hơn và gắn với chiến lược công ty.- Có khả năng gắn kết, quan tâm, đánh giá và phát triển nguồn nhân lực trong phòng ban phục vụ cho sự phát triển của bản thân mỗi người, công việc và công ty theo giá trị cốt lõi của công ty.- Có kỹ năng sử dụng tiếng Anh, đặc biệt là kỹ năng viết tốt.- Có kỹ năng phân tích, tổng hợp tốt, đánh giá và đề xuất, tham mưu cho Hội đồng thành viên.- Có kỹ năng thuyết trình trước đám đông một cách rõ ràng, dễ hiểu, đạt được hiệu quả cao nhất.- Quyết đoán trong công việc, dám nghĩ dám làm, dám chịu trách nhiệm.- Có phẩm chất đạo đức tốt và trung thực. ",
+                                            "min_salary": -1,
+                                            "max_salary": -1,
+                                            "recruit_num": 1,
+                                            "position": "Toàn thời gian",
+                                            "year_of_experience": "2",
+                                            "deadline": "2024-09-01",
+                                            "job_locations": [
                                                 {
                                                     "id": 1,
-                                                    "employer_id": 4,
-                                                    "title": "Trợ Lý Trưởng Phòng Xuất Nhập Khẩu",
-                                                    "description": "- Tư vấn tính năng, tiện ích và bán các sản phẩm điện thoại, máy tính bảng, Macbook tại Showroom. Không phải đi thị trường.- Phối hợp cùng team Marketing lên kế hoạch triển khai các Event hàng Tuần, Tháng và chương trình Chăm sóc sau Bán Hàng.- Các công việc khác được giao từ Quản lý. ",
-                                                    "benefit": "- Lương thỏa thuận (Tùy theo năng lực và kinh nghiệm). Ngoài ra còn chính sách thưởng hiệu quả làm việc.- Thưởng đột xuất theo thành tích đặc biệt và hoặc các sáng kiến cải tiến trong công việc.- Được hưởng đầy đủ quyền lợi của người lao động theo luật hiện hành (Bảo hiểm xã hội, Bảo hiểm y tế).- Được hưởng chế độ du lịch cùng Team, thưởng lễ Tết, thưởng theo doanh số kinh doanh của Công Ty.- Được tham gia đào tạo nâng cao chuyên sâu, chuyên môn và kỹ năng.- Cơ hội phát triển bản thân và thăng tiến trong tổ chức.- Môi trường làm việc năng động, thân thiện. Có cơ hội làm việc với nhiều đối tác lớn, uy tín.- Được hưởng năng suất hàng quý và tăng lương định kỳ. ",
-                                                    "requirement": "- Trợ lý Trưởng phòng Xuất nhập khẩu tối thiểu phải tốt nghiệp cử nhân ngành Kinh tế, Ngoại thương hoặc Kinh doanh quốc tế ngành Xuất nhập khẩu hoặc có kinh nghiệm từ 2 năm trở lên trong lĩnh vực này ở vị trí tương đương. Hoặc là dược sĩ và có kinh nghiệm làm việc ở vị trí tương đương.- Ưu tiên các ứng viên đã làm việc hoặc tiếp xúc với môi trường làm việc trong lĩnh vực dược phẩm (background kinh tế) hoặc công ty xuất nhật khẩu (background dược).- Trường hợp không đáp ứng toàn bộ MTCV và yêu cầu công việc nêu trên vẫn sẽ được đào tạo nhưng cần có ý chí mạnh mẽ, quyết tâm học việc, sự tập trung và khả năng chịu áp lực cao.- Có khả năng đàm phán và giao tiếp tốt, chịu áp lực công việc cao.- Có năng lực sắp xếp công việc, lên kế hoạch, báo cáo.- Có tiềm năng và hướng đến vị trí quản lý, điều hành, đưa ra được các đề xuất giúp phát triển phòng Xuất nhập khẩu tiến xa hơn và gắn với chiến lược công ty.- Có khả năng gắn kết, quan tâm, đánh giá và phát triển nguồn nhân lực trong phòng ban phục vụ cho sự phát triển của bản thân mỗi người, công việc và công ty theo giá trị cốt lõi của công ty.- Có kỹ năng sử dụng tiếng Anh, đặc biệt là kỹ năng viết tốt.- Có kỹ năng phân tích, tổng hợp tốt, đánh giá và đề xuất, tham mưu cho Hội đồng thành viên.- Có kỹ năng thuyết trình trước đám đông một cách rõ ràng, dễ hiểu, đạt được hiệu quả cao nhất.- Quyết đoán trong công việc, dám nghĩ dám làm, dám chịu trách nhiệm.- Có phẩm chất đạo đức tốt và trung thực. ",
-                                                    "min_salary": -1,
-                                                    "max_salary": -1,
-                                                    "recruit_num": 1,
-                                                    "position": "Toàn thời gian",
-                                                    "year_of_experience": "2",
-                                                    "deadline": "1970-01-01",
-                                                    "job_locations": [
-                                                        {
-                                                            "id": 1,
-                                                            "job_id": 1,
-                                                            "location": "Hồ Chí Minh: 72 Bình Giã"
-                                                        }
-                                                    ],
-                                                    "job_skills": [
-                                                        {
-                                                            "id": 1,
-                                                            "job_id": 1,
-                                                            "skill": "PowerPoint"
-                                                        },
-                                                        {
-                                                            "id": 2,
-                                                            "job_id": 1,
-                                                            "skill": "Microsoft Excel"
-                                                        },
-                                                        {
-                                                            "id": 3,
-                                                            "job_id": 1,
-                                                            "skill": "Microsoft Word"
-                                                        }
-                                                    ],
-                                                    "job_types": [
-                                                        {
-                                                            "id": 1,
-                                                            "job_id": 1,
-                                                            "type": "Nhân viên"
-                                                        }
-                                                    ]
+                                                    "job_id": 1,
+                                                    "location": "Hồ Chí Minh: 72 Bình Giã"
                                                 }
                                             ],
-                                            "first_page_url": "http://localhost:8000/api/jobs/1?page=1",
-                                            "from": 1,
-                                            "last_page": 1,
-                                            "last_page_url": "http://localhost:8000/api/jobs/1?page=1",
-                                            "links": [
+                                            "job_skills": [
                                                 {
-                                                    "url": null,
-                                                    "label": "&laquo; Previous",
-                                                    "active": false
+                                                    "id": 1,
+                                                    "job_id": 1,
+                                                    "skill": "PowerPoint"
                                                 },
                                                 {
-                                                    "url": "http://localhost:8000/api/jobs/1?page=1",
-                                                    "label": "1",
-                                                    "active": true
+                                                    "id": 2,
+                                                    "job_id": 1,
+                                                    "skill": "Microsoft Excel"
                                                 },
                                                 {
-                                                    "url": null,
-                                                    "label": "Next &raquo;",
-                                                    "active": false
+                                                    "id": 3,
+                                                    "job_id": 1,
+                                                    "skill": "Microsoft Word"
                                                 }
                                             ],
-                                            "next_page_url": null,
-                                            "path": "http://localhost:8000/api/jobs/1",
-                                            "per_page": 1,
-                                            "prev_page_url": null,
-                                            "to": 1,
-                                            "total": 1
+                                            "job_types": [
+                                                {
+                                                    "id": 1,
+                                                    "job_id": 1,
+                                                    "type": "Nhân viên"
+                                                }
+                                            ]
                                         }
                                     },
                                     "status_code": 200

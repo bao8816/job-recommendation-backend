@@ -147,8 +147,10 @@ class JobController extends ApiController
             $order_by = $request->order_by ?? 'id';
             $order_type = $request->order_type ?? 'asc';
 
-            $jobs = Job::filter($request, Job::query())->with('job_locations', 'job_skills', 'job_types')
-                ->orderBy($order_by, $order_type)->paginate($count_per_page);
+            $jobs = Job::filter($request, Job::query())
+                ->with('job_locations', 'job_skills', 'job_types')
+                ->orderBy($order_by, $order_type)
+                ->paginate($count_per_page);
 
             if (count($jobs) === 0) {
                 return $this->respondNotFound();

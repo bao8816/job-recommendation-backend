@@ -500,8 +500,6 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(EmployerProfil
 // All role
 Route::middleware(['auth:sanctum'])->controller(ApplicationController::class)
     ->prefix('applications')->group(function () {
-        Route::get('/user/{user_id}', 'getApplicationsByUserId');
-        Route::get('/job/{job_id}', 'getApplicationsByJobId');
         Route::get('/{id}', 'getApplicationById');
         Route::get('/', 'getApplications');
     });
