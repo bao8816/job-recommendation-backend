@@ -364,7 +364,8 @@ class JobController extends ApiController
             $job->max_salary = $request->max_salary;
             $job->recruit_num = $request->recruit_num;
             $job->position = $request->position;
-            $job->year_of_experience = $request->year_of_experience;
+            $job->min_yoe = $request->min_yoe;
+            $job->max_yoe = $request->max_yoe;
             $job->deadline = $request->deadline;
 
             $job->save();
@@ -464,16 +465,28 @@ class JobController extends ApiController
                 return $this->respondNotFound();
             }
 
-            $job->title = $request->title != null ? $request->title : $job->title;
-            $job->description = $request->description != null ? $request->description : $job->description;
-            $job->benefit = $request->benefit != null ? $request->benefit : $job->benefit;
-            $job->requirement = $request->requirement != null ? $request->requirement : $job->requirement;
-            $job->min_salary = $request->min_salary != null ? $request->min_salary : $job->min_salary;
-            $job->max_salary = $request->max_salary != null ? $request->max_salary : $job->max_salary;
-            $job->recruit_num = $request->recruit_num != null ? $request->recruit_num : $job->recruit_num;
-            $job->position = $request->position != null ? $request->position : $job->position;
-            $job->year_of_experience = $request->year_of_experience != null ? $request->year_of_experience : $job->year_of_experience;
-            $job->deadline = $request->deadline != null ? $request->deadline : $job->deadline;
+            if ($request->user()->tokenCan('company')) {
+                $temp_employer = EmployerProfile::where('id', $job->employer_id)->first();
+                if ($temp_employer->company_id != $request->user()->id) {
+                    return $this->respondForbidden('Bạn không có quyền chỉnh sửa thông tin này');
+                }
+            }
+
+            if ($job->employer_id != $request->user()->id) {
+                return $this->respondForbidden('Bạn không có quyền chỉnh sửa thông này');
+            }
+
+            $job->title = $request->title ?? $job->title;
+            $job->description = $request->description ?? $job->description;
+            $job->benefit = $request->benefit ?? $job->benefit;
+            $job->requirement = $request->requirement ?? $job->requirement;
+            $job->min_salary = $request->min_salary ?? $job->min_salary;
+            $job->max_salary = $request->max_salary ?? $job->max_salary;
+            $job->recruit_num = $request->recruit_num ?? $job->recruit_num;
+            $job->position = $request->position ?? $job->position;
+            $job->min_yoe = $request->min_yoe ?? $job->min_yoe;
+            $job->max_yoe = $request->max_yoe ?? $job->max_yoe;
+            $job->deadline = $request->deadline ?? $job->deadline;
 
             $job->save();
 
