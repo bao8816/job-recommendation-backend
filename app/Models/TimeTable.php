@@ -39,4 +39,9 @@ class TimeTable extends Model
     {
         return $this->belongsTo(UserAccount::class, 'user_id', 'id');
     }
+
+    public function user_profile(): BelongsTo
+    {
+        return $this->belongsTo(UserProfile::class, 'user_id', 'user_id');
+    }
 }

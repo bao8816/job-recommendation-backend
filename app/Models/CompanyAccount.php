@@ -49,6 +49,11 @@ class CompanyAccount extends Authenticatable
         return $this->hasMany(EmployerProfile::class, 'company_id', 'id');
     }
 
+    public function employer_profiles(): HasMany
+    {
+        return $this->hasMany(EmployerProfile::class, 'company_id', 'id');
+    }
+
     public function profile(): HasOne
     {
         return $this->hasOne(CompanyProfile::class, 'id', 'id');

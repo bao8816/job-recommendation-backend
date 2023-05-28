@@ -19,6 +19,7 @@ use App\Http\Controllers\JobTypeController;
 use App\Http\Controllers\PostCommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostReportController;
+use App\Http\Controllers\TimeTableController;
 use App\Http\Controllers\UserAccountController;
 use App\Http\Controllers\UserAchievementController;
 use App\Http\Controllers\UserEducationController;
@@ -259,6 +260,29 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(PostCommentCon
 Route::middleware(['auth:sanctum', 'abilities:user,mod'])->controller(PostCommentController::class)
     ->prefix('post-comments')->group(function () {
         Route::delete('/{id}', 'deletePostComment');
+    });
+
+//--------------------------------TIME TABLE---------------------------------
+// All roles
+Route::middleware(['auth:sanctum'])->controller(TimeTableController::class)
+    ->prefix('time-tables')->group(function () {
+        Route::get('/user/{user_id}', 'getTimeTablesByUserId');
+        Route::get('/{id}', 'getTimeTableById');
+        Route::get('/', 'getAllTimeTables');
+    });
+
+// Only user
+Route::middleware(['auth:sanctum', 'abilities:user'])->controller(TimeTableController::class)
+    ->prefix('time-tables')->group(function () {
+        Route::post('/', 'createTimeTable');
+
+        Route::put('/{id}', 'updateTimeTable');
+    });
+
+// Only user and moderator
+Route::middleware(['auth:sanctum', 'ability:user,mod'])->controller(TimeTableController::class)
+    ->prefix('time-tables')->group(function () {
+        Route::delete('/{id}', 'deleteTimeTable');
     });
 
 
