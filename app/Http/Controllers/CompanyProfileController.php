@@ -272,6 +272,7 @@ class CompanyProfileController extends ApiController
      *      path="/api/company-profiles/{id}",
      *      tags={"Company Profiles"},
      *      summary="Update company profile",
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="id",
      *          in="path",
