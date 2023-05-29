@@ -98,14 +98,14 @@ Route::middleware(['auth:sanctum', 'ability:user,mod'])->controller(UserAccountC
 // ---------User Profile
 // All roles
 Route::middleware(['auth:sanctum'])->controller(UserProfileController::class)
-    ->prefix('user')->group(function () {
+    ->prefix('user-profiles')->group(function () {
         Route::get('/profile/{id}', 'getUserProfile');
         Route::get('/profiles', 'getAllUserProfiles');
     });
 
 // Only user
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserProfileController::class)
-    ->prefix('user')->group(function () {
+    ->prefix('user-profiles')->group(function () {
         Route::put('/profile', 'updateUserProfile');
     });
 
