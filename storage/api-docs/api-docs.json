@@ -7,6 +7,625 @@
     },
     "paths": {
         "/api": {},
+        "/admin": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Get admin account",
+                "operationId": "9d312f5d670c9ac6fba9e19a69fba9a3",
+                "responses": {
+                    "200": {
+                        "description": "Get admin account successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "admin": {
+                                            "id": 1,
+                                            "username": "Admin",
+                                            "full_name": "Admin",
+                                            "avatar": "https://i.imgur.com/1Z1Z1Z1.png",
+                                            "is_banned": 0,
+                                            "locked_until": null,
+                                            "last_login": null
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/admin/mod": {
+            "post": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Create mod account",
+                "operationId": "df76e1b34ae0d3f4e1607b13cc0c9b46",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "username",
+                                    "password"
+                                ]
+                            },
+                            "example": {
+                                "username": "mod1",
+                                "password": "123456"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Mod account created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Tạo thành công",
+                                    "data": {
+                                        "modAccount": {
+                                            "username": "mod1",
+                                            "id": 2
+                                        }
+                                    },
+                                    "status_code": 201
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequest"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/mods": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Get all mods",
+                "operationId": "311f10c406be2505503696b9a4a4da67",
+                "parameters": [
+                    {
+                        "name": "count_per_page",
+                        "in": "query",
+                        "description": "Number of mods per page",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get all mods successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "mods": {
+                                            "current_page": 1,
+                                            "data": [
+                                                {
+                                                    "id": 2,
+                                                    "username": "mod1",
+                                                    "full_name": null,
+                                                    "avatar": "https://i.imgur.com/hepj9ZS.png",
+                                                    "is_banned": 0,
+                                                    "locked_until": null,
+                                                    "last_login": null
+                                                }
+                                            ],
+                                            "first_page_url": "http://127.0.0.1:8000/api/admin/mods?page=1",
+                                            "from": 1,
+                                            "last_page": 1,
+                                            "last_page_url": "http://127.0.0.1:8000/api/admin/mods?page=1",
+                                            "links": [
+                                                {
+                                                    "url": null,
+                                                    "label": "&laquo; Previous",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://127.0.0.1:8000/api/admin/mods?page=1",
+                                                    "label": "1",
+                                                    "active": true
+                                                },
+                                                {
+                                                    "url": null,
+                                                    "label": "Next &raquo;",
+                                                    "active": false
+                                                }
+                                            ],
+                                            "next_page_url": null,
+                                            "path": "http://127.0.0.1:8000/api/admin/mods",
+                                            "per_page": 10,
+                                            "prev_page_url": null,
+                                            "to": 1,
+                                            "total": 1
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/mods/{id}": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Get mod by id",
+                "operationId": "73395aa1b89ef3af34cf62a5a17cc32e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Mod id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get mod successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "mod": {
+                                            "id": 2,
+                                            "username": "mod1",
+                                            "full_name": null,
+                                            "avatar": "https://i.imgur.com/hepj9ZS.png",
+                                            "is_banned": 0,
+                                            "locked_until": null,
+                                            "last_login": null
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Update mod account",
+                "operationId": "f51a7dfa51b57c05be58f36dc345539e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Mod id",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {},
+                            "example": {
+                                "full_name": "mod 1"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Update mod account successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "mod": {
+                                            "id": 2,
+                                            "username": "mod1",
+                                            "full_name": "mod 1",
+                                            "avatar": "https://i.imgur.com/hepj9ZS.png",
+                                            "is_banned": 0,
+                                            "locked_until": null,
+                                            "last_login": null
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/admin/password": {
+            "put": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Update admin or mod password",
+                "operationId": "ca07779e50eddc8911f1d3ffd9159a32",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {},
+                            "example": {
+                                "current_password": "123456",
+                                "new_password": "1234567",
+                                "confirm_password": "1234567"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Update password successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "account": {
+                                            "id": 1,
+                                            "username": "Admin",
+                                            "full_name": "adminn",
+                                            "avatar": "https://i.imgur.com/1Z1Z1Z1.png",
+                                            "is_banned": 0,
+                                            "locked_until": null,
+                                            "last_login": null
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequest"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/admin/mod/{id}": {
+            "delete": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Delete mod account",
+                "operationId": "e997e5db4b4868898085adf88f1b8a52",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Mod id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Delete mod account successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xóa thành công",
+                                    "data": {
+                                        "mod": {
+                                            "id": 2,
+                                            "username": "mod1",
+                                            "full_name": "mod 1",
+                                            "avatar": "https://i.imgur.com/hepj9ZS.png",
+                                            "is_banned": 0,
+                                            "locked_until": null,
+                                            "last_login": null
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/admin/mod/ban/{id}": {
+            "put": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Ban mod account",
+                "operationId": "2c3b8a677c0121c55ac93e8409c16bcf",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Mod id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ban mod account successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "mod": {
+                                            "id": 2,
+                                            "username": "mod1",
+                                            "full_name": "mod 1",
+                                            "avatar": "https://i.imgur.com/hepj9ZS.png",
+                                            "is_banned": true,
+                                            "locked_until": null,
+                                            "last_login": null
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/admin/mod/unban/{id}": {
+            "put": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Unban mod account",
+                "operationId": "7bc80d65e55edf07d8a6a73d5730e300",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Mod id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Unban mod account successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "mod": {
+                                            "id": 2,
+                                            "username": "mod1",
+                                            "full_name": "mod 1",
+                                            "avatar": "https://i.imgur.com/hepj9ZS.png",
+                                            "is_banned": false,
+                                            "locked_until": null,
+                                            "last_login": null
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/admin/mod/lock/{id}": {
+            "put": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Lock mod account",
+                "operationId": "0237562ca1822389588870d72e003a3d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Mod id",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "description": "Lock mod account request body",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "locked_until"
+                                ]
+                            },
+                            "example": {
+                                "locked_until": "2024-05-31 00:00:00"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Lock mod account successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "mod": {
+                                            "id": 2,
+                                            "username": "mod1",
+                                            "full_name": "mod 1",
+                                            "avatar": "https://i.imgur.com/hepj9ZS.png",
+                                            "is_banned": 0,
+                                            "locked_until": "2024-05-31 00:00:00",
+                                            "last_login": null
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/admin/mod/unlock/{id}": {
+            "put": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Unlock mod account",
+                "operationId": "4e72e8bd6547ea1302c03fbe2bd3f11b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Mod id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Unlock mod account successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "mod": {
+                                            "id": 2,
+                                            "username": "mod1",
+                                            "full_name": "mod 1",
+                                            "avatar": "https://i.imgur.com/hepj9ZS.png",
+                                            "is_banned": 0,
+                                            "locked_until": null,
+                                            "last_login": null
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
         "/api/applications": {
             "get": {
                 "tags": [
@@ -4050,12 +4669,6 @@
                         "in": "header",
                         "description": "application/json",
                         "required": false
-                    },
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer {token}",
-                        "required": true
                     }
                 ],
                 "requestBody": {
@@ -4100,7 +4713,7 @@
                 },
                 "security": [
                     {
-                        "bearerAuth": []
+                        "sanctum": []
                     }
                 ]
             }
@@ -4124,12 +4737,6 @@
                         "in": "header",
                         "description": "application/json",
                         "required": false
-                    },
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer {token}",
-                        "required": true
                     }
                 ],
                 "responses": {
@@ -4253,7 +4860,7 @@
                 },
                 "security": [
                     {
-                        "bearerAuth": []
+                        "sanctum": []
                     }
                 ]
             }
@@ -4277,12 +4884,6 @@
                         "in": "header",
                         "description": "application/json",
                         "required": false
-                    },
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer {token}",
-                        "required": true
                     }
                 ],
                 "responses": {
@@ -4346,7 +4947,7 @@
                 },
                 "security": [
                     {
-                        "bearerAuth": []
+                        "sanctum": []
                     }
                 ]
             },
@@ -4368,12 +4969,6 @@
                         "in": "header",
                         "description": "application/json",
                         "required": false
-                    },
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer {token}",
-                        "required": true
                     }
                 ],
                 "responses": {
@@ -4405,7 +5000,7 @@
                 },
                 "security": [
                     {
-                        "bearerAuth": []
+                        "sanctum": []
                     }
                 ]
             }
@@ -4429,12 +5024,6 @@
                         "in": "header",
                         "description": "application/json",
                         "required": false
-                    },
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer {token}",
-                        "required": true
                     }
                 ],
                 "responses": {
@@ -4466,7 +5055,7 @@
                 },
                 "security": [
                     {
-                        "bearerAuth": []
+                        "sanctum": []
                     }
                 ]
             }
@@ -4490,12 +5079,6 @@
                         "in": "header",
                         "description": "application/json",
                         "required": false
-                    },
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer {token}",
-                        "required": true
                     }
                 ],
                 "responses": {
@@ -4527,7 +5110,7 @@
                 },
                 "security": [
                     {
-                        "bearerAuth": []
+                        "sanctum": []
                     }
                 ]
             }
@@ -4551,12 +5134,6 @@
                         "in": "header",
                         "description": "application/json",
                         "required": false
-                    },
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer {token}",
-                        "required": true
                     }
                 ],
                 "requestBody": {
@@ -4599,7 +5176,7 @@
                 },
                 "security": [
                     {
-                        "bearerAuth": []
+                        "sanctum": []
                     }
                 ]
             }
@@ -4623,12 +5200,6 @@
                         "in": "header",
                         "description": "application/json",
                         "required": false
-                    },
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer {token}",
-                        "required": true
                     }
                 ],
                 "responses": {
@@ -4660,7 +5231,7 @@
                 },
                 "security": [
                     {
-                        "bearerAuth": []
+                        "sanctum": []
                     }
                 ]
             }
@@ -6830,6 +7401,14 @@
             },
             "404": {
                 "$ref": "#/components/responses/NotFound"
+            }
+        },
+        "securitySchemes": {
+            "sanctum": {
+                "type": "apiKey",
+                "description": "Enter token in format (Bearer <token>)",
+                "name": "Authorization",
+                "in": "header"
             }
         }
     }

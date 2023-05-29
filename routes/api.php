@@ -44,7 +44,7 @@ use Illuminate\Support\Facades\Route;
 
 //------------------------------------ADMIN-----------------------------------
 // Only admin
-Route::middleware(['auth:sanctum', 'ability:*'])->controller(AdminController::class)
+Route::middleware(['auth:sanctum', 'abilities:*'])->controller(AdminController::class)
     ->prefix('admin')->group(function () {
         Route::get('/', 'getAdmin');
 
@@ -55,16 +55,17 @@ Route::middleware(['auth:sanctum', 'ability:*'])->controller(AdminController::cl
         Route::put('/mod/ban/{id}', 'banModAccount');
         Route::put('/mod/unban/{id}', 'unbanModAccount');
 
+        Route::put('/password', 'updatePassword');
+
         Route::delete('/mod/{id}', 'deleteModAccount');
     });
 
-Route::middleware(['auth:sanctum', 'ability:mod'])->controller(AdminController::class)
-    ->prefix('admin')->group(function () {
-        Route::get('/mods/{id}', 'getModById');
-        Route::get('/mods', 'getAllMods');
+Route::middleware(['auth:sanctum', 'abilities:mod'])->controller(AdminController::class)
+    ->prefix('mods')->group(function () {
+        Route::get('/{id}', 'getModById');
+        Route::get('/', 'getAllMods');
 
-        Route::put('/mod/password', 'updatePassword');
-        Route::put('/mod/{id}', 'updateModAccount');
+        Route::put('/{id}', 'updateModAccount');
     });
 
 //------------------------------------USER------------------------------------

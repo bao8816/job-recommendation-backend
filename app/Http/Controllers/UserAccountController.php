@@ -15,18 +15,12 @@ class UserAccountController extends ApiController
      *      path="/api/user/password",
      *      tags={"User Account"},
      *      summary="Update user password",
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="Accept",
      *          in="header",
      *          description="application/json",
      *          required=false,
-     *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true,
      *      ),
      *      @OA\RequestBody(
      *          required=true,
@@ -107,7 +101,7 @@ class UserAccountController extends ApiController
      *      path="/api/user-accounts",
      *      tags={"User Account"},
      *      summary="Get all user accounts",
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="count_per_page",
      *          in="query",
@@ -119,12 +113,6 @@ class UserAccountController extends ApiController
      *          in="header",
      *          description="application/json",
      *          required=false,
-     *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true,
      *      ),
      *      @OA\Response(
      *          response=200,
@@ -272,7 +260,7 @@ class UserAccountController extends ApiController
      *      path="/api/user-accounts/{id}",
      *      tags={"User Account"},
      *      summary="Get user account by id",
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="id",
      *          in="path",
@@ -284,12 +272,6 @@ class UserAccountController extends ApiController
      *          in="header",
      *          description="application/json",
      *          required=false,
-     *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true,
      *      ),
      *      @OA\Response(
      *          response=200,
@@ -379,7 +361,7 @@ class UserAccountController extends ApiController
      *      path="/api/user-accounts/ban/{id}",
      *      tags={"User Account"},
      *      summary="Ban user account",
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="id",
      *          in="path",
@@ -391,12 +373,6 @@ class UserAccountController extends ApiController
      *          in="header",
      *          description="application/json",
      *          required=false,
-     *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true,
      *      ),
      *      @OA\Response(
      *          response=200,
@@ -453,7 +429,7 @@ class UserAccountController extends ApiController
      *      path="/api/user-accounts/unban/{id}",
      *      tags={"User Account"},
      *      summary="Unban user account",
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="id",
      *          in="path",
@@ -465,12 +441,6 @@ class UserAccountController extends ApiController
      *          in="header",
      *          description="application/json",
      *          required=false,
-     *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true,
      *      ),
      *      @OA\Response(
      *          response=200,
@@ -527,7 +497,7 @@ class UserAccountController extends ApiController
      *      path="/api/user-accounts/lock/{id}",
      *      tags={"User Account"},
      *      summary="Lock user account",
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="id",
      *          in="path",
@@ -539,12 +509,6 @@ class UserAccountController extends ApiController
      *          in="header",
      *          description="application/json",
      *          required=false,
-     *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true,
      *      ),
      *      @OA\RequestBody(
      *          required=true,
@@ -610,7 +574,7 @@ class UserAccountController extends ApiController
      *      path="/api/user-accounts/unlock/{id}",
      *      tags={"User Account"},
      *      summary="Unlock user account",
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="id",
      *          in="path",
@@ -622,12 +586,6 @@ class UserAccountController extends ApiController
      *          in="header",
      *          description="application/json",
      *          required=false,
-     *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true,
      *      ),
      *      @OA\Response(
      *          response=200,
@@ -684,7 +642,7 @@ class UserAccountController extends ApiController
      *      path="/api/user-accounts/{id}",
      *      tags={"User Account"},
      *      summary="Delete user account",
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="id",
      *          in="path",
@@ -696,12 +654,6 @@ class UserAccountController extends ApiController
      *          in="header",
      *          description="application/json",
      *          required=false,
-     *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true,
      *      ),
      *      @OA\Response(
      *          response=200,
