@@ -16,7 +16,7 @@ class CompanyAccountController extends ApiController
      *      path="/api/company-accounts",
      *      tags={"Company Account"},
      *      summary="Get all company accounts",
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="count_per_page",
      *          in="query",
@@ -28,12 +28,6 @@ class CompanyAccountController extends ApiController
      *          in="header",
      *          description="application/json",
      *          required=false,
-     *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true,
      *      ),
      *      @OA\Response(
      *          response=200,
@@ -195,7 +189,7 @@ class CompanyAccountController extends ApiController
      *      path="/api/company-accounts/{id}",
      *      tags={"Company Account"},
      *      summary="Get company account by id",
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="id",
      *          in="path",
@@ -207,12 +201,6 @@ class CompanyAccountController extends ApiController
      *          in="header",
      *          description="application/json",
      *          required=false,
-     *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true,
      *      ),
      *      @OA\Response(
      *          response=200,
@@ -314,7 +302,7 @@ class CompanyAccountController extends ApiController
      *      path="/api/company/password",
      *      tags={"Company Account"},
      *      summary="Update company password",
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="Accept",
      *          in="header",
@@ -332,9 +320,9 @@ class CompanyAccountController extends ApiController
      *          @OA\JsonContent(
      *              example=
     {
-    "current_password": 123456,
-    "new_password": 123,
-    "confirm_password": 123
+    "current_password": "123456",
+    "new_password": "123",
+    "confirm_password": "123"
     }
      *          ),
      *      ),
@@ -407,7 +395,7 @@ class CompanyAccountController extends ApiController
      *      path="/api/company-accounts/verify/{id}",
      *      tags={"Company Account"},
      *      summary="Verify company account",
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="id",
      *          in="path",
@@ -419,12 +407,6 @@ class CompanyAccountController extends ApiController
      *          in="header",
      *          description="application/json",
      *          required=false,
-     *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true,
      *      ),
      *      @OA\Response(
      *          response=200,
@@ -482,7 +464,7 @@ class CompanyAccountController extends ApiController
      *      path="/api/company-accounts/ban/{id}",
      *      tags={"Company Account"},
      *      summary="Ban company account",
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="id",
      *          in="path",
@@ -494,12 +476,6 @@ class CompanyAccountController extends ApiController
      *          in="header",
      *          description="application/json",
      *          required=false,
-     *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true,
      *      ),
      *      @OA\Response(
      *          response=200,
@@ -557,7 +533,7 @@ class CompanyAccountController extends ApiController
      *      path="/api/company-accounts/unban/{id}",
      *      tags={"Company Account"},
      *      summary="Unban company account",
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="id",
      *          in="path",
@@ -569,12 +545,6 @@ class CompanyAccountController extends ApiController
      *          in="header",
      *          description="application/json",
      *          required=false,
-     *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true,
      *      ),
      *      @OA\Response(
      *          response=200,
@@ -632,7 +602,7 @@ class CompanyAccountController extends ApiController
      *      path="/api/company-accounts/lock/{id}",
      *      tags={"Company Account"},
      *      summary="Lock company account",
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="id",
      *          in="path",
@@ -644,12 +614,6 @@ class CompanyAccountController extends ApiController
      *          in="header",
      *          description="application/json",
      *          required=false,
-     *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true,
      *      ),
      *      @OA\RequestBody(
      *          required=true,
@@ -717,7 +681,7 @@ class CompanyAccountController extends ApiController
      *      path="/api/company-accounts/unlock/{id}",
      *      tags={"Company Account"},
      *      summary="Unlock company account",
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="id",
      *          in="path",
@@ -729,12 +693,6 @@ class CompanyAccountController extends ApiController
      *          in="header",
      *          description="application/json",
      *          required=false,
-     *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true,
      *      ),
      *      @OA\Response(
      *          response=200,
@@ -792,7 +750,7 @@ class CompanyAccountController extends ApiController
      *      path="/api/company-accounts/{id}",
      *      tags={"Company Account"},
      *      summary="Delete company account",
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="id",
      *          in="path",
@@ -804,12 +762,6 @@ class CompanyAccountController extends ApiController
      *          in="header",
      *          description="application/json",
      *          required=false,
-     *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true,
      *      ),
      *      @OA\Response(
      *          response=200,
