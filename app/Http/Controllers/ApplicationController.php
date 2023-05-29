@@ -18,7 +18,7 @@ class ApplicationController extends ApiController
      *      path="/api/applications",
      *      summary="Get all applications",
      *      tags={"Applications"},
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="count_per_page",
      *          in="query",
@@ -30,12 +30,6 @@ class ApplicationController extends ApiController
      *          in="header",
      *          description="application/json",
      *          required=false
-     *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true
      *      ),
      *      @OA\Response(
      *          response=200,
@@ -231,7 +225,7 @@ class ApplicationController extends ApiController
      *      path="/api/applications/{id}",
      *      summary="Get application by id",
      *      tags={"Applications"},
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="id",
      *          in="path",
@@ -249,12 +243,6 @@ class ApplicationController extends ApiController
      *          in="header",
      *          description="application/json",
      *          required=false
-     *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true
      *      ),
      *      @OA\Response(
      *          response=200,
@@ -353,18 +341,12 @@ class ApplicationController extends ApiController
      *      path="/api/applications",
      *      summary="Create new application",
      *      tags={"Applications"},
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="Accept",
      *          in="header",
      *          description="application/json",
      *          required=false
-     *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true
      *      ),
      *      @OA\RequestBody(
      *          required=true,
@@ -430,7 +412,7 @@ class ApplicationController extends ApiController
      *      path="/api/applications/approve/{id}",
      *      summary="Approve application",
      *      tags={"Applications"},
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="id",
      *          in="path",
@@ -442,12 +424,6 @@ class ApplicationController extends ApiController
      *          in="header",
      *          description="application/json",
      *          required=false
-     *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true
      *      ),
      *      @OA\Response(
      *          response=200,
@@ -511,7 +487,7 @@ class ApplicationController extends ApiController
      *      path="/api/applications/reject/{id}",
      *      summary="Reject application",
      *      tags={"Applications"},
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="id",
      *          in="path",
@@ -523,12 +499,6 @@ class ApplicationController extends ApiController
      *          in="header",
      *          description="application/json",
      *          required=false
-     *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true
      *      ),
      *      @OA\Response(
      *          response=200,
@@ -592,7 +562,7 @@ class ApplicationController extends ApiController
      *      path="/api/applications/{id}",
      *      summary="Delete application",
      *      tags={"Applications"},
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="id",
      *          in="path",
@@ -604,12 +574,6 @@ class ApplicationController extends ApiController
      *          in="header",
      *          description="application/json",
      *          required=false
-     *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true
      *      ),
      *      @OA\Response(
      *          response=200,
