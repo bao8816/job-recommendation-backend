@@ -12,41 +12,22 @@ class CVController extends ApiController
     public function getAllCVs(Request $request): JsonResponse
     {
         try {
-            $count_per_page = $request->count_per_page;
+            $count_per_page = $request->count_per_page ?? 10;
+            $order_by = $request->order_by ?? 'id';
+            $order_type = $request->order_type ?? 'asc';
 
-            $cvs = CV::paginate($count_per_page);
+            $cvs = CV::filter($request, CV::query())
+                ->orderBy($order_by, $order_type)
+                ->paginate($count_per_page);
 
             if (count($cvs) === 0) {
-                return $this->respondNotFound('No cvs found');
+                return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
                     'cvs' => $cvs,
-                ]
-                , 'Successfully retrieved cvs');
-        }
-        catch (Exception $exception) {
-            return $this->respondInternalServerError($exception->getMessage());
-        }
-    }
-
-    public function getCVsByUserId(Request $request, string $user_id): JsonResponse
-    {
-        try {
-            $count_per_page = $request->count_per_page;
-
-            $cvs = CV::where('user_id', $user_id)->paginate($count_per_page);
-
-            if (count($cvs) === 0) {
-                return $this->respondNotFound('No cvs found');
-            }
-
-            return $this->respondWithData(
-                [
-                    'cvs' => $cvs,
-                ]
-                , 'Successfully retrieved cvs');
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
@@ -56,17 +37,16 @@ class CVController extends ApiController
     public function getCVById(Request $request, string $id): JsonResponse
     {
         try {
-            $cv = CV::where('id', $id)->paginate(1);
+            $cv = CV::where('id', $id)->first();
 
-            if (count($cv) === 0) {
-                return $this->respondNotFound('No cv found');
+            if (!$cv) {
+                return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
                     'cv' => $cv,
-                ]
-                , 'Successfully retrieved cv');
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
@@ -81,11 +61,10 @@ class CVController extends ApiController
             $cv->cv_path = $request->cv_path;
             $cv->save();
 
-            return $this->respondWithData(
+            return $this->respondCreated(
                 [
                     'cv' => $cv,
-                ]
-                , 'Successfully created cv');
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
@@ -98,17 +77,20 @@ class CVController extends ApiController
             $cv = CV::where('id', $id)->first();
 
             if (!$cv) {
-                return $this->respondNotFound('No cv found');
+                return $this->respondNotFound();
             }
 
-            $cv->cv_path = $request->cv_path;
+            if ($request->user()->id !== $cv->user_id) {
+                return $this->respondForbidden('Bạn không có quyền chỉnh sửa CV này');
+            }
+
+            $cv->cv_path = $request->cv_path ?? $cv->cv_path;
             $cv->save();
 
             return $this->respondWithData(
                 [
                     'cv' => $cv,
-                ]
-                , 'Successfully updated cv');
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
@@ -121,7 +103,11 @@ class CVController extends ApiController
             $cv = CV::where('id', $id)->first();
 
             if (!$cv) {
-                return $this->respondNotFound('No cv found');
+                return $this->respondNotFound();
+            }
+
+            if (!$request->user()->tokenCan('mod') && $request->user()->id !== $cv->user_id) {
+                return $this->respondForbidden('Bạn không có quyền xóa CV này');
             }
 
             $cv->delete();
@@ -129,8 +115,7 @@ class CVController extends ApiController
             return $this->respondWithData(
                 [
                     'cv' => $cv,
-                ]
-                , 'Successfully deleted cv');
+                ], 'Xoá thành công');
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());

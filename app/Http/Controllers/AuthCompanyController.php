@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SignUpRequest;
 use App\Models\CompanyAccount;
 use App\Models\CompanyProfile;
 use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -55,7 +57,7 @@ class AuthCompanyController extends ApiController
      *      ),
      *  )
      */
-    public function signUp(Request $request)
+    public function signUp(Request $request): JsonResponse
     {
         try {
             $username = $request->username;
@@ -145,7 +147,7 @@ class AuthCompanyController extends ApiController
      *      ),
      *  )
      */
-    public function signIn(Request $request)
+    public function signIn(Request $request): JsonResponse
     {
         try {
             $username = $request->username;

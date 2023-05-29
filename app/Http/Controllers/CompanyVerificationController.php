@@ -9,44 +9,25 @@ use Illuminate\Http\Request;
 
 class CompanyVerificationController extends ApiController
 {
-    public function getAllCompanyVerifications(Request $request): JsonResponse
+    public function getCompanyVerifications(Request $request): JsonResponse
     {
         try {
-            $count_per_page = $request->count_per_page;
+            $count_per_page = $request->count_per_page ?? 10;
+            $order_by = $request->order_by ?? 'id';
+            $order_type = $request->order_type ?? 'asc';
 
-            $companyVerifications = CompanyVerification::paginate($count_per_page);
+            $company_vevrifications = CompanyVerification::filter($request, CompanyVerification::query())
+                ->orderBy($order_by, $order_type)
+                ->paginate($count_per_page);
 
-            if (count($companyVerifications) === 0) {
-                return $this->respondNotFound('No company verifications found');
+            if (count($company_vevrifications) === 0) {
+                return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'companyVerifications' => $companyVerifications,
-                ]
-                , 'Successfully retrieved company verifications');
-        }
-        catch (Exception $exception) {
-            return $this->respondInternalServerError($exception->getMessage());
-        }
-    }
-
-    public function getCompanyVerificationsByCompanyId(Request $request, string $company_id): JsonResponse
-    {
-        try {
-            $count_per_page = $request->count_per_page;
-
-            $companyVerifications = CompanyVerification::where('company_id', $company_id)->paginate($count_per_page);
-
-            if (count($companyVerifications) === 0) {
-                return $this->respondNotFound('No company verifications found');
-            }
-
-            return $this->respondWithData(
-                [
-                    'companyVerifications' => $companyVerifications,
-                ]
-                , 'Successfully retrieved company verifications');
+                    'company_vevrifications' => $company_vevrifications,
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
@@ -56,17 +37,16 @@ class CompanyVerificationController extends ApiController
     public function getCompanyVerificationById(Request $request, string $id): JsonResponse
     {
         try {
-            $companyVerification = CompanyVerification::where('id', $id)->paginate(1);
+            $company_verification = CompanyVerification::where('id', $id)->first();
 
-            if (count($companyVerification) === 0) {
-                return $this->respondNotFound('No company verification found');
+            if (!$company_verification) {
+                return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'companyVerification' => $companyVerification,
-                ]
-                , 'Successfully retrieved company verification');
+                    'company_verification' => $company_verification,
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
@@ -76,16 +56,15 @@ class CompanyVerificationController extends ApiController
     public function createCompanyVerification(Request $request): JsonResponse
     {
         try {
-            $companyVerification = new CompanyVerification();
-            $companyVerification->company_id = $request->company_id;
-            $companyVerification->verification_url = $request->verification_url;
-            $companyVerification->save();
+            $company_verification = new CompanyVerification();
+            $company_verification->company_id = $request->company_id;
+            $company_verification->verification_url = $request->verification_url;
+            $company_verification->save();
 
-            return $this->respondWithData(
+            return $this->respondCreated(
                 [
-                    'companyVerification' => $companyVerification,
-                ]
-                , 'Successfully created company verification');
+                    'company_verification' => $company_verification,
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
@@ -95,20 +74,19 @@ class CompanyVerificationController extends ApiController
     public function approveCompanyVerification(Request $request, string $id): JsonResponse
     {
         try {
-            $companyVerification = CompanyVerification::where('id', $id)->first();
+            $company_verification = CompanyVerification::where('id', $id)->first();
 
-            if ($companyVerification === null) {
-                return $this->respondNotFound('No company verification found');
+            if (!$company_verification) {
+                return $this->respondNotFound();
             }
 
-            $companyVerification->status = 'Hợp lệ';
-            $companyVerification->save();
+            $company_verification->status = 'Hợp lệ';
+            $company_verification->save();
 
             return $this->respondWithData(
                 [
-                    'companyVerification' => $companyVerification,
-                ]
-                , 'Successfully approved company verification');
+                    'company_verification' => $company_verification,
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
@@ -118,20 +96,19 @@ class CompanyVerificationController extends ApiController
     public function rejectCompanyVerification(Request $request, string $id): JsonResponse
     {
         try {
-            $companyVerification = CompanyVerification::where('id', $id)->first();
+            $company_verification = CompanyVerification::where('id', $id)->first();
 
-            if ($companyVerification === null) {
-                return $this->respondNotFound('No company verification found');
+            if (!$company_verification) {
+                return $this->respondNotFound();
             }
 
-            $companyVerification->status = 'Không hợp lệ';
-            $companyVerification->save();
+            $company_verification->status = 'Không hợp lệ';
+            $company_verification->save();
 
             return $this->respondWithData(
                 [
-                    'companyVerification' => $companyVerification,
-                ]
-                , 'Successfully denied company verification');
+                    'company_verification' => $company_verification,
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
@@ -141,19 +118,18 @@ class CompanyVerificationController extends ApiController
     public function deleteCompanyVerification(Request $request, string $id): JsonResponse
     {
         try {
-            $companyVerification = CompanyVerification::where('id', $id)->first();
+            $company_verification = CompanyVerification::where('id', $id)->first();
 
-            if ($companyVerification === null) {
-                return $this->respondNotFound('No company verification found');
+            if (!$company_verification) {
+                return $this->respondNotFound();
             }
 
-            $companyVerification->delete();
+            $company_verification->delete();
 
             return $this->respondWithData(
                 [
-                    'companyVerification' => $companyVerification,
-                ]
-                , 'Successfully deleted company verification');
+                    'company_verification' => $company_verification,
+                ], 'Xóa thành công');
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());

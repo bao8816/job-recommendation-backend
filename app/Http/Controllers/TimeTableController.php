@@ -14,14 +14,14 @@ class TimeTableController extends ApiController
         try {
             $count_per_page = $request->count_per_page ?? 10;
 
-            $timeTable = TimeTable::paginate($count_per_page);
+            $time_tables = TimeTable::paginate($count_per_page);
 
-            if ($timeTable->count() === 0) {
+            if ($time_tables->count() === 0) {
                 return $this->respondNotFound();
             }
 
             return $this->respondWithData([
-                'time_tables' => $timeTable,
+                'time_tables' => $time_tables,
             ]);
         }
         catch (Exception $exception) {
@@ -32,14 +32,14 @@ class TimeTableController extends ApiController
     public function getTimeTablesByUserId(Request $request, string $user_id): JsonResponse
     {
         try {
-            $timeTable = TimeTable::where('user_id', $user_id);
+            $time_tables = TimeTable::where('user_id', $user_id);
 
-            if (!$timeTable) {
+            if (!$time_tables) {
                 return $this->respondNotFound();
             }
 
             return $this->respondWithData([
-                'time_tables' => $timeTable,
+                'time_tables' => $time_tables,
             ]);
         }
         catch (Exception $exception) {
@@ -50,14 +50,14 @@ class TimeTableController extends ApiController
     public function getTimeTableById(Request $request, string $id): JsonResponse
     {
         try {
-            $timeTable = TimeTable::where('id', $id)->first();
+            $time_table = TimeTable::where('id', $id)->first();
 
-            if (!$timeTable) {
+            if (!$time_table) {
                 return $this->respondNotFound();
             }
 
             return $this->respondWithData([
-                'time_table' => $timeTable,
+                'time_table' => $time_table,
             ]);
         }
         catch (Exception $exception) {
@@ -68,12 +68,12 @@ class TimeTableController extends ApiController
     public function createTimeTable(Request $request): JsonResponse
     {
         try {
-            $timeTable = new TimeTable();
-            $timeTable->user_id = $request->user()->id;
-            $timeTable->coordinate = $request->coordinate;
+            $time_table = new TimeTable();
+            $time_table->user_id = $request->user()->id;
+            $time_table->coordinate = $request->coordinate;
 
             return $this->respondCreated([
-                'time_table' => $timeTable,
+                'time_table' => $time_table,
             ]);
         }
         catch (Exception $exception) {
@@ -84,16 +84,16 @@ class TimeTableController extends ApiController
     public function updateTimeTable(Request $request, string $id): JsonResponse
     {
         try {
-            $timeTable = TimeTable::where('id', $id)->first();
+            $time_table = TimeTable::where('id', $id)->first();
 
-            if (!$timeTable) {
+            if (!$time_table) {
                 return $this->respondNotFound();
             }
 
-            $timeTable->coordinate = $request->coordinate != null ? $request->coordinate : $timeTable->coordinate;
+            $time_table->coordinate = $request->coordinate ?? $time_table->coordinate;
 
             return $this->respondWithData([
-                'time_table' => $timeTable,
+                'time_table' => $time_table,
             ]);
         }
         catch (Exception $exception) {
@@ -104,16 +104,16 @@ class TimeTableController extends ApiController
     public function deleteTimeTable(Request $request, string $id): JsonResponse
     {
         try {
-            $timeTable = TimeTable::where('id', $id)->first();
+            $time_table = TimeTable::where('id', $id)->first();
 
-            if (!$timeTable) {
+            if (!$time_table) {
                 return $this->respondNotFound();
             }
 
-            $timeTable->delete();
+            $time_table->delete();
 
             return $this->respondWithData([
-                'time_table' => $timeTable,
+                'time_table' => $time_table,
             ], 'Xoá thành công');
         }
         catch (Exception $exception) {

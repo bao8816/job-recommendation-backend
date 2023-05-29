@@ -23,9 +23,8 @@ class SignUpRequest extends FormRequest
      */
     public function rules()
     {
-        //TODO: Add validation for username and password
         return [
-            'username' => 'required|string|unique:user_accounts,username',
+            'username' => 'required|string|unique:user_accounts',
             'password' => 'required|string',
             'password_confirmation' => 'required|string|same:password',
         ];

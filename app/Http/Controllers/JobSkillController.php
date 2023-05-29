@@ -35,7 +35,7 @@ class JobSkillController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "jobSkills": {
+    "job_skills": {
     "current_page": 1,
     "data": {
     {
@@ -147,17 +147,19 @@ class JobSkillController extends ApiController
     public function getAllJobSkills(Request $request): JsonResponse
     {
         try {
-            $count_per_page = $request->count_per_page;
+            $count_per_page = $request->count_per_page ?? 10;
+            $order_by = $request->order_by ?? 'id';
+            $order_type = $request->order_type ?? 'asc';
 
-            $jobSkills = JobSkill::paginate($count_per_page);
+            $job_skills = JobSkill::orderBy($order_by, $order_type)->paginate($count_per_page);
 
-            if (count($jobSkills) === 0) {
+            if (count($job_skills) === 0) {
                 return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'jobSkills' => $jobSkills,
+                    'job_skills' => $job_skills,
                 ]);
         }
         catch (Exception $exception) {
@@ -197,7 +199,7 @@ class JobSkillController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "jobSkills": {
+    "job_skills": {
     "current_page": 1,
     "data": {
     {
@@ -259,17 +261,21 @@ class JobSkillController extends ApiController
     public function getJobSkillsByJobId(Request $request, string $job_id): JsonResponse
     {
         try {
-            $count_per_page = $request->count_per_page;
+            $count_per_page = $request->count_per_page ?? 10;
+            $order_by = $request->order_by ?? 'id';
+            $order_type = $request->order_type ?? 'asc';
 
-            $jobSkills = JobSkill::where('job_id', $job_id)->paginate($count_per_page);
+            $job_skills = JobSkill::where('job_id', $job_id)
+                ->orderBy($order_by, $order_type)
+                ->paginate($count_per_page);
 
-            if (count($jobSkills) === 0) {
+            if (count($job_skills) === 0) {
                 return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'jobSkills' => $jobSkills,
+                    'job_skills' => $job_skills,
                 ]);
         }
         catch (Exception $exception) {
@@ -303,42 +309,10 @@ class JobSkillController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "jobSkill": {
-    "current_page": 1,
-    "data": {
-    {
+    "job_skill": {
     "id": 1,
     "job_id": 1,
     "skill": "PowerPoint"
-    }
-    },
-    "first_page_url": "http://localhost:8000/api/job-skills/1?page=1",
-    "from": 1,
-    "last_page": 1,
-    "last_page_url": "http://localhost:8000/api/job-skills/1?page=1",
-    "links": {
-    {
-    "url": null,
-    "label": "&laquo; Previous",
-    "active": false
-    },
-    {
-    "url": "http://localhost:8000/api/job-skills/1?page=1",
-    "label": "1",
-    "active": true
-    },
-    {
-    "url": null,
-    "label": "Next &raquo;",
-    "active": false
-    }
-    },
-    "next_page_url": null,
-    "path": "http://localhost:8000/api/job-skills/1",
-    "per_page": 1,
-    "prev_page_url": null,
-    "to": 1,
-    "total": 1
     }
     },
     "status_code": 200
@@ -355,15 +329,15 @@ class JobSkillController extends ApiController
     public function getJobSkillById(Request $request, string $id): JsonResponse
     {
         try {
-            $jobSkill = JobSkill::where('id', $id)->paginate(1);
+            $job_skill = JobSkill::where('id', $id)->first();
 
-            if (count($jobSkill) === 0) {
+            if (!$job_skill) {
                 return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'jobSkill' => $jobSkill,
+                    'job_skill' => $job_skill,
                 ]);
         }
         catch (Exception $exception) {
@@ -407,7 +381,7 @@ class JobSkillController extends ApiController
     "error": false,
     "message": "Tạo thành công",
     "data": {
-    "jobSkill": {
+    "job_skill": {
     "job_id": "1",
     "skill": "abcdef",
     "id": 137
@@ -427,14 +401,14 @@ class JobSkillController extends ApiController
     public function createJobSkill(Request $request): JsonResponse
     {
         try {
-            $jobSkill = new JobSkill();
-            $jobSkill->job_id = $request->job_id;
-            $jobSkill->skill = $request->skill;
-            $jobSkill->save();
+            $job_skill = new JobSkill();
+            $job_skill->job_id = $request->job_id;
+            $job_skill->skill = $request->skill;
+            $job_skill->save();
 
             return $this->respondCreated(
                 [
-                    'jobSkill' => $jobSkill,
+                    'job_skill' => $job_skill,
                 ]);
         }
         catch (Exception $exception) {
@@ -484,7 +458,7 @@ class JobSkillController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "jobSkill": {
+    "job_skill": {
     "id": 137,
     "job_id": "1",
     "skill": "abc"
@@ -504,19 +478,19 @@ class JobSkillController extends ApiController
     public function updateJobSkill(Request $request, string $id): JsonResponse
     {
         try {
-            $jobSkill = JobSkill::where('id', $id)->first();
+            $job_skill = JobSkill::where('id', $id)->first();
 
-            if (!$jobSkill) {
+            if (!$job_skill) {
                 return $this->respondNotFound();
             }
 
-            $jobSkill->job_id = $request->job_id != null ? $request->job_id : $jobSkill->job_id;
-            $jobSkill->skill = $request->skill != null ? $request->skill : $jobSkill->skill;
-            $jobSkill->save();
+            $job_skill->job_id = $request->job_id ?? $job_skill->job_id;
+            $job_skill->skill = $request->skill ?? $job_skill->skill;
+            $job_skill->save();
 
             return $this->respondWithData(
                 [
-                    'jobSkill' => $jobSkill,
+                    'job_skill' => $job_skill,
                 ]);
         }
         catch (Exception $exception) {
@@ -556,7 +530,7 @@ class JobSkillController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "jobSkill": {
+    "job_skill": {
     "id": 137,
     "job_id": 1,
     "skill": "abc"
@@ -576,17 +550,17 @@ class JobSkillController extends ApiController
     public function deleteJobSkill(string $id): JsonResponse
     {
         try {
-            $jobSkill = JobSkill::where('id', $id)->first();
+            $job_skill = JobSkill::where('id', $id)->first();
 
-            if (!$jobSkill) {
+            if (!$job_skill) {
                 return $this->respondNotFound();
             }
 
-            $jobSkill->delete();
+            $job_skill->delete();
 
             return $this->respondWithData(
                 [
-                    'jobSkill' => $jobSkill,
+                    'job_skill' => $job_skill,
                 ], 'Xóa thành công');
         }
         catch (Exception $exception) {

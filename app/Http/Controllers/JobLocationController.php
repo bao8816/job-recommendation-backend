@@ -87,9 +87,9 @@ class JobLocationController extends ApiController
     public function getJobLocationById(string $id): JsonResponse
     {
         try {
-            $job_location = JobLocation::where('id', $id)->paginate(1);
+            $job_location = JobLocation::where('id', $id)->first();
 
-            if (count($job_location) === 0) {
+            if (!$job_location) {
                 return $this->respondNotFound();
             }
 
@@ -187,7 +187,7 @@ class JobLocationController extends ApiController
     public function getJobLocationsByJobId(Request $request, string $job_id): JsonResponse
     {
         try {
-            $count_per_page = $request->count_per_page;
+            $count_per_page = $request->count_per_page ?? 10;
 
             $job_location = JobLocation::where('job_id', $job_id)->paginate($count_per_page);
 
@@ -343,7 +343,7 @@ class JobLocationController extends ApiController
     public function getAllJobLocations(Request $request): JsonResponse
     {
         try {
-            $count_per_page = $request->count_per_page;
+            $count_per_page = $request->count_per_page ?? 10;
 
             $job_locations = JobLocation::paginate($count_per_page);
 
@@ -500,8 +500,8 @@ class JobLocationController extends ApiController
                 return $this->respondNotFound();
             }
 
-            $job_location->job_id = $request->job_id != null ? $request->job_id : $job_location->job_id;
-            $job_location->location = $request->location != null ? $request->location : $job_location->location;
+            $job_location->job_id = $request->job_id ?? $job_location->job_id;
+            $job_location->location = $request->location ?? $job_location->location;
             $job_location->save();
 
             return $this->respondWithData(

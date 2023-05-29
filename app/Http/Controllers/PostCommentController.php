@@ -22,24 +22,28 @@ class PostCommentController extends ApiController
             return $this->respondCreated(
                 [
                     'comment' => $comment,
-                ], 'Successfully created comment');
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
         }
     }
 
-    public function getAllPostComments(Request $request): JsonResponse
+    public function getPostComments(Request $request): JsonResponse
     {
         try {
-            $count_per_page = $request->count_per_page;
+            $count_per_page = $request->count_per_page ?? 10;
+            $order_by = $request->order_by ?? 'created_at';
+            $order_type = $request->order_type ?? 'desc';
 
-            $comments = PostComment::paginate($count_per_page);
+            $comments = PostComment::filter($request, PostComment::query())
+                ->orderBy($order_by, $order_type)
+                ->paginate($count_per_page);
 
             return $this->respondWithData(
                 [
                     'comments' => $comments,
-                ], 'Successfully retrieved comments');
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
@@ -49,50 +53,16 @@ class PostCommentController extends ApiController
     public function getPostCommentById(string $id): JsonResponse
     {
         try {
-            $comment = PostComment::where('id', $id)->paginate(1);
+            $comment = PostComment::where('id', $id)->first();
 
-            if ($comment === null) {
-                return $this->respondNotFound('Comment not found');
+            if (!$comment) {
+                return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
                     'comment' => $comment,
-                ], 'Successfully retrieved comment');
-        }
-        catch (Exception $exception) {
-            return $this->respondInternalServerError($exception->getMessage());
-        }
-    }
-
-    public function getPostCommentsByPostId(Request $request, string $post_id): JsonResponse
-    {
-        try {
-            $count_per_page = $request->count_per_page;
-
-            $comments = PostComment::where('post_id', $post_id)->paginate($count_per_page);
-
-            return $this->respondWithData(
-                [
-                    'comments' => $comments,
-                ], 'Successfully retrieved comments');
-        }
-        catch (Exception $exception) {
-            return $this->respondInternalServerError($exception->getMessage());
-        }
-    }
-
-    public function getPostCommentsByUserId(Request $request, string $user_id): JsonResponse
-    {
-        try {
-            $count_per_page = $request->count_per_page;
-
-            $comments = PostComment::where('user_id', $user_id)->paginate($count_per_page);
-
-            return $this->respondWithData(
-                [
-                    'comments' => $comments,
-                ], 'Successfully retrieved comments');
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
@@ -104,8 +74,12 @@ class PostCommentController extends ApiController
         try {
             $comment = PostComment::where('id', $id)->first();
 
-            if ($comment === null) {
-                return $this->respondNotFound('Comment not found');
+            if (!$comment) {
+                return $this->respondNotFound();
+            }
+
+            if (!$request->user()->tokenCan('mod') && $comment->user_id !== $request->user()->id) {
+                return $this->respondForbidden('Bạn không có quyền xóa comment này');
             }
 
             $comment->delete();
@@ -113,7 +87,7 @@ class PostCommentController extends ApiController
             return $this->respondWithData(
                 [
                     'comment' => $comment,
-                ], 'Successfully deleted comment');
+                ], 'Xoá thành công');
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());

@@ -11,20 +11,6 @@ use Illuminate\Http\Request;
 
 class JobController extends ApiController
 {
-    public function test(Request $request)
-    {
-        $order_by = $request->order_by ?? 'id';
-        $order_type = $request->order_type ?? 'desc';
-
-        $jobs = Job::filter($request, Job::query())->orderBy($order_by, $order_type)->paginate(10);
-//        $jobs = Job::find(1000);
-//
-//        if (!$jobs) {
-//            return $this->respondNotFound();
-//        }
-
-        return $this->respondWithData($jobs);
-    }
     /**
      *  @OA\Get(
      *      path="/api/jobs",

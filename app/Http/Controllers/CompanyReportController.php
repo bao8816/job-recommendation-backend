@@ -9,66 +9,25 @@ use Illuminate\Http\Request;
 
 class CompanyReportController extends ApiController
 {
-    public function getAllCompanyReports(Request $request): JsonResponse
+    public function getCompanyReports(Request $request): JsonResponse
     {
         try {
-            $count_per_page = $request->count_per_page;
+            $count_per_page = $request->count_per_page ?? 10;
+            $order_by = $request->order_by ?? 'id';
+            $order_type = $request->order_type ?? 'asc';
 
-            $companyReports = CompanyReport::paginate($count_per_page);
+            $company_reports = CompanyReport::filter($request, CompanyReport::query())
+                ->orderBy($order_by, $order_type)
+                ->paginate($count_per_page);
 
-            if (count($companyReports) === 0) {
-                return $this->respondNotFound('No company reports found');
+            if (count($company_reports) === 0) {
+                return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'companyReports' => $companyReports,
-                ]
-                , 'Successfully retrieved company reports');
-        }
-        catch (Exception $exception) {
-            return $this->respondInternalServerError($exception->getMessage());
-        }
-    }
-
-    public function getCompanyReportsByCompanyId(Request $request, string $company_id): JsonResponse
-    {
-        try {
-            $count_per_page = $request->count_per_page;
-
-            $companyReports = CompanyReport::where('company_id', $company_id)->paginate($count_per_page);
-
-            if (count($companyReports) === 0) {
-                return $this->respondNotFound('No company reports found');
-            }
-
-            return $this->respondWithData(
-                [
-                    'companyReports' => $companyReports,
-                ]
-                , 'Successfully retrieved company reports');
-        }
-        catch (Exception $exception) {
-            return $this->respondInternalServerError($exception->getMessage());
-        }
-    }
-
-    public function getCompanyReportsByUserId(Request $request, string $user_id): JsonResponse
-    {
-        try {
-            $count_per_page = $request->count_per_page;
-
-            $companyReports = CompanyReport::where('user_id', $user_id)->paginate($count_per_page);
-
-            if (count($companyReports) === 0) {
-                return $this->respondNotFound('No company reports found');
-            }
-
-            return $this->respondWithData(
-                [
-                    'companyReports' => $companyReports,
-                ]
-                , 'Successfully retrieved company reports');
+                    'company_reports' => $company_reports,
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
@@ -78,17 +37,16 @@ class CompanyReportController extends ApiController
     public function getCompanyReportById(string $id): JsonResponse
     {
         try {
-            $companyReport = CompanyReport::where('id', $id)->first();
+            $company_report = CompanyReport::where('id', $id)->first();
 
-            if (!$companyReport) {
-                return $this->respondNotFound('Company report not found');
+            if (!$company_report) {
+                return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'companyReport' => $companyReport,
-                ]
-                , 'Successfully retrieved company report');
+                    'company_report' => $company_report,
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
@@ -98,17 +56,16 @@ class CompanyReportController extends ApiController
     public function createCompanyReport(Request $request): JsonResponse
     {
         try {
-            $companyReport = new CompanyReport();
-            $companyReport->company_id = $request->company_id;
-            $companyReport->user_id = $request->user()->id;
-            $companyReport->reason = $request->reason;
-            $companyReport->save();
+            $company_report = new CompanyReport();
+            $company_report->company_id = $request->company_id;
+            $company_report->user_id = $request->user()->id;
+            $company_report->reason = $request->reason;
+            $company_report->save();
 
-            return $this->respondWithData(
+            return $this->respondCreated(
                 [
-                    'companyReport' => $companyReport,
-                ]
-                , 'Successfully created company report');
+                    'company_report' => $company_report,
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
@@ -118,19 +75,18 @@ class CompanyReportController extends ApiController
     public function deleteCompanyReport(string $id): JsonResponse
     {
         try {
-            $companyReport = CompanyReport::where('id', $id)->first();
+            $company_report = CompanyReport::where('id', $id)->first();
 
-            if (!$companyReport) {
-                return $this->respondNotFound('Company report not found');
+            if (!$company_report) {
+                return $this->respondNotFound();
             }
 
-            $companyReport->delete();
+            $company_report->delete();
 
             return $this->respondWithData(
                 [
-                    'companyReport' => $companyReport,
-                ]
-                , 'Successfully deleted company report');
+                    'company_report' => $company_report,
+                ], 'Xoá thành công');
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());

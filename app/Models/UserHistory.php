@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Filters\UserHistory\UserHistoryFilter;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -34,18 +36,23 @@ class UserHistory extends Model
         'deleted_at',
     ];
 
+    public static function filter($request, $builder): Builder
+    {
+        return (new UserHistoryFilter($request))->apply($builder);
+    }
+
     public function user(): BelongsTo
     {
-        return $this->belongsTo(UserAccount::class, 'id', 'user_id');
+        return $this->belongsTo(UserAccount::class, 'user_id', 'id');
     }
 
     public function user_profile(): BelongsTo
     {
-        return $this->belongsTo(UserProfile::class, 'id', 'user_id');
+        return $this->belongsTo(UserProfile::class, 'user_id', 'id');
     }
 
     public function job(): BelongsTo
     {
-        return $this->belongsTo(Job::class, 'id', 'job_id');
+        return $this->belongsTo(Job::class, 'job_id', 'id');
     }
 }

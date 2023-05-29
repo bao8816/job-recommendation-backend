@@ -35,7 +35,7 @@ class CompanyProfileController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "companyProfiles": {
+    "company_profiles": {
     "current_page": 1,
     "data": {
     {
@@ -151,17 +151,17 @@ class CompanyProfileController extends ApiController
     public function getAllCompanyProfiles(Request $request): JsonResponse
     {
         try {
-            $count_per_page = $request->count_per_page;
+            $count_per_page = $request->count_per_page ?? 10;
 
-            $companyProfiles = CompanyProfile::paginate($count_per_page);
+            $company_profiles = CompanyProfile::paginate($count_per_page);
 
-            if (count($companyProfiles) === 0) {
+            if (count($company_profiles) === 0) {
                 return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'companyProfiles' => $companyProfiles,
+                    'company_profiles' => $company_profiles,
                 ]);
         }
         catch (Exception $exception) {
@@ -195,7 +195,7 @@ class CompanyProfileController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "companyProfile": {
+    "company_profile": {
     "current_page": 1,
     "data": {
     {
@@ -251,15 +251,15 @@ class CompanyProfileController extends ApiController
     public function getCompanyProfileById(Request $request, string $id): JsonResponse
     {
         try {
-            $companyProfile = CompanyProfile::where('id', $id)->paginate(1);
+            $company_profile = CompanyProfile::where('id', $id)->first();
 
-            if (count($companyProfile) === 0) {
+            if (!$company_profile) {
                 return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'companyProfile' => $companyProfile,
+                    'company_profile' => $company_profile,
                 ]);
         }
         catch (Exception $exception) {
@@ -309,7 +309,7 @@ class CompanyProfileController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "companyProfile": {
+    "company_profile": {
     "id": 1,
     "name": "TV TPI CO., LTD",
     "logo": "https://i.imgur.com/hepj9ZS.png",
@@ -333,27 +333,27 @@ class CompanyProfileController extends ApiController
     public function updateCompanyProfile(Request $request, string $id): JsonResponse
     {
         try {
-            $companyProfile = CompanyProfile::where('id', $id)->first();
+            $company_profile = CompanyProfile::where('id', $id)->first();
 
-            if (!$companyProfile) {
+            if (!$company_profile) {
                 return $this->respondNotFound();
             }
 
-            if ($request->user()->id !== $companyProfile->id) {
+            if ($request->user()->id !== $company_profile->id) {
                 return $this->respondForbidden('Bạn không có quyền chỉnh sửa thông tin này');
             }
 
-            $companyProfile->name = $request->name != null ? $request->name : $companyProfile->name;
-            $companyProfile->logo = $request->logo != null ? $request->logo : $companyProfile->logo;
-            $companyProfile->description = $request->description != null ? $request->description : $companyProfile->description;
-            $companyProfile->site = $request->site != null ? $request->site : $companyProfile->site;
-            $companyProfile->address = $request->address != null ? $request->address : $companyProfile->address;
-            $companyProfile->size = $request->size != null ? $request->size : $companyProfile->size;
-            $companyProfile->save();
+            $company_profile->name = $request->name ?? $company_profile->name;
+            $company_profile->logo = $request->logo ?? $company_profile->logo;
+            $company_profile->description = $request->description ?? $company_profile->description;
+            $company_profile->site = $request->site ?? $company_profile->site;
+            $company_profile->address = $request->address ?? $company_profile->address;
+            $company_profile->size = $request->size ?? $company_profile->size;
+            $company_profile->save();
 
             return $this->respondWithData(
                 [
-                    'companyProfile' => $companyProfile,
+                    'company_profile' => $company_profile,
                 ]);
         }
         catch (Exception $exception) {

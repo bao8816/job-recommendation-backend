@@ -35,7 +35,7 @@ class JobTypeController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "jobTypes": {
+    "job_types": {
     "current_page": 1,
     "data": {
     {
@@ -148,17 +148,19 @@ class JobTypeController extends ApiController
     public function getAllJobTypes(Request $request): JsonResponse
     {
         try {
-            $count_per_page = $request->count_per_page;
+            $count_per_page = $request->count_per_page ?? 10;
+            $order_by = $request->order_by ?? 'id';
+            $order_type = $request->order_type ?? 'asc';
 
-            $jobTypes = JobType::paginate($count_per_page);
+            $job_types = JobType::orderBy($order_by, $order_type)->paginate($count_per_page);
 
-            if (count($jobTypes) === 0) {
+            if (count($job_types) === 0) {
                 return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'jobTypes' => $jobTypes,
+                    'job_types' => $job_types,
                 ]);
         }
         catch (Exception $exception) {
@@ -192,42 +194,10 @@ class JobTypeController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "jobType": {
-    "current_page": 1,
-    "data": {
-    {
+    "job_type": {
     "id": 1,
     "job_id": 1,
     "type": "Nhân viên"
-    }
-    },
-    "first_page_url": "http://localhost:8000/api/job-types/1?page=1",
-    "from": 1,
-    "last_page": 1,
-    "last_page_url": "http://localhost:8000/api/job-types/1?page=1",
-    "links": {
-    {
-    "url": null,
-    "label": "&laquo; Previous",
-    "active": false
-    },
-    {
-    "url": "http://localhost:8000/api/job-types/1?page=1",
-    "label": "1",
-    "active": true
-    },
-    {
-    "url": null,
-    "label": "Next &raquo;",
-    "active": false
-    }
-    },
-    "next_page_url": null,
-    "path": "http://localhost:8000/api/job-types/1",
-    "per_page": 1,
-    "prev_page_url": null,
-    "to": 1,
-    "total": 1
     }
     },
     "status_code": 200
@@ -244,15 +214,15 @@ class JobTypeController extends ApiController
     public function getJobTypeById(Request $request, string $id): JsonResponse
     {
         try {
-            $jobType = JobType::where('id', $id)->paginate(1);
+            $job_type = JobType::where('id', $id)->first();
 
-            if (count($jobType) === 0) {
+            if (!$job_type) {
                 return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'jobType' => $jobType,
+                    'job_type' => $job_type,
                 ]);
         }
         catch (Exception $exception) {
@@ -286,7 +256,7 @@ class JobTypeController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "jobTypes": {
+    "job_types": {
     "current_page": 1,
     "data": {
     {
@@ -338,17 +308,21 @@ class JobTypeController extends ApiController
     public function getJobTypesByJobId(Request $request, string $job_id): JsonResponse
     {
         try {
-            $count_per_page = $request->count_per_page;
+            $count_per_page = $request->count_per_page ?? 10;
+            $order_by = $request->order_by ?? 'id';
+            $order_type = $request->order_type ?? 'asc';
 
-            $jobTypes = JobType::where('job_id', $job_id)->paginate($count_per_page);
+            $job_types = JobType::where('job_id', $job_id)
+                ->orderBy($order_by, $order_type)
+                ->paginate($count_per_page);
 
-            if (count($jobTypes) === 0) {
+            if (count($job_types) === 0) {
                 return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'jobTypes' => $jobTypes,
+                    'job_types' => $job_types,
                 ]);
         }
         catch (Exception $exception) {
@@ -380,7 +354,7 @@ class JobTypeController extends ApiController
     "error": false,
     "message": "Tạo thành công",
     "data": {
-    "jobType": {
+    "job_type": {
     "job_id": "1",
     "type": "abc",
     "id": 53
@@ -400,14 +374,14 @@ class JobTypeController extends ApiController
     public function createJobType(Request $request): JsonResponse
     {
         try {
-            $jobType = new JobType();
-            $jobType->job_id = $request->job_id;
-            $jobType->type = $request->type;
-            $jobType->save();
+            $job_type = new JobType();
+            $job_type->job_id = $request->job_id;
+            $job_type->type = $request->type;
+            $job_type->save();
 
             return $this->respondCreated(
                 [
-                    'jobType' => $jobType,
+                    'job_type' => $job_type,
                 ]);
         }
         catch (Exception $exception) {
@@ -444,7 +418,7 @@ class JobTypeController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "jobType": {
+    "job_type": {
     "id": 53,
     "job_id": 1,
     "type": "abcdef"
@@ -464,19 +438,19 @@ class JobTypeController extends ApiController
     public function updateJobType(Request $request, string $id): JsonResponse
     {
         try {
-            $jobType = JobType::find($id);
+            $job_type = JobType::where('id', $id)->first();
 
-            if (!$jobType) {
+            if (!$job_type) {
                 return $this->respondNotFound();
             }
 
-            $jobType->job_id = $request->job_id != null ? $request->job_id : $jobType->job_id;
-            $jobType->type = $request->type != null ? $request->type : $jobType->type;
-            $jobType->save();
+            $job_type->job_id = $request->job_id ?? $job_type->job_id;
+            $job_type->type = $request->type ?? $job_type->type;
+            $job_type->save();
 
             return $this->respondWithData(
                 [
-                    'jobType' => $jobType,
+                    'job_type' => $job_type,
                 ]);
         }
         catch (Exception $exception) {
@@ -504,7 +478,7 @@ class JobTypeController extends ApiController
     "error": false,
     "message": "Xoá thành công",
     "data": {
-    "jobType": {
+    "job_type": {
     "id": 53,
     "job_id": 1,
     "type": "abcdef"
@@ -524,17 +498,17 @@ class JobTypeController extends ApiController
     public function deleteJobType(string $id): JsonResponse
     {
         try {
-            $jobType = JobType::find($id);
+            $job_type = JobType::find($id);
 
-            if (!$jobType) {
+            if (!$job_type) {
                 return $this->respondNotFound();
             }
 
-            $jobType->delete();
+            $job_type->delete();
 
             return $this->respondWithData(
                 [
-                    'jobType' => $jobType,
+                    'job_type' => $job_type,
                 ], 'Xóa thành công');
         } catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());

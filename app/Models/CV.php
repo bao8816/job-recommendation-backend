@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Filters\CV\CVFilter;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -34,6 +36,11 @@ class CV extends Model
         'deleted_at',
     ];
 
+    public static function filter($request, $builder): Builder
+    {
+        return (new CVFilter($request))->apply($builder);
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(UserAccount::class, 'user_id', 'id');
@@ -41,7 +48,7 @@ class CV extends Model
 
     public function user_profile(): BelongsTo
     {
-        return $this->belongsTo(UserProfile::class, 'user_id', 'user_id');
+        return $this->belongsTo(UserProfile::class, 'user_id', 'id');
     }
 
     public function application(): BelongsTo

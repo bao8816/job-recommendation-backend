@@ -16,38 +16,41 @@ class PostReportController extends ApiController
             $user_id = $request->user()->id;
             $reason = $request->reason;
 
-            $postReport = new PostReport();
-            $postReport->post_id = $post_id;
-            $postReport->user_id = $user_id;
-            $postReport->reason = $reason;
+            $post_report = new PostReport();
+            $post_report->post_id = $post_id;
+            $post_report->user_id = $user_id;
+            $post_report->reason = $reason;
 
-            $postReport->save();
+            $post_report->save();
 
             return $this->respondCreated(
                 [
-                    'postReport' => $postReport,
-                ], 'Successfully created post report');
+                    'post_report' => $post_report,
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
         }
     }
-    public function getAllPostReports(Request $request): JsonResponse
+    public function getPostReports(Request $request): JsonResponse
     {
         try {
-            $count_per_page = $request->count_per_page;
+            $count_per_page = $request->count_per_page ?? 10;
+            $order_by = $request->order_by ?? 'created_at';
+            $order_type = $request->order_type ?? 'desc';
 
-            $postReports = PostReport::paginate($count_per_page);
+            $post_reports = PostReport::filter($request, PostReport::query())
+                ->orderBy($order_by, $order_type)
+                ->paginate($count_per_page);
 
-            if (count($postReports) === 0) {
-                return $this->respondNotFound('No post reports found');
+            if (count($post_reports) === 0) {
+                return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'postReports' => $postReports,
-                ]
-            , 'Successfully retrieved post reports');
+                    'post_reports' => $post_reports,
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
@@ -57,61 +60,16 @@ class PostReportController extends ApiController
     public function getPostReportById(string $id): JsonResponse
     {
         try {
-            $postReport = PostReport::where('id', $id)->paginate(1);
+            $post_report = PostReport::where('id', $id)->first();
 
-            if ($postReport === null) {
-                return $this->respondNotFound('No post report found');
+            if (!$post_report) {
+                return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'postReport' => $postReport,
-                ]
-                , 'Successfully retrieved post report');
-        }
-        catch (Exception $exception) {
-            return $this->respondInternalServerError($exception->getMessage());
-        }
-    }
-
-    public function getPostReportsByPostId(Request $request, string $post_id): JsonResponse
-    {
-        try {
-            $count_per_page = $request->count_per_page;
-
-            $postReport = PostReport::where('post_id', $post_id)->paginate($count_per_page);
-
-            if ($postReport === null) {
-                return $this->respondNotFound('No post report found');
-            }
-
-            return $this->respondWithData(
-                [
-                    'postReport' => $postReport,
-                ]
-                , 'Successfully retrieved post report');
-        }
-        catch (Exception $exception) {
-            return $this->respondInternalServerError($exception->getMessage());
-        }
-    }
-
-    public function getPostReportsByUserId(Request $request, string $user_id): JsonResponse
-    {
-        try {
-            $count_per_page = $request->count_per_page;
-
-            $postReport = PostReport::where('user_id', $user_id)->paginate($count_per_page);
-
-            if ($postReport === null) {
-                return $this->respondNotFound('No post report found');
-            }
-
-            return $this->respondWithData(
-                [
-                    'postReport' => $postReport,
-                ]
-                , 'Successfully retrieved post report');
+                    'post_report' => $post_report,
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
@@ -121,19 +79,22 @@ class PostReportController extends ApiController
     public function deletePostReport(Request $request, string $id): JsonResponse
     {
         try {
-            $postReport = PostReport::where('id', $id)->first();
+            $post_report = PostReport::where('id', $id)->first();
 
-            if ($postReport === null) {
-                return $this->respondNotFound('No post report found');
+            if (!$post_report) {
+                return $this->respondNotFound();
             }
 
-            $postReport->delete();
+            if (!$request->user()->tokenCan('mod') && $post_report->user_id !== $request->user()->id) {
+                return $this->respondForbidden('Bạn không có quyền xóa báo cáo này');
+            }
+
+            $post_report->delete();
 
             return $this->respondWithData(
                 [
-                    'postReport' => $postReport,
-                ]
-                , 'Successfully deleted post report');
+                    'post_report' => $post_report,
+                ], 'Xoá thành công');
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());

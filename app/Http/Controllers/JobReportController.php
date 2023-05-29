@@ -41,7 +41,7 @@ class JobReportController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "jobReports": {
+    "job_reports": {
     "current_page": 1,
     "data": {
     {
@@ -151,318 +151,24 @@ class JobReportController extends ApiController
      *      ),
      *  )
      */
-    public function getAllJobReports(Request $request): JsonResponse
+    public function getJobReports(Request $request): JsonResponse
     {
         try {
-            $count_per_page = $request->count_per_page;
+            $count_per_page = $request->count_per_page ?? 10;
+            $order_by = $request->order_by ?? 'id';
+            $order_type = $request->order_type ?? 'asc';
 
-            $jobReports = JobReport::paginate($count_per_page);
+            $job_reports = JobReport::filter($request, JobReport::query())
+                ->orderBy($order_by, $order_type)
+                ->paginate($count_per_page);
 
-            if (count($jobReports) === 0) {
+            if (count($job_reports) === 0) {
                 return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'jobReports' => $jobReports,
-                ]);
-        }
-        catch (Exception $exception) {
-            return $this->respondInternalServerError($exception->getMessage());
-        }
-    }
-
-    /**
-     * @OA\Get(
-     *      path="/api/job-reports/job/{job_id}",
-     *      tags={"Job Reports"},
-     *      summary="Get job reports by job id",
-     *      @OA\Parameter(
-     *          name="job_id",
-     *          in="path",
-     *          description="Job id",
-     *          required=true,
-     *      ),
-     *      @OA\Parameter(
-     *          name="count_per_page",
-     *          in="query",
-     *          description="Number of job reports per page",
-     *          required=false,
-     *      ),
-     *      @OA\Parameter(
-     *          name="Accept",
-     *          in="header",
-     *          description="application/json",
-     *          required=false
-     *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true
-     *      ),
-     *      @OA\Response(
-     *          response=200,
-     *          description="Successfully retrieved job report",
-     *          @OA\JsonContent(
-     *              example=
-    {
-    "error": false,
-    "message": "Xử lí thành công",
-    "data": {
-    "jobReports": {
-    "current_page": 1,
-    "data": {
-    {
-    "id": 1,
-    "job_id": 1,
-    "user_id": 1,
-    "reason": "Fake Job"
-    }
-    },
-    "first_page_url": "http://localhost:8000/api/job-reports/job/1?page=1",
-    "from": 1,
-    "last_page": 9,
-    "last_page_url": "http://localhost:8000/api/job-reports/job/1?page=9",
-    "links": {
-    {
-    "url": null,
-    "label": "&laquo; Previous",
-    "active": false
-    },
-    {
-    "url": "http://localhost:8000/api/job-reports/job/1?page=1",
-    "label": "1",
-    "active": true
-    },
-    {
-    "url": "http://localhost:8000/api/job-reports/job/1?page=2",
-    "label": "2",
-    "active": false
-    },
-    {
-    "url": "http://localhost:8000/api/job-reports/job/1?page=3",
-    "label": "3",
-    "active": false
-    },
-    {
-    "url": "http://localhost:8000/api/job-reports/job/1?page=4",
-    "label": "4",
-    "active": false
-    },
-    {
-    "url": "http://localhost:8000/api/job-reports/job/1?page=5",
-    "label": "5",
-    "active": false
-    },
-    {
-    "url": "http://localhost:8000/api/job-reports/job/1?page=6",
-    "label": "6",
-    "active": false
-    },
-    {
-    "url": "http://localhost:8000/api/job-reports/job/1?page=7",
-    "label": "7",
-    "active": false
-    },
-    {
-    "url": "http://localhost:8000/api/job-reports/job/1?page=8",
-    "label": "8",
-    "active": false
-    },
-    {
-    "url": "http://localhost:8000/api/job-reports/job/1?page=9",
-    "label": "9",
-    "active": false
-    },
-    {
-    "url": "http://localhost:8000/api/job-reports/job/1?page=2",
-    "label": "Next &raquo;",
-    "active": false
-    }
-    },
-    "next_page_url": "http://localhost:8000/api/job-reports/job/1?page=2",
-    "path": "http://localhost:8000/api/job-reports/job/1",
-    "per_page": 1,
-    "prev_page_url": null,
-    "to": 1,
-    "total": 9
-    }
-    },
-    "status_code": 200
-    }
-     *          ),
-     *      ),
-     *      @OA\Response(
-     *          response=404,
-     *          description="No job reports found",
-     *          ref="#/components/responses/NotFound",
-     *      ),
-     *  )
-     */
-    public function getJobReportsByJobId(Request $request, string $job_id): JsonResponse
-    {
-        try {
-            $count_per_page = $request->count_per_page;
-
-            $jobReports = JobReport::where('job_id', $job_id)->paginate($count_per_page);
-
-            if (count($jobReports) === 0) {
-                return $this->respondNotFound();
-            }
-
-            return $this->respondWithData(
-                [
-                    'jobReports' => $jobReports,
-                ]);
-        }
-        catch (Exception $exception) {
-            return $this->respondInternalServerError($exception->getMessage());
-        }
-    }
-
-    /**
-     * @OA\Get(
-     *      path="/api/job-reports/user/{user_id}",
-     *      tags={"Job Reports"},
-     *      summary="Get job reports by user id",
-     *      @OA\Parameter(
-     *          name="user_id",
-     *          in="path",
-     *          description="User id",
-     *          required=true,
-     *      ),
-     *      @OA\Parameter(
-     *          name="count_per_page",
-     *          in="query",
-     *          description="Number of job reports per page",
-     *          required=false,
-     *      ),
-     *      @OA\Parameter(
-     *          name="Accept",
-     *          in="header",
-     *          description="application/json",
-     *          required=false
-     *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true
-     *      ),
-     *      @OA\Response(
-     *          response=200,
-     *          description="Successfully retrieved job report",
-     *          @OA\JsonContent(
-     *              example=
-    {
-    "error": false,
-    "message": "Xử lí thành công",
-    "data": {
-    "jobReports": {
-    "current_page": 1,
-    "data": {
-    {
-    "id": 1,
-    "job_id": 1,
-    "user_id": 1,
-    "reason": "Fake Job"
-    }
-    },
-    "first_page_url": "http://localhost:8000/api/job-reports/job/1?page=1",
-    "from": 1,
-    "last_page": 9,
-    "last_page_url": "http://localhost:8000/api/job-reports/job/1?page=9",
-    "links": {
-    {
-    "url": null,
-    "label": "&laquo; Previous",
-    "active": false
-    },
-    {
-    "url": "http://localhost:8000/api/job-reports/job/1?page=1",
-    "label": "1",
-    "active": true
-    },
-    {
-    "url": "http://localhost:8000/api/job-reports/job/1?page=2",
-    "label": "2",
-    "active": false
-    },
-    {
-    "url": "http://localhost:8000/api/job-reports/job/1?page=3",
-    "label": "3",
-    "active": false
-    },
-    {
-    "url": "http://localhost:8000/api/job-reports/job/1?page=4",
-    "label": "4",
-    "active": false
-    },
-    {
-    "url": "http://localhost:8000/api/job-reports/job/1?page=5",
-    "label": "5",
-    "active": false
-    },
-    {
-    "url": "http://localhost:8000/api/job-reports/job/1?page=6",
-    "label": "6",
-    "active": false
-    },
-    {
-    "url": "http://localhost:8000/api/job-reports/job/1?page=7",
-    "label": "7",
-    "active": false
-    },
-    {
-    "url": "http://localhost:8000/api/job-reports/job/1?page=8",
-    "label": "8",
-    "active": false
-    },
-    {
-    "url": "http://localhost:8000/api/job-reports/job/1?page=9",
-    "label": "9",
-    "active": false
-    },
-    {
-    "url": "http://localhost:8000/api/job-reports/job/1?page=2",
-    "label": "Next &raquo;",
-    "active": false
-    }
-    },
-    "next_page_url": "http://localhost:8000/api/job-reports/job/1?page=2",
-    "path": "http://localhost:8000/api/job-reports/job/1",
-    "per_page": 1,
-    "prev_page_url": null,
-    "to": 1,
-    "total": 9
-    }
-    },
-    "status_code": 200
-    }
-     *          ),
-     *      ),
-     *      @OA\Response(
-     *          response=404,
-     *          description="No job reports found",
-     *          ref="#/components/responses/NotFound",
-     *      ),
-     *  )
-     */
-    public function getJobReportsByUserId(Request $request, string $user_id): JsonResponse
-    {
-        try {
-            $count_per_page = $request->count_per_page;
-
-            $jobReports = JobReport::where('user_id', $user_id)->paginate($count_per_page);
-
-            if (count($jobReports) === 0) {
-                return $this->respondNotFound();
-            }
-
-            return $this->respondWithData(
-                [
-                    'jobReports' => $jobReports,
+                    'job_reports' => $job_reports,
                 ]);
         }
         catch (Exception $exception) {
@@ -508,7 +214,7 @@ class JobReportController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "jobReport": {
+    "job_report": {
     "current_page": 1,
     "data": {
     {
@@ -561,15 +267,15 @@ class JobReportController extends ApiController
     public function getJobReportById(string $id): JsonResponse
     {
         try {
-            $jobReport = JobReport::where('id', $id)->paginate(1);
+            $job_report = JobReport::where('id', $id)->first();
 
-            if (count($jobReport) === 0) {
+            if (!$job_report) {
                 return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'jobReport' => $jobReport,
+                    'job_report' => $job_report,
                 ]);
         }
         catch (Exception $exception) {
@@ -612,7 +318,7 @@ class JobReportController extends ApiController
     "error": false,
     "message": "Tạo thành công",
     "data": {
-    "jobReport": {
+    "job_report": {
     "job_id": "1",
     "user_id": 1,
     "reason": "abcdef",
@@ -634,16 +340,16 @@ class JobReportController extends ApiController
     public function createJobReport(Request $request): JsonResponse
     {
         try {
-            $jobReport = new JobReport();
-            $jobReport->job_id = $request->job_id;
-            $jobReport->user_id = $request->user()->id;
-            $jobReport->reason = $request->reason;
+            $job_report = new JobReport();
+            $job_report->job_id = $request->job_id;
+            $job_report->user_id = $request->user()->id;
+            $job_report->reason = $request->reason;
 
-            $jobReport->save();
+            $job_report->save();
 
             return $this->respondCreated(
                 [
-                    'jobReport' => $jobReport,
+                    'job_report' => $job_report,
                 ]);
         }
         catch (Exception $exception) {
@@ -683,7 +389,7 @@ class JobReportController extends ApiController
     "error": false,
     "message": "Xoá thành công",
     "data": {
-    "jobReport": {
+    "job_report": {
     "id": 23,
     "job_id": 1,
     "user_id": 1,
@@ -704,17 +410,17 @@ class JobReportController extends ApiController
     public function deleteJobReport(Request $request, string $id): JsonResponse
     {
         try {
-            $jobReport = JobReport::where('id', $id)->first();
+            $job_report = JobReport::where('id', $id)->first();
 
-            if (!$jobReport) {
+            if (!$job_report) {
                 return $this->respondNotFound();
             }
 
-            $jobReport->delete();
+            $job_report->delete();
 
             return $this->respondWithData(
                 [
-                    'jobReport' => $jobReport,
+                    'job_report' => $job_report,
                 ]
                 , 'Xoá thành công');
         }

@@ -13,9 +13,9 @@ class AdminController extends ApiController
     public function getAdmin(Request $request): JsonResponse
     {
         try {
-            $admin = Admin::where('username', 'Admin')->paginate(1);
+            $admin = Admin::where('username', 'Admin')->first();
 
-            if ($admin === null) {
+            if (!$admin) {
                 return $this->respondNotFound();
             }
 
@@ -60,7 +60,7 @@ class AdminController extends ApiController
     public function getAllMods(Request $request): JsonResponse
     {
         try {
-            $count_per_page = $request->count_per_page;
+            $count_per_page = $request->count_per_page ?? 10;
 
             $mods = Admin::where('username', '!=', 'Admin')->paginate($count_per_page);
 
@@ -78,12 +78,12 @@ class AdminController extends ApiController
         }
     }
 
-    public function getModById(string $moderator_id): JsonResponse
+    public function getModById(string $id): JsonResponse
     {
         try {
-            $mod = Admin::where('_id', $moderator_id)->paginate(1);
+            $mod = Admin::where('id', $id)->first();
 
-            if ($mod === null) {
+            if (!$mod) {
                 return $this->respondNotFound();
             }
 
@@ -97,17 +97,17 @@ class AdminController extends ApiController
         }
     }
 
-    public function updateMod(Request $request, $id): JsonResponse
+    public function updateModAccount(Request $request, string $id): JsonResponse
     {
         try {
-            $mod = Admin::where('_id', $id)->first();
+            $mod = Admin::where('id', $id)->first();
 
-            if ($mod === null) {
+            if (!$mod) {
                 return $this->respondNotFound();
             }
 
-            $mod->full_name = $request->full_name;
-            $mod->avatar = $request->avatar;
+            $mod->full_name = $request->full_name ?? $mod->full_name;
+            $mod->avatar = $request->avatar ?? $mod->avatar;
             $mod->save();
 
             return $this->respondWithData(
@@ -120,12 +120,49 @@ class AdminController extends ApiController
         }
     }
 
-    public function deleteMod(string $id): JsonResponse
+    public function updatePassword(Request $request): JsonResponse
     {
         try {
-            $mod = Admin::where('_id', $id)->first();
+            $account = Admin::where('id', $request->user()->id)->first();
 
-            if ($mod === null) {
+            if (!$account) {
+                return $this->respondNotFound();
+            }
+
+            $current_password = $request->current_password;
+            $new_password = $request->new_password;
+            $confirm_password = $request->confirm_password;
+            $new_password_salt = $new_password . env('PASSWORD_SALT');
+
+            if (!Hash::check($current_password, $account->password)) {
+                return $this->respondBadRequest('Mật khẩu cũ không đúng');
+            }
+
+            if ($new_password !== $confirm_password) {
+                return $this->respondBadRequest('Mật khẩu xác nhận không khớp');
+            }
+
+            $hashedPassword = Hash::make($new_password_salt);
+
+            $account->password = $hashedPassword;
+            $account->save();
+
+            return $this->respondWithData(
+                [
+                    'account' => $account,
+                ]);
+        }
+        catch (Exception $exception) {
+            return $this->respondInternalServerError($exception->getMessage());
+        }
+    }
+
+    public function deleteModAccount(string $id): JsonResponse
+    {
+        try {
+            $mod = Admin::where('id', $id)->first();
+
+            if (!$mod) {
                 return $this->respondNotFound();
             }
 
@@ -141,17 +178,17 @@ class AdminController extends ApiController
         }
     }
 
-    public function banModAccount(string $moderator_id): JsonResponse
+    public function banModAccount(string $id): JsonResponse
     {
         try {
-            $mod = Admin::where('_id', $moderator_id)->first();
+            $mod = Admin::where('id', $id)->first();
 
-            if ($mod === null) {
+            if (!$mod) {
                 return $this->respondNotFound();
             }
 
             if ($mod->username === 'Admin') {
-                return $this->respondBadRequest('Không thể khóa tài khoản admin');
+                return $this->respondForbidden('Không thể khóa tài khoản admin');
             }
 
             $mod->is_banned = true;
@@ -167,12 +204,12 @@ class AdminController extends ApiController
         }
     }
 
-    public function unbanModAccount(string $moderator_id): JsonResponse
+    public function unbanModAccount(string $id): JsonResponse
     {
         try {
-            $mod = Admin::where('_id', $moderator_id)->first();
+            $mod = Admin::where('id', $id)->first();
 
-            if ($mod === null) {
+            if (!$mod) {
                 return $this->respondNotFound();
             }
 
@@ -189,20 +226,20 @@ class AdminController extends ApiController
         }
     }
 
-    public function lockModAccount(string $moderator_id): JsonResponse
+    public function lockModAccount(Request $request, string $id): JsonResponse
     {
         try {
-            $mod = Admin::where('_id', $moderator_id)->first();
+            $mod = Admin::where('id', $id)->first();
 
-            if ($mod === null) {
+            if (!$mod) {
                 return $this->respondNotFound();
             }
 
             if ($mod->username === 'Admin') {
-                return $this->respondBadRequest('Không thể khóa tài khoản admin');
+                return $this->respondForbidden('Không thể khóa tài khoản admin');
             }
 
-            $mod->is_locked = true;
+            $mod->locked_until = $request->locked_until;
             $mod->save();
 
             return $this->respondWithData(
@@ -215,16 +252,16 @@ class AdminController extends ApiController
         }
     }
 
-    public function unlockModAccount(string $moderator_id): JsonResponse
+    public function unlockModAccount(string $id): JsonResponse
     {
         try {
-            $mod = Admin::where('_id', $moderator_id)->first();
+            $mod = Admin::where('id', $id)->first();
 
-            if ($mod === null) {
+            if (!$mod) {
                 return $this->respondNotFound();
             }
 
-            $mod->is_locked = false;
+            $mod->locked_until = null;
             $mod->save();
 
             return $this->respondWithData(

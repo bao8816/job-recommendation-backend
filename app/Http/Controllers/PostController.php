@@ -13,12 +13,11 @@ class PostController extends ApiController
     public function createPost(Request $request): JsonResponse
     {
         try {
-            $title = $request->title;
             $content = $request->post_content;
 
             $post = new Post();
             $post->cv_id = $request->cv_id;
-            $post->title = $title;
+            $post->title = $request->title;
             $post->content = $content;
             $post->user_id = $request->user()->id;
 
@@ -27,7 +26,7 @@ class PostController extends ApiController
             return $this->respondCreated(
                 [
                     'post' => $post,
-                ], 'Successfully created post');
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
@@ -37,17 +36,16 @@ class PostController extends ApiController
     public function getPostById(Request $request, string $id): JsonResponse
     {
         try {
-            $post = Post::where('id', $id)->paginate(1);
+            $post = Post::where('id', $id)->first();
 
-            if ($post === null) {
-                return $this->respondNotFound('No post found');
+            if (!$post) {
+                return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
                     'post' => $post,
-                ]
-                , 'Successfully retrieved post');
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
@@ -57,19 +55,20 @@ class PostController extends ApiController
     public function getAllPosts(Request $request): JsonResponse
     {
         try {
-            $count_per_page = $request->count_per_page;
+            $count_per_page = $request->count_per_page ?? 10;
+            $order_by = $request->order_by ?? 'id';
+            $order_type = $request->order_type ?? 'asc';
 
-            $posts = Post::paginate($count_per_page);
+            $posts = Post::orderBy($order_by, $order_type)->paginate($count_per_page);
 
-            if ($posts === null) {
-                return $this->respondNotFound('No posts found');
+            if (count($posts) === 0) {
+                return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
                     'posts' => $posts,
-                ]
-                , 'Successfully retrieved posts');
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
@@ -79,19 +78,22 @@ class PostController extends ApiController
     public function getPostsByUserId(Request $request, string $user_id): JsonResponse
     {
         try {
-            $count_per_page = $request->count_per_page;
+            $count_per_page = $request->count_per_page ?? 10;
+            $order_by = $request->order_by ?? 'id';
+            $order_type = $request->order_type ?? 'asc';
 
-            $posts = Post::where('user_id', $user_id)->paginate($count_per_page);
+            $posts = Post::where('user_id', $user_id)
+                ->orderBy($order_by, $order_type)
+                ->paginate($count_per_page);
 
-            if ($posts === null) {
-                return $this->respondNotFound('No posts found');
+            if (count($posts) === 0) {
+                return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
                     'posts' => $posts,
-                ]
-                , 'Successfully retrieved posts');
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
@@ -103,19 +105,18 @@ class PostController extends ApiController
         try {
             $post = Post::where('id', $id)->first();
 
-            if ($post === null) {
-                return $this->respondNotFound('No post found');
+            if (!$post) {
+                return $this->respondNotFound();
             }
 
-            $post->title = $request->title;
-            $post->content = $request->post_content;
+            $post->title = $request->title ?? $post->title;
+            $post->content = $request->post_content ?? $post->content;
             $post->save();
 
             return $this->respondWithData(
                 [
                     'post' => $post,
-                ]
-                , 'Successfully updated post');
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
@@ -127,8 +128,8 @@ class PostController extends ApiController
         try {
             $post = Post::where('id', $id)->first();
 
-            if ($post === null) {
-                return $this->respondNotFound('No post found');
+            if (!$post) {
+                return $this->respondNotFound();
             }
 
             $post->upvote = $request->upvote;
@@ -138,8 +139,7 @@ class PostController extends ApiController
             return $this->respondWithData(
                 [
                     'post' => $post,
-                ]
-                , 'Successfully updated post votes');
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
@@ -151,8 +151,8 @@ class PostController extends ApiController
         try {
             $post = Post::where('id', $id)->first();
 
-            if ($post === null) {
-                return $this->respondNotFound('No post found');
+            if (!$post) {
+                return $this->respondNotFound();
             }
 
             $post->delete();
@@ -160,8 +160,7 @@ class PostController extends ApiController
             return $this->respondWithData(
                 [
                     'post' => $post,
-                ]
-                , 'Successfully deleted post');
+                ], 'Xoá thành công');
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());

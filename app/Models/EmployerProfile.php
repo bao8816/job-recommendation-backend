@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Filters\EmployerProfile\EmployerProfileFilter;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -35,6 +37,11 @@ class EmployerProfile extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    public static function filter($request, $builder): Builder
+    {
+        return (new EmployerProfileFilter($request))->apply($builder);
+    }
 
     public function account(): BelongsTo
     {

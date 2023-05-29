@@ -6,6 +6,7 @@ use App\Http\Requests\SignUpRequest;
 use App\Models\UserAccount;
 use App\Models\UserProfile;
 use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -56,7 +57,7 @@ class AuthUserController extends ApiController
      *      ),
      *  )
      */
-    public function signUp(Request $request)
+    public function signUp(Request $request): JsonResponse
     {
         try {
             $username = $request->username;
@@ -147,7 +148,7 @@ class AuthUserController extends ApiController
      *      ),
      *  )
      */
-    public function signIn(Request $request)
+    public function signIn(Request $request): JsonResponse
     {
         try {
             $username = $request->username;

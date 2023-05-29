@@ -44,7 +44,7 @@ class CompanyAccountController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "companyAccounts": {
+    "company_accounts": {
     "current_page": 1,
     "data": {
     {
@@ -165,20 +165,24 @@ class CompanyAccountController extends ApiController
      *      ),
      *  )
      */
-    public function getAllCompanyAccounts(Request $request): JsonResponse
+    public function getCompanyAccounts(Request $request): JsonResponse
     {
         try {
-            $count_per_page = $request->count_per_page;
+            $count_per_page = $request->count_per_page ?? 10;
+            $order_by = $request->order_by ?? 'id';
+            $order_type = $request->order_type ?? 'asc';
 
-            $companyAccounts = CompanyAccount::with('profile')->paginate($count_per_page);
+            $company_accounts = CompanyAccount::with('profile')
+                ->orderBy($order_by, $order_type)
+                ->paginate($count_per_page);
 
-            if (count($companyAccounts) === 0) {
+            if (count($company_accounts) === 0) {
                 return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'companyAccounts' => $companyAccounts
+                    'company_accounts' => $company_accounts
                 ]);
         }
         catch (Exception $exception) {
@@ -219,7 +223,7 @@ class CompanyAccountController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "companyAccount": {
+    "company_account": {
     "current_page": 1,
     "data": {
     {
@@ -283,19 +287,21 @@ class CompanyAccountController extends ApiController
     public function getCompanyAccountById(Request $request, string $id): JsonResponse
     {
         try {
-            $companyAccount = CompanyAccount::where('id', $id)->with('profile')->paginate(1);
+            $company_account = CompanyAccount::where('id', $id)
+                ->with('profile')
+                ->first();
 
-            if (count($companyAccount) === 0) {
+            if (!$company_account) {
                 return $this->respondNotFound();
             }
 
             if (!$request->user()->tokenCan('mod') && $request->user()->id != $id) {
-                return $this->respondUnauthorized('Bạn không có quyền truy cập vào tài khoản này');
+                return $this->respondForbidden('Bạn không có quyền truy cập vào tài khoản này');
             }
 
             return $this->respondWithData(
                 [
-                    'companyAccount' => $companyAccount
+                    'company_account' => $company_account
                 ]);
         }
         catch (Exception $exception) {
@@ -341,7 +347,7 @@ class CompanyAccountController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "companyAccount": {
+    "company_account": {
     "id": 1,
     "username": "ltd10",
     "is_verified": 0,
@@ -364,9 +370,9 @@ class CompanyAccountController extends ApiController
     public function updatePassword(Request $request): JsonResponse
     {
         try {
-            $companyAccount = CompanyAccount::where('id', $request->user()->id)->first();
+            $company_account = CompanyAccount::where('id', $request->user()->id)->first();
 
-            if (!isset($companyAccount)) {
+            if (!$company_account) {
                 return $this->respondNotFound();
             }
 
@@ -375,7 +381,7 @@ class CompanyAccountController extends ApiController
             $confirm_password = $request->confirm_password;
             $salt_password = $current_password . env('PASSWORD_SALT');
 
-            if (!Hash::check($salt_password, $companyAccount->password)) {
+            if (!Hash::check($salt_password, $company_account->password)) {
                 return $this->respondBadRequest('Mật khẩu hiện tại không đúng');
             }
 
@@ -383,12 +389,12 @@ class CompanyAccountController extends ApiController
                 return $this->respondBadRequest('Mật khẩu mới không khớp');
             }
 
-            $companyAccount->password = Hash::make($new_password . env('PASSWORD_SALT'));
-            $companyAccount->save();
+            $company_account->password = Hash::make($new_password . env('PASSWORD_SALT'));
+            $company_account->save();
 
             return $this->respondWithData(
                 [
-                    'companyAccount' => $companyAccount
+                    'company_account' => $company_account
                 ]);
         }
         catch (Exception $exception) {
@@ -429,7 +435,7 @@ class CompanyAccountController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "companyAccount": {
+    "company_account": {
     "id": 1,
     "username": "ltd10",
     "is_verified": 1,
@@ -452,18 +458,18 @@ class CompanyAccountController extends ApiController
     public function verifyCompanyAccount(Request $request, string $id): JsonResponse
     {
         try {
-            $companyAccount = CompanyAccount::where('id', $id)->first();
+            $company_account = CompanyAccount::where('id', $id)->first();
 
-            if (!isset($companyAccount)) {
+            if (!$company_account) {
                 return $this->respondNotFound();
             }
 
-            $companyAccount->is_verified = true;
-            $companyAccount->save();
+            $company_account->is_verified = true;
+            $company_account->save();
 
             return $this->respondWithData(
                 [
-                    'companyAccount' => $companyAccount
+                    'company_account' => $company_account
                 ]);
         }
         catch (Exception $exception) {
@@ -527,18 +533,18 @@ class CompanyAccountController extends ApiController
     public function banCompanyAccount(Request $request, string $id): JsonResponse
     {
         try {
-            $companyAccount = CompanyAccount::where('id', $id)->first();
+            $company_account = CompanyAccount::where('id', $id)->first();
 
-            if (!isset($companyAccount)) {
+            if (!$company_account) {
                 return $this->respondNotFound();
             }
 
-            $companyAccount->is_banned = true;
-            $companyAccount->save();
+            $company_account->is_banned = true;
+            $company_account->save();
 
             return $this->respondWithData(
                 [
-                    'companyAccount' => $companyAccount
+                    'company_account' => $company_account
                 ]);
         }
         catch (Exception $exception) {
@@ -579,7 +585,7 @@ class CompanyAccountController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "companyAccount": {
+    "company_account": {
     "id": 1,
     "username": "ltd10",
     "is_verified": 0,
@@ -602,18 +608,18 @@ class CompanyAccountController extends ApiController
     public function unbanCompanyAccount(Request $request, string $id): JsonResponse
     {
         try {
-            $companyAccount = CompanyAccount::where('id', $id)->first();
+            $company_account = CompanyAccount::where('id', $id)->first();
 
-            if (!isset($companyAccount)) {
+            if (!$company_account) {
                 return $this->respondNotFound();
             }
 
-            $companyAccount->is_banned = false;
-            $companyAccount->save();
+            $company_account->is_banned = false;
+            $company_account->save();
 
             return $this->respondWithData(
                 [
-                    'companyAccount' => $companyAccount
+                    'company_account' => $company_account
                 ]);
         }
         catch (Exception $exception) {
@@ -664,7 +670,7 @@ class CompanyAccountController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "companyAccount": {
+    "company_account": {
     "id": 1,
     "username": "ltd10",
     "is_verified": 0,
@@ -687,18 +693,18 @@ class CompanyAccountController extends ApiController
     public function lockCompanyAccount(Request $request, string $id): JsonResponse
     {
         try {
-            $companyAccount = CompanyAccount::where('id', $id)->first();
+            $company_account = CompanyAccount::where('id', $id)->first();
 
-            if (!isset($companyAccount)) {
+            if (!$company_account) {
                 return $this->respondNotFound();
             }
 
-            $companyAccount->locked_until = $request->locked_until;
-            $companyAccount->save();
+            $company_account->locked_until = $request->locked_until;
+            $company_account->save();
 
             return $this->respondWithData(
                 [
-                    'companyAccount' => $companyAccount
+                    'company_account' => $company_account
                 ]);
         }
         catch (Exception $exception) {
@@ -739,7 +745,7 @@ class CompanyAccountController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "companyAccount": {
+    "company_account": {
     "id": 1,
     "username": "ltd10",
     "is_verified": 0,
@@ -762,18 +768,18 @@ class CompanyAccountController extends ApiController
     public function unlockCompanyAccount(Request $request, string $id): JsonResponse
     {
         try {
-            $companyAccount = CompanyAccount::where('id', $id)->first();
+            $company_account = CompanyAccount::where('id', $id)->first();
 
-            if (!isset($companyAccount)) {
+            if (!$company_account) {
                 return $this->respondNotFound();
             }
 
-            $companyAccount->locked_until = null;
-            $companyAccount->save();
+            $company_account->locked_until = null;
+            $company_account->save();
 
             return $this->respondWithData(
                 [
-                    'companyAccount' => $companyAccount
+                    'company_account' => $company_account
                 ]);
         }
         catch (Exception $exception) {
@@ -814,7 +820,7 @@ class CompanyAccountController extends ApiController
     "error": false,
     "message": "Xoá thành công",
     "data": {
-    "companyAccount": {
+    "company_account": {
     "id": 20,
     "username": "dulich",
     "is_verified": 0,
@@ -837,19 +843,19 @@ class CompanyAccountController extends ApiController
     public function deleteCompanyAccount(Request $request, string $id): JsonResponse
     {
         try {
-            $companyAccount = CompanyAccount::where('id', $id)->first();
+            $company_account = CompanyAccount::where('id', $id)->first();
             $profile = CompanyProfile::where('id', $id)->first();
 
-            if (!isset($companyAccount) || !isset($profile)) {
+            if (!$company_account || !$profile) {
                 return $this->respondNotFound();
             }
 
-            $companyAccount->delete();
+            $company_account->delete();
             $profile->delete();
 
             return $this->respondWithData(
                 [
-                    'companyAccount' => $companyAccount
+                    'company_account' => $company_account
                 ], 'Xoá thành công');
         }
         catch (Exception $exception) {
