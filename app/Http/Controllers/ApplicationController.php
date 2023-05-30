@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateApplicationRequest;
 use App\Models\Application;
 use App\Models\CompanyAccount;
 use App\Models\CompanyProfile;
@@ -388,7 +389,7 @@ class ApplicationController extends ApiController
      *      ),
      *  )
      */
-    public function createApplication(Request $request): JsonResponse
+    public function createApplication(CreateApplicationRequest $request): JsonResponse
     {
         try {
             $application = new Application();
