@@ -2,6 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Admin;
+use App\Models\CompanyAccount;
+use App\Models\EmployerAccount;
+use App\Models\UserAccount;
 use Illuminate\Foundation\Http\FormRequest;
 
 class SignInRequest extends FormRequest
@@ -27,8 +31,15 @@ class SignInRequest extends FormRequest
             'username' => [
                 'required',
                 'string',
-                'exists:company_accounts,username',
-                'exists:user_accounts,username',
+                function ($attribute, $value, $fail) {
+                    if (!UserAccount::where('username', $value)->exists()
+                        && !CompanyAccount::where('username', $value)->exists()
+                        && !Admin::where('username', $value)->exists()
+                        && !EmployerAccount::where('username', $value)->exists())
+                    {
+                        $fail('Tên đăng nhập không tồn tại');
+                    }
+                },
             ],
             'password' => [
                 'required',
@@ -47,7 +58,6 @@ class SignInRequest extends FormRequest
         return [
             'username.required' => 'Yêu cầu nhập tên đăng nhập',
             'username.string' => 'Tên đăng nhập phải là dạng chuỗi',
-            'username.exists' => 'Tên đăng nhập không tồn tại',
             'password.required' => 'Yêu cầu nhập mật khẩu',
             'password.string' => 'Mật khẩu phải là dạng chuỗi',
         ];
