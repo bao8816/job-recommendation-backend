@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SignUpRequest;
 use App\Models\Admin;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -107,18 +108,14 @@ class AdminController extends ApiController
      *      )
      *  )
      */
-    public function createModAccount(Request $request): JsonResponse
+    public function createModAccount(SignUpRequest $request): JsonResponse
     {
         try {
             $username = $request->username;
             $password = $request->password;
-            $passwordSalt = $password . env('PASSWORD_SALT');
+            $password_salt = $password . env('PASSWORD_SALT');
 
-            if (Admin::where('username', $username)->exists()) {
-                return $this->respondBadRequest('Tên đăng nhập đã tồn tại');
-            }
-
-            $hashedPassword = Hash::make($passwordSalt);
+            $hashedPassword = Hash::make($password_salt);
 
             $modAccount = new Admin();
             $modAccount->username = $username;

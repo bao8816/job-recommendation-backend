@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SignUpRequest;
 use App\Models\EmployerAccount;
 use App\Models\EmployerProfile;
 use Exception;
@@ -320,16 +321,12 @@ class EmployerAccountController extends ApiController
      *      )
      *  )
      */
-    public function createEmployerAccount(Request $request): JsonResponse
+    public function createEmployerAccount(SignUpRequest $request): JsonResponse
     {
         try {
             $username = $request->username;
             $password = $request->password;
             $salt_password = $password . env('PASSWORD_SALT');
-
-            if (EmployerAccount::where('username', $username)->first()) {
-                return $this->respondBadRequest('Tên đăng nhập đã tồn tại');
-            }
 
             $hashed_password = Hash::make($salt_password);
 
