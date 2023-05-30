@@ -16,17 +16,17 @@ class CompanyVerificationController extends ApiController
             $order_by = $request->order_by ?? 'id';
             $order_type = $request->order_type ?? 'asc';
 
-            $company_vevrifications = CompanyVerification::filter($request, CompanyVerification::query())
+            $company_verifications = CompanyVerification::filter($request, CompanyVerification::query())
                 ->orderBy($order_by, $order_type)
                 ->paginate($count_per_page);
 
-            if (count($company_vevrifications) === 0) {
+            if (count($company_verifications) === 0) {
                 return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'company_vevrifications' => $company_vevrifications,
+                    'company_verifications' => $company_verifications,
                 ]);
         }
         catch (Exception $exception) {
