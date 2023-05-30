@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SignInRequest;
 use App\Models\Admin;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -61,16 +62,12 @@ class AuthAdminController extends ApiController
      *      ),
      *  )
      */
-    public function signIn(Request $request): JsonResponse
+    public function signIn(SignInRequest $request): JsonResponse
     {
         try {
             $username = $request->username;
             $password = $request->password;
             $passwordSalt = $password . env('PASSWORD_SALT');
-
-            if (!Admin::where('username', $username)->exists()) {
-                return $this->respondBadRequest('Không tìm thấy tên đăng nhập');
-            }
 
             $admin = Admin::where('username', $username)->first();
 

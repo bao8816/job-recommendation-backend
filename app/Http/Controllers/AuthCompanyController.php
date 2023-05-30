@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SignInRequest;
 use App\Http\Requests\SignUpRequest;
 use App\Models\CompanyAccount;
 use App\Models\CompanyProfile;
@@ -138,16 +139,12 @@ class AuthCompanyController extends ApiController
      *      ),
      *  )
      */
-    public function signIn(Request $request): JsonResponse
+    public function signIn(SignInRequest $request): JsonResponse
     {
         try {
             $username = $request->username;
             $password = $request->password;
             $passwordSalt = $password . env('PASSWORD_SALT');
-
-            if (!CompanyAccount::where('username', $username)->exists()) {
-                return $this->respondBadRequest('Tên đăng nhập không tồn tại');
-            }
 
             $companyAccount = CompanyAccount::where('username', $username)->first();
 

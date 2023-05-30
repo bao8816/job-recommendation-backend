@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SignInRequest;
 use App\Http\Requests\SignUpRequest;
 use App\Models\UserAccount;
 use App\Models\UserProfile;
@@ -139,20 +140,16 @@ class AuthUserController extends ApiController
      *      ),
      *  )
      */
-    public function signIn(Request $request): JsonResponse
+    public function signIn(SignInRequest $request): JsonResponse
     {
         try {
             $username = $request->username;
             $password = $request->password;
-            $passwordSalt = $password . env('PASSWORD_SALT');
-
-            if (!UserAccount::where('username', $username)->exists()) {
-                return $this->respondBadRequest('Tên đăng nhập không tồn tại');
-            }
+            $password_salt = $password . env('PASSWORD_SALT');
 
             $userAccount = UserAccount::where('username', $username)->first();
 
-            if (!Hash::check($passwordSalt, $userAccount->password)) {
+            if (!Hash::check($password_salt, $userAccount->password)) {
                 return $this->respondBadRequest('Mật khẩu không đúng');
             }
 

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SignInRequest;
 use App\Models\EmployerAccount;
 use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -58,16 +60,12 @@ class AuthEmployerController extends ApiController
      *      ),
      *  )
      */
-    public function signIn(Request $request)
+    public function signIn(SignInRequest $request): JsonResponse
     {
         try {
             $username = $request->username;
             $password = $request->password;
             $passwordSalt = $password . env('PASSWORD_SALT');
-
-            if (!EmployerAccount::where('username', $username)->exists()) {
-                return $this->respondBadRequest('Tên đăng nhập không tồn tại');
-            }
 
             $employerAccount = EmployerAccount::where('username', $username)->first();
 
