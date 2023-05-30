@@ -8,5 +8,6 @@ class CompanyVerificationFilter extends AbstractFilter
 {
     protected $filters = [
         'company_id' => CompanyFilter::class,
+        'status' => StatusFilter::class,
     ];
 }
