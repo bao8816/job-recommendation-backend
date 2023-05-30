@@ -35,6 +35,7 @@ class SignUpRequest extends FormRequest
                 'string',
                 'max:20',
                 'min:8',
+                'regex:/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/',
             ],
             'confirm_password' => [
                 'required',
@@ -59,6 +60,7 @@ class SignUpRequest extends FormRequest
             'password.string' => 'Mật khẩu phải là dạng chuỗi',
             'password.max' => 'Mật khẩu không được quá 20 ký tự',
             'password.min' => 'Mật khẩu phải có ít nhất 8 ký tự',
+            'password.regex' => 'Mật khẩu phải có ít nhất 1 chữ cái và 1 chữ số',
             'confirm_password.required' => 'Yêu cầu nhập lại mật khẩu xác nhận',
             'confirm_password.string' => 'Mật khẩu xác nhận phải là dạng chuỗi',
             'confirm_password.same' => 'Xác nhận mật khẩu không khớp',
