@@ -11,6 +11,171 @@ use Illuminate\Support\Facades\Hash;
 
 class EmployerAccountController extends ApiController
 {
+    /**
+     *  @OA\Get(
+     *      path="/employer-accounts",
+     *      summary="Get employer accounts",
+     *      tags={"Employer Accounts"},
+     *      security={{"sanctum":{}}},
+     *      @OA\Parameter(
+     *          name="company_id",
+     *          in="query",
+     *          description="Filter by company id",
+     *      ),
+     *      @OA\Parameter(
+     *          name="order_by",
+     *          in="query",
+     *          description="Order by field",
+     *      ),
+     *      @OA\Parameter(
+     *          name="order_type",
+     *          in="query",
+     *          description="Order type (asc/desc)",
+     *      ),
+     *      @OA\Parameter(
+     *          name="count_per_page",
+     *          in="query",
+     *          description="Count per page",
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Employer accounts",
+     *          @OA\JsonContent(
+     *              example=
+    {
+    "error": false,
+    "message": "Xử lí thành công",
+    "data": {
+    "employer_accounts": {
+    "current_page": 1,
+    "data": {
+    {
+    "id": 1,
+    "username": "nva",
+    "is_banned": 0,
+    "locked_until": null,
+    "last_login": null,
+    "profile": {
+    "id": 1,
+    "company_id": 20,
+    "full_name": "Nguyen Van A",
+    "avatar": "https://i.imgur.com/hepj9ZS.png"
+    }
+    },
+    {
+    "id": 2,
+    "username": "nhoang",
+    "is_banned": 0,
+    "locked_until": null,
+    "last_login": null,
+    "profile": {
+    "id": 2,
+    "company_id": 5,
+    "full_name": "Nguyen Khanh Hoang",
+    "avatar": "https://i.imgur.com/hepj9ZS.png"
+    }
+    }
+    },
+    "first_page_url": "http://127.0.0.1:8000/api/employer-accounts?page=1",
+    "from": 1,
+    "last_page": 20,
+    "last_page_url": "http://127.0.0.1:8000/api/employer-accounts?page=20",
+    "links": {
+    {
+    "url": null,
+    "label": "&laquo; Previous",
+    "active": false
+    },
+    {
+    "url": "http://127.0.0.1:8000/api/employer-accounts?page=1",
+    "label": "1",
+    "active": true
+    },
+    {
+    "url": "http://127.0.0.1:8000/api/employer-accounts?page=2",
+    "label": "2",
+    "active": false
+    },
+    {
+    "url": "http://127.0.0.1:8000/api/employer-accounts?page=3",
+    "label": "3",
+    "active": false
+    },
+    {
+    "url": "http://127.0.0.1:8000/api/employer-accounts?page=4",
+    "label": "4",
+    "active": false
+    },
+    {
+    "url": "http://127.0.0.1:8000/api/employer-accounts?page=5",
+    "label": "5",
+    "active": false
+    },
+    {
+    "url": "http://127.0.0.1:8000/api/employer-accounts?page=6",
+    "label": "6",
+    "active": false
+    },
+    {
+    "url": "http://127.0.0.1:8000/api/employer-accounts?page=7",
+    "label": "7",
+    "active": false
+    },
+    {
+    "url": "http://127.0.0.1:8000/api/employer-accounts?page=8",
+    "label": "8",
+    "active": false
+    },
+    {
+    "url": "http://127.0.0.1:8000/api/employer-accounts?page=9",
+    "label": "9",
+    "active": false
+    },
+    {
+    "url": "http://127.0.0.1:8000/api/employer-accounts?page=10",
+    "label": "10",
+    "active": false
+    },
+    {
+    "url": null,
+    "label": "...",
+    "active": false
+    },
+    {
+    "url": "http://127.0.0.1:8000/api/employer-accounts?page=19",
+    "label": "19",
+    "active": false
+    },
+    {
+    "url": "http://127.0.0.1:8000/api/employer-accounts?page=20",
+    "label": "20",
+    "active": false
+    },
+    {
+    "url": "http://127.0.0.1:8000/api/employer-accounts?page=2",
+    "label": "Next &raquo;",
+    "active": false
+    }
+    },
+    "next_page_url": "http://127.0.0.1:8000/api/employer-accounts?page=2",
+    "path": "http://127.0.0.1:8000/api/employer-accounts",
+    "per_page": 2,
+    "prev_page_url": null,
+    "to": 2,
+    "total": 40
+    }
+    },
+    "status_code": 200
+    }
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Employer accounts not found",
+     *          ref="#/components/responses/NotFound"
+     *      )
+     *  )
+     */
     public function getEmployerAccounts(Request $request): JsonResponse
     {
         try {
@@ -37,6 +202,52 @@ class EmployerAccountController extends ApiController
         }
     }
 
+    /**
+     * @OA\Get(
+     *      path="/employer-accounts/{id}",
+     *      tags={"Employer Accounts"},
+     *      summary="Get employer account information",
+     *      security={{"sanctum":{}}},
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Employer account id",
+     *          required=true,
+     *          in="path",
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Employer account information",
+     *          @OA\JsonContent(
+     *              example=
+    {
+    "error": false,
+    "message": "Xử lí thành công",
+    "data": {
+    "employer_account": {
+    "id": 3,
+    "username": "tphu",
+    "is_banned": 0,
+    "locked_until": null,
+    "last_login": null,
+    "profile": {
+    "id": 3,
+    "company_id": 20,
+    "full_name": "Le Trong Phu",
+    "avatar": "https://i.imgur.com/hepj9ZS.png"
+    }
+    }
+    },
+    "status_code": 200
+    }
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Employer account not found",
+     *          ref="#/components/responses/NotFound"
+     *      )
+     *  )
+     */
     public function getEmployerAccountById(Request $request, string $id): JsonResponse
     {
         try {
@@ -45,6 +256,10 @@ class EmployerAccountController extends ApiController
 
             if (!$employer_account) {
                 return $this->respondNotFound();
+            }
+
+            if (!$request->user()->tokenCan('mod') && $request->user()->id !== $employer_account->id) {
+                return $this->respondForbidden('Bạn không có quyền truy cập');
             }
 
             return $this->respondWithData(
@@ -57,6 +272,54 @@ class EmployerAccountController extends ApiController
         }
     }
 
+    /**
+     * @OA\Post(
+     *      path="/employer-accounts",
+     *      tags={"Employer Accounts"},
+     *      summary="Create employer account",
+     *      security={{"sanctum":{}}},
+     *      @OA\RequestBody(
+     *          required=true,
+     *          description="Create employer account request body",
+     *          @OA\JsonContent(
+     *              required={"username", "password"},
+     *              @OA\Property(
+     *                  property="username",
+     *                  type="string",
+     *                  example="tphu"
+     *              ),
+     *              @OA\Property(
+     *                  property="password",
+     *                  type="string",
+     *                  example="123456"
+     *              ),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Employer account created successfully",
+     *          @OA\JsonContent(
+     *              example=
+    {
+    "error": false,
+    "message": "Tạo thành công",
+    "data": {
+    "employer_account": {
+    "username": "emp1",
+    "id": 41
+    }
+    },
+    "status_code": 201
+    }
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Employer account creation failed",
+     *          ref="#/components/responses/BadRequest"
+     *      )
+     *  )
+     */
     public function createEmployerAccount(Request $request): JsonResponse
     {
         try {
@@ -77,7 +340,7 @@ class EmployerAccountController extends ApiController
 
             $employer_profile = new EmployerProfile();
             $employer_profile->id = $employer_account->id;
-            $employer_profile->company_id = $request->company_id ?? $request->user()->id;
+            $employer_profile->company_id = $request->user()->id;
             $employer_profile->full_name = 'Họ và tên';
             $employer_profile->save();
 
@@ -91,6 +354,52 @@ class EmployerAccountController extends ApiController
         }
     }
 
+    /**
+     * @OA\Patch(
+     *      path="/employer/password",
+     *      tags={"Employer Accounts"},
+     *      summary="Update employer account password",
+     *      security={{"sanctum":{}}},
+     *      @OA\RequestBody(
+     *          required=true,
+     *          description="Update employer account password request body",
+     *          @OA\JsonContent(
+     *              example=
+    {
+    "current_password": "123456",
+    "new_password": "1234567",
+    "confirm_password": "1234567"
+    }
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Employer account updated successfully",
+     *          @OA\JsonContent(
+     *              example=
+    {
+    "error": false,
+    "message": "Xử lí thành công",
+    "data": {
+    "employer_account": {
+    "id": 5,
+    "username": "tphuong",
+    "is_banned": 0,
+    "locked_until": null,
+    "last_login": null
+    }
+    },
+    "status_code": 200
+    }
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Employer account update password failed",
+     *          ref="#/components/responses/BadRequest"
+     *      )
+     *  )
+     */
     public function updatePassword(Request $request): JsonResponse
     {
         try {
@@ -126,6 +435,46 @@ class EmployerAccountController extends ApiController
         }
     }
 
+    /**
+     * @OA\Put(
+     *      path="/employer-accounts/ban/{id}",
+     *      tags={"Employer Accounts"},
+     *      summary="Ban employer account",
+     *      security={{"sanctum":{}}},
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Employer account id",
+     *          required=true,
+     *          in="path",
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Employer account banned successfully",
+     *          @OA\JsonContent(
+     *              example=
+    {
+    "error": false,
+    "message": "Xử lí thành công",
+    "data": {
+    "employer_account": {
+    "id": 1,
+    "username": "nva",
+    "is_banned": true,
+    "locked_until": null,
+    "last_login": null
+    }
+    },
+    "status_code": 200
+    }
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Employer account not found",
+     *          ref="#/components/responses/NotFound"
+     *      )
+     *  )
+     */
     public function banEmployerAccount(Request $request, string $id): JsonResponse
     {
         try {
@@ -148,6 +497,46 @@ class EmployerAccountController extends ApiController
         }
     }
 
+    /**
+     * @OA\Put(
+     *      path="/employer-accounts/unban/{id}",
+     *      tags={"Employer Accounts"},
+     *      summary="Unban employer account",
+     *      security={{"sanctum":{}}},
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Employer account id",
+     *          required=true,
+     *          in="path",
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Employer account unbanned successfully",
+     *          @OA\JsonContent(
+     *              example=
+    {
+    "error": false,
+    "message": "Xử lí thành công",
+    "data": {
+    "employer_account": {
+    "id": 1,
+    "username": "nva",
+    "is_banned": false,
+    "locked_until": null,
+    "last_login": null
+    }
+    },
+    "status_code": 200
+    }
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Employer account not found",
+     *          ref="#/components/responses/NotFound"
+     *      )
+     *  )
+     */
     public function unbanEmployerAccount(Request $request, string $id): JsonResponse
     {
         try {
@@ -170,6 +559,55 @@ class EmployerAccountController extends ApiController
         }
     }
 
+    /**
+     * @OA\Put(
+     *      path="/employer-accounts/lock/{id}",
+     *      tags={"Employer Accounts"},
+     *      summary="Lock employer account",
+     *      security={{"sanctum":{}}},
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Employer account id",
+     *          required=true,
+     *          in="path",
+     *      ),
+     *      @OA\RequestBody(
+     *          required=true,
+     *          @OA\JsonContent(
+     *              example=
+    {
+    "locked_until": "2023-09-30 00:00:00"
+    }
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Employer account locked successfully",
+     *          @OA\JsonContent(
+     *              example=
+    {
+    "error": false,
+    "message": "Xử lí thành công",
+    "data": {
+    "employer_account": {
+    "id": 1,
+    "username": "nva",
+    "is_banned": 0,
+    "locked_until": "2023-09-30 00:00:00",
+    "last_login": null
+    }
+    },
+    "status_code": 200
+    }
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Employer account not found",
+     *          ref="#/components/responses/NotFound"
+     *      )
+     *  )
+     */
     public function lockEmployerAccount(Request $request, string $id): JsonResponse
     {
         try {
@@ -192,6 +630,46 @@ class EmployerAccountController extends ApiController
         }
     }
 
+    /**
+     * @OA\Put(
+     *      path="/employer-accounts/unlock/{id}",
+     *      tags={"Employer Accounts"},
+     *      summary="Unlock employer account",
+     *      security={{"sanctum":{}}},
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Employer account id",
+     *          required=true,
+     *          in="path",
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Employer account unlocked successfully",
+     *          @OA\JsonContent(
+     *              example=
+    {
+    "error": false,
+    "message": "Xử lí thành công",
+    "data": {
+    "employer_account": {
+    "id": 1,
+    "username": "nva",
+    "is_banned": 0,
+    "locked_until": null,
+    "last_login": null
+    }
+    },
+    "status_code": 200
+    }
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Employer account not found",
+     *          ref="#/components/responses/NotFound"
+     *      )
+     *  )
+     */
     public function unlockEmployerAccount(Request $request, string $id): JsonResponse
     {
         try {
@@ -214,6 +692,52 @@ class EmployerAccountController extends ApiController
         }
     }
 
+    /**
+     * @OA\Delete(
+     *      path="/employer-accounts/{id}",
+     *      tags={"Employer Accounts"},
+     *      summary="Delete employer account",
+     *      security={{"sanctum":{}}},
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Employer account id",
+     *          required=true,
+     *          in="path",
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Employer account deleted successfully",
+     *          @OA\JsonContent(
+     *              example=
+    {
+    "error": false,
+    "message": "Xoá thành công",
+    "data": {
+    "employer_account": {
+    "id": 41,
+    "username": "emp1",
+    "is_banned": 0,
+    "locked_until": null,
+    "last_login": null
+    },
+    "profile": {
+    "id": 41,
+    "company_id": 1,
+    "full_name": "Họ và tên",
+    "avatar": "https://i.imgur.com/hepj9ZS.png"
+    }
+    },
+    "status_code": 200
+    }
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Employer account not found",
+     *          ref="#/components/responses/NotFound"
+     *      )
+     *  )
+     */
     public function deleteEmployerAccount(Request $request, string $id): JsonResponse
     {
         try {

@@ -3054,6 +3054,611 @@
                 ]
             }
         },
+        "/employer-accounts": {
+            "get": {
+                "tags": [
+                    "Employer Accounts"
+                ],
+                "summary": "Get employer accounts",
+                "operationId": "8df76ddba32f39db3ba2ce6e4c51dd9a",
+                "parameters": [
+                    {
+                        "name": "company_id",
+                        "in": "query",
+                        "description": "Filter by company id"
+                    },
+                    {
+                        "name": "order_by",
+                        "in": "query",
+                        "description": "Order by field"
+                    },
+                    {
+                        "name": "order_type",
+                        "in": "query",
+                        "description": "Order type (asc/desc)"
+                    },
+                    {
+                        "name": "count_per_page",
+                        "in": "query",
+                        "description": "Count per page"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Employer accounts",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "employer_accounts": {
+                                            "current_page": 1,
+                                            "data": [
+                                                {
+                                                    "id": 1,
+                                                    "username": "nva",
+                                                    "is_banned": 0,
+                                                    "locked_until": null,
+                                                    "last_login": null,
+                                                    "profile": {
+                                                        "id": 1,
+                                                        "company_id": 20,
+                                                        "full_name": "Nguyen Van A",
+                                                        "avatar": "https://i.imgur.com/hepj9ZS.png"
+                                                    }
+                                                },
+                                                {
+                                                    "id": 2,
+                                                    "username": "nhoang",
+                                                    "is_banned": 0,
+                                                    "locked_until": null,
+                                                    "last_login": null,
+                                                    "profile": {
+                                                        "id": 2,
+                                                        "company_id": 5,
+                                                        "full_name": "Nguyen Khanh Hoang",
+                                                        "avatar": "https://i.imgur.com/hepj9ZS.png"
+                                                    }
+                                                }
+                                            ],
+                                            "first_page_url": "http://127.0.0.1:8000/api/employer-accounts?page=1",
+                                            "from": 1,
+                                            "last_page": 20,
+                                            "last_page_url": "http://127.0.0.1:8000/api/employer-accounts?page=20",
+                                            "links": [
+                                                {
+                                                    "url": null,
+                                                    "label": "&laquo; Previous",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://127.0.0.1:8000/api/employer-accounts?page=1",
+                                                    "label": "1",
+                                                    "active": true
+                                                },
+                                                {
+                                                    "url": "http://127.0.0.1:8000/api/employer-accounts?page=2",
+                                                    "label": "2",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://127.0.0.1:8000/api/employer-accounts?page=3",
+                                                    "label": "3",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://127.0.0.1:8000/api/employer-accounts?page=4",
+                                                    "label": "4",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://127.0.0.1:8000/api/employer-accounts?page=5",
+                                                    "label": "5",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://127.0.0.1:8000/api/employer-accounts?page=6",
+                                                    "label": "6",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://127.0.0.1:8000/api/employer-accounts?page=7",
+                                                    "label": "7",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://127.0.0.1:8000/api/employer-accounts?page=8",
+                                                    "label": "8",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://127.0.0.1:8000/api/employer-accounts?page=9",
+                                                    "label": "9",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://127.0.0.1:8000/api/employer-accounts?page=10",
+                                                    "label": "10",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": null,
+                                                    "label": "...",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://127.0.0.1:8000/api/employer-accounts?page=19",
+                                                    "label": "19",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://127.0.0.1:8000/api/employer-accounts?page=20",
+                                                    "label": "20",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://127.0.0.1:8000/api/employer-accounts?page=2",
+                                                    "label": "Next &raquo;",
+                                                    "active": false
+                                                }
+                                            ],
+                                            "next_page_url": "http://127.0.0.1:8000/api/employer-accounts?page=2",
+                                            "path": "http://127.0.0.1:8000/api/employer-accounts",
+                                            "per_page": 2,
+                                            "prev_page_url": null,
+                                            "to": 2,
+                                            "total": 40
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Employer Accounts"
+                ],
+                "summary": "Create employer account",
+                "operationId": "268078738674737266328fd4ffd0cb78",
+                "requestBody": {
+                    "description": "Create employer account request body",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "username",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "username": {
+                                        "type": "string",
+                                        "example": "tphu"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "123456"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Employer account created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Tạo thành công",
+                                    "data": {
+                                        "employer_account": {
+                                            "username": "emp1",
+                                            "id": 41
+                                        }
+                                    },
+                                    "status_code": 201
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequest"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/employer-accounts/{id}": {
+            "get": {
+                "tags": [
+                    "Employer Accounts"
+                ],
+                "summary": "Get employer account information",
+                "operationId": "eba6299ed4ea8376e345d677d61d7507",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Employer account id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Employer account information",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "employer_account": {
+                                            "id": 3,
+                                            "username": "tphu",
+                                            "is_banned": 0,
+                                            "locked_until": null,
+                                            "last_login": null,
+                                            "profile": {
+                                                "id": 3,
+                                                "company_id": 20,
+                                                "full_name": "Le Trong Phu",
+                                                "avatar": "https://i.imgur.com/hepj9ZS.png"
+                                            }
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Employer Accounts"
+                ],
+                "summary": "Delete employer account",
+                "operationId": "8224f9c5f5caab1e0b77c2aeac8dfb08",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Employer account id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Employer account deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xoá thành công",
+                                    "data": {
+                                        "employer_account": {
+                                            "id": 41,
+                                            "username": "emp1",
+                                            "is_banned": 0,
+                                            "locked_until": null,
+                                            "last_login": null
+                                        },
+                                        "profile": {
+                                            "id": 41,
+                                            "company_id": 1,
+                                            "full_name": "Họ và tên",
+                                            "avatar": "https://i.imgur.com/hepj9ZS.png"
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/employer/password": {
+            "patch": {
+                "tags": [
+                    "Employer Accounts"
+                ],
+                "summary": "Update employer account password",
+                "operationId": "4be3cb744820158c9f8b3ba8f27a9676",
+                "requestBody": {
+                    "description": "Update employer account password request body",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {},
+                            "example": {
+                                "current_password": "123456",
+                                "new_password": "1234567",
+                                "confirm_password": "1234567"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Employer account updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "employer_account": {
+                                            "id": 5,
+                                            "username": "tphuong",
+                                            "is_banned": 0,
+                                            "locked_until": null,
+                                            "last_login": null
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequest"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/employer-accounts/ban/{id}": {
+            "put": {
+                "tags": [
+                    "Employer Accounts"
+                ],
+                "summary": "Ban employer account",
+                "operationId": "64bb7332d3b8db634433b07690ac59d8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Employer account id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Employer account banned successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "employer_account": {
+                                            "id": 1,
+                                            "username": "nva",
+                                            "is_banned": true,
+                                            "locked_until": null,
+                                            "last_login": null
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/employer-accounts/unban/{id}": {
+            "put": {
+                "tags": [
+                    "Employer Accounts"
+                ],
+                "summary": "Unban employer account",
+                "operationId": "c4a9de169136ed56c5e2fdefa126ea5f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Employer account id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Employer account unbanned successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "employer_account": {
+                                            "id": 1,
+                                            "username": "nva",
+                                            "is_banned": false,
+                                            "locked_until": null,
+                                            "last_login": null
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/employer-accounts/lock/{id}": {
+            "put": {
+                "tags": [
+                    "Employer Accounts"
+                ],
+                "summary": "Lock employer account",
+                "operationId": "a91f7987564b81e6919f855531bf0bd7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Employer account id",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {},
+                            "example": {
+                                "locked_until": "2023-09-30 00:00:00"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Employer account locked successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "employer_account": {
+                                            "id": 1,
+                                            "username": "nva",
+                                            "is_banned": 0,
+                                            "locked_until": "2023-09-30 00:00:00",
+                                            "last_login": null
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/employer-accounts/unlock/{id}": {
+            "put": {
+                "tags": [
+                    "Employer Accounts"
+                ],
+                "summary": "Unlock employer account",
+                "operationId": "1c70d4def38beae20728183138e20fd5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Employer account id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Employer account unlocked successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "employer_account": {
+                                            "id": 1,
+                                            "username": "nva",
+                                            "is_banned": 0,
+                                            "locked_until": null,
+                                            "last_login": null
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
         "/api/jobs": {
             "get": {
                 "tags": [
