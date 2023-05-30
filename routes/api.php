@@ -565,10 +565,12 @@ Route::middleware(['auth:sanctum', 'ability:company'])->controller(EmployerAccou
     });
 
 // -----------Employer Profile
-Route::middleware(['auth:sanctum', 'abilities:user'])->controller(EmployerProfileController::class)
+Route::middleware(['auth:sanctum', 'abilities:employer'])->controller(EmployerProfileController::class)
     ->prefix('employer-profiles')->group(function () {
         Route::get('/{id}', 'getEmployerProfileById');
         Route::get('/', 'getEmployerProfiles');
+
+        Route::put('/{id}', 'updateEmployerProfile');
     });
 
 

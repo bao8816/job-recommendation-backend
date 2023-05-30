@@ -3659,6 +3659,271 @@
                 ]
             }
         },
+        "/employer-profiles": {
+            "get": {
+                "tags": [
+                    "Employer Profiles"
+                ],
+                "summary": "Get all employer profiles",
+                "operationId": "7cb740f515706fadcef2e05237dbcb5a",
+                "parameters": [
+                    {
+                        "name": "count_per_page",
+                        "in": "query",
+                        "description": "Number of employer profiles per page"
+                    },
+                    {
+                        "name": "order_by",
+                        "in": "query",
+                        "description": "Order by column"
+                    },
+                    {
+                        "name": "order_type",
+                        "in": "query",
+                        "description": "Order type (asc or desc)"
+                    },
+                    {
+                        "name": "company_id",
+                        "in": "query",
+                        "description": "Filter by company id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved employer profiles",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Successfully retrieved employer profiles",
+                                    "data": {
+                                        "employer_profiles": {
+                                            "current_page": 1,
+                                            "data": [
+                                                {
+                                                    "id": 1,
+                                                    "company_id": 20,
+                                                    "full_name": "Nguyen Van A",
+                                                    "avatar": "https://i.imgur.com/hepj9ZS.png"
+                                                },
+                                                {
+                                                    "id": 2,
+                                                    "company_id": 5,
+                                                    "full_name": "Nguyen Khanh Hoang",
+                                                    "avatar": "https://i.imgur.com/hepj9ZS.png"
+                                                }
+                                            ],
+                                            "first_page_url": "http://localhost:8000/api/employer-profiles?page=1",
+                                            "from": 1,
+                                            "last_page": 20,
+                                            "last_page_url": "http://localhost:8000/api/employer-profiles?page=20",
+                                            "links": [
+                                                {
+                                                    "url": null,
+                                                    "label": "&laquo; Previous",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/employer-profiles?page=1",
+                                                    "label": "1",
+                                                    "active": true
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/employer-profiles?page=2",
+                                                    "label": "2",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/employer-profiles?page=3",
+                                                    "label": "3",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/employer-profiles?page=4",
+                                                    "label": "4",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/employer-profiles?page=5",
+                                                    "label": "5",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/employer-profiles?page=6",
+                                                    "label": "6",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/employer-profiles?page=7",
+                                                    "label": "7",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/employer-profiles?page=8",
+                                                    "label": "8",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/employer-profiles?page=9",
+                                                    "label": "9",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/employer-profiles?page=10",
+                                                    "label": "10",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": null,
+                                                    "label": "...",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/employer-profiles?page=19",
+                                                    "label": "19",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/employer-profiles?page=20",
+                                                    "label": "20",
+                                                    "active": false
+                                                },
+                                                {
+                                                    "url": "http://localhost:8000/api/employer-profiles?page=2",
+                                                    "label": "Next &raquo;",
+                                                    "active": false
+                                                }
+                                            ],
+                                            "next_page_url": "http://localhost:8000/api/employer-profiles?page=2",
+                                            "path": "http://localhost:8000/api/employer-profiles",
+                                            "per_page": 2,
+                                            "prev_page_url": null,
+                                            "to": 2,
+                                            "total": 40
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/employer-profiles/{id}": {
+            "get": {
+                "tags": [
+                    "Employer Profiles"
+                ],
+                "summary": "Get employer profile information",
+                "operationId": "e0c58a0b2b27c90478109b6a4c47474d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Employer profile id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully retrieved employer profile",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Successfully retrieved employer profile",
+                                    "data": {
+                                        "employer_profile": {
+                                            "id": 1,
+                                            "company_id": 20,
+                                            "full_name": "Nguyen Van A",
+                                            "avatar": "https://i.imgur.com/hepj9ZS.png"
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Employer Profiles"
+                ],
+                "summary": "Update employer profile information",
+                "operationId": "6fa7ca66e9e06cb4f2fb6983d3dc97ab",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Employer profile id",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {},
+                            "example": {
+                                "full_name": "Nguyen Van B"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successfully updated employer profile",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": false,
+                                    "message": "Xử lí thành công",
+                                    "data": {
+                                        "employer_profile": {
+                                            "id": 1,
+                                            "company_id": 20,
+                                            "full_name": "Nguyen Van B",
+                                            "avatar": "https://i.imgur.com/hepj9ZS.png"
+                                        }
+                                    },
+                                    "status_code": 200
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/NotFound"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
         "/api/jobs": {
             "get": {
                 "tags": [
