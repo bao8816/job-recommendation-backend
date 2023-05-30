@@ -57,27 +57,18 @@ class AuthUserController extends ApiController
      *      ),
      *  )
      */
-    public function signUp(Request $request): JsonResponse
+    public function signUp(SignUpRequest $request): JsonResponse
     {
         try {
             $username = $request->username;
             $password = $request->password;
-            $confirm_password = $request->confirm_password;
 
-            if ($password !== $confirm_password) {
-                return $this->respondBadRequest('Nhập lại mật khẩu không khớp');
-            }
-
-            if (UserAccount::where('username', $username)->exists()) {
-                return $this->respondBadRequest('Tên đăng nhập đã tồn tại');
-            }
-
-            $passwordSalt = $password . env('PASSWORD_SALT');
-            $hashedPassword = Hash::make($passwordSalt);
+            $password_salt = $password . env('PASSWORD_SALT');
+            $hashed_password = Hash::make($password_salt);
 
             $userAccount = new UserAccount();
             $userAccount->username = $username;
-            $userAccount->password = $hashedPassword;
+            $userAccount->password = $hashed_password;
             $userAccount->save();
 
             //Create profile

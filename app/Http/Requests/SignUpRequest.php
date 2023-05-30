@@ -24,9 +24,44 @@ class SignUpRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required|string|unique:user_accounts',
-            'password' => 'required|string',
-            'password_confirmation' => 'required|string|same:password',
+            'username' => [
+                'required',
+                'string',
+                'unique:company_accounts,username',
+                'unique:user_accounts,username',
+            ],
+            'password' => [
+                'required',
+                'string',
+                'max:20',
+                'min:8',
+            ],
+            'confirm_password' => [
+                'required',
+                'string',
+                'same:password',
+            ],
+        ];
+    }
+
+    /**
+     * Get the validation messages that apply to the request.
+     *
+     * @return array<string, mixed>
+     */
+    public function messages()
+    {
+        return [
+            'username.required' => 'Yêu cầu nhập tên đăng nhập',
+            'username.string' => 'Tên đăng nhập phải là dạng chuỗi',
+            'username.unique' => 'Tên đăng nhập đã tồn tại',
+            'password.required' => 'Yêu cầu nhập mật khẩu',
+            'password.string' => 'Mật khẩu phải là dạng chuỗi',
+            'password.max' => 'Mật khẩu không được quá 20 ký tự',
+            'password.min' => 'Mật khẩu phải có ít nhất 8 ký tự',
+            'confirm_password.required' => 'Yêu cầu nhập lại mật khẩu xác nhận',
+            'confirm_password.string' => 'Mật khẩu xác nhận phải là dạng chuỗi',
+            'confirm_password.same' => 'Xác nhận mật khẩu không khớp',
         ];
     }
 }

@@ -57,21 +57,12 @@ class AuthCompanyController extends ApiController
      *      ),
      *  )
      */
-    public function signUp(Request $request): JsonResponse
+    public function signUp(SignUpRequest $request): JsonResponse
     {
         try {
             $username = $request->username;
             $password = $request->password;
-            $confirm_password = $request->confirm_password;
             $password_salt = $password . env('PASSWORD_SALT');
-
-            if ($password != $confirm_password) {
-                return $this->respondBadRequest('Nhập lại mật khẩu không khớp');
-            }
-
-            if (CompanyAccount::where('username', $username)->exists()) {
-                return $this->respondBadRequest('Tên đăng nhập đã tồn tại');
-            }
 
             $hashed_password = Hash::make($password_salt);
 
