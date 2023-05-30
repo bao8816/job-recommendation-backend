@@ -37,7 +37,7 @@ class JobController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "job": {
+    "jobs": {
     "current_page": 1,
     "data": {
     {
@@ -47,12 +47,13 @@ class JobController extends ApiController
     "description": "- Tư vấn tính năng, tiện ích và bán các sản phẩm điện thoại, máy tính bảng, Macbook tại Showroom. Không phải đi thị trường.- Phối hợp cùng team Marketing lên kế hoạch triển khai các Event hàng Tuần, Tháng và chương trình Chăm sóc sau Bán Hàng.- Các công việc khác được giao từ Quản lý. ",
     "benefit": "- Lương thỏa thuận (Tùy theo năng lực và kinh nghiệm). Ngoài ra còn chính sách thưởng hiệu quả làm việc.- Thưởng đột xuất theo thành tích đặc biệt và hoặc các sáng kiến cải tiến trong công việc.- Được hưởng đầy đủ quyền lợi của người lao động theo luật hiện hành (Bảo hiểm xã hội, Bảo hiểm y tế).- Được hưởng chế độ du lịch cùng Team, thưởng lễ Tết, thưởng theo doanh số kinh doanh của Công Ty.- Được tham gia đào tạo nâng cao chuyên sâu, chuyên môn và kỹ năng.- Cơ hội phát triển bản thân và thăng tiến trong tổ chức.- Môi trường làm việc năng động, thân thiện. Có cơ hội làm việc với nhiều đối tác lớn, uy tín.- Được hưởng năng suất hàng quý và tăng lương định kỳ. ",
     "requirement": "- Trợ lý Trưởng phòng Xuất nhập khẩu tối thiểu phải tốt nghiệp cử nhân ngành Kinh tế, Ngoại thương hoặc Kinh doanh quốc tế ngành Xuất nhập khẩu hoặc có kinh nghiệm từ 2 năm trở lên trong lĩnh vực này ở vị trí tương đương. Hoặc là dược sĩ và có kinh nghiệm làm việc ở vị trí tương đương.- Ưu tiên các ứng viên đã làm việc hoặc tiếp xúc với môi trường làm việc trong lĩnh vực dược phẩm (background kinh tế) hoặc công ty xuất nhật khẩu (background dược).- Trường hợp không đáp ứng toàn bộ MTCV và yêu cầu công việc nêu trên vẫn sẽ được đào tạo nhưng cần có ý chí mạnh mẽ, quyết tâm học việc, sự tập trung và khả năng chịu áp lực cao.- Có khả năng đàm phán và giao tiếp tốt, chịu áp lực công việc cao.- Có năng lực sắp xếp công việc, lên kế hoạch, báo cáo.- Có tiềm năng và hướng đến vị trí quản lý, điều hành, đưa ra được các đề xuất giúp phát triển phòng Xuất nhập khẩu tiến xa hơn và gắn với chiến lược công ty.- Có khả năng gắn kết, quan tâm, đánh giá và phát triển nguồn nhân lực trong phòng ban phục vụ cho sự phát triển của bản thân mỗi người, công việc và công ty theo giá trị cốt lõi của công ty.- Có kỹ năng sử dụng tiếng Anh, đặc biệt là kỹ năng viết tốt.- Có kỹ năng phân tích, tổng hợp tốt, đánh giá và đề xuất, tham mưu cho Hội đồng thành viên.- Có kỹ năng thuyết trình trước đám đông một cách rõ ràng, dễ hiểu, đạt được hiệu quả cao nhất.- Quyết đoán trong công việc, dám nghĩ dám làm, dám chịu trách nhiệm.- Có phẩm chất đạo đức tốt và trung thực. ",
-    "min_salary": -1,
-    "max_salary": -1,
+    "min_salary": 1,
+    "max_salary": 5,
     "recruit_num": 1,
     "position": "Toàn thời gian",
-    "year_of_experience": "2",
-    "deadline": "1970-01-01",
+    "min_yoe": 0,
+    "max_yoe": 2,
+    "deadline": "2024-09-01",
     "job_locations": {
     {
     "id": 1,
@@ -83,13 +84,28 @@ class JobController extends ApiController
     "job_id": 1,
     "type": "Nhân viên"
     }
+    },
+    "employer_profile": {
+    "id": 4,
+    "company_id": 5,
+    "full_name": "Trinh Minh Sang",
+    "avatar": "https://i.imgur.com/hepj9ZS.png",
+    "company_profile": {
+    "id": 5,
+    "name": "CÔNG TY TNHH TRIỆU ĐIỀN",
+    "logo": "https://i.imgur.com/hepj9ZS.png",
+    "description": "none",
+    "site": "không có",
+    "address": "Tòa Ruby 1, Giang Biên, Long Biên, Hà Nội",
+    "size": "25-99"
+    }
     }
     }
     },
-    "first_page_url": "http://localhost:8000/api/jobs/1?page=1",
+    "first_page_url": "http://localhost:8000/api/jobs?page=1",
     "from": 1,
-    "last_page": 1,
-    "last_page_url": "http://localhost:8000/api/jobs/1?page=1",
+    "last_page": 51,
+    "last_page_url": "http://localhost:8000/api/jobs?page=51",
     "links": {
     {
     "url": null,
@@ -97,22 +113,82 @@ class JobController extends ApiController
     "active": false
     },
     {
-    "url": "http://localhost:8000/api/jobs/1?page=1",
+    "url": "http://localhost:8000/api/jobs?page=1",
     "label": "1",
     "active": true
     },
     {
+    "url": "http://localhost:8000/api/jobs?page=2",
+    "label": "2",
+    "active": false
+    },
+    {
+    "url": "http://localhost:8000/api/jobs?page=3",
+    "label": "3",
+    "active": false
+    },
+    {
+    "url": "http://localhost:8000/api/jobs?page=4",
+    "label": "4",
+    "active": false
+    },
+    {
+    "url": "http://localhost:8000/api/jobs?page=5",
+    "label": "5",
+    "active": false
+    },
+    {
+    "url": "http://localhost:8000/api/jobs?page=6",
+    "label": "6",
+    "active": false
+    },
+    {
+    "url": "http://localhost:8000/api/jobs?page=7",
+    "label": "7",
+    "active": false
+    },
+    {
+    "url": "http://localhost:8000/api/jobs?page=8",
+    "label": "8",
+    "active": false
+    },
+    {
+    "url": "http://localhost:8000/api/jobs?page=9",
+    "label": "9",
+    "active": false
+    },
+    {
+    "url": "http://localhost:8000/api/jobs?page=10",
+    "label": "10",
+    "active": false
+    },
+    {
     "url": null,
+    "label": "...",
+    "active": false
+    },
+    {
+    "url": "http://localhost:8000/api/jobs?page=50",
+    "label": "50",
+    "active": false
+    },
+    {
+    "url": "http://localhost:8000/api/jobs?page=51",
+    "label": "51",
+    "active": false
+    },
+    {
+    "url": "http://localhost:8000/api/jobs?page=2",
     "label": "Next &raquo;",
     "active": false
     }
     },
-    "next_page_url": null,
-    "path": "http://localhost:8000/api/jobs/1",
+    "next_page_url": "http://localhost:8000/api/jobs?page=2",
+    "path": "http://localhost:8000/api/jobs",
     "per_page": 1,
     "prev_page_url": null,
     "to": 1,
-    "total": 1
+    "total": 51
     }
     },
     "status_code": 200
@@ -134,7 +210,7 @@ class JobController extends ApiController
             $order_type = $request->order_type ?? 'asc';
 
             $jobs = Job::filter($request, Job::query())
-                ->with('job_locations', 'job_skills', 'job_types')
+                ->with('job_locations', 'job_skills', 'job_types', 'employer_profile.company_profile')
                 ->orderBy($order_by, $order_type)
                 ->paginate($count_per_page);
 
@@ -185,11 +261,12 @@ class JobController extends ApiController
     "description": "- Tư vấn tính năng, tiện ích và bán các sản phẩm điện thoại, máy tính bảng, Macbook tại Showroom. Không phải đi thị trường.- Phối hợp cùng team Marketing lên kế hoạch triển khai các Event hàng Tuần, Tháng và chương trình Chăm sóc sau Bán Hàng.- Các công việc khác được giao từ Quản lý. ",
     "benefit": "- Lương thỏa thuận (Tùy theo năng lực và kinh nghiệm). Ngoài ra còn chính sách thưởng hiệu quả làm việc.- Thưởng đột xuất theo thành tích đặc biệt và hoặc các sáng kiến cải tiến trong công việc.- Được hưởng đầy đủ quyền lợi của người lao động theo luật hiện hành (Bảo hiểm xã hội, Bảo hiểm y tế).- Được hưởng chế độ du lịch cùng Team, thưởng lễ Tết, thưởng theo doanh số kinh doanh của Công Ty.- Được tham gia đào tạo nâng cao chuyên sâu, chuyên môn và kỹ năng.- Cơ hội phát triển bản thân và thăng tiến trong tổ chức.- Môi trường làm việc năng động, thân thiện. Có cơ hội làm việc với nhiều đối tác lớn, uy tín.- Được hưởng năng suất hàng quý và tăng lương định kỳ. ",
     "requirement": "- Trợ lý Trưởng phòng Xuất nhập khẩu tối thiểu phải tốt nghiệp cử nhân ngành Kinh tế, Ngoại thương hoặc Kinh doanh quốc tế ngành Xuất nhập khẩu hoặc có kinh nghiệm từ 2 năm trở lên trong lĩnh vực này ở vị trí tương đương. Hoặc là dược sĩ và có kinh nghiệm làm việc ở vị trí tương đương.- Ưu tiên các ứng viên đã làm việc hoặc tiếp xúc với môi trường làm việc trong lĩnh vực dược phẩm (background kinh tế) hoặc công ty xuất nhật khẩu (background dược).- Trường hợp không đáp ứng toàn bộ MTCV và yêu cầu công việc nêu trên vẫn sẽ được đào tạo nhưng cần có ý chí mạnh mẽ, quyết tâm học việc, sự tập trung và khả năng chịu áp lực cao.- Có khả năng đàm phán và giao tiếp tốt, chịu áp lực công việc cao.- Có năng lực sắp xếp công việc, lên kế hoạch, báo cáo.- Có tiềm năng và hướng đến vị trí quản lý, điều hành, đưa ra được các đề xuất giúp phát triển phòng Xuất nhập khẩu tiến xa hơn và gắn với chiến lược công ty.- Có khả năng gắn kết, quan tâm, đánh giá và phát triển nguồn nhân lực trong phòng ban phục vụ cho sự phát triển của bản thân mỗi người, công việc và công ty theo giá trị cốt lõi của công ty.- Có kỹ năng sử dụng tiếng Anh, đặc biệt là kỹ năng viết tốt.- Có kỹ năng phân tích, tổng hợp tốt, đánh giá và đề xuất, tham mưu cho Hội đồng thành viên.- Có kỹ năng thuyết trình trước đám đông một cách rõ ràng, dễ hiểu, đạt được hiệu quả cao nhất.- Quyết đoán trong công việc, dám nghĩ dám làm, dám chịu trách nhiệm.- Có phẩm chất đạo đức tốt và trung thực. ",
-    "min_salary": -1,
-    "max_salary": -1,
+    "min_salary": 1,
+    "max_salary": 5,
     "recruit_num": 1,
     "position": "Toàn thời gian",
-    "year_of_experience": "2",
+    "min_yoe": 0,
+    "max_yoe": 2,
     "deadline": "2024-09-01",
     "job_locations": {
     {
@@ -221,6 +298,21 @@ class JobController extends ApiController
     "job_id": 1,
     "type": "Nhân viên"
     }
+    },
+    "employer_profile": {
+    "id": 4,
+    "company_id": 5,
+    "full_name": "Trinh Minh Sang",
+    "avatar": "https://i.imgur.com/hepj9ZS.png",
+    "company_profile": {
+    "id": 5,
+    "name": "CÔNG TY TNHH TRIỆU ĐIỀN",
+    "logo": "https://i.imgur.com/hepj9ZS.png",
+    "description": "none",
+    "site": "không có",
+    "address": "Tòa Ruby 1, Giang Biên, Long Biên, Hà Nội",
+    "size": "25-99"
+    }
     }
     }
     },
@@ -238,7 +330,8 @@ class JobController extends ApiController
     public function getJobById(string $id): JsonResponse
     {
         try {
-            $job = Job::with('job_locations', 'job_skills', 'job_types')->find($id);
+            $job = Job::with('job_locations', 'job_skills', 'job_types', 'employer_profile.company_profile')
+                ->find($id);
 
             if (!$job) {
                 return $this->respondNotFound();
