@@ -533,11 +533,9 @@ Route::middleware(['auth:sanctum', 'ability:user,mod'])->controller(CVController
 
 //------------------------------------EMPLOYER------------------------------------
 // -----------Employer Account
-// Only moderator
-Route::middleware(['auth:sanctum', 'ability:mod'])->controller(EmployerAccountController::class)
+// Only moderator and company
+Route::middleware(['auth:sanctum', 'ability:mod,company'])->controller(EmployerAccountController::class)
     ->prefix('employer-accounts')->group(function () {
-        Route::get('/', 'getEmployerAccounts');
-
         Route::put('ban/{id}', 'banEmployerAccount');
         Route::put('unban/{id}', 'unbanEmployerAccount');
         Route::put('lock/{id}', 'lockEmployerAccount');
@@ -546,14 +544,19 @@ Route::middleware(['auth:sanctum', 'ability:mod'])->controller(EmployerAccountCo
         Route::delete('/{id}', 'deleteEmployerAccount');
     });
 
+Route::middleware(['auth:sanctum', 'ability:mod,company,employer'])->controller(EmployerAccountController::class)
+    ->prefix('employer-accounts')->group(function () {
+        Route::get('/', 'getEmployerAccounts');
+    });
+
 // Only employer
 Route::middleware(['auth:sanctum', 'ability:employer'])->controller(EmployerAccountController::class)
     ->prefix('employer')->group(function () {
         Route::put('/password', 'updatePassword');
     });
 
-// Mod and employer
-Route::middleware(['auth:sanctum', 'ability:mod,employer'])->controller(EmployerAccountController::class)
+// Mod, company and employer
+Route::middleware(['auth:sanctum', 'ability:mod,employer,company'])->controller(EmployerAccountController::class)
     ->prefix('employer-accounts')->group(function () {
         Route::get('/{id}', 'getEmployerAccountById');
     });

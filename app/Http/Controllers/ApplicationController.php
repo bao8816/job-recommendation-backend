@@ -467,11 +467,16 @@ class ApplicationController extends ApiController
             $employer_profile = EmployerProfile::where('id', $job->employer_id)->first();
             $request_profile = EmployerProfile::where('id', $request->user()->id)->first();
 
-            if ($employer_profile->company_id != $request_profile->company_id) {
+            if (
+                (!$request->user()->tokenCan('company') && $employer_profile->company_id != $request_profile->company_id)
+                ||
+                ($request->user()->tokenCan('company') && $employer_profile->company_id != $request->user()->id)
+            ) {
                 return $this->respondForbidden('Bạn không có quyền xử lí đơn này');
             }
 
             $application->status = "Đã duyệt";
+            $application->save();
 
             return $this->respondWithData(
                 [
@@ -542,11 +547,16 @@ class ApplicationController extends ApiController
             $employer_profile = EmployerProfile::where('id', $job->employer_id)->first();
             $request_profile = EmployerProfile::where('id', $request->user()->id)->first();
 
-            if ($employer_profile->company_id != $request_profile->company_id) {
+            if (
+                (!$request->user()->tokenCan('company') && $employer_profile->company_id != $request_profile->company_id)
+                ||
+                ($request->user()->tokenCan('company') && $employer_profile->company_id != $request->user()->id)
+            ) {
                 return $this->respondForbidden('Bạn không có quyền xử lí đơn này');
             }
 
             $application->status = "Đã từ chối";
+            $application->save();
 
             return $this->respondWithData(
                 [
