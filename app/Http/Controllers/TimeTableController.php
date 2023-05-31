@@ -91,6 +91,7 @@ class TimeTableController extends ApiController
             }
 
             $time_table->coordinate = $request->coordinate ?? $time_table->coordinate;
+            $time_table->save();
 
             return $this->respondWithData([
                 'time_table' => $time_table,

@@ -308,6 +308,7 @@ class EmployerProfileController extends ApiController
 
             $employer_profile->full_name = $request->full_name ?? $employer_profile->full_name;
             $employer_profile->avatar = $request->avatar ?? $employer_profile->avatar;
+            $employer_profile->save();
 
             return $this->respondWithData(
                 [
