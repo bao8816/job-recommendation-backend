@@ -171,6 +171,7 @@ class AuthCompanyController extends ApiController
             $token = $companyAccount->createToken($tokenName, ['company']);
 
             $companyAccount->last_login = now();
+            $companyAccount->save();
 
             return $this->respondWithData(
                 [

@@ -88,6 +88,7 @@ class AuthEmployerController extends ApiController
             $token = $employerAccount->createToken($tokenName, ['employer']);
 
             $employerAccount->last_login = now();
+            $employerAccount->save();
 
             return $this->respondWithData(
                 [

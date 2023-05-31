@@ -95,6 +95,7 @@ class AuthAdminController extends ApiController
             }
 
             $admin->last_login = now();
+            $admin->save();
 
             return $this->respondWithData(
                 [

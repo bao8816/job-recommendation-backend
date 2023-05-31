@@ -168,6 +168,7 @@ class AuthUserController extends ApiController
             $token = $userAccount->createToken($tokenName, ['user']);
 
             $userAccount->last_login = now();
+            $userAccount->save();
 
             return $this->respondWithData(
                 [
