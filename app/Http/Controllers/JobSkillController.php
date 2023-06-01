@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateJobSkillRequest;
 use App\Models\JobSkill;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -398,7 +399,7 @@ class JobSkillController extends ApiController
      *      ),
      *  )
      */
-    public function createJobSkill(Request $request): JsonResponse
+    public function createJobSkill(CreateJobSkillRequest $request): JsonResponse
     {
         try {
             $job_skill = new JobSkill();
