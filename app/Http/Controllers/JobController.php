@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateJobRequest;
 use App\Models\EmployerProfile;
 use App\Models\Job;
+use App\Models\SavedJob;
 use App\Models\UserAccount;
 use App\Models\UserHistory;
 use Carbon\Carbon;
@@ -213,7 +214,7 @@ class JobController extends ApiController
             $order_type = $request->order_type ?? 'asc';
 
             $jobs = Job::filter($request, Job::query())
-                ->with('job_locations', 'job_skills', 'job_types', 'employer_profile.company_profile')
+                ->with('job_skills', 'employer_profile.company_profile')
                 ->orderBy($order_by, $order_type)
                 ->paginate($count_per_page);
 
@@ -356,9 +357,19 @@ class JobController extends ApiController
                 }
             }
 
+            $is_saved = false;
+            if ($request->user()->tokenCan('user')) {
+                $user = UserAccount::where('id', $request->user()->id)->first();
+                $user_saved_job = SavedJob::where('user_id', $user->id)->where('job_id', $id)->first();
+                if ($user_saved_job) {
+                    $is_saved = true;
+                }
+            }
+
             return $this->respondWithData(
                 [
                     'job' => $job,
+                    'is_saved' => $is_saved,
                 ]);
         }
         catch (Exception $exception) {
