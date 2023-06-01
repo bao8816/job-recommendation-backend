@@ -14,10 +14,8 @@ use App\Http\Controllers\CVController;
 use App\Http\Controllers\EmployerAccountController;
 use App\Http\Controllers\EmployerProfileController;
 use App\Http\Controllers\JobController;
-use App\Http\Controllers\JobLocationController;
 use App\Http\Controllers\JobReportController;
 use App\Http\Controllers\JobSkillController;
-use App\Http\Controllers\JobTypeController;
 use App\Http\Controllers\PostCommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostReportController;
@@ -331,29 +329,6 @@ Route::middleware(['auth:sanctum', 'ability:company,employer,mod'])->controller(
         Route::delete('/{id}', 'deleteJob');
     });
 
-// ---------Job Location
-// All roles (including guest)
-Route::controller(JobLocationController::class)
-    ->prefix('job-locations')->group(function () {
-        Route::get('/job/{job_id}', 'getJobLocationsByJobId');
-        Route::get('/{id}', 'getJobLocationById');
-        Route::get('/', 'getAllJobLocations');
-    });
-
-// Only company and employer
-Route::middleware(['auth:sanctum', 'ability:company,employer'])->controller(JobLocationController::class)
-    ->prefix('job-locations')->group(function () {
-        Route::post('/', 'createJobLocation');
-
-        Route::put('/{id}', 'updateJobLocation');
-    });
-
-// Only company, employer and moderator
-Route::middleware(['auth:sanctum', 'ability:company,employer,mod'])->controller(JobLocationController::class)
-    ->prefix('job-locations')->group(function () {
-        Route::delete('/{id}', 'deleteJobLocation');
-    });
-
 // ----------Job Skill
 // All roles (including guest)
 Route::controller(JobSkillController::class)
@@ -375,29 +350,6 @@ Route::middleware(['auth:sanctum', 'ability:company,employer'])->controller(JobS
 Route::middleware(['auth:sanctum', 'ability:company,employer,mod'])->controller(JobSkillController::class)
     ->prefix('job-skills')->group(function () {
         Route::delete('/{id}', 'deleteJobSkill');
-    });
-
-// ------------Job Type
-// All roles (including guest)
-Route::controller(JobTypeController::class)
-    ->prefix('job-types')->group(function () {
-        Route::get('/job/{job_id}', 'getJobTypesByJobId');
-        Route::get('/{id}', 'getJobTypeById');
-        Route::get('/', 'getAllJobTypes');
-    });
-
-// Only company and employer
-Route::middleware(['auth:sanctum', 'ability:company,employer'])->controller(JobTypeController::class)
-    ->prefix('job-types')->group(function () {
-        Route::post('/', 'createJobType');
-
-        Route::put('/{id}', 'updateJobType');
-    });
-
-// Only company, employer and moderator
-Route::middleware(['auth:sanctum', 'ability:company,employer,mod'])->controller(JobTypeController::class)
-    ->prefix('job-types')->group(function () {
-        Route::delete('/{id}', 'deleteJobType');
     });
 
 // ------------Job Report

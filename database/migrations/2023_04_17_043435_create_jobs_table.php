@@ -29,6 +29,8 @@ return new class extends Migration
             $table->string('description', 5000);
             $table->string('benefit', 5000);
             $table->string('requirement', 5000);
+            $table->string('type');
+            $table->string('location');
             $table->integer('min_salary');
             $table->integer('max_salary');
             $table->integer('recruit_num');

@@ -28,11 +28,14 @@ class Job extends Model
         'description',
         'benefit',
         'requirement',
+        'type',
+        'location',
         'min_salary',
         'max_salary',
         'recruit_num',
         'position',
-        'year_of_experience',
+        'min_yoe',
+        'max_yoe',
         'deadline',
     ];
 
@@ -75,16 +78,6 @@ class Job extends Model
     public function job_skills(): HasMany
     {
         return $this->hasMany(JobSkill::class, 'job_id', 'id');
-    }
-
-    public function job_types(): HasMany
-    {
-        return $this->hasMany(JobType::class, 'job_id', 'id');
-    }
-
-    public function job_locations(): HasMany
-    {
-        return $this->hasMany(JobLocation::class, 'job_id', 'id');
     }
 
     public function user_history(): HasMany
