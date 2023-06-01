@@ -341,28 +341,31 @@ class JobController extends ApiController
                 return $this->respondNotFound();
             }
 
-            if ($request->user()->tokenCan('user')) {
-                $user = UserAccount::where('id', $request->user()->id)->first();
-                $user_history = UserHistory::where('user_id', $user->id)->where('job_id', $id)->first();
-                if ($user_history) {
-                    $user_history->times = $user_history->times + 1;
-                    $user_history->save();
-                }
-                else {
-                    $user_history = new UserHistory();
-                    $user_history->user_id = $user->id;
-                    $user_history->job_id = $id;
-                    $user_history->times = 1;
-                    $user_history->save();
-                }
-            }
-
             $is_saved = false;
-            if ($request->user()->tokenCan('user')) {
-                $user = UserAccount::where('id', $request->user()->id)->first();
-                $user_saved_job = SavedJob::where('user_id', $user->id)->where('job_id', $id)->first();
-                if ($user_saved_job) {
-                    $is_saved = true;
+            if ($request->user())
+            {
+                if ($request->user()->tokenCan('user')) {
+                    $user = UserAccount::where('id', $request->user()->id)->first();
+                    $user_history = UserHistory::where('user_id', $user->id)->where('job_id', $id)->first();
+                    if ($user_history) {
+                        $user_history->times = $user_history->times + 1;
+                        $user_history->save();
+                    }
+                    else {
+                        $user_history = new UserHistory();
+                        $user_history->user_id = $user->id;
+                        $user_history->job_id = $id;
+                        $user_history->times = 1;
+                        $user_history->save();
+                    }
+                }
+
+                if ($request->user()->tokenCan('user')) {
+                    $user = UserAccount::where('id', $request->user()->id)->first();
+                    $user_saved_job = SavedJob::where('user_id', $user->id)->where('job_id', $id)->first();
+                    if ($user_saved_job) {
+                        $is_saved = true;
+                    }
                 }
             }
 
