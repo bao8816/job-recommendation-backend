@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateJobRequest;
 use App\Models\EmployerProfile;
 use App\Models\Job;
 use Carbon\Carbon;
@@ -418,7 +419,7 @@ class JobController extends ApiController
      *      ),
      *  )
      */
-    public function createJob(Request $request): JsonResponse
+    public function createJob(CreateJobRequest $request): JsonResponse
     {
         try {
             $job = new Job();
@@ -439,6 +440,8 @@ class JobController extends ApiController
             $job->description = $request->description;
             $job->benefit = $request->benefit;
             $job->requirement = $request->requirement;
+            $job->type = $request->type;
+            $job->location = $request->location;
             $job->min_salary = $request->min_salary;
             $job->max_salary = $request->max_salary;
             $job->recruit_num = $request->recruit_num;
@@ -559,6 +562,8 @@ class JobController extends ApiController
             $job->description = $request->description ?? $job->description;
             $job->benefit = $request->benefit ?? $job->benefit;
             $job->requirement = $request->requirement ?? $job->requirement;
+            $job->type = $request->type ?? $job->type;
+            $job->location = $request->location ?? $job->location;
             $job->min_salary = $request->min_salary ?? $job->min_salary;
             $job->max_salary = $request->max_salary ?? $job->max_salary;
             $job->recruit_num = $request->recruit_num ?? $job->recruit_num;
