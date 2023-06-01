@@ -137,7 +137,7 @@ class UserEducationController extends ApiController
      *      @OA\Response(
      *          response=404,
      *          description="User educations not found",
-     *          ref="#/components/responses/404"
+     *          ref="#/components/responses/NotFound"
      *      )
      *  )
      */
@@ -250,7 +250,7 @@ class UserEducationController extends ApiController
      *      @OA\Response(
      *          response=404,
      *          description="User educations not found",
-     *          ref="#/components/responses/404"
+     *          ref="#/components/responses/NotFound"
      *      )
      *  )
      */
@@ -359,7 +359,7 @@ class UserEducationController extends ApiController
      *      @OA\Response(
      *          response=404,
      *          description="User education not found",
-     *          ref="#/components/responses/404"
+     *          ref="#/components/responses/NotFound"
      *      )
      *  )
      */
