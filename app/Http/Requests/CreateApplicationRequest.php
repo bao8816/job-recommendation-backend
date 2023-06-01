@@ -26,9 +26,13 @@ class CreateApplicationRequest extends FormRequest
         return [
             'job_id' => [
                 'required',
+                // regex: not allow special characters
+                'regex:/^[a-zA-Z0-9\s]+$/',
             ],
             'cv_id' => [
                 'required',
+                // regex: not allow special characters
+                'regex:/^[a-zA-Z0-9\s]+$/',
             ],
         ];
     }
@@ -42,7 +46,7 @@ class CreateApplicationRequest extends FormRequest
     {
         return [
             'job_id.required' => 'Yêu cầu nhập job_id',
-            'cv_id.required' => 'Yêu cầu nhập cv_i',
+            'cv_id.required' => 'Yêu cầu nhập cv_id',
         ];
     }
 }

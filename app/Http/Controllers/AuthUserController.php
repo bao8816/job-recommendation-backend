@@ -65,6 +65,11 @@ class AuthUserController extends ApiController
             $password = $request->password;
 
             $password_salt = $password . env('PASSWORD_SALT');
+
+            if (UserAccount::where('username', $username)->exists()) {
+                return $this->respondWithError('Tên đăng nhập đã tồn tại');
+            }
+
             $hashed_password = Hash::make($password_salt);
 
             $userAccount = new UserAccount();
@@ -148,6 +153,10 @@ class AuthUserController extends ApiController
             $password_salt = $password . env('PASSWORD_SALT');
 
             $userAccount = UserAccount::where('username', $username)->first();
+
+            if (!$userAccount) {
+                return $this->respondBadRequest('Không tìm thấy tên đăng nhập');
+            }
 
             if (!Hash::check($password_salt, $userAccount->password)) {
                 return $this->respondBadRequest('Mật khẩu không đúng');

@@ -328,6 +328,10 @@ class EmployerAccountController extends ApiController
             $password = $request->password;
             $salt_password = $password . env('PASSWORD_SALT');
 
+            if (EmployerAccount::where('username', $username)->first()) {
+                return $this->respondBadRequest('Tên đăng nhập đã tồn tại');
+            }
+
             $hashed_password = Hash::make($salt_password);
 
             $employer_account = new EmployerAccount();

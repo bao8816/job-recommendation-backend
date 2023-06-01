@@ -71,6 +71,10 @@ class AuthAdminController extends ApiController
 
             $admin = Admin::where('username', $username)->first();
 
+            if (!$admin) {
+                return $this->respondBadRequest('Không tìm thấy tên đăng nhập');
+            }
+
             if (!Hash::check($passwordSalt, $admin->password)) {
                 return $this->respondBadRequest('Mật khẩu không đúng');
             }

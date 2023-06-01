@@ -115,6 +115,10 @@ class AdminController extends ApiController
             $password = $request->password;
             $password_salt = $password . env('PASSWORD_SALT');
 
+            if (Admin::where('username', $username)->exists()) {
+                return $this->respondBadRequest('Tên đăng nhập đã tồn tại');
+            }
+
             $hashedPassword = Hash::make($password_salt);
 
             $modAccount = new Admin();

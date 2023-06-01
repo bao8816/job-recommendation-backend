@@ -69,6 +69,10 @@ class AuthEmployerController extends ApiController
 
             $employerAccount = EmployerAccount::where('username', $username)->first();
 
+            if (!$employerAccount) {
+                return $this->respondBadRequest('Không tìm thấy tên đăng nhập');
+            }
+
             if (!Hash::check($passwordSalt, $employerAccount->password)) {
                 return $this->respondBadRequest('Mật khẩu không đúng');
             }

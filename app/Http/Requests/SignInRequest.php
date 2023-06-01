@@ -31,19 +31,14 @@ class SignInRequest extends FormRequest
             'username' => [
                 'required',
                 'string',
-                function ($attribute, $value, $fail) {
-                    if (!UserAccount::where('username', $value)->exists()
-                        && !CompanyAccount::where('username', $value)->exists()
-                        && !Admin::where('username', $value)->exists()
-                        && !EmployerAccount::where('username', $value)->exists())
-                    {
-                        $fail('Tên đăng nhập không tồn tại');
-                    }
-                },
+                // regex: not allow special characters
+                'regex:/^[a-zA-Z0-9\s]+$/'
             ],
             'password' => [
                 'required',
                 'string',
+                // regex: not allow special characters
+                'regex:/^[a-zA-Z0-9\s]+$/',
             ],
         ];
     }
@@ -58,8 +53,10 @@ class SignInRequest extends FormRequest
         return [
             'username.required' => 'Yêu cầu nhập tên đăng nhập',
             'username.string' => 'Tên đăng nhập phải là dạng chuỗi',
+            'username.regex' => 'Tên đăng nhập không được chứa ký tự đặc biệt',
             'password.required' => 'Yêu cầu nhập mật khẩu',
             'password.string' => 'Mật khẩu phải là dạng chuỗi',
+            'password.regex' => 'Mật khẩu không được chứa ký tự đặc biệt',
         ];
     }
 }
