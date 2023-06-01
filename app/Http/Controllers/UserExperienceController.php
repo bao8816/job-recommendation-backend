@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateUserExperienceRequest;
 use App\Models\UserExperience;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -449,7 +450,7 @@ class UserExperienceController extends ApiController
      *      )
      *  )
      */
-    public function createUserExperience(Request $request): JsonResponse
+    public function createUserExperience(CreateUserExperienceRequest $request): JsonResponse
     {
         try {
             $user_experience = new UserExperience();

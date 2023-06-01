@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateUserSkillRequest;
 use App\Models\UserSkill;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -408,7 +409,7 @@ class UserSkillController extends ApiController
      *      )
      *  )
      */
-    public function createUserSkill(Request $request): JsonResponse
+    public function createUserSkill(CreateUserSkillRequest $request): JsonResponse
     {
         try {
             $user_skill = new UserSkill();

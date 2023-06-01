@@ -28,39 +28,39 @@ class CreateJobRequest extends FormRequest
                 'required',
                 'string',
                 'min:10',
-                // regex: not allow special characters but allow spaces, :, -, ., (, )
+                // regex: not allow special characters (@, #, $, &, *)
                 'regex:/^[^@#$&*]+$/',
             ],
             'description' => [
                 'required',
                 'string',
                 'min:10',
-                // regex: not allow special characters but allow spaces, :, -, ., (, )
+                // regex: not allow special characters (@, #, $, &, *)
                 'regex:/^[^@#$&*]+$/',
             ],
             'benefit' => [
                 'required',
                 'string',
                 'min:10',
-                // regex: not allow special characters but allow spaces, :, -, ., (, )
+                // regex: not allow special characters (@, #, $, &, *)
                 'regex:/^[^@#$&*]+$/',
             ],
             'requirement' => [
                 'required',
                 'string',
-                // regex: not allow special characters but allow spaces, :, -, ., (, )
+                // regex: not allow special characters (@, #, $, &, *)
                 'regex:/^[^@#$&*]+$/',
             ],
             'type' => [
                 'required',
                 'string',
-                // regex: not allow special characters but allow spaces, :, -, ., (, )
+                // regex: not allow special characters (@, #, $, &, *)
                 'regex:/^[^@#$&*]+$/',
             ],
             'location' => [
                 'required',
                 'string',
-                // regex: not allow special characters but allow spaces, :, -, ., (, )
+                // regex: not allow special characters (@, #, $, &, *)
                 'regex:/^[^@#$&*]+$/',
             ],
             'min_salary' => [
@@ -82,7 +82,7 @@ class CreateJobRequest extends FormRequest
             'position' => [
                 'required',
                 'string',
-                // regex: not allow special characters but allow spaces, :, -, ., (, )
+                // regex: not allow special characters (@, #, $, &, *)
                 'regex:/^[^@#$&*]+$/',
             ],
             'min_yoe' => [

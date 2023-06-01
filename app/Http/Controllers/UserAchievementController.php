@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateUserAchievementRequest;
 use App\Models\UserAchievement;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -451,7 +452,7 @@ class UserAchievementController extends ApiController
      *      ),
      *  )
      */
-    public function createUserAchievement(Request $request): JsonResponse
+    public function createUserAchievement(CreateUserAchievementRequest $request): JsonResponse
     {
         try {
             $user_achievement = new UserAchievement();

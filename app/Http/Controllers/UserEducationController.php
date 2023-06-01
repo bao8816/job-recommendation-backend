@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateUserEducationRequest;
 use App\Models\UserEducation;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -439,7 +440,7 @@ class UserEducationController extends ApiController
      *      )
      *  )
      */
-    public function createUserEducation(Request $request): JsonResponse
+    public function createUserEducation(CreateUserEducationRequest $request): JsonResponse
     {
         try {
             $user_education = new UserEducation();
