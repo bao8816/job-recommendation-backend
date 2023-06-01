@@ -334,7 +334,7 @@ class JobController extends ApiController
     public function getJobById(Request $request, string $id): JsonResponse
     {
         try {
-            $job = Job::with('job_locations', 'job_skills', 'job_types', 'employer_profile.company_profile')
+            $job = Job::with('job_skills', 'employer_profile.company_profile')
                 ->find($id);
 
             if (!$job) {
