@@ -41,7 +41,7 @@ class JobSeeder extends Seeder
             $job->position = $line[11];
             $job->min_yoe = $line[12];
             $job->max_yoe = $line[13];
-            $job->deadline = date('Y-m-d', strtotime($line[12]));
+            $job->deadline = date('Y-m-d', strtotime($line[14]));
             $job->created_at = now();
             $job->updated_at = now();
 
