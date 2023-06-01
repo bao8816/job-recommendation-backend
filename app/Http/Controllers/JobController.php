@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateJobRequest;
 use App\Models\EmployerProfile;
 use App\Models\Job;
+use App\Models\UserAccount;
+use App\Models\UserHistory;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -328,7 +330,7 @@ class JobController extends ApiController
      *      ),
      *  )
      */
-    public function getJobById(string $id): JsonResponse
+    public function getJobById(Request $request, string $id): JsonResponse
     {
         try {
             $job = Job::with('job_locations', 'job_skills', 'job_types', 'employer_profile.company_profile')
@@ -336,6 +338,22 @@ class JobController extends ApiController
 
             if (!$job) {
                 return $this->respondNotFound();
+            }
+
+            if ($request->user()->tokenCan('user')) {
+                $user = UserAccount::where('id', $request->user()->id)->first();
+                $user_history = UserHistory::where('user_id', $user->id)->where('job_id', $id)->first();
+                if ($user_history) {
+                    $user_history->times = $user_history->times + 1;
+                    $user_history->save();
+                }
+                else {
+                    $user_history = new UserHistory();
+                    $user_history->user_id = $user->id;
+                    $user_history->job_id = $id;
+                    $user_history->times = 1;
+                    $user_history->save();
+                }
             }
 
             return $this->respondWithData(
