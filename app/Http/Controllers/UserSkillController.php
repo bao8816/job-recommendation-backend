@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateUserSkillRequest;
 use App\Models\UserSkill;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -42,7 +43,7 @@ class UserSkillController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "userSkills": {
+    "user_skills": {
     "current_page": 1,
     "data": {
     {
@@ -154,17 +155,19 @@ class UserSkillController extends ApiController
     public function getAllUserSkills(Request $request): JsonResponse
     {
         try {
-            $count_per_page = $request->count_per_page;
+            $count_per_page = $request->count_per_page ?? 10;
+            $order_by = $request->order_by ?? 'id';
+            $order_type = $request->order_type ?? 'asc';
 
-            $userSkills = UserSkill::paginate($count_per_page);
+            $user_skills = UserSkill::orderBy($order_by, $order_type)->paginate($count_per_page);
 
-            if (count($userSkills) === 0) {
+            if (count($user_skills) === 0) {
                 return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'userSkills' => $userSkills,
+                    'user_skills' => $user_skills,
                 ]);
         }
         catch (Exception $exception) {
@@ -205,7 +208,7 @@ class UserSkillController extends ApiController
     "error": false,
     "message": "Successfully retrieved user skills",
     "data": {
-    "userSkills": {
+    "user_skills": {
     "current_page": 1,
     "data": {
     {
@@ -267,17 +270,21 @@ class UserSkillController extends ApiController
     public function getUserSkillsByUserId(Request $request, string $user_id): JsonResponse
     {
         try {
-            $count_per_page = $request->count_per_page;
+            $count_per_page = $request->count_per_page ?? 10;
+            $order_by = $request->order_by ?? 'id';
+            $order_type = $request->order_type ?? 'asc';
 
-            $userSkills = UserSkill::where('user_id', $user_id)->paginate($count_per_page);
+            $user_skills = UserSkill::where('user_id', $user_id)
+                ->orderBy($order_by, $order_type)
+                ->paginate($count_per_page);
 
-            if (count($userSkills) === 0) {
+            if (count($user_skills) === 0) {
                 return $this->respondNotFound('No user skills found');
             }
 
             return $this->respondWithData(
                 [
-                    'userSkills' => $userSkills,
+                    'user_skills' => $user_skills,
                 ]
                 , 'Successfully retrieved user skills');
         }
@@ -313,42 +320,10 @@ class UserSkillController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "userSkill": {
-    "current_page": 1,
-    "data": {
-    {
+    "user_skill": {
     "id": 1,
     "user_id": 1,
     "skill": "Quản lý đa nhiệm vụ"
-    }
-    },
-    "first_page_url": "http://localhost:8000/api/user-skills/1?page=1",
-    "from": 1,
-    "last_page": 1,
-    "last_page_url": "http://localhost:8000/api/user-skills/1?page=1",
-    "links": {
-    {
-    "url": null,
-    "label": "&laquo; Previous",
-    "active": false
-    },
-    {
-    "url": "http://localhost:8000/api/user-skills/1?page=1",
-    "label": "1",
-    "active": true
-    },
-    {
-    "url": null,
-    "label": "Next &raquo;",
-    "active": false
-    }
-    },
-    "next_page_url": null,
-    "path": "http://localhost:8000/api/user-skills/1",
-    "per_page": 1,
-    "prev_page_url": null,
-    "to": 1,
-    "total": 1
     }
     },
     "status_code": 200
@@ -365,15 +340,15 @@ class UserSkillController extends ApiController
     public function getUserSkillById(Request $request, string $id): JsonResponse
     {
         try {
-            $userSkill = UserSkill::where('id', $id)->paginate(1);
+            $user_skill = UserSkill::where('id', $id)->first();
 
-            if (count($userSkill) === 0) {
+            if (!$user_skill) {
                 return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'userSkill' => $userSkill,
+                    'user_skill' => $user_skill,
                 ]);
         }
         catch (Exception $exception) {
@@ -417,7 +392,7 @@ class UserSkillController extends ApiController
     "error": false,
     "message": "Tạo thành công",
     "data": {
-    "userSkill": {
+    "user_skill": {
     "user_id": 2,
     "skill": "skill1",
     "id": 462
@@ -434,18 +409,18 @@ class UserSkillController extends ApiController
      *      )
      *  )
      */
-    public function createUserSkill(Request $request): JsonResponse
+    public function createUserSkill(CreateUserSkillRequest $request): JsonResponse
     {
         try {
-            $userSkill = new UserSkill();
+            $user_skill = new UserSkill();
 
-            $userSkill->user_id = $request->user()->id;
-            $userSkill->skill = $request->skill;
-            $userSkill->save();
+            $user_skill->user_id = $request->user()->id;
+            $user_skill->skill = $request->skill;
+            $user_skill->save();
 
             return $this->respondCreated(
                 [
-                    'userSkill' => $userSkill,
+                    'user_skill' => $user_skill,
                 ]);
         }
         catch (Exception $exception) {
@@ -495,7 +470,7 @@ class UserSkillController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "userSkill": {
+    "user_skill": {
     "id": 462,
     "user_id": 2,
     "skill": "skill2"
@@ -515,22 +490,22 @@ class UserSkillController extends ApiController
     public function updateUserSkill(Request $request, string $id): JsonResponse
     {
         try {
-            $userSkill = UserSkill::where('id', $id)->first();
+            $user_skill = UserSkill::where('id', $id)->first();
 
-            if (!$userSkill) {
+            if (!$user_skill) {
                 return $this->respondNotFound();
             }
 
-            if ($userSkill->user_id !== $request->user()->id) {
+            if ($user_skill->user_id !== $request->user()->id) {
                 return $this->respondUnauthorized('Bạn không có quyền chỉnh sửa thông tin này');
             }
 
-            $userSkill->skill = $request->skill !== null ? $request->skill : $userSkill->skill;
-            $userSkill->save();
+            $user_skill->skill = $request->skill ?? $user_skill->skill;
+            $user_skill->save();
 
             return $this->respondWithData(
                 [
-                    'userSkill' => $userSkill,
+                    'user_skill' => $user_skill,
                 ]);
         }
         catch (Exception $exception) {
@@ -571,7 +546,7 @@ class UserSkillController extends ApiController
     "error": false,
     "message": "Xoá thành công",
     "data": {
-    "userSkill": {
+    "user_skill": {
     "id": 462,
     "user_id": 2,
     "skill": "skill2"
@@ -591,21 +566,21 @@ class UserSkillController extends ApiController
     public function deleteUserSkill(Request $request, string $id): JsonResponse
     {
         try {
-            $userSkill = UserSkill::where('id', $id)->first();
+            $user_skill = UserSkill::where('id', $id)->first();
 
-            if (!$userSkill) {
+            if (!$user_skill) {
                 return $this->respondNotFound();
             }
 
-            if (!$request->user()->tokenCan('mod') && $userSkill->user_id !== $request->user()->id) {
+            if (!$request->user()->tokenCan('mod') && $user_skill->user_id !== $request->user()->id) {
                 return $this->respondUnauthorized('Bạn không có quyền xoá thông tin này');
             }
 
-            $userSkill->delete();
+            $user_skill->delete();
 
             return $this->respondWithData(
                 [
-                    'userSkill' => $userSkill,
+                    'user_skill' => $user_skill,
                 ], 'Xoá thành công');
         }
         catch (Exception $exception) {

@@ -12,20 +12,19 @@ class UserProfileController extends ApiController
     public function getAllUserProfiles(Request $request): JsonResponse
     {
         try {
-            $count_per_page = $request->count_per_page;
+            $count_per_page = $request->count_per_page ?? 10;
 
-            $userProfiles = UserProfile::with('educations', 'cvs', 'experiences', 'achievements', 'skills', 'time_tables')
+            $user_profiles = UserProfile::with('educations', 'cvs', 'experiences', 'achievements', 'skills', 'time_tables')
                 ->paginate($count_per_page);
 
-            if (count($userProfiles) === 0) {
-                return $this->respondNotFound('No user profiles found');
+            if (count($user_profiles) === 0) {
+                return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'userProfiles' => $userProfiles,
-                ]
-                , 'Successfully retrieved user profiles');
+                    'user_profiles' => $user_profiles,
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
@@ -35,18 +34,17 @@ class UserProfileController extends ApiController
     public function getUserProfile(Request $request, string $id): JsonResponse
     {
         try {
-            $userProfile = UserProfile::where('id', $id)->with('educations', 'cvs', 'experiences', 'achievements', 'skills', 'time_tables')
-                ->paginate(1);
+            $user_profile = UserProfile::where('id', $id)->with('educations', 'cvs', 'experiences', 'achievements', 'skills', 'time_tables')
+                ->first();
 
-            if (!isset($userProfile)) {
-                return $this->respondNotFound('User profile not found');
+            if (!$user_profile) {
+                return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'userProfile' => $userProfile,
-                ]
-                , 'Successfully retrieved user profile');
+                    'user_profile' => $user_profile,
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
@@ -56,25 +54,25 @@ class UserProfileController extends ApiController
     public function updateUserProfile(Request $request): JsonResponse
     {
         try {
-            $userProfile = UserProfile::where('id', $request->user()->id)->first();
+            $user_profile = UserProfile::where('id', $request->user()->id)->first();
 
-            if (!isset($userProfile)) {
-                return $this->respondNotFound('User profile not found');
+            if (!$user_profile) {
+                return $this->respondNotFound();
             }
 
-            $userProfile->full_name = $request->full_name;
-            $userProfile->avatar = $request->avatar;
-            $userProfile->date_of_birth = $request->date_of_birth;
-            $userProfile->gender = $request->gender;
-            $userProfile->address = $request->address;
-            $userProfile->email = $request->email;
-            $userProfile->phone = $request->phone;
-            $userProfile->save();
+            $user_profile->full_name = $request->full_name ?? $user_profile->full_name;
+            $user_profile->avatar = $request->avatar ?? $user_profile->avatar;
+            $user_profile->date_of_birth = $request->date_of_birth ?? $user_profile->date_of_birth;
+            $user_profile->gender = $request->gender ?? $user_profile->gender;
+            $user_profile->address = $request->address ?? $user_profile->address;
+            $user_profile->email = $request->email ?? $user_profile->email;
+            $user_profile->phone = $request->phone ?? $user_profile->phone;
+            $user_profile->save();
 
             return $this->respondWithData(
                 [
-                    'userProfile' => $userProfile,
-                ], 'Successfully updated user profile');
+                    'user_profile' => $user_profile,
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());

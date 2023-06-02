@@ -33,8 +33,6 @@ use Illuminate\Database\Seeder;
                 EmployerProfileSeeder::class,
                 CVSeeder::class,
                 JobSeeder::class,
-                JobTypeSeeder::class,
-                JobLocationSeeder::class,
                 JobSkillSeeder::class,
                 ApplicationSeeder::class,
                 PostSeeder::class,

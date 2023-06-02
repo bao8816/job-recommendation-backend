@@ -44,6 +44,6 @@ class UserExperience extends Model
 
     public function user_profile(): BelongsTo
     {
-        return $this->belongsTo(UserProfile::class, 'user_id', 'user_id');
+        return $this->belongsTo(UserProfile::class, 'user_id', 'id');
     }
 }

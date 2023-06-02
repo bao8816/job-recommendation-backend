@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SignInRequest;
 use App\Http\Requests\SignUpRequest;
 use App\Models\UserAccount;
 use App\Models\UserProfile;
 use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -20,7 +22,7 @@ class AuthUserController extends ApiController
      *      tags={"Auth User"},
      *      @OA\RequestBody(
      *          @OA\JsonContent(
-     *              example={"username": "User", "password": "user123", "password_confirmation": "user123"}
+     *              example={"username": "User", "password": "user123", "confirm_password": "user123"}
      *          ),
      *          required=true,
      *      ),
@@ -56,27 +58,23 @@ class AuthUserController extends ApiController
      *      ),
      *  )
      */
-    public function signUp(Request $request)
+    public function signUp(SignUpRequest $request): JsonResponse
     {
         try {
             $username = $request->username;
             $password = $request->password;
-            $confirm_passowrd = $request->confirm_password;
 
-            if ($password != $confirm_passowrd) {
-                return $this->respondBadRequest('Nhập lại mật khẩu không khớp');
-            }
+            $password_salt = $password . env('PASSWORD_SALT');
 
             if (UserAccount::where('username', $username)->exists()) {
-                return $this->respondBadRequest('Tên đăng nhập đã tồn tại');
+                return $this->respondWithError('Tên đăng nhập đã tồn tại');
             }
 
-            $passwordSalt = $password . env('PASSWORD_SALT');
-            $hashedPassword = Hash::make($passwordSalt);
+            $hashed_password = Hash::make($password_salt);
 
             $userAccount = new UserAccount();
             $userAccount->username = $username;
-            $userAccount->password = $hashedPassword;
+            $userAccount->password = $hashed_password;
             $userAccount->save();
 
             //Create profile
@@ -147,20 +145,20 @@ class AuthUserController extends ApiController
      *      ),
      *  )
      */
-    public function signIn(Request $request)
+    public function signIn(SignInRequest $request): JsonResponse
     {
         try {
             $username = $request->username;
             $password = $request->password;
-            $passwordSalt = $password . env('PASSWORD_SALT');
-
-            if (!UserAccount::where('username', $username)->exists()) {
-                return $this->respondBadRequest('Tên đăng nhập không tồn tại');
-            }
+            $password_salt = $password . env('PASSWORD_SALT');
 
             $userAccount = UserAccount::where('username', $username)->first();
 
-            if (!Hash::check($passwordSalt, $userAccount->password)) {
+            if (!$userAccount) {
+                return $this->respondBadRequest('Không tìm thấy tên đăng nhập');
+            }
+
+            if (!Hash::check($password_salt, $userAccount->password)) {
                 return $this->respondBadRequest('Mật khẩu không đúng');
             }
 
@@ -179,6 +177,7 @@ class AuthUserController extends ApiController
             $token = $userAccount->createToken($tokenName, ['user']);
 
             $userAccount->last_login = now();
+            $userAccount->save();
 
             return $this->respondWithData(
                 [

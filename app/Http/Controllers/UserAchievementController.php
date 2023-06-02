@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateUserAchievementRequest;
 use App\Models\UserAchievement;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -42,7 +43,7 @@ class UserAchievementController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "userAchievements": {
+    "user_achievements": {
     "current_page": 1,
     "data": {
     {
@@ -154,17 +155,19 @@ class UserAchievementController extends ApiController
     public function getAllUserAchievements(Request $request): JsonResponse
     {
         try {
-            $count_per_page = $request->count_per_page;
+            $count_per_page = $request->count_per_page ?? 10;
+            $order_by = $request->order_by ?? 'id';
+            $order_type = $request->order_type ?? 'asc';
 
-            $userAchievements = UserAchievement::paginate($count_per_page);
+            $user_achievements = UserAchievement::orderBy($order_by, $order_type)->paginate($count_per_page);
 
-            if (count($userAchievements) === 0) {
+            if (count($user_achievements) === 0) {
                 return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'userAchievements' => $userAchievements,
+                    'user_achievements' => $user_achievements,
                 ]);
         }
         catch (Exception $exception) {
@@ -211,7 +214,7 @@ class UserAchievementController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "userAchievements": {
+    "user_achievements": {
     "current_page": 1,
     "data": {
     {
@@ -273,17 +276,21 @@ class UserAchievementController extends ApiController
     public function getUserAchievementsByUserId(Request $request, string $user_id): JsonResponse
     {
         try {
-            $count_per_page = $request->count_per_page;
+            $count_per_page = $request->count_per_page ?? 10;
+            $order_by = $request->order_by ?? 'id';
+            $order_type = $request->order_type ?? 'asc';
 
-            $userAchievements = UserAchievement::where('user_id', $user_id)->paginate($count_per_page);
+            $user_achievements = UserAchievement::where('user_id', $user_id)
+                ->orderBy($order_by, $order_type)
+                ->paginate($count_per_page);
 
-            if (count($userAchievements) === 0) {
+            if (count($user_achievements) === 0) {
                 return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'userAchievements' => $userAchievements,
+                    'user_achievements' => $user_achievements,
                 ]);
         }
         catch (Exception $exception) {
@@ -324,7 +331,7 @@ class UserAchievementController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "userAchievement": {
+    "user_achievement": {
     "current_page": 1,
     "data": {
     {
@@ -376,15 +383,15 @@ class UserAchievementController extends ApiController
     public function getUserAchievementById(Request $request, string $id): JsonResponse
     {
         try {
-            $userAchievement = UserAchievement::where('id', $id)->paginate(1);
+            $user_achievement = UserAchievement::where('id', $id)->paginate(1);
 
-            if (!isset($userAchievement)) {
+            if (!isset($user_achievement)) {
                 return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'userAchievement' => $userAchievement,
+                    'user_achievement' => $user_achievement,
                 ]);
         }
         catch (Exception $exception) {
@@ -428,7 +435,7 @@ class UserAchievementController extends ApiController
     "error": false,
     "message": "Tạo thành công",
     "data": {
-    "userAchievement": {
+    "user_achievement": {
     "user_id": 1,
     "description": "des",
     "id": 17
@@ -445,17 +452,17 @@ class UserAchievementController extends ApiController
      *      ),
      *  )
      */
-    public function createUserAchievement(Request $request): JsonResponse
+    public function createUserAchievement(CreateUserAchievementRequest $request): JsonResponse
     {
         try {
-            $userAchievement = new UserAchievement();
-            $userAchievement->user_id = $request->user()->id;
-            $userAchievement->description = $request->description;
-            $userAchievement->save();
+            $user_achievement = new UserAchievement();
+            $user_achievement->user_id = $request->user()->id;
+            $user_achievement->description = $request->description;
+            $user_achievement->save();
 
             return $this->respondCreated(
                 [
-                    'userAchievement' => $userAchievement,
+                    'user_achievement' => $user_achievement,
                 ]);
         }
         catch (Exception $exception) {
@@ -505,7 +512,7 @@ class UserAchievementController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "userAchievement": {
+    "user_achievement": {
     "id": 17,
     "user_id": 1,
     "description": "desdes"
@@ -525,22 +532,22 @@ class UserAchievementController extends ApiController
     public function updateUserAchievement(Request $request, string $id): JsonResponse
     {
         try {
-            $userAchievement = UserAchievement::where('id', $id)->first();
+            $user_achievement = UserAchievement::where('id', $id)->first();
 
-            if (!isset($userAchievement)) {
+            if (!$user_achievement) {
                 return $this->respondNotFound();
             }
 
-            if ($userAchievement->user_id !== $request->user()->id) {
+            if ($user_achievement->user_id !== $request->user()->id) {
                 return $this->respondUnauthorized('Bạn không có quyền chỉnh sửa thông tin này');
             }
 
-            $userAchievement->description = $request->description !== null ? $request->description : $userAchievement->description;
-            $userAchievement->save();
+            $user_achievement->description = $request->description ?? $user_achievement->description;
+            $user_achievement->save();
 
             return $this->respondWithData(
                 [
-                    'userAchievement' => $userAchievement,
+                    'user_achievement' => $user_achievement,
                 ]);
         }
         catch (Exception $exception) {
@@ -581,7 +588,7 @@ class UserAchievementController extends ApiController
     "error": false,
     "message": "Xóa thành công",
     "data": {
-    "userAchievement": {
+    "user_achievement": {
     "id": 17,
     "user_id": 1,
     "description": "desdes"
@@ -601,21 +608,21 @@ class UserAchievementController extends ApiController
     public function deleteUserAchievement(Request $request, string $id): JsonResponse
     {
         try {
-            $userAchievement = UserAchievement::where('id', $id)->first();
+            $user_achievement = UserAchievement::where('id', $id)->first();
 
-            if (!isset($userAchievement)) {
+            if (!$user_achievement) {
                 return $this->respondNotFound();
             }
 
-            if (!$request->user()->tokenCan('mod') && $userAchievement->user_id !== $request->user()->id) {
+            if (!$request->user()->tokenCan('mod') && $user_achievement->user_id !== $request->user()->id) {
                 return $this->respondUnauthorized('Bạn không có quyền xóa thông tin này');
             }
 
-            $userAchievement->delete();
+            $user_achievement->delete();
 
             return $this->respondWithData(
                 [
-                    'userAchievement' => $userAchievement,
+                    'user_achievement' => $user_achievement,
                 ], 'Xóa thành công');
         }
         catch (Exception $exception) {

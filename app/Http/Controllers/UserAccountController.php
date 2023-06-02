@@ -15,18 +15,12 @@ class UserAccountController extends ApiController
      *      path="/api/user/password",
      *      tags={"User Account"},
      *      summary="Update user password",
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="Accept",
      *          in="header",
      *          description="application/json",
      *          required=false,
-     *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true,
      *      ),
      *      @OA\RequestBody(
      *          required=true,
@@ -48,7 +42,7 @@ class UserAccountController extends ApiController
     "error": false,
     "message": "Successfully updated user account password",
     "data": {
-    "userAccount": {
+    "user_account": {
     "id": 1,
     "username": "VANDEP123",
     "is_banned": 0,
@@ -70,9 +64,9 @@ class UserAccountController extends ApiController
     public function updatePassword(Request $request): JsonResponse
     {
         try {
-            $userAccount = UserAccount::where('id', $request->user()->id)->first();
+            $user_account = UserAccount::where('id', $request->user()->id)->first();
 
-            if (!isset($userAccount)) {
+            if (!isset($user_account)) {
                 return $this->respondNotFound();
             }
 
@@ -81,7 +75,7 @@ class UserAccountController extends ApiController
             $confirm_password = $request->confirm_password;
             $salt_password = $current_password . env('PASSWORD_SALT');
 
-            if (!Hash::check($salt_password, $userAccount->password)) {
+            if (!Hash::check($salt_password, $user_account->password)) {
                 return $this->respondBadRequest('Mật khẩu hiện tại không đúng');
             }
 
@@ -89,12 +83,12 @@ class UserAccountController extends ApiController
                 return $this->respondBadRequest('Mật khẩu mới không khớp');
             }
 
-            $userAccount->password = Hash::make($new_password . env('PASSWORD_SALT'));
-            $userAccount->save();
+            $user_account->password = Hash::make($new_password . env('PASSWORD_SALT'));
+            $user_account->save();
 
             return $this->respondWithData(
                 [
-                    'userAccount' => $userAccount,
+                    'user_account' => $user_account,
                 ], 'Successfully updated user account password');
         }
         catch (Exception $exception) {
@@ -107,7 +101,7 @@ class UserAccountController extends ApiController
      *      path="/api/user-accounts",
      *      tags={"User Account"},
      *      summary="Get all user accounts",
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="count_per_page",
      *          in="query",
@@ -120,12 +114,6 @@ class UserAccountController extends ApiController
      *          description="application/json",
      *          required=false,
      *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true,
-     *      ),
      *      @OA\Response(
      *          response=200,
      *          description="Successfully retrieved user accounts",
@@ -135,7 +123,7 @@ class UserAccountController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "userAccounts": {
+    "user_accounts": {
     "current_page": 1,
     "data": {
     {
@@ -251,15 +239,15 @@ class UserAccountController extends ApiController
         try {
             $count_per_page = $request->count_per_page;
 
-            $userAccounts = UserAccount::paginate($count_per_page);
+            $user_accounts = UserAccount::paginate($count_per_page);
 
-            if (count($userAccounts) === 0) {
+            if (count($user_accounts) === 0) {
                 return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'userAccounts' => $userAccounts,
+                    'user_accounts' => $user_accounts,
                 ]);
         }
         catch (Exception $exception) {
@@ -272,7 +260,7 @@ class UserAccountController extends ApiController
      *      path="/api/user-accounts/{id}",
      *      tags={"User Account"},
      *      summary="Get user account by id",
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="id",
      *          in="path",
@@ -285,12 +273,6 @@ class UserAccountController extends ApiController
      *          description="application/json",
      *          required=false,
      *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true,
-     *      ),
      *      @OA\Response(
      *          response=200,
      *          description="Successfully get user account by id",
@@ -300,7 +282,7 @@ class UserAccountController extends ApiController
     "error": false,
     "message": "Successfully get user account by id",
     "data": {
-    "userAccount": {
+    "user_account": {
     "current_page": 1,
     "data": {
     {
@@ -354,9 +336,9 @@ class UserAccountController extends ApiController
     public function getUserAccountById(Request $request, string $id): JsonResponse
     {
         try {
-            $userAccount = UserAccount::where('id', $id)->paginate(1);
+            $user_account = UserAccount::where('id', $id)->paginate(1);
 
-            if (count($userAccount) === 0) {
+            if (count($user_account) === 0) {
                 return $this->respondNotFound();
             }
 
@@ -366,7 +348,7 @@ class UserAccountController extends ApiController
 
             return $this->respondWithData(
                 [
-                    'userAccount' => $userAccount,
+                    'user_account' => $user_account,
                 ], 'Successfully get user account by id');
         }
         catch (Exception $exception) {
@@ -379,7 +361,7 @@ class UserAccountController extends ApiController
      *      path="/api/user-accounts/ban/{id}",
      *      tags={"User Account"},
      *      summary="Ban user account",
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="id",
      *          in="path",
@@ -392,12 +374,6 @@ class UserAccountController extends ApiController
      *          description="application/json",
      *          required=false,
      *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true,
-     *      ),
      *      @OA\Response(
      *          response=200,
      *          description="Successfully update user account by id",
@@ -407,7 +383,7 @@ class UserAccountController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "userAccount": {
+    "user_account": {
     "id": 1,
     "username": "VANDEP123",
     "is_banned": true,
@@ -429,18 +405,18 @@ class UserAccountController extends ApiController
     public function banUserAccount(Request $request, string $id): JsonResponse
     {
         try {
-            $userAccount = UserAccount::where('id', $id)->first();
+            $user_account = UserAccount::where('id', $id)->first();
 
-            if (!isset($userAccount)) {
+            if (!isset($user_account)) {
                 return $this->respondNotFound();
             }
 
-            $userAccount->is_banned = true;
-            $userAccount->save();
+            $user_account->is_banned = true;
+            $user_account->save();
 
             return $this->respondWithData(
                 [
-                    'userAccount' => $userAccount,
+                    'user_account' => $user_account,
                 ]);
         }
         catch (Exception $exception) {
@@ -453,7 +429,7 @@ class UserAccountController extends ApiController
      *      path="/api/user-accounts/unban/{id}",
      *      tags={"User Account"},
      *      summary="Unban user account",
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="id",
      *          in="path",
@@ -466,12 +442,6 @@ class UserAccountController extends ApiController
      *          description="application/json",
      *          required=false,
      *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true,
-     *      ),
      *      @OA\Response(
      *          response=200,
      *          description="Successfully unban user account by id",
@@ -481,7 +451,7 @@ class UserAccountController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "userAccount": {
+    "user_account": {
     "id": 1,
     "username": "VANDEP123",
     "is_banned": false,
@@ -503,18 +473,18 @@ class UserAccountController extends ApiController
     public function unbanUserAccount(Request $request, string $id): JsonResponse
     {
         try {
-            $userAccount = UserAccount::where('id', $id)->first();
+            $user_account = UserAccount::where('id', $id)->first();
 
-            if (!isset($userAccount)) {
+            if (!isset($user_account)) {
                 return $this->respondNotFound();
             }
 
-            $userAccount->is_banned = false;
-            $userAccount->save();
+            $user_account->is_banned = false;
+            $user_account->save();
 
             return $this->respondWithData(
                 [
-                    'userAccount' => $userAccount,
+                    'user_account' => $user_account,
                 ], 'Successfully unbanned user account by id');
         }
         catch (Exception $exception) {
@@ -527,7 +497,7 @@ class UserAccountController extends ApiController
      *      path="/api/user-accounts/lock/{id}",
      *      tags={"User Account"},
      *      summary="Lock user account",
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="id",
      *          in="path",
@@ -539,12 +509,6 @@ class UserAccountController extends ApiController
      *          in="header",
      *          description="application/json",
      *          required=false,
-     *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true,
      *      ),
      *      @OA\RequestBody(
      *          required=true,
@@ -564,7 +528,7 @@ class UserAccountController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "userAccount": {
+    "user_account": {
     "id": 1,
     "username": "VANDEP123",
     "is_banned": 0,
@@ -586,18 +550,18 @@ class UserAccountController extends ApiController
     public function lockUserAccount(Request $request, string $id): JsonResponse
     {
         try {
-            $userAccount = UserAccount::where('id', $id)->first();
+            $user_account = UserAccount::where('id', $id)->first();
 
-            if (!isset($userAccount)) {
+            if (!isset($user_account)) {
                 return $this->respondNotFound();
             }
 
-            $userAccount->locked_until = $request->locked_until;
-            $userAccount->save();
+            $user_account->locked_until = $request->locked_until;
+            $user_account->save();
 
             return $this->respondWithData(
                 [
-                    'userAccount' => $userAccount,
+                    'user_account' => $user_account,
                 ]);
         }
         catch (Exception $exception) {
@@ -610,7 +574,7 @@ class UserAccountController extends ApiController
      *      path="/api/user-accounts/unlock/{id}",
      *      tags={"User Account"},
      *      summary="Unlock user account",
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="id",
      *          in="path",
@@ -623,12 +587,6 @@ class UserAccountController extends ApiController
      *          description="application/json",
      *          required=false,
      *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true,
-     *      ),
      *      @OA\Response(
      *          response=200,
      *          description="Successfully unlock user account by id",
@@ -638,7 +596,7 @@ class UserAccountController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "userAccount": {
+    "user_account": {
     "id": 1,
     "username": "VANDEP123",
     "is_banned": 1,
@@ -660,18 +618,18 @@ class UserAccountController extends ApiController
     public function unlockUserAccount(Request $request, string $id): JsonResponse
     {
         try {
-            $userAccount = UserAccount::where('id', $id)->first();
+            $user_account = UserAccount::where('id', $id)->first();
 
-            if (!isset($userAccount)) {
+            if (!isset($user_account)) {
                 return $this->respondNotFound();
             }
 
-            $userAccount->locked_until = null;
-            $userAccount->save();
+            $user_account->locked_until = null;
+            $user_account->save();
 
             return $this->respondWithData(
                 [
-                    'userAccount' => $userAccount,
+                    'user_account' => $user_account,
                 ]);
         }
         catch (Exception $exception) {
@@ -684,7 +642,7 @@ class UserAccountController extends ApiController
      *      path="/api/user-accounts/{id}",
      *      tags={"User Account"},
      *      summary="Delete user account",
-     *      security={{"bearerAuth":{}}},
+     *      security={{"sanctum":{}}},
      *      @OA\Parameter(
      *          name="id",
      *          in="path",
@@ -697,12 +655,6 @@ class UserAccountController extends ApiController
      *          description="application/json",
      *          required=false,
      *      ),
-     *      @OA\Parameter(
-     *          name="Authorization",
-     *          in="header",
-     *          description="Bearer {token}",
-     *          required=true,
-     *      ),
      *      @OA\Response(
      *          response=200,
      *          description="Successfully delete user account by id",
@@ -712,7 +664,7 @@ class UserAccountController extends ApiController
     "error": false,
     "message": "Xoá thành công",
     "data": {
-    "userAccount": {
+    "user_account": {
     "id": 14,
     "username": "SANG123",
     "is_banned": 0,
@@ -734,17 +686,17 @@ class UserAccountController extends ApiController
     public function deleteUserAccount(Request $request, string $id): JsonResponse
     {
         try {
-            $userAccount = UserAccount::where('id', $id)->first();
+            $user_account = UserAccount::where('id', $id)->first();
 
-            if (!isset($userAccount)) {
+            if (!isset($user_account)) {
                 return $this->respondNotFound();
             }
 
-            $userAccount->delete();
+            $user_account->delete();
 
             return $this->respondWithData(
                 [
-                    'userAccount' => $userAccount,
+                    'user_account' => $user_account,
                 ], 'Xoá thành công');
         }
         catch (Exception $exception) {

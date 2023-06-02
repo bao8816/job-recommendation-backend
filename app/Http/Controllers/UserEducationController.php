@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateUserEducationRequest;
 use App\Models\UserEducation;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -30,7 +31,7 @@ class UserEducationController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "userEducations": {
+    "user_educations": {
     "current_page": 1,
     "data": {
     {
@@ -137,24 +138,26 @@ class UserEducationController extends ApiController
      *      @OA\Response(
      *          response=404,
      *          description="User educations not found",
-     *          ref="#/components/responses/404"
+     *          ref="#/components/responses/NotFound"
      *      )
      *  )
      */
     public function getAllUserEducations(Request $request): JsonResponse
     {
         try {
-            $count_per_page = $request->count_per_page;
+            $count_per_page = $request->count_per_page ?? 10;
+            $order_by = $request->order_by ?? 'id';
+            $order_type = $request->order_type ?? 'asc';
 
-            $userEducations = UserEducation::paginate($count_per_page);
+            $user_educations = UserEducation::orderBy($order_by, $order_type)->paginate($count_per_page);
 
-            if (count($userEducations) === 0) {
+            if (count($user_educations) === 0) {
                 return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'userEducations' => $userEducations,
+                    'user_educations' => $user_educations,
                 ]);
         }
         catch (Exception $exception) {
@@ -201,7 +204,7 @@ class UserEducationController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "userEducations": {
+    "user_educations": {
     "current_page": 1,
     "data": {
     {
@@ -248,7 +251,7 @@ class UserEducationController extends ApiController
      *      @OA\Response(
      *          response=404,
      *          description="User educations not found",
-     *          ref="#/components/responses/404"
+     *          ref="#/components/responses/NotFound"
      *      )
      *  )
      */
@@ -256,16 +259,20 @@ class UserEducationController extends ApiController
     {
         try {
             $count_per_page = $request->count_per_page;
+            $order_by = $request->order_by ?? 'id';
+            $order_type = $request->order_type ?? 'asc';
 
-            $userEducations = UserEducation::where('user_id', $user_id)->paginate($count_per_page);
+            $user_educations = UserEducation::where('user_id', $user_id)
+                ->orderBy($order_by, $order_type)
+                ->paginate($count_per_page);
 
-            if (count($userEducations) === 0) {
+            if (count($user_educations) === 0) {
                 return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'userEducations' => $userEducations,
+                    'user_educations' => $user_educations,
                 ]);
         }
         catch (Exception $exception) {
@@ -306,7 +313,7 @@ class UserEducationController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "userEducation": {
+    "user_education": {
     "current_page": 1,
     "data": {
     {
@@ -353,22 +360,22 @@ class UserEducationController extends ApiController
      *      @OA\Response(
      *          response=404,
      *          description="User education not found",
-     *          ref="#/components/responses/404"
+     *          ref="#/components/responses/NotFound"
      *      )
      *  )
      */
     public function getUserEducationById(Request $request, string $id): JsonResponse
     {
         try {
-            $userEducation = UserEducation::where('id', $id)->paginate(1);
+            $user_education = UserEducation::where('id', $id)->first();
 
-            if (!isset($userEducation)) {
+            if (!$user_education) {
                 return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'userEducation' => $userEducation,
+                    'user_education' => $user_education,
                 ]);
         }
         catch (Exception $exception) {
@@ -414,7 +421,7 @@ class UserEducationController extends ApiController
     "error": false,
     "message": "Tạo thành công",
     "data": {
-    "userEducation": {
+    "user_education": {
     "user_id": 1,
     "university": "uni",
     "start": "2021-05-20",
@@ -433,19 +440,19 @@ class UserEducationController extends ApiController
      *      )
      *  )
      */
-    public function createUserEducation(Request $request): JsonResponse
+    public function createUserEducation(CreateUserEducationRequest $request): JsonResponse
     {
         try {
-            $userEducation = new UserEducation();
-            $userEducation->user_id = $request->user()->id;
-            $userEducation->university = $request->university;
-            $userEducation->start = $request->start;
-            $userEducation->end = $request->end;
-            $userEducation->save();
+            $user_education = new UserEducation();
+            $user_education->user_id = $request->user()->id;
+            $user_education->university = $request->university;
+            $user_education->start = $request->start;
+            $user_education->end = $request->end;
+            $user_education->save();
 
             return $this->respondCreated(
                 [
-                    'userEducation' => $userEducation,
+                    'user_education' => $user_education,
                 ]);
         }
         catch (Exception $exception) {
@@ -496,7 +503,7 @@ class UserEducationController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "userEducation": {
+    "user_education": {
     "id": 55,
     "user_id": 1,
     "university": "uni",
@@ -518,24 +525,24 @@ class UserEducationController extends ApiController
     public function updateUserEducation(Request $request, string $id): JsonResponse
     {
         try {
-            $userEducation = UserEducation::where('id', $id)->first();
+            $user_education = UserEducation::where('id', $id)->first();
 
-            if (!isset($userEducation)) {
+            if (!$user_education) {
                 return $this->respondNotFound();
             }
 
-            if ($userEducation->user_id !== $request->user()->id) {
+            if ($user_education->user_id !== $request->user()->id) {
                 return $this->respondUnauthorized('Bạn không có quyền chỉnh sửa thông tin này');
             }
 
-            $userEducation->university = $request->university != null ? $request->university : $userEducation->university;
-            $userEducation->start = $request->start != null ? $request->start : $userEducation->start;
-            $userEducation->end = $request->end != null ? $request->end : $userEducation->end;
-            $userEducation->save();
+            $user_education->university = $request->university ?? $user_education->university;
+            $user_education->start = $request->start ?? $user_education->start;
+            $user_education->end = $request->end ?? $user_education->end;
+            $user_education->save();
 
             return $this->respondWithData(
                 [
-                    'userEducation' => $userEducation,
+                    'user_education' => $user_education,
                 ]);
         }
         catch (Exception $exception) {
@@ -576,7 +583,7 @@ class UserEducationController extends ApiController
     "error": false,
     "message": "Xoá thành công",
     "data": {
-    "userEducation": {
+    "user_education": {
     "id": 55,
     "user_id": 1,
     "university": "uni",
@@ -598,21 +605,21 @@ class UserEducationController extends ApiController
     public function deleteUserEducation(Request $request, string $id): JsonResponse
     {
         try {
-            $userEducation = UserEducation::where('id', $id)->first();
+            $user_education = UserEducation::where('id', $id)->first();
 
-            if (!isset($userEducation)) {
+            if (!$user_education) {
                 return $this->respondNotFound();
             }
 
-            if (!$request->user()->tokenCan('mod') && $userEducation->user_id !== $request->user()->id) {
+            if (!$request->user()->tokenCan('mod') && $user_education->user_id !== $request->user()->id) {
                 return $this->respondUnauthorized('Bạn không có quyền xóa thông tin này');
             }
 
-            $userEducation->delete();
+            $user_education->delete();
 
             return $this->respondWithData(
                 [
-                    'userEducation' => $userEducation,
+                    'user_education' => $user_education,
                 ], 'Xoá thành công');
         }
         catch (Exception $exception) {

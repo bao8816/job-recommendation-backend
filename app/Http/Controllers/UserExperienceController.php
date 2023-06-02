@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateUserExperienceRequest;
 use App\Models\UserExperience;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -42,7 +43,7 @@ class UserExperienceController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "userExperiences": {
+    "user_experiences": {
     "current_page": 1,
     "data": {
     {
@@ -156,17 +157,19 @@ class UserExperienceController extends ApiController
     public function getAllUserExperiences(Request $request): JsonResponse
     {
         try {
-            $count_per_page = $request->count_per_page;
+            $count_per_page = $request->count_per_page ?? 10;
+            $order_by = $request->order_by ?? 'id';
+            $order_type = $request->order_type ?? 'asc';
 
-            $userExperiences = UserExperience::paginate($count_per_page);
+            $user_experiences = UserExperience::orderBy($order_by, $order_type)->paginate($count_per_page);
 
-            if (count($userExperiences) === 0) {
+            if (count($user_experiences) === 0) {
                 return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'userExperiences' => $userExperiences,
+                    'user_experiences' => $user_experiences,
                 ]);
         }
         catch (Exception $exception) {
@@ -213,7 +216,7 @@ class UserExperienceController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "userExperiences": {
+    "user_experiences": {
     "current_page": 1,
     "data": {
     {
@@ -268,16 +271,20 @@ class UserExperienceController extends ApiController
     {
         try {
             $count_per_page = $request->count_per_page;
+            $order_by = $request->order_by ?? 'id';
+            $order_type = $request->order_type ?? 'asc';
 
-            $userExperiences = UserExperience::where('user_id', $user_id)->paginate($count_per_page);
+            $user_experiences = UserExperience::where('user_id', $user_id)
+                ->orderBy($order_by, $order_type)
+                ->paginate($count_per_page);
 
-            if (count($userExperiences) === 0) {
+            if (count($user_experiences) === 0) {
                 return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'userExperiences' => $userExperiences,
+                    'user_experiences' => $user_experiences,
                 ]);
         }
         catch (Exception $exception) {
@@ -317,7 +324,7 @@ class UserExperienceController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "userExperience": {
+    "user_experience": {
     "current_page": 1,
     "data": {
     {
@@ -371,15 +378,15 @@ class UserExperienceController extends ApiController
     public function getUserExperienceById(Request $request, string $id): JsonResponse
     {
         try {
-            $userExperience = UserExperience::where('id', $id)->paginate(1);
+            $user_experience = UserExperience::where('id', $id)->first();
 
-            if (!isset($userExperience)) {
+            if (!$user_experience) {
                 return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'userExperience' => $userExperience,
+                    'user_experience' => $user_experience,
                 ]);
         }
         catch (Exception $exception) {
@@ -424,7 +431,7 @@ class UserExperienceController extends ApiController
     "error": false,
     "message": "Tạo thành công",
     "data": {
-    "userExperience": {
+    "user_experience": {
     "user_id": 2,
     "description": "des",
     "start": "2021-05-21",
@@ -443,19 +450,19 @@ class UserExperienceController extends ApiController
      *      )
      *  )
      */
-    public function createUserExperience(Request $request): JsonResponse
+    public function createUserExperience(CreateUserExperienceRequest $request): JsonResponse
     {
         try {
-            $userExperience = new UserExperience();
-            $userExperience->user_id = $request->user()->id;
-            $userExperience->description = $request->description;
-            $userExperience->start = $request->start;
-            $userExperience->end = $request->end;
-            $userExperience->save();
+            $user_experience = new UserExperience();
+            $user_experience->user_id = $request->user()->id;
+            $user_experience->description = $request->description;
+            $user_experience->start = $request->start;
+            $user_experience->end = $request->end;
+            $user_experience->save();
 
             return $this->respondCreated(
                 [
-                    'userExperience' => $userExperience,
+                    'user_experience' => $user_experience,
                 ]);
         }
         catch (Exception $exception) {
@@ -504,7 +511,7 @@ class UserExperienceController extends ApiController
     "error": false,
     "message": "Xử lí thành công",
     "data": {
-    "userExperience": {
+    "user_experience": {
     "id": 57,
     "user_id": 2,
     "description": "desdes",
@@ -526,24 +533,24 @@ class UserExperienceController extends ApiController
     public function updateUserExperience(Request $request, string $id): JsonResponse
     {
         try {
-            $userExperience = UserExperience::where('id', $id)->first();
+            $user_experience = UserExperience::where('id', $id)->first();
 
-            if (!isset($userExperience)) {
+            if (!$user_experience) {
                 return $this->respondNotFound();
             }
 
-            if ($userExperience->user_id !== $request->user()->id) {
+            if ($user_experience->user_id !== $request->user()->id) {
                 return $this->respondUnauthorized('Bạn không có quyền chỉnh sửa thông tin này');
             }
 
-            $userExperience->description = $request->description != null ? $request->description : $userExperience->description;
-            $userExperience->start = $request->start != null ? $request->start : $userExperience->start;
-            $userExperience->end = $request->end != null ? $request->end : $userExperience->end;
-            $userExperience->save();
+            $user_experience->description = $request->description ?? $user_experience->description;
+            $user_experience->start = $request->start ?? $user_experience->start;
+            $user_experience->end = $request->end ?? $user_experience->end;
+            $user_experience->save();
 
             return $this->respondWithData(
                 [
-                    'userExperience' => $userExperience,
+                    'user_experience' => $user_experience,
                 ]);
         }
         catch (Exception $exception) {
@@ -583,7 +590,7 @@ class UserExperienceController extends ApiController
     "error": false,
     "message": "Xóa thành công",
     "data": {
-    "userExperience": {
+    "user_experience": {
     "id": 57,
     "user_id": 2,
     "description": "desdes",
@@ -605,21 +612,21 @@ class UserExperienceController extends ApiController
     public function deleteUserExperience(Request $request, string $id): JsonResponse
     {
         try {
-            $userExperience = UserExperience::where('id', $id)->first();
+            $user_experience = UserExperience::where('id', $id)->first();
 
-            if (!isset($userExperience)) {
+            if (!$user_experience) {
                 return $this->respondNotFound();
             }
 
-            if (!$request->user()->tokenCan('mod') && $userExperience->user_id !== $request->user()->id) {
+            if (!$request->user()->tokenCan('mod') && $user_experience->user_id !== $request->user()->id) {
                 return $this->respondUnauthorized('Bạn không có quyền xóa thông tin này');
             }
 
-            $userExperience->delete();
+            $user_experience->delete();
 
             return $this->respondWithData(
                 [
-                    'userExperience' => $userExperience,
+                    'user_experience' => $user_experience,
                 ], 'Xóa thành công');
         }
         catch (Exception $exception) {

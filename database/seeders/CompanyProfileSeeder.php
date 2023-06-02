@@ -33,6 +33,8 @@ class CompanyProfileSeeder extends Seeder
             $company_profile->site = $line[4];
             $company_profile->address = $line[5];
             $company_profile->size = $line[6];
+            $company_profile->phone = $line[7];
+            $company_profile->email = $line[8];
             $company_profile->created_at = now();
             $company_profile->updated_at = now();
 

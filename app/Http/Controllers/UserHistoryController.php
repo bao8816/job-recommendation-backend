@@ -9,66 +9,26 @@ use Illuminate\Http\Request;
 
 class UserHistoryController extends ApiController
 {
-    public function getAllUserHistories(Request $request): JsonResponse
+    public function getUserHistories(Request $request): JsonResponse
     {
         try {
-            $count_per_page = $request->count_per_page;
+            $count_per_page = $request->count_per_page ?? 10;
+            $order_by = $request->order_by ?? 'id';
+            $order_type = $request->order_type ?? 'asc';
 
-            $userHistories = UserHistory::paginate($count_per_page);
+            $user_histories = UserHistory::filter($request, UserHistory::query())
+                ->with(['user_profile', 'job'])
+                ->orderBy($order_by, $order_type)
+                ->paginate($count_per_page);
 
-            if (count($userHistories) === 0) {
-                return $this->respondNotFound('No user histories found');
+            if (count($user_histories) === 0) {
+                return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'userHistories' => $userHistories,
-                ]
-                , 'Successfully retrieved user histories');
-        }
-        catch (Exception $exception) {
-            return $this->respondInternalServerError($exception->getMessage());
-        }
-    }
-
-    public function getUserHistoriesByUserId(Request $request, string $user_id): JsonResponse
-    {
-        try {
-            $count_per_page = $request->count_per_page;
-
-            $userHistories = UserHistory::where('user_id', $user_id)->paginate($count_per_page);
-
-            if (count($userHistories) === 0) {
-                return $this->respondNotFound('No user histories found');
-            }
-
-            return $this->respondWithData(
-                [
-                    'userHistories' => $userHistories,
-                ]
-                , 'Successfully retrieved user histories');
-        }
-        catch (Exception $exception) {
-            return $this->respondInternalServerError($exception->getMessage());
-        }
-    }
-
-    public function getUserHistoriesByJobId(Request $request, string $job_id): JsonResponse
-    {
-        try {
-            $count_per_page = $request->count_per_page;
-
-            $userHistories = UserHistory::where('job_id', $job_id)->paginate($count_per_page);
-
-            if (count($userHistories) === 0) {
-                return $this->respondNotFound('No user histories found');
-            }
-
-            return $this->respondWithData(
-                [
-                    'userHistories' => $userHistories,
-                ]
-                , 'Successfully retrieved user histories');
+                    'user_histories' => $user_histories,
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
@@ -78,17 +38,16 @@ class UserHistoryController extends ApiController
     public function getUserHistoryById(Request $request, string $id): JsonResponse
     {
         try {
-            $userHistory = UserHistory::where('id', $id)->paginate(1);
+            $user_history = UserHistory::where('id', $id)->first();
 
-            if (count($userHistory) === 0) {
-                return $this->respondNotFound('No user history found');
+            if (!$user_history) {
+                return $this->respondNotFound();
             }
 
             return $this->respondWithData(
                 [
-                    'userHistory' => $userHistory,
-                ]
-                , 'Successfully retrieved user history');
+                    'user_history' => $user_history,
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
@@ -98,17 +57,16 @@ class UserHistoryController extends ApiController
     public function createUserHistory(Request $request): JsonResponse
     {
         try {
-            $userHistory = new UserHistory();
-            $userHistory->user_id = $request->user()->id;
-            $userHistory->job_id = $request->job_id;
-            $userHistory->times = $request->times;
-            $userHistory->save();
+            $user_history = new UserHistory();
+            $user_history->user_id = $request->user()->id;
+            $user_history->job_id = $request->job_id;
+            $user_history->times = $request->times;
+            $user_history->save();
 
             return $this->respondCreated(
                 [
-                    'userHistory' => $userHistory,
-                ]
-                , 'Successfully created user history');
+                    'user_history' => $user_history,
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
@@ -118,20 +76,19 @@ class UserHistoryController extends ApiController
     public function updateUserHistory(Request $request, string $id): JsonResponse
     {
         try {
-            $userHistory = UserHistory::where('id', $id)->first();
+            $user_history = UserHistory::where('id', $id)->first();
 
-            if ($userHistory === null) {
-                return $this->respondNotFound('No user history found');
+            if (!$user_history) {
+                return $this->respondNotFound();
             }
 
-            $userHistory->times = $request->times;
-            $userHistory->save();
+            $user_history->times = $request->times ?? $user_history->times;
+            $user_history->save();
 
             return $this->respondWithData(
                 [
-                    'userHistory' => $userHistory,
-                ]
-                , 'Successfully updated user history');
+                    'user_history' => $user_history,
+                ]);
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
@@ -141,19 +98,18 @@ class UserHistoryController extends ApiController
     public function deleteUserHistory(string $id): JsonResponse
     {
         try {
-            $userHistory = UserHistory::where('id', $id)->first();
+            $user_history = UserHistory::where('id', $id)->first();
 
-            if ($userHistory === null) {
-                return $this->respondNotFound('No user history found');
+            if (!$user_history) {
+                return $this->respondNotFound();
             }
 
-            $userHistory->delete();
+            $user_history->delete();
 
             return $this->respondWithData(
                 [
-                    'userHistory' => $userHistory,
-                ]
-                , 'Successfully deleted user history');
+                    'user_history' => $user_history,
+                ], 'Xoá thành công');
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());

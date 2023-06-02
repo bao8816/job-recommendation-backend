@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SignInRequest;
+use App\Http\Requests\SignUpRequest;
 use App\Models\CompanyAccount;
 use App\Models\CompanyProfile;
 use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -19,7 +22,7 @@ class AuthCompanyController extends ApiController
      *      tags={"Auth Company"},
      *      @OA\RequestBody(
      *          @OA\JsonContent(
-     *              example={"username": "Company", "password": "company123", "password_confirmation": "company123"}
+     *              example={"username": "Company", "password": "company123", "confirm_password": "company123"}
      *          ),
      *          required=true,
      *      ),
@@ -55,17 +58,12 @@ class AuthCompanyController extends ApiController
      *      ),
      *  )
      */
-    public function signUp(Request $request)
+    public function signUp(SignUpRequest $request): JsonResponse
     {
         try {
             $username = $request->username;
             $password = $request->password;
-            $confirm_password = $request->confirm_password;
             $password_salt = $password . env('PASSWORD_SALT');
-
-            if ($password != $confirm_password) {
-                return $this->respondBadRequest('Nhập lại mật khẩu không khớp');
-            }
 
             if (CompanyAccount::where('username', $username)->exists()) {
                 return $this->respondBadRequest('Tên đăng nhập đã tồn tại');
@@ -145,18 +143,18 @@ class AuthCompanyController extends ApiController
      *      ),
      *  )
      */
-    public function signIn(Request $request)
+    public function signIn(SignInRequest $request): JsonResponse
     {
         try {
             $username = $request->username;
             $password = $request->password;
             $passwordSalt = $password . env('PASSWORD_SALT');
 
-            if (!CompanyAccount::where('username', $username)->exists()) {
-                return $this->respondBadRequest('Tên đăng nhập không tồn tại');
-            }
-
             $companyAccount = CompanyAccount::where('username', $username)->first();
+
+            if (!$companyAccount) {
+                return $this->respondBadRequest('Không tìm thấy tên đăng nhập');
+            }
 
             if (!Hash::check($passwordSalt, $companyAccount->password)) {
                 return $this->respondBadRequest('Mật khẩu không đúng');
@@ -181,6 +179,7 @@ class AuthCompanyController extends ApiController
             $token = $companyAccount->createToken($tokenName, ['company']);
 
             $companyAccount->last_login = now();
+            $companyAccount->save();
 
             return $this->respondWithData(
                 [
