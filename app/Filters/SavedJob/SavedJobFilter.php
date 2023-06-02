@@ -3,6 +3,8 @@
 namespace App\Filters\SavedJob;
 
 use App\Filters\AbstractFilter;
+use App\Filters\CommonFilter\JobFilter;
+use App\Filters\CommonFilter\UserFilter;
 
 class SavedJobFilter extends AbstractFilter
 {

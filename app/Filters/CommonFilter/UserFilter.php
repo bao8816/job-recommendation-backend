@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filters\JobReport;
+namespace App\Filters\CommonFilter;
 
 class UserFilter
 {

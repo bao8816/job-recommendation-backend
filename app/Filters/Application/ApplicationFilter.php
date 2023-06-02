@@ -3,6 +3,8 @@
 namespace App\Filters\Application;
 
 use App\Filters\AbstractFilter;
+use App\Filters\CommonFilter\JobFilter;
+use App\Filters\CommonFilter\UserFilter;
 
 class ApplicationFilter extends AbstractFilter
 {

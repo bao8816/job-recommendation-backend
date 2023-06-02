@@ -3,6 +3,7 @@
 namespace App\Filters\CompanyReport;
 
 use App\Filters\AbstractFilter;
+use App\Filters\CommonFilter\UserFilter;
 
 class CompanyReportFilter extends AbstractFilter
 {
