@@ -19,6 +19,7 @@ use App\Http\Controllers\JobSkillController;
 use App\Http\Controllers\PostCommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostReportController;
+use App\Http\Controllers\SavedJobController;
 use App\Http\Controllers\TimeTableController;
 use App\Http\Controllers\UserAccountController;
 use App\Http\Controllers\UserAchievementController;
@@ -370,6 +371,24 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(JobReportContr
 Route::middleware(['auth:sanctum', 'ability:user,mod'])->controller(JobReportController::class)
     ->prefix('job-reports')->group(function () {
         Route::delete('/{id}', 'deleteJobReport');
+    });
+
+// ----------Saved Job
+// All roles
+Route::middleware(['auth:sanctum'])->controller(SavedJobController::class)
+    ->prefix('saved-jobs')->group(function () {
+        Route::get('/{id}', 'getSavedJobById');
+        Route::get('/', 'getSavedJobs');
+    });
+
+// Only user and moderator
+Route::middleware(['auth:sanctum', 'ability:user,mod'])->controller(SavedJobController::class)
+    ->prefix('saved-jobs')->group(function () {
+        Route::post('/', 'createSavedJob');
+
+        Route::put('/{id}', 'updateSavedJob');
+
+        Route::delete('/{id}', 'deleteSavedJob');
     });
 
 

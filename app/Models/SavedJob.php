@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Filters\SavedJob\SavedJobFilter;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -34,6 +36,11 @@ class SavedJob extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    public static function filter($query, $filters): Builder
+    {
+        return (new SavedJobFilter($query))->apply($filters);
+    }
 
     public function user(): BelongsTo
     {
