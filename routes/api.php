@@ -381,13 +381,17 @@ Route::middleware(['auth:sanctum'])->controller(SavedJobController::class)
         Route::get('/', 'getSavedJobs');
     });
 
-// Only user and moderator
-Route::middleware(['auth:sanctum', 'ability:user,mod'])->controller(SavedJobController::class)
+// Only user
+Route::middleware(['auth:sanctum', 'ability:user'])->controller(SavedJobController::class)
     ->prefix('saved-jobs')->group(function () {
         Route::post('/', 'createSavedJob');
 
         Route::put('/{id}', 'updateSavedJob');
+    });
 
+// Only user and moderator
+Route::middleware(['auth:sanctum', 'ability:user,mod'])->controller(SavedJobController::class)
+    ->prefix('saved-jobs')->group(function () {
         Route::delete('/{id}', 'deleteSavedJob');
     });
 
