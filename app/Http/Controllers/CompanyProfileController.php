@@ -350,6 +350,8 @@ class CompanyProfileController extends ApiController
             $company_profile->site = $request->site ?? $company_profile->site;
             $company_profile->address = $request->address ?? $company_profile->address;
             $company_profile->size = $request->size ?? $company_profile->size;
+            $company_profile->phone = $request->phone ?? $company_profile->phone;
+            $company_profile->email = $request->email ?? $company_profile->email;
             $company_profile->save();
 
             return $this->respondWithData(
