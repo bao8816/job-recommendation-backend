@@ -59,8 +59,13 @@ class CompanyAccount extends Authenticatable
         return $this->hasOne(CompanyProfile::class, 'id', 'id');
     }
 
-    public function company_verification(): HasOne
+    public function company_verifications(): HasMany
     {
-        return $this->hasOne(CompanyVerification::class, 'company_id', 'id');
+        return $this->hasMany(CompanyVerification::class, 'company_id', 'id');
+    }
+
+    public function jobs(): HasMany
+    {
+        return $this->hasMany(Job::class, 'company_id', 'id');
     }
 }

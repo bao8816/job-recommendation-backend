@@ -215,8 +215,13 @@ class JobController extends ApiController
 
             $jobs = Job::filter($request, Job::query())
                 ->with('job_skills', 'employer_profile.company_profile')
-                ->orderBy($order_by, $order_type)
-                ->paginate($count_per_page);
+                ->orderBy($order_by, $order_type);
+
+            if ($count_per_page < 1) {
+                $jobs = $jobs->get();
+            } else {
+                $jobs = $jobs->paginate($count_per_page);
+            }
 
             if (count($jobs) === 0) {
                 return $this->respondNotFound();

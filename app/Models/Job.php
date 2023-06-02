@@ -80,7 +80,7 @@ class Job extends Model
         return $this->hasMany(JobSkill::class, 'job_id', 'id');
     }
 
-    public function user_history(): HasMany
+    public function user_histories(): HasMany
     {
         return $this->hasMany(UserHistory::class, 'job_id', 'id');
     }

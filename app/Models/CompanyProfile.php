@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CompanyProfile extends Model
@@ -24,6 +25,10 @@ class CompanyProfile extends Model
         'logo',
         'description',
         'site',
+        'address',
+        'size',
+        'phone',
+        'email',
     ];
 
     /**
@@ -41,5 +46,10 @@ class CompanyProfile extends Model
     public function account(): BelongsTo
     {
         return $this->belongsTo(CompanyAccount::class, 'id', 'id');
+    }
+
+    public function jobs(): HasMany
+    {
+        return $this->hasMany(Job::class, 'company_id', 'id');
     }
 }
