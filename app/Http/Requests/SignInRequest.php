@@ -51,10 +51,9 @@ class SignInRequest extends FormRequest
         return [
             'username.required' => 'Yêu cầu nhập tên đăng nhập',
             'username.string' => 'Tên đăng nhập phải là dạng chuỗi',
-            'username.regex' => 'Tên đăng nhập không được chứa ký tự đặc biệt',
+            'username.regex' => 'Tên đăng nhập không được chứa ký tự đặc biệt (@, #, $, &, *)',
             'password.required' => 'Yêu cầu nhập mật khẩu',
             'password.string' => 'Mật khẩu phải là dạng chuỗi',
-            'password.regex' => 'Mật khẩu không được chứa ký tự đặc biệt',
         ];
     }
 }
