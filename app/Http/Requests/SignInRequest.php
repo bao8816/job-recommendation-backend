@@ -31,14 +31,12 @@ class SignInRequest extends FormRequest
             'username' => [
                 'required',
                 'string',
-                // regex: not allow special characters
-                'regex:/^[a-zA-Z0-9\s]+$/'
+                // regex: not allow special characters (@, #, $, &, *)
+                'regex:/^[^@#$&*]+$/',
             ],
             'password' => [
                 'required',
                 'string',
-                // regex: not allow special characters
-                'regex:/^[a-zA-Z0-9\s]+$/',
             ],
         ];
     }
