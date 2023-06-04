@@ -99,14 +99,14 @@ Route::middleware(['auth:sanctum', 'ability:user,mod'])->controller(UserAccountC
 // All roles
 Route::middleware(['auth:sanctum'])->controller(UserProfileController::class)
     ->prefix('user-profiles')->group(function () {
-        Route::get('/profile/{id}', 'getUserProfile');
-        Route::get('/profiles', 'getAllUserProfiles');
+        Route::get('/{id}', 'getUserProfile');
+        Route::get('/', 'getAllUserProfiles');
     });
 
 // Only user
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserProfileController::class)
     ->prefix('user-profiles')->group(function () {
-        Route::put('/profile', 'updateUserProfile');
+        Route::put('/', 'updateUserProfile');
     });
 
 // ----------User Achievement
