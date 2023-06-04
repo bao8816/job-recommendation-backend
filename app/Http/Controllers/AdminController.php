@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateModRequest;
 use App\Http\Requests\SignUpRequest;
 use App\Models\Admin;
 use Exception;
@@ -108,11 +109,13 @@ class AdminController extends ApiController
      *      )
      *  )
      */
-    public function createModAccount(SignUpRequest $request): JsonResponse
+    public function createModAccount(CreateModRequest $request): JsonResponse
     {
         try {
             $username = $request->username;
             $password = $request->password;
+            $full_name = $request->full_name;
+            $avatar = $request->avatar;
             $password_salt = $password . env('PASSWORD_SALT');
 
             if (Admin::where('username', $username)->exists()) {
@@ -124,6 +127,8 @@ class AdminController extends ApiController
             $modAccount = new Admin();
             $modAccount->username = $username;
             $modAccount->password = $hashedPassword;
+            $modAccount->full_name = $full_name;
+            $modAccount->avatar = $avatar;
             $modAccount->save();
 
             return $this->respondCreated(
