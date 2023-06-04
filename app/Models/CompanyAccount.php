@@ -34,8 +34,6 @@ class CompanyAccount extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'created_at',
-        'updated_at',
         'deleted_at',
     ];
 
