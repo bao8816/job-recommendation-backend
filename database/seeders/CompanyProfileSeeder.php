@@ -29,6 +29,7 @@ class CompanyProfileSeeder extends Seeder
 
             $company_profile->id = $line[0];
             $company_profile->name = $line[1];
+            $company_profile->logo = $line[2];
             $company_profile->description = $line[3];
             $company_profile->site = $line[4];
             $company_profile->address = $line[5];
