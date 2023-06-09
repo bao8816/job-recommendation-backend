@@ -294,6 +294,16 @@ class EmployerAccountController extends ApiController
      *                  type="string",
      *                  example="123456"
      *              ),
+     *              @OA\Property(
+     *                  property="full_name",
+     *                  type="string",
+     *                  example="Le Trong Phu"
+ *                  ),
+     *              @OA\Property(
+     *                  property="avatar",
+     *                  type="string",
+     *                  example="https://i.imgur.com/hepj9ZS.png"
+     *              ),
      *          )
      *      ),
      *      @OA\Response(
@@ -342,7 +352,8 @@ class EmployerAccountController extends ApiController
             $employer_profile = new EmployerProfile();
             $employer_profile->id = $employer_account->id;
             $employer_profile->company_id = $request->user()->id;
-            $employer_profile->full_name = 'Họ và tên';
+            $employer_profile->full_name = $request->full_name;
+            $employer_profile->avatar = $request->avatar;
             $employer_profile->save();
 
             return $this->respondCreated(
