@@ -71,7 +71,8 @@ class UserProfileController extends ApiController
 
             return $this->respondWithData(
                 [
-                    'user_profile' => $user_profile,
+                    'user_profile' => $user_profile->with('educations', 'cvs', 'experiences', 'achievements', 'skills', 'time_tables')
+                        ->first()
                 ]);
         }
         catch (Exception $exception) {
