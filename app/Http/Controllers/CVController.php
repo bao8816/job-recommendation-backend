@@ -53,6 +53,25 @@ class CVController extends ApiController
         }
     }
 
+    public function getCVsByUserId(Request $request, string $user_id): JsonResponse
+    {
+        try {
+            $cv = CV::where('user_id', $user_id)->first();
+
+            if (!$cv) {
+                return $this->respondNotFound();
+            }
+
+            return $this->respondWithData(
+                [
+                    'cv' => $cv,
+                ]);
+        }
+        catch (Exception $exception) {
+            return $this->respondInternalServerError($exception->getMessage());
+        }
+    }
+
     public function createCV(Request $request): JsonResponse
     {
         try {

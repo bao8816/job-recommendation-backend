@@ -487,6 +487,7 @@ Route::middleware(['auth:sanctum', 'abilities:mod'])->controller(CompanyVerifica
 // All roles
 Route::middleware(['auth:sanctum'])->controller(CVController::class)
     ->prefix('cvs')->group(function () {
+        Route::get('/user/{user_id}', 'getCVsByUserId');
         Route::get('/{id}', 'getCVById');
         Route::get('/', 'getAllCVs');
     });
