@@ -22,6 +22,7 @@ class UserEducation extends Model
     protected $fillable = [
         'user_id',
         'university',
+        'major',
         'start',
         'end',
     ];
