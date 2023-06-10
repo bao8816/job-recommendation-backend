@@ -62,6 +62,9 @@ class UserProfileController extends ApiController
 
             $user_profile->full_name = $request->full_name ?? $user_profile->full_name;
             $user_profile->avatar = $request->avatar ?? $user_profile->avatar;
+            $user_profile->about_me = $request->about_me ?? $user_profile->about_me;
+            $user_profile->good_at_position = $request->good_at_position ?? $user_profile->good_at_position;
+            $user_profile->year_of_experience = $request->year_of_experience ?? $user_profile->year_of_experience;
             $user_profile->date_of_birth = $request->date_of_birth ?? $user_profile->date_of_birth;
             $user_profile->gender = $request->gender ?? $user_profile->gender;
             $user_profile->address = $request->address ?? $user_profile->address;
