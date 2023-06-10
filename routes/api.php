@@ -392,6 +392,7 @@ Route::middleware(['auth:sanctum', 'ability:user'])->controller(SavedJobControll
 // Only user and moderator
 Route::middleware(['auth:sanctum', 'ability:user,mod'])->controller(SavedJobController::class)
     ->prefix('saved-jobs')->group(function () {
+        Route::delete('/user-job', 'deleteSavedJobByUserAndJobId');
         Route::delete('/{id}', 'deleteSavedJob');
     });
 

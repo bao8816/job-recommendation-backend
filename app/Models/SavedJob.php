@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SavedJob extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $connection = 'mysql';
     protected $table = 'saved_jobs';

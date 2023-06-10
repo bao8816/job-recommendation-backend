@@ -110,4 +110,27 @@ class SavedJobController extends ApiController
             return $this->respondInternalServerError($exception->getMessage());
         }
     }
+
+    public function deleteSavedJobByUserAndJobId(Request $request): JsonResponse
+    {
+        try {
+            $saved_job = SavedJob::where('user_id', $request->user_id)
+                ->where('job_id', $request->job_id)
+                ->first();
+
+            if (!$saved_job) {
+                return $this->respondNotFound();
+            }
+
+            $saved_job->delete();
+
+            return $this->respondWithData(
+                [
+                'saved_job' => $saved_job,
+                ], 'Xoá thành công');
+        }
+        catch (Exception $exception) {
+            return $this->respondInternalServerError($exception->getMessage());
+        }
+    }
 }
