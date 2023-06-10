@@ -455,6 +455,8 @@ class UserExperienceController extends ApiController
         try {
             $user_experience = new UserExperience();
             $user_experience->user_id = $request->user()->id;
+            $user_experience->title = $request->title;
+            $user_experience->position = $request->position;
             $user_experience->description = $request->description;
             $user_experience->start = $request->start;
             $user_experience->end = $request->end;
@@ -543,6 +545,8 @@ class UserExperienceController extends ApiController
                 return $this->respondUnauthorized('Bạn không có quyền chỉnh sửa thông tin này');
             }
 
+            $user_experience->title = $request->title ?? $user_experience->title;
+            $user_experience->position = $request->position ?? $user_experience->position;
             $user_experience->description = $request->description ?? $user_experience->description;
             $user_experience->start = $request->start ?? $user_experience->start;
             $user_experience->end = $request->end ?? $user_experience->end;
