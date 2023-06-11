@@ -152,8 +152,12 @@ class CompanyProfileController extends ApiController
     {
         try {
             $count_per_page = $request->count_per_page ?? 10;
+            $order_by = $request->order_by ?? 'id';
+            $order_type = $request->order_direction ?? 'asc';
 
-            $company_profiles = CompanyProfile::paginate($count_per_page);
+            $company_profiles = CompanyProfile::filter($request, CompanyProfile::query())
+                ->orderBy($order_by, $order_type)
+                ->paginate($count_per_page);
 
             if (count($company_profiles) === 0) {
                 return $this->respondNotFound();

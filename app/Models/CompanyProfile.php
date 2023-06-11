@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Filters\CompanyProfile\CompanyProfileFilter;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -40,7 +42,11 @@ class CompanyProfile extends Model
         'deleted_at',
     ];
 
-    // belongsTo
+    public static function filter($request, $builder): Builder
+    {
+        return (new CompanyProfileFilter($request))->apply($builder);
+    }
+
     public function account(): BelongsTo
     {
         return $this->belongsTo(CompanyAccount::class, 'id', 'id');
