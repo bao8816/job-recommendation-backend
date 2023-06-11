@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class JobController extends ApiController
 {
@@ -227,6 +228,15 @@ class JobController extends ApiController
                 return $this->respondNotFound();
             }
 
+            $user = auth('sanctum')->check() ? auth('sanctum')->user() : null;
+
+            // check if each job is saved by user and add to job
+            foreach ($jobs as $job) {
+                $user_saved_job = SavedJob::where('user_id', $user->id)->where('job_id', $job->id)->first();
+                $is_saved = (bool)$user_saved_job;
+                $job->is_saved = $is_saved;
+            }
+
             return $this->respondWithData(
                 [
                     'jobs' => $jobs,
@@ -346,38 +356,31 @@ class JobController extends ApiController
                 return $this->respondNotFound();
             }
 
-            $is_saved = false;
-            if ($request->user())
-            {
-                if ($request->user()->tokenCan('user')) {
-                    $user = UserAccount::where('id', $request->user()->id)->first();
-                    $user_history = UserHistory::where('user_id', $user->id)->where('job_id', $id)->first();
-                    if ($user_history) {
-                        $user_history->times = $user_history->times + 1;
-                        $user_history->save();
-                    }
-                    else {
-                        $user_history = new UserHistory();
-                        $user_history->user_id = $user->id;
-                        $user_history->job_id = $id;
-                        $user_history->times = 1;
-                        $user_history->save();
-                    }
-                }
+            $user = auth('sanctum')->check() ? auth('sanctum')->user() : null;
 
-                if ($request->user()->tokenCan('user')) {
-                    $user = UserAccount::where('id', $request->user()->id)->first();
-                    $user_saved_job = SavedJob::where('user_id', $user->id)->where('job_id', $id)->first();
-                    if ($user_saved_job) {
-                        $is_saved = true;
-                    }
+            $job->is_saved = false;
+            if ($user->tokenCan('user')) {
+                $user_history = UserHistory::where('user_id', $user->id)->where('job_id', $id)->first();
+                if ($user_history) {
+                    $user_history->times = $user_history->times + 1;
+                }
+                else {
+                    $user_history = new UserHistory();
+                    $user_history->user_id = $user->id;
+                    $user_history->job_id = $id;
+                    $user_history->times = 1;
+                }
+                $user_history->save();
+
+                $user_saved_job = SavedJob::where('user_id', $user->id)->where('job_id', $id)->first();
+                if ($user_saved_job) {
+                    $job->is_saved = true;
                 }
             }
 
             return $this->respondWithData(
                 [
                     'job' => $job,
-                    'is_saved' => $is_saved,
                 ]);
         }
         catch (Exception $exception) {
