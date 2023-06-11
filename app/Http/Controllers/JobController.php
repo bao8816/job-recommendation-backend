@@ -231,10 +231,11 @@ class JobController extends ApiController
             $user = auth('sanctum')->check() ? auth('sanctum')->user() : null;
 
             // check if each job is saved by user and add to job
-            foreach ($jobs as $job) {
-                $user_saved_job = SavedJob::where('user_id', $user->id)->where('job_id', $job->id)->first();
-                $is_saved = (bool)$user_saved_job;
-                $job->is_saved = $is_saved;
+            if ($user && $user->tokenCan('user')) {
+                foreach ($jobs as $job) {
+                    $user_saved_job = SavedJob::where('user_id', $user->id)->where('job_id', $job->id)->first();
+                    $job->is_saved = (bool)$user_saved_job;
+                }
             }
 
             return $this->respondWithData(
@@ -359,7 +360,7 @@ class JobController extends ApiController
             $user = auth('sanctum')->check() ? auth('sanctum')->user() : null;
 
             $job->is_saved = false;
-            if ($user->tokenCan('user')) {
+            if ($user && $user->tokenCan('user')) {
                 $user_history = UserHistory::where('user_id', $user->id)->where('job_id', $id)->first();
                 if ($user_history) {
                     $user_history->times = $user_history->times + 1;
@@ -373,9 +374,7 @@ class JobController extends ApiController
                 $user_history->save();
 
                 $user_saved_job = SavedJob::where('user_id', $user->id)->where('job_id', $id)->first();
-                if ($user_saved_job) {
-                    $job->is_saved = true;
-                }
+                $job->is_saved = (bool)$user_saved_job;
             }
 
             return $this->respondWithData(
