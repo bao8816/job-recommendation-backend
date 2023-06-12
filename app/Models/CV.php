@@ -22,7 +22,9 @@ class CV extends Model
      * @var array
      */
     protected $fillable = [
+        'cv_name',
         'cv_path',
+        'cv_note',
     ];
 
     /**

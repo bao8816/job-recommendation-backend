@@ -77,7 +77,9 @@ class CVController extends ApiController
         try {
             $cv = new CV();
             $cv->user_id = $request->user()->id;
+            $cv->cv_name = $request->cv_name;
             $cv->cv_path = $request->cv_path;
+            $cv->cv_note = $request->cv_note;
             $cv->save();
 
             return $this->respondCreated(
@@ -103,7 +105,9 @@ class CVController extends ApiController
                 return $this->respondForbidden('Bạn không có quyền chỉnh sửa CV này');
             }
 
+            $cv->cv_name = $request->cv_name ?? $cv->cv_name;
             $cv->cv_path = $request->cv_path ?? $cv->cv_path;
+            $cv->cv_note = $request->cv_note ?? $cv->cv_note;
             $cv->save();
 
             return $this->respondWithData(
