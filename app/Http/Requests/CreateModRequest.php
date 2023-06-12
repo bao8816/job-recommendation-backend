@@ -29,6 +29,8 @@ class CreateModRequest extends FormRequest
                 'string',
                 // regex: not allow special characters
                 'regex:/^[a-zA-Z0-9\s]+$/',
+                'min:8',
+                'max:20',
             ],
             'password' => [
                 'required',
@@ -62,6 +64,8 @@ class CreateModRequest extends FormRequest
             'username.required' => 'Yêu cầu nhập tên đăng nhập',
             'username.string' => 'Tên đăng nhập phải là dạng chuỗi',
             'username.regex' => 'Tên đăng nhập không được chứa ký tự đặc biệt',
+            'username.max' => 'Tên đăng nhập không được quá 20 ký tự',
+            'username.min' => 'Tên đăng nhập phải có ít nhất 8 ký tự',
             'password.required' => 'Yêu cầu nhập mật khẩu',
             'password.string' => 'Mật khẩu phải là dạng chuỗi',
             'password.max' => 'Mật khẩu không được quá 20 ký tự',
