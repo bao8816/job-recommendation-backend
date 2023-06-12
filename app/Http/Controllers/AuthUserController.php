@@ -61,7 +61,7 @@ class AuthUserController extends ApiController
     public function signUp(SignUpRequest $request): JsonResponse
     {
         try {
-            $username = $request->username;
+            $username = strtolower(str_replace(' ', '', $request->username));
             $password = $request->password;
 
             $password_salt = $password . env('PASSWORD_SALT');

@@ -298,7 +298,7 @@ class EmployerAccountController extends ApiController
      *                  property="full_name",
      *                  type="string",
      *                  example="Le Trong Phu"
- *                  ),
+     *              ),
      *              @OA\Property(
      *                  property="avatar",
      *                  type="string",
@@ -334,7 +334,7 @@ class EmployerAccountController extends ApiController
     public function createEmployerAccount(SignUpRequest $request): JsonResponse
     {
         try {
-            $username = $request->username;
+            $username = strtolower(str_replace(' ', '', $request->username));
             $password = $request->password;
             $salt_password = $password . env('PASSWORD_SALT');
 

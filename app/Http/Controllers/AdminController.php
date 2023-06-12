@@ -112,7 +112,7 @@ class AdminController extends ApiController
     public function createModAccount(CreateModRequest $request): JsonResponse
     {
         try {
-            $username = $request->username;
+            $username = strtolower(str_replace(' ', '', $request->username));
             $password = $request->password;
             $full_name = $request->full_name;
             $avatar = $request->avatar;
