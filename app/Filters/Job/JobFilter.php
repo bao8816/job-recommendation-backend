@@ -14,5 +14,6 @@ class JobFilter extends AbstractFilter
         'employer_id' => EmployerFilter::class,
         'company_id' => CompanyFilter::class,
         'available' => AvailableFilter::class,
+        'top' => TopFilter::class,
     ];
 }
