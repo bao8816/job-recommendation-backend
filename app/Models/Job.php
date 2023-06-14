@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Builder;
@@ -86,5 +87,15 @@ class Job extends Model
     public function saved_jobs(): HasMany
     {
         return $this->hasMany(SavedJob::class, 'job_id', 'id');
+    }
+
+    public function job_category(): HasMany
+    {
+        return $this->hasMany(JobCategory::class, 'job_id', 'id');
+    }
+
+    public function categories(): BelongsToMany
+    {
+        return $this->belongsToMany(Category::class, 'job_category', 'job_id', 'category_id');
     }
 }
