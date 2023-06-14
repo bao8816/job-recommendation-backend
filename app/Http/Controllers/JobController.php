@@ -215,7 +215,7 @@ class JobController extends ApiController
             $order_type = $request->order_type ?? 'asc';
 
             $jobs = Job::filter($request, Job::query())
-                ->with('job_skills', 'employer_profile.company_profile')
+                ->with('skills', 'employer_profile.company_profile', 'categories')
                 ->orderBy($order_by, $order_type);
 
             if ($count_per_page < 1) {
@@ -350,7 +350,7 @@ class JobController extends ApiController
     public function getJobById(Request $request, string $id): JsonResponse
     {
         try {
-            $job = Job::with('job_skills', 'employer_profile.company_profile')
+            $job = Job::with('skills', 'employer_profile.company_profile', 'categories')
                 ->find($id);
 
             if (!$job) {

@@ -69,12 +69,12 @@ class Job extends Model
         return $this->hasMany(Application::class, 'job_id', 'id');
     }
 
-    public function job_reports(): HasMany
+    public function reports(): HasMany
     {
         return $this->hasMany(JobReport::class, 'job_id', 'id');
     }
 
-    public function job_skills(): HasMany
+    public function skills(): HasMany
     {
         return $this->hasMany(JobSkill::class, 'job_id', 'id');
     }

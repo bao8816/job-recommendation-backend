@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthAdminController;
 use App\Http\Controllers\AuthCompanyController;
 use App\Http\Controllers\AuthEmployerController;
 use App\Http\Controllers\AuthUserController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CompanyAccountController;
 use App\Http\Controllers\CompanyProfileController;
 use App\Http\Controllers\CompanyReportController;
@@ -394,6 +395,24 @@ Route::middleware(['auth:sanctum', 'ability:user,mod'])->controller(SavedJobCont
     ->prefix('saved-jobs')->group(function () {
         Route::delete('/user-job', 'deleteSavedJobByUserAndJobId');
         Route::delete('/{id}', 'deleteSavedJob');
+    });
+
+// ------------------------------------CATEGORY------------------------------------
+// All roles (including guest)
+Route::controller(CategoryController::class)
+    ->prefix('categories')->group(function () {
+        Route::get('/{id}', 'getCategoryById');
+        Route::get('/', 'getCategories');
+    });
+
+// Only moderator
+Route::middleware(['auth:sanctum', 'ability:mod'])->controller(CategoryController::class)
+    ->prefix('categories')->group(function () {
+        Route::post('/', 'createCategory');
+
+        Route::put('/{id}', 'updateCategory');
+
+        Route::delete('/{id}', 'deleteCategory');
     });
 
 
