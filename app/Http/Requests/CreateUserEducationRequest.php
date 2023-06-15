@@ -30,13 +30,19 @@ class CreateUserEducationRequest extends FormRequest
                 // regex: not allow special characters (@, #, $, &, *)
                 'regex:/^[^@#$&*]+$/',
             ],
+            'major' => [
+                'required',
+                'string',
+                // regex: not allow special characters (@, #, $, &, *)
+                'regex:/^[^@#$&*]+$/',
+            ],
             'start' => [
                 'required',
-                'date',
+                'string',
             ],
             'end' => [
                 'required',
-                'date',
+                'string',
                 'after:start',
             ],
         ];
@@ -53,10 +59,13 @@ class CreateUserEducationRequest extends FormRequest
             'university.required' => 'Bắt buộc nhập tên trường',
             'university.string' => 'Tên trường phải là chuỗi ký tự',
             'university.regex' => 'Tên trường không được chứa ký tự đặc biệt (@, #, $, &, *)',
+            'major.required' => 'Bắt buộc nhập chuyên ngành',
+            'major.string' => 'Chuyên ngành phải là chuỗi ký tự',
+            'major.regex' => 'Chuyên ngành không được chứa ký tự đặc biệt (@, #, $, &, *)',
             'start.required' => 'Bắt buộc nhập ngày bắt đầu',
-            'start.date' => 'Ngày bắt đầu phải là dạng ngày tháng',
+            'start.string' => 'Ngày bắt đầu phải là dạng chuỗi ký tự',
             'end.required' => 'Bắt buộc nhập ngày kết thúc',
-            'end.date' => 'Ngày kết thúc phải là dạng ngày tháng',
+            'end.date' => 'Ngày kết thúc phải là dạng chuỗi ký tự',
             'end.after' => 'Ngày kết thúc phải sau ngày bắt đầu',
         ];
     }
