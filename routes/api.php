@@ -14,6 +14,7 @@ use App\Http\Controllers\CompanyVerificationController;
 use App\Http\Controllers\CVController;
 use App\Http\Controllers\EmployerAccountController;
 use App\Http\Controllers\EmployerProfileController;
+use App\Http\Controllers\JobCategoryController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\JobReportController;
 use App\Http\Controllers\JobSkillController;
@@ -395,6 +396,31 @@ Route::middleware(['auth:sanctum', 'ability:user,mod'])->controller(SavedJobCont
     ->prefix('saved-jobs')->group(function () {
         Route::delete('/user-job', 'deleteSavedJobByUserAndJobId');
         Route::delete('/{id}', 'deleteSavedJob');
+    });
+
+
+//-------------Job Category
+// All roles (including guest)
+Route::controller(JobCategoryController::class)
+    ->prefix('job-categories')->group(function () {
+        Route::get('/job/{job_id}', 'getJobCategoriesByJobId');
+        Route::get('/category/{category_id}', 'getJobCategoriesByCategoryId');
+        Route::get('/{id}', 'getJobCategoryById');
+        Route::get('/', 'getAllJobCategories');
+    });
+
+// Only company and employer
+Route::middleware(['auth:sanctum', 'ability:company,employer'])->controller(JobCategoryController::class)
+    ->prefix('job-categories')->group(function () {
+        Route::post('/', 'createJobCategory');
+
+        Route::put('/{id}', 'updateJobCategory');
+    });
+
+// Only company, employer and moderator
+Route::middleware(['auth:sanctum', 'ability:company,employer,mod'])->controller(JobCategoryController::class)
+    ->prefix('job-categories')->group(function () {
+        Route::delete('/{id}', 'deleteJobCategory');
     });
 
 // ------------------------------------CATEGORY------------------------------------
