@@ -32,8 +32,8 @@ class UserExperienceSeeder extends Seeder
             $user_experience->title = $line[2];
             $user_experience->position = $line[3];
             $user_experience->description = $line[4];
-            $user_experience->start = date('Y-m-d', strtotime($line[5]));
-            $user_experience->end = date('Y-m-d', strtotime($line[6]));
+            $user_experience->start = date('Y-m-d', strtotime(str_replace('/', '-', $line[5])));
+            $user_experience->end = date('Y-m-d', strtotime(str_replace('/', '-', $line[6])));
             $user_experience->created_at = now();
             $user_experience->updated_at = now();
 
