@@ -82,7 +82,7 @@ class AuthCompanyController extends ApiController
 
             $profile = new CompanyProfile();
             $profile->id = $companyAccount->id;
-            $profile->name = $username;
+            $profile->name = $request->name ?? $username;
             $profile->save();
 
             return $this->respondWithData(
