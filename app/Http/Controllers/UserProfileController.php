@@ -56,7 +56,9 @@ class UserProfileController extends ApiController
     public function updateUserProfile(UpdateUserProfileRequest $request): JsonResponse
     {
         try {
-            $user_profile = UserProfile::where('id', $request->user()->id)->first();
+            $user_profile = UserProfile::where('id', $request->user()->id)
+                ->with('educations', 'cvs', 'experiences', 'achievements', 'skills', 'time_tables')
+                ->first();
 
             if (!$user_profile) {
                 return $this->respondNotFound();
@@ -97,8 +99,7 @@ class UserProfileController extends ApiController
 
             return $this->respondWithData(
                 [
-                    'user_profile' => $user_profile->with('educations', 'cvs', 'experiences', 'achievements', 'skills', 'time_tables')
-                        ->first()
+                    'user_profile' => $user_profile,
                 ]);
         }
         catch (Exception $exception) {
