@@ -6,6 +6,7 @@ use App\Models\CV;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CVController extends ApiController
 {
@@ -78,8 +79,28 @@ class CVController extends ApiController
             $cv = new CV();
             $cv->user_id = $request->user()->id;
             $cv->cv_name = $request->cv_name;
-            $cv->cv_path = $request->cv_path;
             $cv->cv_note = $request->cv_note;
+
+            if ($request->hasFile('cv_path')) {
+                $file = $request->file('cv_path');
+                $file_name = $file->getClientOriginalName();
+                $file_name = str_replace(' ', '_', $file_name);
+                $file_name = preg_replace('/[^A-Za-z0-9\-\.]/', '', $file_name);
+
+                $path = Storage::disk('s3')->putFileAs(
+                    'cvs',
+                    $file,
+                    $file_name,
+                );
+                $url = Storage::disk('s3')->url($path);
+
+                if (!$path || !$url) {
+                    return $this->respondInternalServerError('Lỗi khi lưu file CV');
+                }
+
+                $cv->cv_path = $url;
+            }
+
             $cv->save();
 
             return $this->respondCreated(
@@ -106,8 +127,28 @@ class CVController extends ApiController
             }
 
             $cv->cv_name = $request->cv_name ?? $cv->cv_name;
-            $cv->cv_path = $request->cv_path ?? $cv->cv_path;
             $cv->cv_note = $request->cv_note ?? $cv->cv_note;
+
+            if ($request->hasFile('cv_path')) {
+                $file = $request->file('cv_path');
+                $file_name = $file->getClientOriginalName();
+                $file_name = str_replace(' ', '_', $file_name);
+                $file_name = preg_replace('/[^A-Za-z0-9\-\.]/', '', $file_name);
+
+                $path = Storage::disk('s3')->putFileAs(
+                    'cvs',
+                    $file,
+                    $file_name,
+                );
+                $url = Storage::disk('s3')->url($path);
+
+                if (!$path || !$url) {
+                    return $this->respondInternalServerError('Lỗi khi lưu file CV');
+                }
+
+                $cv->cv_path = $url;
+            }
+
             $cv->save();
 
             return $this->respondWithData(
