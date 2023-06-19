@@ -64,15 +64,14 @@ class UpdateUserProfileRequest extends FormRequest
             ],
             'phone' => [
                 'string',
-                'max:20',
                 // regex for phone number
                 'regex:/^0[0-9]{9}$/',
             ],
             'avatar' => [
                 // file type
-                'mimes:jpeg,png,jpg,gif,svg',
+                'mimes:jpeg,png,jpg',
                 // max file size
-                'max:2048',
+                'max:4096',
             ],
         ];
     }
@@ -115,11 +114,10 @@ class UpdateUserProfileRequest extends FormRequest
             'email.regex' => 'Email không đúng định dạng.',
 
             'phone.string' => 'Số điện thoại phải là chuỗi ký tự.',
-            'phone.max' => 'Số điện thoại không được vượt quá 20 ký tự.',
             'phone.regex' => 'Số điện thoại không đúng định dạng.',
 
-            'avatar.mimes' => 'Ảnh đại diện phải là định dạng jpeg, png, jpg, gif, svg.',
-            'avatar.max' => 'Ảnh đại diện không được vượt quá 2MB.',
+            'avatar.mimes' => 'Ảnh đại diện phải là định dạng jpeg, png, jpg.',
+            'avatar.max' => 'Ảnh đại diện không được vượt quá 4MB.',
         ];
     }
 }

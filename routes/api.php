@@ -481,7 +481,7 @@ Route::controller(CompanyProfileController::class)
 // Only company
 Route::middleware(['auth:sanctum', 'ability:company'])->controller(CompanyProfileController::class)
     ->prefix('company-profiles')->group(function () {
-        Route::put('/{id}', 'updateCompanyProfile');
+        Route::put('/', 'updateCompanyProfile');
     });
 
 // ------------Company Report

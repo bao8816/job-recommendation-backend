@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateCompanyProfileRequest;
 use App\Models\CompanyProfile;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CompanyProfileController extends ApiController
 {
@@ -278,12 +280,6 @@ class CompanyProfileController extends ApiController
      *      summary="Update company profile",
      *      security={{"sanctum":{}}},
      *      @OA\Parameter(
-     *          name="id",
-     *          in="path",
-     *          description="Company profile id",
-     *          required=true,
-     *      ),
-     *      @OA\Parameter(
      *          name="Accept",
      *          in="header",
      *          description="application/json",
@@ -335,10 +331,10 @@ class CompanyProfileController extends ApiController
      *      ),
      *  )
      */
-    public function updateCompanyProfile(Request $request, string $id): JsonResponse
+    public function updateCompanyProfile(UpdateCompanyProfileRequest $request): JsonResponse
     {
         try {
-            $company_profile = CompanyProfile::where('id', $id)->first();
+            $company_profile = CompanyProfile::where('id', $request->user()->id)->first();
 
             if (!$company_profile) {
                 return $this->respondNotFound();
@@ -349,13 +345,33 @@ class CompanyProfileController extends ApiController
             }
 
             $company_profile->name = $request->name ?? $company_profile->name;
-            $company_profile->logo = $request->logo ?? $company_profile->logo;
             $company_profile->description = $request->description ?? $company_profile->description;
             $company_profile->site = $request->site ?? $company_profile->site;
             $company_profile->address = $request->address ?? $company_profile->address;
             $company_profile->size = $request->size ?? $company_profile->size;
             $company_profile->phone = $request->phone ?? $company_profile->phone;
             $company_profile->email = $request->email ?? $company_profile->email;
+
+            if ($request->hasFile('logo')) {
+                $file = $request->file('logo');
+                $file_name = $file->getClientOriginalName();
+                $file_name = str_replace(' ', '_', $file_name);
+                $file_name = preg_replace('/[^A-Za-z0-9\-\.]/', '', $file_name);
+
+                $path = Storage::disk('s3')->putFileAs(
+                    'company_logo',
+                    $file,
+                    $file_name,
+                );
+                $url = Storage::disk('s3')->url($path);
+
+                if (!$path) {
+                    return $this->respondInternalServerError('Lỗi khi upload logo');
+                }
+
+                $company_profile->logo = $url;
+            }
+
             $company_profile->save();
 
             return $this->respondWithData(
