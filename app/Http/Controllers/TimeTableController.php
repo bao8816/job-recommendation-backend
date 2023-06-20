@@ -68,9 +68,24 @@ class TimeTableController extends ApiController
     public function createTimeTable(Request $request): JsonResponse
     {
         try {
-            $time_table = new TimeTable();
-            $time_table->user_id = $request->user()->id;
-            $time_table->coordinate = $request->coordinate;
+            $coordinates = explode(',', $request->coordinate);
+
+            foreach ($coordinates as $coordinate) {
+                $time_table = new TimeTable();
+                $time_table->coordinate = $coordinate;
+                $time_table->user_id = $request->user()->id;
+
+                // if the coordinate of user_id already exists, we will not create it
+                $time_table_exists = TimeTable::where('user_id', $request->user()->id)
+                    ->where('coordinate', $coordinate)
+                    ->first();
+
+                if ($time_table_exists) {
+                    continue;
+                }
+
+                $time_table->save();
+            }
 
             return $this->respondCreated([
                 'time_table' => $time_table,
