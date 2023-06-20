@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateModRequest;
 use App\Http\Requests\SignUpRequest;
+use App\Http\Requests\UpdateModRequest;
 use App\Http\Requests\UpdatePasswordRequest;
 use App\Models\Admin;
 use Exception;
@@ -350,7 +351,7 @@ class AdminController extends ApiController
      *      )
      *  )
      */
-    public function updateModAccount(Request $request, string $id): JsonResponse
+    public function updateModAccount(UpdateModRequest $request, string $id): JsonResponse
     {
         try {
             $mod = Admin::where('id', $id)->first();
