@@ -76,7 +76,7 @@ class UserAccountController extends ApiController
             $salt_password = $current_password . env('PASSWORD_SALT');
 
             if (!Hash::check($salt_password, $user_account->password)) {
-                return $this->respondBadRequest('Mật khẩu hiện tại không đúng');
+                return $this->respondBadRequest(['Mật khẩu hiện tại không đúng']);
             }
 
             $user_account->password = Hash::make($new_password . env('PASSWORD_SALT'));
