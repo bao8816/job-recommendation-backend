@@ -86,13 +86,17 @@ class SavedJobController extends ApiController
         }
     }
 
-    public function deleteSavedJob(string $id): JsonResponse
+    public function deleteSavedJob(Request $request, string $id): JsonResponse
     {
         try {
             $saved_job = SavedJob::find($id);
 
             if (!$saved_job) {
                 return $this->respondNotFound();
+            }
+
+            if (!$request->user()->tokenCan('mod') && $saved_job->user_id !== $request->user()->id) {
+                return $this->respondForbidden('Bạn không có quyền xóa job đã lưu này');
             }
 
             $saved_job->delete();
@@ -116,6 +120,10 @@ class SavedJobController extends ApiController
 
             if (!$saved_job) {
                 return $this->respondNotFound();
+            }
+
+            if (!$request->user()->tokenCan('mod') && $saved_job->user_id !== $request->user()->id) {
+                return $this->respondForbidden('Bạn không có quyền xóa job đã lưu này');
             }
 
             $saved_job->delete();
