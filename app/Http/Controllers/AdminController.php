@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateModRequest;
 use App\Http\Requests\SignUpRequest;
+use App\Http\Requests\UpdatePasswordRequest;
 use App\Models\Admin;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -422,7 +423,7 @@ class AdminController extends ApiController
      *      )
      *  )
      */
-    public function updatePassword(Request $request): JsonResponse
+    public function updatePassword(UpdatePasswordRequest $request): JsonResponse
     {
         try {
             $account = Admin::where('id', $request->user()->id)->first();
@@ -433,20 +434,13 @@ class AdminController extends ApiController
 
             $current_password = $request->current_password;
             $new_password = $request->new_password;
-            $confirm_password = $request->confirm_password;
             $salt_password = $current_password . env('PASSWORD_SALT');
 
             if (!Hash::check($salt_password, $account->password)) {
                 return $this->respondBadRequest('Mật khẩu cũ không đúng');
             }
 
-            if ($new_password !== $confirm_password) {
-                return $this->respondBadRequest('Mật khẩu xác nhận không khớp');
-            }
-
-            $hashedPassword = Hash::make($new_password . env('PASSWORD_SALT'));
-
-            $account->password = $hashedPassword;
+            $account->password = Hash::make($new_password . env('PASSWORD_SALT'));
             $account->save();
 
             return $this->respondWithData(

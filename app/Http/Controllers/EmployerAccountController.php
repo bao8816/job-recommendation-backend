@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SignUpRequest;
+use App\Http\Requests\UpdatePasswordRequest;
 use App\Models\EmployerAccount;
 use App\Models\EmployerProfile;
 use Exception;
@@ -412,7 +413,7 @@ class EmployerAccountController extends ApiController
      *      )
      *  )
      */
-    public function updatePassword(Request $request): JsonResponse
+    public function updatePassword(UpdatePasswordRequest $request): JsonResponse
     {
         try {
             $employer_account = EmployerAccount::where('id', $request->user()->id)->first();
@@ -423,15 +424,10 @@ class EmployerAccountController extends ApiController
 
             $current_password = $request->current_password;
             $new_password = $request->new_password;
-            $confirm_password = $request->confirm_password;
             $salt_password = $current_password . env('PASSWORD_SALT');
 
             if (!Hash::check($salt_password, $employer_account->password)) {
                 return $this->respondBadRequest('Mật khẩu hiện tại không đúng');
-            }
-
-            if ($new_password !== $confirm_password) {
-                return $this->respondBadRequest('Mật khẩu mới không khớp');
             }
 
             $employer_account->password = Hash::make($new_password . env('PASSWORD_SALT'));
