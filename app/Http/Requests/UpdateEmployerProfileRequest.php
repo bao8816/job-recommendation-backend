@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateModRequest extends FormRequest
+class UpdateEmployerProfileRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -52,8 +52,8 @@ class UpdateModRequest extends FormRequest
             'full_name.max' => 'Họ tên phải có tối đa 100 ký tự',
             'full_name.regex' => 'Họ tên không được chứa ký tự đặc biệt',
 
-            'avatar.mimes' => 'Avatar sai định dạng (chỉ chấp nhận jpg, jpeg, png)',
-            'avatar.max' => 'Avatar quá lớn (tối đa 4MB)',
+            'avatar.mimes' => 'Avatar sai định dạng (chỉ nhận jpg, jpeg, png)',
+            'avatar.max' => 'Avatar phải có dung lượng nhỏ hơn 4MB',
         ];
     }
 }

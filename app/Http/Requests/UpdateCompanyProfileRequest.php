@@ -27,7 +27,7 @@ class UpdateCompanyProfileRequest extends FormRequest
             'name' => [
                 'string',
                 'max:500',
-                'regex:/^[^@#$&*]+$/',
+                'regex:/^[a-zA-Z\s]+$/'
             ],
             'description' => [
                 'string',
@@ -79,7 +79,7 @@ class UpdateCompanyProfileRequest extends FormRequest
         return [
             'name.string' => 'Tên công ty phải là chuỗi ký tự.',
             'name.max' => 'Tên công ty không được vượt quá 500 ký tự.',
-            'name.regex' => 'Tên công ty không được chứa ký tự đặc biệt (@, #, $, &, *).',
+            'name.regex' => 'Tên công ty không được chứa ký tự đặc biệt.',
 
             'description.string' => 'Mô tả công ty phải là chuỗi ký tự.',
             'description.max' => 'Mô tả công ty không được vượt quá 2000 ký tự.',

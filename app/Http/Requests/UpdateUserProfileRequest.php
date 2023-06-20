@@ -27,7 +27,7 @@ class UpdateUserProfileRequest extends FormRequest
             'full_name' => [
                 'string',
                 'max:255',
-                'regex:/^[^@#$&*]+$/',
+                'regex:/^[a-zA-Z\s]+$/'
             ],
             'about_me' => [
                 'string',
@@ -86,7 +86,7 @@ class UpdateUserProfileRequest extends FormRequest
         return [
             'full_name.string' => 'Họ tên phải là chuỗi ký tự.',
             'full_name.max' => 'Họ tên không được vượt quá 255 ký tự.',
-            'full_name.regex' => 'Họ tên không được chứa ký tự đặc biệt (@, #, $, &, *).',
+            'full_name.regex' => 'Họ tên không được chứa ký tự đặc biệt.',
 
             'about_me.string' => 'Giới thiệu bản thân phải là chuỗi ký tự.',
             'about_me.max' => 'Giới thiệu bản thân không được vượt quá 2000 ký tự.',
