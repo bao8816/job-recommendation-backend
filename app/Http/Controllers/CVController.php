@@ -59,7 +59,7 @@ class CVController extends ApiController
     public function getCVsByUserId(Request $request, string $user_id): JsonResponse
     {
         try {
-            $cv = CV::where('user_id', $user_id)->first();
+            $cv = CV::where('user_id', $user_id)->get();
 
             if (!$cv) {
                 return $this->respondNotFound();

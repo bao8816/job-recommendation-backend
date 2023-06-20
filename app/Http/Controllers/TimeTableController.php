@@ -32,9 +32,10 @@ class TimeTableController extends ApiController
     public function getTimeTablesByUserId(Request $request, string $user_id): JsonResponse
     {
         try {
-            $time_tables = TimeTable::where('user_id', $user_id);
+            $time_tables = TimeTable::where('user_id', $user_id)
+                ->get();
 
-            if (!$time_tables) {
+            if ($time_tables->count() === 0) {
                 return $this->respondNotFound();
             }
 
