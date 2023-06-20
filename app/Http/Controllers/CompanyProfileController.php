@@ -365,7 +365,7 @@ class CompanyProfileController extends ApiController
                 );
                 $url = Storage::disk('s3')->url($path);
 
-                if (!$path) {
+                if (!$path || !$url) {
                     return $this->respondInternalServerError('Lỗi khi upload logo');
                 }
 

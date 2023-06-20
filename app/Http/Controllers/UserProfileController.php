@@ -88,7 +88,7 @@ class UserProfileController extends ApiController
                 );
                 $url = Storage::disk('s3')->url($path);
 
-                if (!$path) {
+                if (!$path || !$url) {
                     return $this->respondInternalServerError('Không thể upload avatar');
                 }
 

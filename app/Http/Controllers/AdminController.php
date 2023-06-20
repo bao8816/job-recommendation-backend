@@ -10,6 +10,7 @@ use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends ApiController
 {
@@ -363,7 +364,27 @@ class AdminController extends ApiController
             }
 
             $mod->full_name = $request->full_name ?? $mod->full_name;
-            $mod->avatar = $request->avatar ?? $mod->avatar;
+
+            if ($request->hasFile('avatar')) {
+                $file = $request->file('avatar');
+                $file_name = $file->getClientOriginalName();
+                $file_name = str_replace(' ', '_', $file_name);
+                $file_name = preg_replace('/[^A-Za-z0-9\-\.]/', '', $file_name);
+
+                $path = Storage::disk('s3')->putFileAs(
+                    'admin_avatar',
+                    $file,
+                    $file_name,
+                );
+                $url = Storage::disk('s3')->url($path);
+
+                if (!$path || !$url) {
+                    return $this->respondInternalServerError('Lỗi khi upload ảnh');
+                }
+
+                $mod->avatar = $url;
+            }
+
             $mod->save();
 
             return $this->respondWithData(
