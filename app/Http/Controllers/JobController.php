@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateJobRequest;
+use App\Http\Requests\UpdateJobRequest;
 use App\Models\EmployerProfile;
 use App\Models\Job;
 use App\Models\SavedJob;
@@ -475,19 +476,19 @@ class JobController extends ApiController
                 $job->employer_id = $temp_employer->id;
             }
 
-            $job->title = $request->title;
-            $job->description = $request->description;
-            $job->benefit = $request->benefit;
-            $job->requirement = $request->requirement;
-            $job->type = $request->type;
-            $job->location = $request->location;
-            $job->min_salary = $request->min_salary;
-            $job->max_salary = $request->max_salary;
-            $job->recruit_num = $request->recruit_num;
-            $job->position = $request->position;
-            $job->min_yoe = $request->min_yoe;
-            $job->max_yoe = $request->max_yoe;
-            $job->deadline = $request->deadline;
+            $job->title = $request->validated()['title'];
+            $job->description = $request->validated()['description'];
+            $job->benefit = $request->validated()['benefit'];
+            $job->requirement = $request->validated()['requirement'];
+            $job->type = $request->validated()['type'];
+            $job->location = $request->validated()['location'];
+            $job->min_salary = $request->validated()['min_salary'];
+            $job->max_salary = $request->validated()['max_salary'];
+            $job->recruit_num = $request->validated()['recruit_num'];
+            $job->position = $request->validated()['position'];
+            $job->min_yoe = $request->validated()['min_yoe'];
+            $job->max_yoe = $request->validated()['max_yoe'];
+            $job->deadline = $request->validated()['deadline'];
 
             $job->save();
 
@@ -577,7 +578,7 @@ class JobController extends ApiController
      *      ),
      *  )
      */
-    public function updateJob(Request $request, string $id): JsonResponse
+    public function updateJob(UpdateJobRequest $request, string $id): JsonResponse
     {
         try {
             $job = Job::where('id', $id)->first();
@@ -597,21 +598,20 @@ class JobController extends ApiController
                 return $this->respondForbidden('Bạn không có quyền chỉnh sửa thông này');
             }
 
-            $job->title = $request->title ?? $job->title;
-            $job->description = $request->description ?? $job->description;
-            $job->benefit = $request->benefit ?? $job->benefit;
-            $job->requirement = $request->requirement ?? $job->requirement;
-            $job->type = $request->type ?? $job->type;
-            $job->location = $request->location ?? $job->location;
-            $job->min_salary = $request->min_salary ?? $job->min_salary;
-            $job->max_salary = $request->max_salary ?? $job->max_salary;
-            $job->recruit_num = $request->recruit_num ?? $job->recruit_num;
-            $job->position = $request->position ?? $job->position;
-            $job->min_yoe = $request->min_yoe ?? $job->min_yoe;
-            $job->max_yoe = $request->max_yoe ?? $job->max_yoe;
-            $job->deadline = $request->deadline ?? $job->deadline;
+            $min_salary = $request->validated()['min_salary'] ?? $job->min_salary;
+            $max_salary = $request->validated()['max_salary'] ?? $job->max_salary;
+            $min_yoe = $request->validated()['min_yoe'] ?? $job->min_yoe;
+            $max_yoe = $request->validated()['max_yoe'] ?? $job->max_yoe;
 
-            $job->save();
+            if ($min_salary > $max_salary) {
+                return $this->respondBadRequest('Mức lương tối thiểu không được lớn hơn mức lương tối đa');
+            }
+
+            if ($min_yoe > $max_yoe) {
+                return $this->respondBadRequest('Kinh nghiệm tối thiểu không được lớn hơn kinh nghiệm tối đa');
+            }
+
+            $job->update($request->validated());
 
             return $this->respondWithData(
                 [
