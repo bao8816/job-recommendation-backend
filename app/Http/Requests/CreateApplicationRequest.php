@@ -46,7 +46,10 @@ class CreateApplicationRequest extends FormRequest
     {
         return [
             'job_id.required' => 'Yêu cầu nhập job_id',
+            'job_id.regex' => 'job_id không được chứa ký tự đặc biệt',
+
             'cv_id.required' => 'Yêu cầu nhập cv_id',
+            'cv_id.regex' => 'cv_id không được chứa ký tự đặc biệt',
         ];
     }
 }
