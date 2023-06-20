@@ -694,6 +694,9 @@ class JobController extends ApiController
 
             $job->delete();
 
+            $job->skills()->delete();
+            $job->categories()->detach();
+
             return $this->respondWithData(
                 [
                     'job' => $job,
