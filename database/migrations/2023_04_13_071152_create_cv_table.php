@@ -24,7 +24,7 @@ return new class extends Migration
 
             $table->string('cv_name');
             $table->string('cv_path');
-            $table->string('cv_note');
+            $table->string('cv_note', 2000)->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

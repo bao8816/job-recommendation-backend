@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateCVRequest;
+use App\Http\Requests\UpdateCVRequest;
 use App\Models\CV;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -73,7 +75,7 @@ class CVController extends ApiController
         }
     }
 
-    public function createCV(Request $request): JsonResponse
+    public function createCV(CreateCVRequest $request): JsonResponse
     {
         try {
             $cv = new CV();
@@ -113,7 +115,7 @@ class CVController extends ApiController
         }
     }
 
-    public function updateCV(Request $request, string $id): JsonResponse
+    public function updateCV(UpdateCVRequest $request, string $id): JsonResponse
     {
         try {
             $cv = CV::where('id', $id)->first();
