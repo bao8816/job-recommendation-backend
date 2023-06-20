@@ -24,7 +24,7 @@ class UpdatePasswordRequest extends FormRequest
     public function rules()
     {
         return [
-            'old_password' => [
+            'current_password' => [
                 'required',
                 'string',
                 'min:8',
@@ -53,9 +53,9 @@ class UpdatePasswordRequest extends FormRequest
     public function messages()
     {
         return [
-            'old_password.required' => 'Mật khẩu cũ không được để trống',
-            'old_password.string' => 'Mật khẩu cũ phải là chuỗi',
-            'old_password.min' => 'Mật khẩu cũ phải có ít nhất 8 ký tự',
+            'current_password.required' => 'Mật khẩu cũ không được để trống',
+            'current_password.string' => 'Mật khẩu cũ phải là chuỗi',
+            'current_password.min' => 'Mật khẩu cũ phải có ít nhất 8 ký tự',
 
             'new_password.required' => 'Mật khẩu mới không được để trống',
             'new_password.string' => 'Mật khẩu mới phải là chuỗi',
