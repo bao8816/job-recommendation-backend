@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateSavedJobRequest;
 use App\Models\SavedJob;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -51,13 +52,10 @@ class SavedJobController extends ApiController
         }
     }
 
-    public function createSavedJob(Request $request): JsonResponse
+    public function createSavedJob(CreateSavedJobRequest $request): JsonResponse
     {
         try {
-            $saved_job = new SavedJob();
-            $saved_job->job_id = $request->job_id;
-            $saved_job->user_id = $request->user_id;
-            $saved_job->save();
+            $saved_job = SavedJob::create($request->validated());
 
             return $this->respondCreated([
                 'saved_job' => $saved_job,
@@ -77,9 +75,7 @@ class SavedJobController extends ApiController
                 return $this->respondNotFound();
             }
 
-            $saved_job->job_id = $request->job_id ?? $saved_job->job_id;
-            $saved_job->user_id = $request->user_id ?? $saved_job->user_id;
-            $saved_job->save();
+            $saved_job->update($request->all());
 
             return $this->respondWithData([
                 'saved_job' => $saved_job,
