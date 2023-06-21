@@ -25,8 +25,8 @@ return new class extends Migration
             // Define foreign keys
             $table->foreignId('job_id')->constrained('jobs', 'id')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('user_accounts', 'id')->onDelete('cascade');
-            $table->foreignId('cv_id')->constrained('cv', 'id')->onDelete('cascade');
 
+            $table->string('cv_path');
             $table->string('status')->default('Đang chờ');
             $table->softDeletes();
             $table->timestamps();
