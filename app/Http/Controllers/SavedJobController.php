@@ -18,6 +18,7 @@ class SavedJobController extends ApiController
             $order_type = $request->order ?? 'asc';
 
             $saved_jobs = SavedJob::filter($request, SavedJob::query())
+                ->with(['job', 'job.skills', 'job.job_category.categories'])
                 ->orderBy($order_by, $order_type)
                 ->paginate($count_per_page);
 
@@ -37,7 +38,8 @@ class SavedJobController extends ApiController
     public function getSavedJobById(string $id): JsonResponse
     {
         try {
-            $saved_job = SavedJob::find($id);
+            $saved_job = SavedJob::with(['job', 'job.skills', 'job.categories'])
+                ->find($id);
 
             if (!$saved_job) {
                 return $this->respondNotFound();
