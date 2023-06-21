@@ -18,7 +18,7 @@ class SavedJobController extends ApiController
             $order_type = $request->order ?? 'asc';
 
             $saved_jobs = SavedJob::filter($request, SavedJob::query())
-                ->with(['job', 'job.skills', 'job.job_category.categories'])
+                ->with(['job', 'job.skills', 'job.categories'])
                 ->orderBy($order_by, $order_type)
                 ->paginate($count_per_page);
 
