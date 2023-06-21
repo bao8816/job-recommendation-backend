@@ -26,20 +26,15 @@ class UpdatePasswordRequest extends FormRequest
         return [
             'current_password' => [
                 'required',
-                'string',
-                'min:8',
             ],
             'new_password' => [
                 'required',
-                'string',
                 'min:8',
-                'max:20',
                 // regex: at least 1 letter and 1 number and no special characters
                 'regex:/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/',
             ],
             'confirm_password' => [
                 'required',
-                'string',
                 'same:new_password',
             ],
         ];
@@ -53,18 +48,11 @@ class UpdatePasswordRequest extends FormRequest
     public function messages()
     {
         return [
-            'current_password.required' => 'Mật khẩu cũ không được để trống',
-            'current_password.string' => 'Mật khẩu cũ phải là chuỗi',
-            'current_password.min' => 'Mật khẩu cũ phải có ít nhất 8 ký tự',
-
+            'current_password.required' => 'Mật khẩu hiện tại không được để trống',
             'new_password.required' => 'Mật khẩu mới không được để trống',
-            'new_password.string' => 'Mật khẩu mới phải là chuỗi',
-            'new_password.min' => 'Mật khẩu mới phải có ít nhất 8 ký tự',
-            'new_password.max' => 'Mật khẩu mới phải có nhiều nhất 20 ký tự',
-            'new_password.regex' => 'Mật khẩu mới phải có ít nhất 1 chữ cái và 1 số',
-
+            'new_password.min' => 'Mật khẩu phải có ít nhất 8 ký tự',
+            'new_password.regex' => 'Mật khẩu phải có ít nhất 1 chữ cái và 1 số',
             'confirm_password.required' => 'Nhập lại mật khẩu không được để trống',
-            'confirm_password.string' => 'Nhập lại mật khẩu phải là chuỗi',
             'confirm_password.same' => 'Nhập lại mật khẩu không khớp',
         ];
     }
