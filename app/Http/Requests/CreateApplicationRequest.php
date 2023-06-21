@@ -33,6 +33,10 @@ class CreateApplicationRequest extends FormRequest
                 'required',
                 'string',
             ],
+            'time_tale' => [
+                'required',
+                'boolean',
+            ],
         ];
     }
 
@@ -49,6 +53,9 @@ class CreateApplicationRequest extends FormRequest
 
             'cv_path.required' => 'Yêu cầu nhập đường dẫn CV',
             'cv_path.string' => 'Đường dẫn CV phải là chuỗi',
+
+            'time_tale.required' => 'Yêu cầu nhập thời gian biểu',
+            'time_tale.boolean' => 'Thời gian biểu phải là boolean',
         ];
     }
 }

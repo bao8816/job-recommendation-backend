@@ -28,6 +28,7 @@ return new class extends Migration
 
             $table->string('cv_path');
             $table->string('status')->default('Đang chờ');
+            $table->boolean('time_table')->default(false);
             $table->softDeletes();
             $table->timestamps();
         });
