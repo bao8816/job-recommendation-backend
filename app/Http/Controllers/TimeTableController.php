@@ -66,10 +66,25 @@ class TimeTableController extends ApiController
         }
     }
 
-    public function createTimeTable(Request $request): JsonResponse
+    public function modifyTimeTable(Request $request): JsonResponse
     {
         try {
             $coordinates = explode(',', $request->coordinate);
+
+            $current_coordinates = TimeTable::where('user_id', $request->user()->id)
+                ->get()
+                ->pluck('coordinate')
+                ->toArray();
+
+            foreach ($current_coordinates as $current_coordinate) {
+                if (!in_array($current_coordinate, $coordinates)) {
+                    $time_table = TimeTable::where('user_id', $request->user()->id)
+                        ->where('coordinate', $current_coordinate)
+                        ->first();
+
+                    $time_table->delete();
+                }
+            }
 
             foreach ($coordinates as $coordinate) {
                 $time_table = new TimeTable();
@@ -89,7 +104,7 @@ class TimeTableController extends ApiController
             }
 
             return $this->respondCreated([
-                'time_table' => $time_table,
+                'time_table' => $time_table ?? null,
             ]);
         }
         catch (Exception $exception) {
