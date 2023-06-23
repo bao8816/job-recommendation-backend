@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ModifyTimeTableRequest;
 use App\Models\TimeTable;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -66,7 +67,7 @@ class TimeTableController extends ApiController
         }
     }
 
-    public function modifyTimeTable(Request $request): JsonResponse
+    public function modifyTimeTable(ModifyTimeTableRequest $request): JsonResponse
     {
         try {
             $coordinates = explode(',', $request->coordinate);
