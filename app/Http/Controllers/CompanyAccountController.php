@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdatePasswordRequest;
 use App\Models\CompanyAccount;
 use App\Models\CompanyProfile;
 use Exception;
@@ -355,7 +356,7 @@ class CompanyAccountController extends ApiController
      *      ),
      *  )
      */
-    public function updatePassword(Request $request): JsonResponse
+    public function updatePassword(UpdatePasswordRequest $request): JsonResponse
     {
         try {
             $company_account = CompanyAccount::where('id', $request->user()->id)->first();
@@ -366,15 +367,10 @@ class CompanyAccountController extends ApiController
 
             $current_password = $request->current_password;
             $new_password = $request->new_password;
-            $confirm_password = $request->confirm_password;
             $salt_password = $current_password . env('PASSWORD_SALT');
 
             if (!Hash::check($salt_password, $company_account->password)) {
                 return $this->respondBadRequest('Mật khẩu hiện tại không đúng');
-            }
-
-            if ($new_password !== $confirm_password) {
-                return $this->respondBadRequest('Mật khẩu mới không khớp');
             }
 
             $company_account->password = Hash::make($new_password . env('PASSWORD_SALT'));

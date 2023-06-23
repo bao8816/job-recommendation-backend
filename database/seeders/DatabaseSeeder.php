@@ -43,6 +43,8 @@ use Illuminate\Database\Seeder;
                 UserHistorySeeder::class,
                 TimeTableSeeder::class,
                 SavedJobSeeder::class,
+                CategorySeeder::class,
+                JobCategorySeeder::class,
             ]
         );
     }

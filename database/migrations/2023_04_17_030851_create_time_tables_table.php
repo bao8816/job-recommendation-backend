@@ -23,7 +23,6 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('user_accounts', 'id')->onDelete('cascade');
 
             $table->string('coordinate');
-            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Builder;
@@ -45,8 +46,6 @@ class Job extends Model
      * @var array
      */
     protected $hidden = [
-        'created_at',
-        'updated_at',
         'deleted_at'
     ];
 
@@ -70,12 +69,12 @@ class Job extends Model
         return $this->hasMany(Application::class, 'job_id', 'id');
     }
 
-    public function job_reports(): HasMany
+    public function reports(): HasMany
     {
         return $this->hasMany(JobReport::class, 'job_id', 'id');
     }
 
-    public function job_skills(): HasMany
+    public function skills(): HasMany
     {
         return $this->hasMany(JobSkill::class, 'job_id', 'id');
     }
@@ -88,5 +87,15 @@ class Job extends Model
     public function saved_jobs(): HasMany
     {
         return $this->hasMany(SavedJob::class, 'job_id', 'id');
+    }
+
+    public function job_category(): HasMany
+    {
+        return $this->hasMany(JobCategory::class, 'job_id', 'id');
+    }
+
+    public function categories(): BelongsToMany
+    {
+        return $this->belongsToMany(Category::class, 'job_category', 'job_id', 'category_id');
     }
 }

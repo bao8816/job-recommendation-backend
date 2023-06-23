@@ -393,9 +393,10 @@ class ApplicationController extends ApiController
     {
         try {
             $application = new Application();
-            $application->job_id = $request->job_id;
+            $application->job_id = $request->validated()['job_id'];
             $application->user_id = $request->user()->id;
-            $application->cv_id = $request->cv_id;
+            $application->cv_path = $request->validated()['cv_path'];
+            $application->status = $request->validated()['time_table'];
             $application->save();
 
             return $this->respondCreated(

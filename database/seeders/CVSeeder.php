@@ -29,7 +29,9 @@ class CVSeeder extends Seeder
 
             $CV->id = $line[0];
             $CV->user_id = $line[1];
-            $CV->cv_path = $line[2];
+            $CV->cv_name = $line[2];
+            $CV->cv_path = $line[3];
+            $CV->cv_note = $line[4];
             $CV->created_at = now();
             $CV->updated_at = now();
 

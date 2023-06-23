@@ -30,8 +30,9 @@ class UserEducationSeeder extends Seeder
             $user_education->id = $line[0];
             $user_education->user_id = $line[1];
             $user_education->university = $line[2];
-            $user_education->start = $line[3] . '-01-01';
-            $user_education->end = $line[4] . '-01-01';
+            $user_education->major = $line[3];
+            $user_education->start = $line[4];
+            $user_education->end = $line[5];
             $user_education->created_at = now();
             $user_education->updated_at = now();
 

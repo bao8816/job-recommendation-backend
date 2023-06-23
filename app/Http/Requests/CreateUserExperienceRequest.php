@@ -24,6 +24,16 @@ class CreateUserExperienceRequest extends FormRequest
     public function rules()
     {
         return [
+            'title' => [
+                'required',
+                'string',
+                'regex:/^[^@#$&*]+$/'
+            ],
+            'position' => [
+                'required',
+                'string',
+                'regex:/^[^@#$&*]+$/'
+            ],
             'description' => [
                 'required',
                 'string',
@@ -50,6 +60,12 @@ class CreateUserExperienceRequest extends FormRequest
     public function messages()
     {
         return [
+            'title.required' => 'Bắt buộc nhập tiêu đề',
+            'title.string' => 'Tiêu đề phải là chuỗi ký tự',
+            'title.regex' => 'Tiêu đề không được chứa ký tự đặc biệt (@, #, $, &, *)',
+            'position.required' => 'Bắt buộc nhập vị trí',
+            'position.string' => 'Vị trí phải là chuỗi ký tự',
+            'position.regex' => 'Vị trí không được chứa ký tự đặc biệt (@, #, $, &, *)',
             'description.required' => 'Bắt buộc nhập kinh nghiệm',
             'description.string' => 'Kinh nghiệm phải là chuỗi ký tự',
             'description.regex' => 'Kinh nghiệm không được chứa ký tự đặc biệt (@, #, $, &, *)',

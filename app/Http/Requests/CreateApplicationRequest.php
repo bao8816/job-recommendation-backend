@@ -29,10 +29,13 @@ class CreateApplicationRequest extends FormRequest
                 // regex: not allow special characters
                 'regex:/^[a-zA-Z0-9\s]+$/',
             ],
-            'cv_id' => [
+            'cv_path' => [
                 'required',
-                // regex: not allow special characters
-                'regex:/^[a-zA-Z0-9\s]+$/',
+                'string',
+            ],
+            'time_tale' => [
+                'required',
+                'boolean',
             ],
         ];
     }
@@ -46,7 +49,13 @@ class CreateApplicationRequest extends FormRequest
     {
         return [
             'job_id.required' => 'Yêu cầu nhập job_id',
-            'cv_id.required' => 'Yêu cầu nhập cv_id',
+            'job_id.regex' => 'job_id không được chứa ký tự đặc biệt',
+
+            'cv_path.required' => 'Yêu cầu nhập đường dẫn CV',
+            'cv_path.string' => 'Đường dẫn CV phải là chuỗi',
+
+            'time_tale.required' => 'Yêu cầu nhập thời gian biểu',
+            'time_tale.boolean' => 'Thời gian biểu phải là boolean',
         ];
     }
 }

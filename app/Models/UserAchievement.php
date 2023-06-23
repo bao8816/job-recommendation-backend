@@ -21,7 +21,7 @@ class UserAchievement extends Model
      */
     protected $fillable = [
         'user_id',
-        'content',
+        'description',
     ];
 
     /**
@@ -30,8 +30,6 @@ class UserAchievement extends Model
      * @var array<int, string>
      */
     protected $hidden = [
-        'created_at',
-        'updated_at',
         'deleted_at',
     ];
 

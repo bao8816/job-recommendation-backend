@@ -446,6 +446,7 @@ class UserEducationController extends ApiController
             $user_education = new UserEducation();
             $user_education->user_id = $request->user()->id;
             $user_education->university = $request->university;
+            $user_education->major = $request->major;
             $user_education->start = $request->start;
             $user_education->end = $request->end;
             $user_education->save();
@@ -536,6 +537,7 @@ class UserEducationController extends ApiController
             }
 
             $user_education->university = $request->university ?? $user_education->university;
+            $user_education->major = $request->major ?? $user_education->major;
             $user_education->start = $request->start ?? $user_education->start;
             $user_education->end = $request->end ?? $user_education->end;
             $user_education->save();

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateSavedJobRequest;
 use App\Models\SavedJob;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -17,6 +18,7 @@ class SavedJobController extends ApiController
             $order_type = $request->order ?? 'asc';
 
             $saved_jobs = SavedJob::filter($request, SavedJob::query())
+                ->with(['job', 'job.skills', 'job.categories', 'job.employer_profile.company_profile'])
                 ->orderBy($order_by, $order_type)
                 ->paginate($count_per_page);
 
@@ -36,7 +38,8 @@ class SavedJobController extends ApiController
     public function getSavedJobById(string $id): JsonResponse
     {
         try {
-            $saved_job = SavedJob::find($id);
+            $saved_job = SavedJob::with(['job', 'job.skills', 'job.categories', 'job.employer_profile.company_profile'])
+                ->find($id);
 
             if (!$saved_job) {
                 return $this->respondNotFound();
@@ -51,13 +54,10 @@ class SavedJobController extends ApiController
         }
     }
 
-    public function createSavedJob(Request $request): JsonResponse
+    public function createSavedJob(CreateSavedJobRequest $request): JsonResponse
     {
         try {
-            $saved_job = new SavedJob();
-            $saved_job->job_id = $request->job_id;
-            $saved_job->user_id = $request->user_id;
-            $saved_job->save();
+            $saved_job = SavedJob::create($request->validated());
 
             return $this->respondCreated([
                 'saved_job' => $saved_job,
@@ -77,9 +77,7 @@ class SavedJobController extends ApiController
                 return $this->respondNotFound();
             }
 
-            $saved_job->job_id = $request->job_id ?? $saved_job->job_id;
-            $saved_job->user_id = $request->user_id ?? $saved_job->user_id;
-            $saved_job->save();
+            $saved_job->update($request->all());
 
             return $this->respondWithData([
                 'saved_job' => $saved_job,
@@ -90,13 +88,44 @@ class SavedJobController extends ApiController
         }
     }
 
-    public function deleteSavedJob(string $id): JsonResponse
+    public function deleteSavedJob(Request $request, string $id): JsonResponse
     {
         try {
             $saved_job = SavedJob::find($id);
 
             if (!$saved_job) {
                 return $this->respondNotFound();
+            }
+
+            if (!$request->user()->tokenCan('mod') && $saved_job->user_id !== $request->user()->id) {
+                return $this->respondForbidden('Bạn không có quyền xóa job đã lưu này');
+            }
+
+            $saved_job->delete();
+
+            return $this->respondWithData(
+                [
+                'saved_job' => $saved_job,
+                ], 'Xoá thành công');
+        }
+        catch (Exception $exception) {
+            return $this->respondInternalServerError($exception->getMessage());
+        }
+    }
+
+    public function deleteSavedJobByUserAndJobId(Request $request): JsonResponse
+    {
+        try {
+            $saved_job = SavedJob::where('user_id', $request->user_id)
+                ->where('job_id', $request->job_id)
+                ->first();
+
+            if (!$saved_job) {
+                return $this->respondNotFound();
+            }
+
+            if (!$request->user()->tokenCan('mod') && $saved_job->user_id !== $request->user()->id) {
+                return $this->respondForbidden('Bạn không có quyền xóa job đã lưu này');
             }
 
             $saved_job->delete();

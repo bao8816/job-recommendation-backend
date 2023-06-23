@@ -26,8 +26,9 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('user_accounts', 'id')->onDelete('cascade');
 
             $table->string('university');
-            $table->date('start');
-            $table->date('end');
+            $table->string('major');
+            $table->string('start');
+            $table->string('end');
             $table->softDeletes();
             $table->timestamps();
         });

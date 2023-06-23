@@ -22,7 +22,9 @@ return new class extends Migration
             // Define foreign key
             $table->foreignId('user_id')->constrained('user_accounts', 'id')->onDelete('cascade');
 
+            $table->string('cv_name');
             $table->string('cv_path');
+            $table->string('cv_note', 2000)->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

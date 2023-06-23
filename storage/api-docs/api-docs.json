@@ -3251,6 +3251,14 @@
                                     "password": {
                                         "type": "string",
                                         "example": "123456"
+                                    },
+                                    "full_name": {
+                                        "type": "string",
+                                        "example": "Le Trong Phu"
+                                    },
+                                    "avatar": {
+                                        "type": "string",
+                                        "example": "https://i.imgur.com/hepj9ZS.png"
                                     }
                                 },
                                 "type": "object"

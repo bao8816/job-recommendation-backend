@@ -22,7 +22,6 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('user_accounts')->onDelete('cascade');
             $table->foreignId('job_id')->constrained('jobs')->onDelete('cascade');
 
-            $table->softDeletes();
             $table->timestamps();
         });
     }

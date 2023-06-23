@@ -61,7 +61,7 @@ class AuthUserController extends ApiController
     public function signUp(SignUpRequest $request): JsonResponse
     {
         try {
-            $username = $request->username;
+            $username = strtolower(str_replace(' ', '', $request->username));
             $password = $request->password;
 
             $password_salt = $password . env('PASSWORD_SALT');
@@ -80,7 +80,7 @@ class AuthUserController extends ApiController
             //Create profile
             $profile = new UserProfile();
             $profile->id = $userAccount->id;
-            $profile->full_name = $username;
+            $profile->full_name = $request->full_name ?? $username;
             $profile->save();
 
             //Generate user token

@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Filters\CompanyProfile\CompanyProfileFilter;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CompanyProfile extends Model
@@ -37,19 +40,21 @@ class CompanyProfile extends Model
      * @var array<int, string>
      */
     protected $hidden = [
-        'created_at',
-        'updated_at',
         'deleted_at',
     ];
 
-    // belongsTo
+    public static function filter($request, $builder): Builder
+    {
+        return (new CompanyProfileFilter($request))->apply($builder);
+    }
+
     public function account(): BelongsTo
     {
         return $this->belongsTo(CompanyAccount::class, 'id', 'id');
     }
 
-    public function jobs(): HasMany
+    public function jobs(): HasManyThrough
     {
-        return $this->hasMany(Job::class, 'company_id', 'id');
+        return $this->hasManyThrough(Job::class, EmployerProfile::class, 'company_id', 'employer_id', 'id', 'id');
     }
 }

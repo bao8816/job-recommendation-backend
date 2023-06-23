@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateModRequest;
 use App\Http\Requests\SignUpRequest;
+use App\Http\Requests\UpdateModRequest;
+use App\Http\Requests\UpdatePasswordRequest;
 use App\Models\Admin;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends ApiController
 {
@@ -108,11 +112,13 @@ class AdminController extends ApiController
      *      )
      *  )
      */
-    public function createModAccount(SignUpRequest $request): JsonResponse
+    public function createModAccount(CreateModRequest $request): JsonResponse
     {
         try {
-            $username = $request->username;
+            $username = strtolower(str_replace(' ', '', $request->username));
             $password = $request->password;
+            $full_name = $request->full_name;
+            $avatar = $request->avatar;
             $password_salt = $password . env('PASSWORD_SALT');
 
             if (Admin::where('username', $username)->exists()) {
@@ -124,6 +130,8 @@ class AdminController extends ApiController
             $modAccount = new Admin();
             $modAccount->username = $username;
             $modAccount->password = $hashedPassword;
+            $modAccount->full_name = $full_name;
+            $modAccount->avatar = $avatar;
             $modAccount->save();
 
             return $this->respondCreated(
@@ -343,7 +351,7 @@ class AdminController extends ApiController
      *      )
      *  )
      */
-    public function updateModAccount(Request $request, string $id): JsonResponse
+    public function updateModAccount(UpdateModRequest $request, string $id): JsonResponse
     {
         try {
             $mod = Admin::where('id', $id)->first();
@@ -357,7 +365,27 @@ class AdminController extends ApiController
             }
 
             $mod->full_name = $request->full_name ?? $mod->full_name;
-            $mod->avatar = $request->avatar ?? $mod->avatar;
+
+            if ($request->hasFile('avatar')) {
+                $file = $request->file('avatar');
+                $file_name = $file->getClientOriginalName();
+                $file_name = str_replace(' ', '_', $file_name);
+                $file_name = preg_replace('/[^A-Za-z0-9\-\.]/', '', $file_name);
+
+                $path = Storage::disk('s3')->putFileAs(
+                    'admin_avatar',
+                    $file,
+                    $file_name,
+                );
+                $url = Storage::disk('s3')->url($path);
+
+                if (!$path || !$url) {
+                    return $this->respondInternalServerError('Lỗi khi upload ảnh');
+                }
+
+                $mod->avatar = $url;
+            }
+
             $mod->save();
 
             return $this->respondWithData(
@@ -417,7 +445,7 @@ class AdminController extends ApiController
      *      )
      *  )
      */
-    public function updatePassword(Request $request): JsonResponse
+    public function updatePassword(UpdatePasswordRequest $request): JsonResponse
     {
         try {
             $account = Admin::where('id', $request->user()->id)->first();
@@ -428,20 +456,13 @@ class AdminController extends ApiController
 
             $current_password = $request->current_password;
             $new_password = $request->new_password;
-            $confirm_password = $request->confirm_password;
             $salt_password = $current_password . env('PASSWORD_SALT');
 
             if (!Hash::check($salt_password, $account->password)) {
                 return $this->respondBadRequest('Mật khẩu cũ không đúng');
             }
 
-            if ($new_password !== $confirm_password) {
-                return $this->respondBadRequest('Mật khẩu xác nhận không khớp');
-            }
-
-            $hashedPassword = Hash::make($new_password . env('PASSWORD_SALT'));
-
-            $account->password = $hashedPassword;
+            $account->password = Hash::make($new_password . env('PASSWORD_SALT'));
             $account->save();
 
             return $this->respondWithData(

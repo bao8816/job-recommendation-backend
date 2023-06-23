@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthAdminController;
 use App\Http\Controllers\AuthCompanyController;
 use App\Http\Controllers\AuthEmployerController;
 use App\Http\Controllers\AuthUserController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CompanyAccountController;
 use App\Http\Controllers\CompanyProfileController;
 use App\Http\Controllers\CompanyReportController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\CompanyVerificationController;
 use App\Http\Controllers\CVController;
 use App\Http\Controllers\EmployerAccountController;
 use App\Http\Controllers\EmployerProfileController;
+use App\Http\Controllers\JobCategoryController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\JobReportController;
 use App\Http\Controllers\JobSkillController;
@@ -99,14 +101,14 @@ Route::middleware(['auth:sanctum', 'ability:user,mod'])->controller(UserAccountC
 // All roles
 Route::middleware(['auth:sanctum'])->controller(UserProfileController::class)
     ->prefix('user-profiles')->group(function () {
-        Route::get('/profile/{id}', 'getUserProfile');
-        Route::get('/profiles', 'getAllUserProfiles');
+        Route::get('/{id}', 'getUserProfile');
+        Route::get('/', 'getAllUserProfiles');
     });
 
 // Only user
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserProfileController::class)
     ->prefix('user-profiles')->group(function () {
-        Route::put('/profile', 'updateUserProfile');
+        Route::put('/', 'updateUserProfile');
     });
 
 // ----------User Achievement
@@ -295,7 +297,7 @@ Route::middleware(['auth:sanctum'])->controller(TimeTableController::class)
 // Only user
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(TimeTableController::class)
     ->prefix('time-tables')->group(function () {
-        Route::post('/', 'createTimeTable');
+        Route::post('/', 'modifyTimeTable');
 
         Route::put('/{id}', 'updateTimeTable');
     });
@@ -392,7 +394,51 @@ Route::middleware(['auth:sanctum', 'ability:user'])->controller(SavedJobControll
 // Only user and moderator
 Route::middleware(['auth:sanctum', 'ability:user,mod'])->controller(SavedJobController::class)
     ->prefix('saved-jobs')->group(function () {
+        Route::delete('/user-job', 'deleteSavedJobByUserAndJobId');
         Route::delete('/{id}', 'deleteSavedJob');
+    });
+
+
+//-------------Job Category
+// All roles (including guest)
+Route::controller(JobCategoryController::class)
+    ->prefix('job-categories')->group(function () {
+        Route::get('/job/{job_id}', 'getJobCategoriesByJobId');
+        Route::get('/category/{category_id}', 'getJobCategoriesByCategoryId');
+        Route::get('/{id}', 'getJobCategoryById');
+        Route::get('/', 'getAllJobCategories');
+    });
+
+// Only company and employer
+Route::middleware(['auth:sanctum', 'ability:company,employer'])->controller(JobCategoryController::class)
+    ->prefix('job-categories')->group(function () {
+        Route::post('/', 'createJobCategory');
+
+        Route::put('/{id}', 'updateJobCategory');
+    });
+
+// Only company, employer and moderator
+Route::middleware(['auth:sanctum', 'ability:company,employer,mod'])->controller(JobCategoryController::class)
+    ->prefix('job-categories')->group(function () {
+        Route::delete('/{id}', 'deleteJobCategory');
+    });
+
+// ------------------------------------CATEGORY------------------------------------
+// All roles (including guest)
+Route::controller(CategoryController::class)
+    ->prefix('categories')->group(function () {
+        Route::get('/{id}', 'getCategoryById');
+        Route::get('/', 'getCategories');
+    });
+
+// Only moderator
+Route::middleware(['auth:sanctum', 'ability:mod'])->controller(CategoryController::class)
+    ->prefix('categories')->group(function () {
+        Route::post('/', 'createCategory');
+
+        Route::put('/{id}', 'updateCategory');
+
+        Route::delete('/{id}', 'deleteCategory');
     });
 
 
@@ -435,7 +481,7 @@ Route::controller(CompanyProfileController::class)
 // Only company
 Route::middleware(['auth:sanctum', 'ability:company'])->controller(CompanyProfileController::class)
     ->prefix('company-profiles')->group(function () {
-        Route::put('/{id}', 'updateCompanyProfile');
+        Route::put('/', 'updateCompanyProfile');
     });
 
 // ------------Company Report
@@ -487,6 +533,7 @@ Route::middleware(['auth:sanctum', 'abilities:mod'])->controller(CompanyVerifica
 // All roles
 Route::middleware(['auth:sanctum'])->controller(CVController::class)
     ->prefix('cvs')->group(function () {
+        Route::get('/user/{user_id}', 'getCVsByUserId');
         Route::get('/{id}', 'getCVById');
         Route::get('/', 'getAllCVs');
     });

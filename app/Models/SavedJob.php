@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SavedJob extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $connection = 'mysql';
     protected $table = 'saved_jobs';
@@ -32,8 +32,6 @@ class SavedJob extends Model
      * @var array<int, string>
      */
     protected $hidden = [
-        'created_at',
-        'updated_at',
         'deleted_at',
     ];
 

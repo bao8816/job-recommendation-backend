@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateEmployerProfileRequest;
 use App\Models\EmployerProfile;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EmployerProfileController extends ApiController
 {
@@ -293,7 +295,7 @@ class EmployerProfileController extends ApiController
      *      )
      *  )
      */
-    public function updateEmployerProfile(Request $request, string $id): JsonResponse
+    public function updateEmployerProfile(UpdateEmployerProfileRequest $request, string $id): JsonResponse
     {
         try {
             $employer_profile = EmployerProfile::where('id', $id)->first();
@@ -307,7 +309,27 @@ class EmployerProfileController extends ApiController
             }
 
             $employer_profile->full_name = $request->full_name ?? $employer_profile->full_name;
-            $employer_profile->avatar = $request->avatar ?? $employer_profile->avatar;
+
+            if ($request->hasFile('avatar')) {
+                $file = $request->file('avatar');
+                $file_name = $file->getClientOriginalName();
+                $file_name = str_replace(' ', '_', $file_name);
+                $file_name = preg_replace('/[^A-Za-z0-9\-\.]/', '', $file_name);
+
+                $path = Storage::disk('s3')->putFileAs(
+                    'employer_avatar',
+                    $file,
+                    $file_name,
+                );
+                $url = Storage::disk('s3')->url($path);
+
+                if (!$path || !$url) {
+                    return $this->respondInternalServerError('Lỗi khi upload ảnh');
+                }
+
+                $employer_profile->avatar = $url;
+            }
+
             $employer_profile->save();
 
             return $this->respondWithData(

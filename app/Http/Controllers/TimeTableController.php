@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ModifyTimeTableRequest;
 use App\Models\TimeTable;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -32,9 +33,10 @@ class TimeTableController extends ApiController
     public function getTimeTablesByUserId(Request $request, string $user_id): JsonResponse
     {
         try {
-            $time_tables = TimeTable::where('user_id', $user_id);
+            $time_tables = TimeTable::where('user_id', $user_id)
+                ->get();
 
-            if (!$time_tables) {
+            if ($time_tables->count() === 0) {
                 return $this->respondNotFound();
             }
 
@@ -65,15 +67,45 @@ class TimeTableController extends ApiController
         }
     }
 
-    public function createTimeTable(Request $request): JsonResponse
+    public function modifyTimeTable(ModifyTimeTableRequest $request): JsonResponse
     {
         try {
-            $time_table = new TimeTable();
-            $time_table->user_id = $request->user()->id;
-            $time_table->coordinate = $request->coordinate;
+            $coordinates = explode(',', $request->coordinate);
+
+            $current_coordinates = TimeTable::where('user_id', $request->user()->id)
+                ->get()
+                ->pluck('coordinate')
+                ->toArray();
+
+            foreach ($current_coordinates as $current_coordinate) {
+                if (!in_array($current_coordinate, $coordinates)) {
+                    $time_table = TimeTable::where('user_id', $request->user()->id)
+                        ->where('coordinate', $current_coordinate)
+                        ->first();
+
+                    $time_table->delete();
+                }
+            }
+
+            foreach ($coordinates as $coordinate) {
+                $time_table = new TimeTable();
+                $time_table->coordinate = $coordinate;
+                $time_table->user_id = $request->user()->id;
+
+                // if the coordinate of user_id already exists, we will not create it
+                $time_table_exists = TimeTable::where('user_id', $request->user()->id)
+                    ->where('coordinate', $coordinate)
+                    ->first();
+
+                if ($time_table_exists) {
+                    continue;
+                }
+
+                $time_table->save();
+            }
 
             return $this->respondCreated([
-                'time_table' => $time_table,
+                'time_table' => $time_table ?? null,
             ]);
         }
         catch (Exception $exception) {

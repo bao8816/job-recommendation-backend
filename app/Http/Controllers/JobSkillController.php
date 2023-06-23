@@ -402,10 +402,7 @@ class JobSkillController extends ApiController
     public function createJobSkill(CreateJobSkillRequest $request): JsonResponse
     {
         try {
-            $job_skill = new JobSkill();
-            $job_skill->job_id = $request->job_id;
-            $job_skill->skill = $request->skill;
-            $job_skill->save();
+            $job_skill = JobSkill::create($request->validated());
 
             return $this->respondCreated(
                 [

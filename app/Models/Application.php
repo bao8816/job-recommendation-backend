@@ -24,7 +24,7 @@ class Application extends Model
      */
     protected $fillable = [
         'status',
-        'cv_id',
+        'cv_path',
     ];
 
     /**
@@ -33,8 +33,6 @@ class Application extends Model
      * @var array
      */
     protected $hidden = [
-        'created_at',
-        'updated_at',
         'deleted_at'
     ];
 

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
@@ -34,8 +35,6 @@ class CompanyAccount extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'created_at',
-        'updated_at',
         'deleted_at',
     ];
 
@@ -64,8 +63,8 @@ class CompanyAccount extends Authenticatable
         return $this->hasMany(CompanyVerification::class, 'company_id', 'id');
     }
 
-    public function jobs(): HasMany
+    public function jobs(): HasManyThrough
     {
-        return $this->hasMany(Job::class, 'company_id', 'id');
+        return $this->hasManyThrough(Job::class, EmployerAccount::class, 'company_id', 'employer_id', 'id', 'id');
     }
 }
