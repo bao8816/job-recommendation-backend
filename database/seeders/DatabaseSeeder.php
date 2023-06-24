@@ -41,7 +41,7 @@ use Illuminate\Database\Seeder;
                 JobReportSeeder::class,
                 CompanyReportSeeder::class,
                 UserHistorySeeder::class,
-                TimeTableSeeder::class,
+//                TimeTableSeeder::class,
                 SavedJobSeeder::class,
                 CategorySeeder::class,
                 JobCategorySeeder::class,

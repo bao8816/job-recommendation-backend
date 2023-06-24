@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class UserProfile extends Model
@@ -89,9 +90,9 @@ class UserProfile extends Model
         return $this->hasMany(PostComment::class, 'user_id', 'id');
     }
 
-    public function time_tables(): HasMany
+    public function time_table(): HasOne
     {
-        return $this->hasMany(TimeTable::class, 'user_id', 'id');
+        return $this->hasOne(TimeTable::class, 'user_id', 'id');
     }
 
     public function user_history(): HasMany

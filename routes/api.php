@@ -297,7 +297,7 @@ Route::middleware(['auth:sanctum'])->controller(TimeTableController::class)
 // Only user
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(TimeTableController::class)
     ->prefix('time-tables')->group(function () {
-        Route::post('/', 'modifyTimeTable');
+        Route::post('/', 'createTimeTable');
 
         Route::put('/{id}', 'updateTimeTable');
     });
