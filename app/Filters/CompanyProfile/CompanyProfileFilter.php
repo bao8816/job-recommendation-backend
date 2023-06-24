@@ -8,5 +8,6 @@ class CompanyProfileFilter extends AbstractFilter
 {
     protected $filters = [
         'name' => NameFilter::class,
+        'address' => AddressFilter::class
     ];
 }
