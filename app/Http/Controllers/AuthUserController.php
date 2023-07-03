@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SignInRequest;
 use App\Http\Requests\SignUpRequest;
+use App\Models\TimeTable;
 use App\Models\UserAccount;
 use App\Models\UserProfile;
 use Exception;
@@ -82,6 +83,12 @@ class AuthUserController extends ApiController
             $profile->id = $userAccount->id;
             $profile->full_name = $request->full_name ?? $username;
             $profile->save();
+
+            //Create timetable
+            $timetable = new Timetable();
+            $timetable->user_id = $userAccount->id;
+            $timetable->coordinate = $request->coordinate ?? '';
+            $timetable->save();
 
             //Generate user token
             $tokenName = env('USER_AUTH_TOKEN');
