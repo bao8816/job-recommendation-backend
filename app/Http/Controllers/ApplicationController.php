@@ -408,10 +408,11 @@ class ApplicationController extends ApiController
                     return $this->respondNotFound('Không tìm thấy thời khóa biểu của bạn');
                 }
 
-                $application->time_table = $time_table->coordinate;
+                $coordinate = $time_table->coordinate;
             }
 
             $application->save();
+            $application->time_table = $coordinate ?? '';
 
             return $this->respondCreated(
                 [
