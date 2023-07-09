@@ -37,6 +37,7 @@ return new class extends Migration
             $table->string('position');
             $table->integer('min_yoe');
             $table->integer('max_yoe');
+            $table->string('gender');
             $table->date('deadline');
             $table->softDeletes();
             $table->timestamps();

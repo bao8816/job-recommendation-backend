@@ -95,6 +95,11 @@ class CreateJobRequest extends FormRequest
                 'numeric',
                 'gte:min_yoe',
             ],
+            'gender' => [
+                'string',
+                // regex: not allow special characters (@, #, $, &, *)
+                'regex:/^[^@#$&*]+$/',
+            ]
         ];
     }
 
@@ -156,6 +161,9 @@ class CreateJobRequest extends FormRequest
             'max_yoe.required' => 'Bắt buộc phải nhập số năm kinh nghiệm tối đa',
             'max_yoe.numeric' => 'Số năm kinh nghiệm tối đa phải là số',
             'max_yoe.gte' => 'Số năm kinh nghiệm tối đa phải lớn hơn hoặc bằng số năm kinh nghiệm tối thiểu',
+
+            'gender.string' => 'Giới tính phải là chuỗi kí tự',
+            'gender.regex' => 'Giới tính không được chứa ký tự đặc biệt (@, #, $, &, *)',
         ];
     }
 }
