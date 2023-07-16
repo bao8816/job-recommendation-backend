@@ -33,6 +33,7 @@ return new class extends Migration
             $table->string('address', 500)->nullable();
             $table->string('email', 500)->nullable();
             $table->string('phone', 20)->nullable();
+            $table->boolean('is_private')->default(0);
             $table->softDeletes();
             $table->timestamps();
 

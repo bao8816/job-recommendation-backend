@@ -73,6 +73,7 @@ class UserProfileController extends ApiController
             $user_profile->address = $request->address ?? $user_profile->address;
             $user_profile->email = $request->email ?? $user_profile->email;
             $user_profile->phone = $request->phone ?? $user_profile->phone;
+            $user_profile->is_private = $request->is_private ?? $user_profile->is_private;
 
             // upload avatar
             if ($request->hasFile('avatar')) {

@@ -24,11 +24,15 @@ class UserProfile extends Model
     protected $fillable = [
         'full_name',
         'avatar',
+        'about_me',
+        'good_at_position',
+        'year_of_experience',
         'date_of_birth',
         'gender',
         'address',
         'email',
         'phone',
+        'is_private'
     ];
 
     /**
