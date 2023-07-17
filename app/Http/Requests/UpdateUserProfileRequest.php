@@ -73,6 +73,9 @@ class UpdateUserProfileRequest extends FormRequest
                 // max file size
                 'max:4096',
             ],
+            'is_private' => [
+                'boolean',
+            ],
         ];
     }
 
@@ -118,6 +121,8 @@ class UpdateUserProfileRequest extends FormRequest
 
             'avatar.mimes' => 'Ảnh đại diện phải là định dạng jpeg, png, jpg.',
             'avatar.max' => 'Ảnh đại diện không được vượt quá 4MB.',
+
+            'is_private.boolean' => 'Trạng thái riêng tư phải là dạng boolean.',
         ];
     }
 }
