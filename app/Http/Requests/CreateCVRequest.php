@@ -24,10 +24,6 @@ class CreateCVRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => [
-                'required',
-                'integer',
-            ],
             'cv_name' => [
                 'required',
                 'string',
@@ -55,9 +51,6 @@ class CreateCVRequest extends FormRequest
     public function messages()
     {
         return [
-            'user_id.required' => 'Bắt buộc phải có user ID',
-            'user_id.integer' => 'User ID phải là số nguyên',
-
             'cv_name.required' => 'Bắt buộc phải có tên CV',
             'cv_name.string' => 'Tên CV phải là chuỗi ký tự',
             'cv_name.max' => 'Tên CV không được vượt quá 255 ký tự',
