@@ -13,7 +13,8 @@
         "laravel/tinker": "^2.7",
         "laravel/vapor-cli": "^1.58",
         "laravel/vapor-core": "^2.31",
-        "league/flysystem-aws-s3-v3": "^3.15"
+        "league/flysystem-aws-s3-v3": "^3.15",
+        "ext-pdo": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
