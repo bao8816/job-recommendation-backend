@@ -3,6 +3,7 @@
 namespace App\Filters\Job;
 
 use App\Filters\AbstractFilter;
+use App\Filters\CommonFilter\GenderFilter;
 
 class JobFilter extends AbstractFilter
 {
@@ -15,5 +16,9 @@ class JobFilter extends AbstractFilter
         'company_id' => CompanyFilter::class,
         'available' => AvailableFilter::class,
         'top' => TopFilter::class,
+        'title' => TitleFilter::class,
+        'location' => LocationFilter::class,
+        'type' => TypeFilter::class,
+        'gender' => GenderFilter::class,
     ];
 }

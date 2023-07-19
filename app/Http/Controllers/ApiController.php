@@ -43,7 +43,12 @@ class ApiController extends Controller
             'data'          => $data,
             'status_code'   => $this->getStatusCode()
         ];
-        return response()->json($res, $this->getStatusCode());
+        return response()->json($res, $this->getStatusCode())
+            ->withHeaders([
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8',
+                'Access-Control-Allow-Origin' => '*'
+            ]);
     }
 
     /**
@@ -64,7 +69,12 @@ class ApiController extends Controller
             'status_code'   => $this->getStatusCode()
         ];
 
-        return response()->json($res, $this->getStatusCode());
+        return response()->json($res, $this->getStatusCode())
+            ->withHeaders([
+                'Content-Type' => 'application/json',
+                'Charset' => 'utf-8',
+                'Access-Control-Allow-Origin' => '*'
+            ]);
     }
 
     /**

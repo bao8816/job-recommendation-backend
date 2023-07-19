@@ -69,6 +69,10 @@ class AuthCompanyController extends ApiController
                 return $this->respondBadRequest('Tên đăng nhập đã tồn tại');
             }
 
+            if (!$request->email) {
+                return $this->respondBadRequest('Email không được để trống');
+            }
+
             $hashed_password = Hash::make($password_salt);
 
             $companyAccount = new CompanyAccount();
@@ -76,19 +80,15 @@ class AuthCompanyController extends ApiController
             $companyAccount->password = $hashed_password;
             $companyAccount->save();
 
-            // Generate company token
-            $tokenName = env('COMPANY_AUTH_TOKEN');
-            $token = $companyAccount->createToken($tokenName, ['company']);
-
             $profile = new CompanyProfile();
             $profile->id = $companyAccount->id;
             $profile->name = $request->name ?? $username;
+            $profile->email = $request->email;
             $profile->save();
 
             return $this->respondWithData(
                 [
                     'companyAccount' => $companyAccount,
-                    'token' => self::TOKEN_PREFIX . $token->plainTextToken,
                 ], 'Đăng ký thành công');
         } catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());

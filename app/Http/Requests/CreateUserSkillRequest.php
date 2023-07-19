@@ -27,8 +27,8 @@ class CreateUserSkillRequest extends FormRequest
             'skill' => [
                 'required',
                 'string',
-                // regex: not allow special characters (@, #, $, &, *)
-                'regex:/^[^@#$&*]+$/',
+                // regex: not allow special characters (@, $, &, *)
+                'regex:/^[^@$&*]+$/',
             ]
         ];
     }
@@ -43,7 +43,7 @@ class CreateUserSkillRequest extends FormRequest
         return [
             'skill.required' => 'Bắt buộc nhập kỹ năng',
             'skill.string' => 'Kỹ năng phải là chuỗi ký tự',
-            'skill.regex' => 'Kỹ năng không được chứa ký tự đặc biệt (@, #, $, &, *)',
+            'skill.regex' => 'Kỹ năng không được chứa ký tự đặc biệt (@, $, &, *)',
         ];
     }
 }

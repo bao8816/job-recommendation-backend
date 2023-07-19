@@ -37,6 +37,7 @@ class Job extends Model
         'position',
         'min_yoe',
         'max_yoe',
+        'gender',
         'deadline',
     ];
 

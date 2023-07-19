@@ -488,6 +488,7 @@ class JobController extends ApiController
             $job->position = $request->validated()['position'];
             $job->min_yoe = $request->validated()['min_yoe'];
             $job->max_yoe = $request->validated()['max_yoe'];
+            $job->gender = $request->validated()['gender'] ?? 'Không yêu cầu';
             $job->deadline = $request->validated()['deadline'];
 
             $job->save();

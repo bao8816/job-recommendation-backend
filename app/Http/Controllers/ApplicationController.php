@@ -8,6 +8,7 @@ use App\Models\CompanyAccount;
 use App\Models\CompanyProfile;
 use App\Models\EmployerProfile;
 use App\Models\Job;
+use App\Models\TimeTable;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -396,8 +397,22 @@ class ApplicationController extends ApiController
             $application->job_id = $request->validated()['job_id'];
             $application->user_id = $request->user()->id;
             $application->cv_path = $request->validated()['cv_path'];
-            $application->status = $request->validated()['time_table'];
+
+            if (!$request->select_timetable) {
+                $application->time_table = null;
+            }
+            else {
+                $time_table = TimeTable::where('user_id', $request->user()->id)->first();
+
+                if (!$time_table) {
+                    return $this->respondNotFound('Không tìm thấy thời khóa biểu của bạn');
+                }
+
+                $coordinate = $time_table->coordinate;
+            }
+
             $application->save();
+            $application->time_table = $coordinate ?? '';
 
             return $this->respondCreated(
                 [

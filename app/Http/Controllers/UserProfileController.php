@@ -16,7 +16,7 @@ class UserProfileController extends ApiController
         try {
             $count_per_page = $request->count_per_page ?? 10;
 
-            $user_profiles = UserProfile::with('educations', 'cvs', 'experiences', 'achievements', 'skills', 'time_tables')
+            $user_profiles = UserProfile::with('educations', 'cvs', 'experiences', 'achievements', 'skills', 'time_table')
                 ->paginate($count_per_page);
 
             if (count($user_profiles) === 0) {
@@ -36,7 +36,7 @@ class UserProfileController extends ApiController
     public function getUserProfile(Request $request, string $id): JsonResponse
     {
         try {
-            $user_profile = UserProfile::where('id', $id)->with('educations', 'cvs', 'experiences', 'achievements', 'skills', 'time_tables')
+            $user_profile = UserProfile::where('id', $id)->with('educations', 'cvs', 'experiences', 'achievements', 'skills', 'time_table')
                 ->first();
 
             if (!$user_profile) {
@@ -57,7 +57,7 @@ class UserProfileController extends ApiController
     {
         try {
             $user_profile = UserProfile::where('id', $request->user()->id)
-                ->with('educations', 'cvs', 'experiences', 'achievements', 'skills', 'time_tables')
+                ->with('educations', 'cvs', 'experiences', 'achievements', 'skills', 'time_table')
                 ->first();
 
             if (!$user_profile) {
@@ -73,6 +73,7 @@ class UserProfileController extends ApiController
             $user_profile->address = $request->address ?? $user_profile->address;
             $user_profile->email = $request->email ?? $user_profile->email;
             $user_profile->phone = $request->phone ?? $user_profile->phone;
+            $user_profile->is_private = $request->is_private ?? $user_profile->is_private;
 
             // upload avatar
             if ($request->hasFile('avatar')) {

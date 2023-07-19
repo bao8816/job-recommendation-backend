@@ -80,6 +80,11 @@ class UpdateJobRequest extends FormRequest
             'max_yoe' => [
                 'numeric',
             ],
+            'gender' => [
+                'string',
+                // regex: not allow special characters (@, #, $, &, *)
+                'regex:/^[^@#$&*]+$/',
+            ],
         ];
     }
 
@@ -126,6 +131,9 @@ class UpdateJobRequest extends FormRequest
             'min_yoe.numeric' => 'Số năm kinh nghiệm tối thiểu phải là số',
 
             'max_yoe.numeric' => 'Số năm kinh nghiệm tối đa phải là số',
+
+            'gender.string' => 'Giới tính phải là chuỗi ký tự',
+            'gender.regex' => 'Giới tính không được chứa ký tự đặc biệt (@, #, $, &, *)',
         ];
     }
 }
