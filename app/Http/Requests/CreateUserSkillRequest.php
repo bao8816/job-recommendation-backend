@@ -27,7 +27,7 @@ class CreateUserSkillRequest extends FormRequest
             'skill' => [
                 'required',
                 'string',
-                // regex: not allow special characters (@, #, $, &, *)
+                // regex: not allow special characters (@, $, &, *)
                 'regex:/^[^@$&*]+$/',
             ]
         ];

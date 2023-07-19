@@ -27,18 +27,17 @@ class CreateUserExperienceRequest extends FormRequest
             'title' => [
                 'required',
                 'string',
-                'regex:/^[^@#$&*]+$/'
+                'regex:/^.+$/'
             ],
             'position' => [
                 'required',
                 'string',
-                'regex:/^[^@#$&*]+$/'
+                'regex:/^.+$/'
             ],
             'description' => [
                 'required',
                 'string',
-                // regex: not allow special characters (@, #, $, &, *)
-                'regex:/^[^@#$&*]+$/',
+                'regex:/^.+$/',
             ],
             'start' => [
                 'required',
@@ -62,13 +61,13 @@ class CreateUserExperienceRequest extends FormRequest
         return [
             'title.required' => 'Bắt buộc nhập tiêu đề',
             'title.string' => 'Tiêu đề phải là chuỗi ký tự',
-            'title.regex' => 'Tiêu đề không được chứa ký tự đặc biệt (@, #, $, &, *)',
+            // 'title.regex' => 'Tiêu đề không được chứa ký tự đặc biệt (@, #, $, &, *)',
             'position.required' => 'Bắt buộc nhập vị trí',
             'position.string' => 'Vị trí phải là chuỗi ký tự',
             'position.regex' => 'Vị trí không được chứa ký tự đặc biệt (@, #, $, &, *)',
             'description.required' => 'Bắt buộc nhập kinh nghiệm',
             'description.string' => 'Kinh nghiệm phải là chuỗi ký tự',
-            'description.regex' => 'Kinh nghiệm không được chứa ký tự đặc biệt (@, #, $, &, *)',
+            // 'description.regex' => 'Kinh nghiệm không được chứa ký tự đặc biệt (@, #, $, &, *)',
             'start.required' => 'Bắt buộc nhập ngày bắt đầu',
             'start.date' => 'Ngày bắt đầu phải là dạng ngày tháng',
             'end.required' => 'Bắt buộc nhập ngày kết thúc',
