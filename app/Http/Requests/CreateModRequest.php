@@ -46,7 +46,6 @@ class CreateModRequest extends FormRequest
                 'max:50',
             ],
             'avatar' => [
-                'required',
                 'string',
                 'max:255',
             ],
