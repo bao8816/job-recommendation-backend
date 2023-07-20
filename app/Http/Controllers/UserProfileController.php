@@ -81,6 +81,7 @@ class UserProfileController extends ApiController
                 $file_name = $file->getClientOriginalName();
                 $file_name = str_replace(' ', '_', $file_name);
                 $file_name = preg_replace('/[^A-Za-z0-9\-\.]/', '', $file_name);
+                $file_name = time() . '_' . $file_name;
 
                 $path = Storage::disk('s3')->putFileAs(
                     'user_avatar',
