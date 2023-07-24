@@ -159,6 +159,7 @@ class JobReportController extends ApiController
             $order_type = $request->order_type ?? 'asc';
 
             $job_reports = JobReport::filter($request, JobReport::query())
+                ->with('job', 'user_profile', 'user')
                 ->orderBy($order_by, $order_type)
                 ->paginate($count_per_page);
 
@@ -267,7 +268,9 @@ class JobReportController extends ApiController
     public function getJobReportById(string $id): JsonResponse
     {
         try {
-            $job_report = JobReport::where('id', $id)->first();
+            $job_report = JobReport::where('id', $id)
+                ->with('job', 'user_profile', 'user')
+                ->first();
 
             if (!$job_report) {
                 return $this->respondNotFound();

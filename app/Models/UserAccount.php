@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Filters\UserAccount\UserAccountFilter;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -36,6 +38,11 @@ class UserAccount extends Authenticatable
         'password',
         'deleted_at',
     ];
+
+    public static function filter($request, $builder): Builder
+    {
+        return (new UserAccountFilter($request))->apply($builder);
+    }
 
     public function profile(): HasOne
     {

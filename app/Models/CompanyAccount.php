@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Filters\CompanyAccount\CompanyAccountFilter;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
@@ -37,6 +39,11 @@ class CompanyAccount extends Authenticatable
         'password',
         'deleted_at',
     ];
+
+    public static function filter($request, $builder): Builder
+    {
+        return (new CompanyAccountFilter($request))->apply($builder);
+    }
 
     public function reports(): HasMany
     {

@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Filters\EmployerAccount;
+namespace App\Filters\UserAccount;
 
 use App\Filters\AbstractFilter;
 use App\Filters\CommonFilter\UsernameFilter;
 
-class EmployerAccountFilter extends AbstractFilter
+class UserAccountFilter extends AbstractFilter
 {
     protected $filters = [
-        'company_id' => CompanyFilter::class,
         'username' => UsernameFilter::class,
     ];
 }

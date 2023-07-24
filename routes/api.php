@@ -108,6 +108,7 @@ Route::middleware(['auth:sanctum'])->controller(UserProfileController::class)
 // Only user
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserProfileController::class)
     ->prefix('user-profiles')->group(function () {
+        Route::put('/import/{id}', 'importUserProfile');
         Route::put('/', 'updateUserProfile');
     });
 

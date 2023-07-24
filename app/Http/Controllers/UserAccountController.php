@@ -233,9 +233,19 @@ class UserAccountController extends ApiController
     public function getAllUserAccounts(Request $request): JsonResponse
     {
         try {
-            $count_per_page = $request->count_per_page;
+            $count_per_page = $request->count_per_page ?? 10;
+            $order_by = $request->order_by ?? 'id';
+            $order_type = $request->order_type ?? 'asc';
 
-            $user_accounts = UserAccount::paginate($count_per_page);
+            $user_accounts = UserAccount::filter($request, UserAccount::query())
+                ->with('profile')
+                ->orderBy($order_by, $order_type);
+
+            if ($count_per_page < 1) {
+                $user_accounts = $user_accounts->get();
+            } else {
+                $user_accounts = $user_accounts->paginate($count_per_page);
+            }
 
             if (count($user_accounts) === 0) {
                 return $this->respondNotFound();

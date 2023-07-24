@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Filters\AdminAccount\AdminAccountFilter;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -35,5 +37,10 @@ class Admin extends Authenticatable
         'password',
         'deleted_at'
     ];
+
+    public static function filter($request, $builder): Builder
+    {
+        return (new AdminAccountFilter($request))->apply($builder);
+    }
 }
 

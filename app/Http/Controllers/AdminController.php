@@ -118,7 +118,7 @@ class AdminController extends ApiController
             $username = strtolower(str_replace(' ', '', $request->username));
             $password = $request->password;
             $full_name = $request->full_name;
-            $avatar = $request->avatar;
+            $avatar = $request->avatar ?? env('DEFAULT_LOGO_URL');
             $password_salt = $password . env('PASSWORD_SALT');
 
             if (Admin::where('username', $username)->exists()) {
@@ -222,8 +222,18 @@ class AdminController extends ApiController
     {
         try {
             $count_per_page = $request->count_per_page ?? 10;
+            $order_by = $request->order_by ?? 'id';
+            $order_type = $request->order_type ?? 'asc';
 
-            $mods = Admin::where('username', '!=', 'Admin')->paginate($count_per_page);
+            $mods = Admin::filter($request, Admin::query())
+                ->where('username', '!=', 'Admin')
+                ->orderBy($order_by, $order_type);
+
+            if ($count_per_page < 1) {
+                $mods = $mods->get();
+            } else {
+                $mods = $mods->paginate($count_per_page);
+            }
 
             if (count($mods) === 0) {
                 return $this->respondNotFound();
