@@ -118,7 +118,7 @@ class AdminController extends ApiController
             $username = strtolower(str_replace(' ', '', $request->username));
             $password = $request->password;
             $full_name = $request->full_name;
-            $avatar = $request->avatar;
+            $avatar = $request->avatar ?? env('DEFAULT_LOGO_URL');
             $password_salt = $password . env('PASSWORD_SALT');
 
             if (Admin::where('username', $username)->exists()) {
