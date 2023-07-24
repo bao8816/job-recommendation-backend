@@ -139,7 +139,7 @@ class CompanyReportController extends ApiController
             $order_type = $request->order_type ?? 'asc';
 
             $company_reports = CompanyReport::filter($request, CompanyReport::query())
-                ->with('company_profile', 'user_profile')
+                ->with('company_profile', 'user_profile', 'user')
                 ->orderBy($order_by, $order_type)
                 ->paginate($count_per_page);
 
@@ -200,7 +200,7 @@ class CompanyReportController extends ApiController
     {
         try {
             $company_report = CompanyReport::where('id', $id)
-                ->with('company_profile', 'user_profile')
+                ->with('company_profile', 'user_profile', 'user')
                 ->first();
 
             if (!$company_report) {
