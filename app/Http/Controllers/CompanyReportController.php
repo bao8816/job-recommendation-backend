@@ -139,6 +139,7 @@ class CompanyReportController extends ApiController
             $order_type = $request->order_type ?? 'asc';
 
             $company_reports = CompanyReport::filter($request, CompanyReport::query())
+                ->with('company_profile', 'user_profile')
                 ->orderBy($order_by, $order_type)
                 ->paginate($count_per_page);
 
@@ -198,7 +199,9 @@ class CompanyReportController extends ApiController
     public function getCompanyReportById(string $id): JsonResponse
     {
         try {
-            $company_report = CompanyReport::where('id', $id)->first();
+            $company_report = CompanyReport::where('id', $id)
+                ->with('company_profile', 'user_profile')
+                ->first();
 
             if (!$company_report) {
                 return $this->respondNotFound();
