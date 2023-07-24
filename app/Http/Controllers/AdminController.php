@@ -225,8 +225,8 @@ class AdminController extends ApiController
             $order_by = $request->order_by ?? 'id';
             $order_type = $request->order_type ?? 'asc';
 
-            $mods = Admin::where('username', '!=', 'Admin')
-                ->filter($request, Admin::query())
+            $mods = Admin::filter($request, Admin::query())
+                ->where('username', '!=', 'Admin')
                 ->orderBy($order_by, $order_type);
 
             if ($count_per_page < 1) {

@@ -38,7 +38,7 @@ class Admin extends Authenticatable
         'deleted_at'
     ];
 
-    protected static function filter($request, $builder): Builder
+    public static function filter($request, $builder): Builder
     {
         return (new AdminAccountFilter($request))->apply($builder);
     }

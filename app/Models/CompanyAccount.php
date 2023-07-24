@@ -40,7 +40,7 @@ class CompanyAccount extends Authenticatable
         'deleted_at',
     ];
 
-    protected static function filter($request, $builder): Builder
+    public static function filter($request, $builder): Builder
     {
         return (new CompanyAccountFilter($request))->apply($builder);
     }
