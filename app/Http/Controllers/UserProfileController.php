@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateUserProfileRequest;
+use App\Models\UserAchievement;
+use App\Models\UserEducation;
+use App\Models\UserExperience;
 use App\Models\UserProfile;
+use App\Models\UserSkill;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -103,6 +108,138 @@ class UserProfileController extends ApiController
                 [
                     'user_profile' => $user_profile,
                 ]);
+        }
+        catch (Exception $exception) {
+            return $this->respondInternalServerError($exception->getMessage());
+        }
+    }
+
+    public function importUserProfile(Request $request, string $id): JsonResponse
+    {
+        try {
+            $object = json_decode($request->object, true);
+            $profile = $object['user_profile'];
+            $educations = $object['user_profile']['educations'];
+            $experiences = $object['user_profile']['experiences'];
+            $achievements = $object['user_profile']['achievements'];
+            $skills = $object['user_profile']['skills'];
+
+            $user_profile = UserProfile::where('id', $id)
+                ->first();
+
+            $user_educations = UserEducation::where('user_id', $id)
+                ->get();
+
+            $user_experiences = UserExperience::where('user_id', $id)
+                ->get();
+
+            $user_achievements = UserAchievement::where('user_id', $id)
+                ->get();
+
+            $user_skills = UserSkill::where('user_id', $id)
+                ->get();
+
+            if (!$user_profile
+                || !$user_educations
+                || !$user_experiences
+                || !$user_achievements
+                || !$user_skills) {
+                return $this->respondNotFound();
+            }
+
+            // update profile
+            $user_profile->full_name = $profile['full_name'] ?? $user_profile->full_name;
+            $user_profile->avatar = $profile['avatar'] ?? $user_profile->avatar;
+            $user_profile->about_me = $profile['about_me'] ?? $user_profile->about_me;
+            $user_profile->good_at_position = $profile['good_at_position'] ?? $user_profile->good_at_position;
+            $user_profile->date_of_birth = Carbon::createFromFormat('d/m/Y', $profile['date_of_birth'])->format('Y-m-d')
+                ?? $user_profile->date_of_birth;
+            $user_profile->address = $profile['address'] ?? $user_profile->address;
+            $user_profile->email = $profile['email'] ?? $user_profile->email;
+            $user_profile->phone = $profile['phone'] ?? $user_profile->phone;
+            $user_profile->save();
+            //---------------------------------------------
+
+            // update educations
+            // delete all current educations and insert new educations
+            foreach ($user_educations as $user_education) {
+                $user_education->delete();
+            }
+
+            if (count($educations) > 0) {
+                foreach ($educations as $education) {
+                    $user_education = new UserEducation();
+                    $user_education->user_id = $id;
+                    $user_education->university = $education['university'];
+                    $user_education->major = $education['major'];
+                    $user_education->start = $education['start'];
+                    $user_education->end = $education['end'];
+                    $user_education->save();
+                }
+            }
+            //---------------------------------------------
+
+            // update experiences
+            // delete all current experiences and insert new experiences
+            foreach ($user_experiences as $user_experience) {
+                $user_experience->delete();
+            }
+
+            if (count($experiences) > 0) {
+                foreach ($experiences as $experience) {
+                    $user_experience = new UserExperience();
+                    $user_experience->user_id = $id;
+                    $user_experience->title = $experience['title'];
+                    $user_experience->position = $experience['position'];
+                    $user_experience->description = $experience['description'];
+                    $user_experience->start = Carbon::createFromFormat('d/m/Y', $experience['start'])->format('Y-m-d');
+                    $user_experience->end = Carbon::createFromFormat('d/m/Y', $experience['end'])->format('Y-m-d');
+                    $user_experience->save();
+                }
+            }
+            //---------------------------------------------
+
+            // update achievements
+            // delete all current achievements and insert new achievements
+            foreach ($user_achievements as $user_achievement) {
+                $user_achievement->delete();
+            }
+
+            if (count($achievements) > 0) {
+                foreach ($achievements as $achievement) {
+                    $user_achievement = new UserAchievement();
+                    $user_achievement->user_id = $id;
+                    $user_achievement->description = $achievement['description'];
+                    $user_achievement->save();
+                }
+            }
+            //---------------------------------------------
+
+            // update skills
+            // delete all current skills and insert new skills
+            foreach ($user_skills as $user_skill) {
+                $user_skill->delete();
+            }
+
+            if (count($skills) > 0) {
+                foreach ($skills as $skill) {
+                    $user_skill = new UserSkill();
+                    $user_skill->user_id = $id;
+                    $user_skill->skill = $skill['skill'];
+                    $user_skill->save();
+                }
+            }
+            //---------------------------------------------
+
+            return $this->respondWithData(
+                [
+                    'user_profile' => $user_profile,
+                    'user_educations' => $user_educations,
+                    'user_experiences' => $user_experiences,
+                    'user_achievements' => $user_achievements,
+                    'user_skills' => $user_skills,
+                ], 'Cập nhật thông tin thành công'
+            );
         }
         catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
