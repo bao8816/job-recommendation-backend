@@ -167,9 +167,15 @@ class CompanyAccountController extends ApiController
             $order_by = $request->order_by ?? 'id';
             $order_type = $request->order_type ?? 'asc';
 
-            $company_accounts = CompanyAccount::with('profile')
-                ->orderBy($order_by, $order_type)
-                ->paginate($count_per_page);
+            $company_accounts = CompanyAccount::filter($request, CompanyAccount::query())
+                ->with('profile')
+                ->orderBy($order_by, $order_type);
+
+            if ($count_per_page < 1) {
+                $company_accounts = $company_accounts->get();
+            } else {
+                $company_accounts = $company_accounts->paginate($count_per_page);
+            }
 
             if (count($company_accounts) === 0) {
                 return $this->respondNotFound();
