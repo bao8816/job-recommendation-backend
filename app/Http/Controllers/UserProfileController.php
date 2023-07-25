@@ -234,10 +234,10 @@ class UserProfileController extends ApiController
             return $this->respondWithData(
                 [
                     'user_profile' => $user_profile,
-                    'user_educations' => $user_educations,
-                    'user_experiences' => $user_experiences,
-                    'user_achievements' => $user_achievements,
-                    'user_skills' => $user_skills,
+                    'educations' => $user_educations,
+                    'experiences' => $user_experiences,
+                    'achievements' => $user_achievements,
+                    'skills' => $user_skills,
                 ], 'Cập nhật thông tin thành công'
             );
         }
