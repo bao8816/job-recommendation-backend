@@ -16,8 +16,8 @@
 ",10/9/2022,12/12/2022
 14,10,Interface programming and game design T - rex,Đồ án môn học,"Mô tả: Thực hiện các chức năng cơ bản như đặt tên nhân vật, chọn nhân vật, xem hướng dẫn, chơi trò chơi, khủng long nhảy qua chướng ngại vật và ăn thịt để lấy điểm.",29/4/2021,25/5/2022
 15,3,Cinema Management System,Đồ án môn học,"Mô tả: Mô tả các chức năng cần thiết của hệ thống, phân tích luồng dữ liệu của các hàm, vẽ sơ đồ ERD và DFD của các hàm.",6/6/2021, 7/7/2021
-16,10,"Project: Back-end with java servlet, hibernate and jsp via bookstore",Đồ án môn học,"Xây dựng website Nhà sách cho phép khách hàng duyệt sách, xem chi tiết, tìm kiếm sách, viết đánh giá và đăng ký tài khoản và mua sách,",29/4/2021,2/2/2022
-17,50,P.P Trading and Manufacturing JSC,Purchasing & Import Executive,"Nhận đơn đặt hàng từ bộ phận bán hàng, kiểm tra giá cả, thương lượng chi phí / đặc điểm kỹ thuật /tiến độ giao hàng để tìm nhà cung cấp tốt nhất (Sản phẩm: Giấy, bột giấy, văn phòng phẩm, cũ/ mới máy móc trong lĩnh vực giấy và in...)",1/12/2022,2/2/2023
+16,10,"Project: Back-end with java servlet, hibernate and jsp via bookstore",Đồ án môn học,"Xây dựng website Nhà sách cho phép khách hàng duyệt sách, xem chi tiết, tìm kiếm sách, viết đánh giá và đăng ký tài khoản và mua sách,",29/4/2021,2/2/202
+17,50,P.P Trading and Manufacturing JSC,Purchasing & Import Executive,"Nhận đơn đặt hàng từ bộ phận bán hàng, kiểm tra giá cả, thương lượng chi phí / đặc điểm kỹ thuật /tiến độ giao hàng để tìm nhà cung cấp tốt nhất (Sản phẩm: Giấy, bột giấy, văn phòng phẩm, cũ/ mới máy móc trong lĩnh vực giấy và in...)",1/12/2022,2/2/203
 18,23,"Alpha To Omega logistics Co., Ltd",Import- export staff,"Kiểm tra mã HS, thuế nhập khẩu, ETA và làm thủ tục Hải quan trên VNACCS hệ thống thông quan nhập khẩu (Thiết bị điện, nguyên vật liệu nhà xưởng...) . Làm Kế hoạch giao hàng cho khách hàng",1/12/2022,2/2/2023
 19,49,"Dragon logistics company, Haiphong branch",On-the-job trainee,"Giúp nhân viên của Dragon giao dịch với công ty vận chuyển để thay đổi vận đơn thành Đơn hàng, thanh toán tiền bảo đảm cho nắp container và thực hiện mọi hoạt động nhận hàng nhập và giao hàng nhập cho khách hàng.
 ",1/12/2022,2/2/2023
@@ -56,46 +56,44 @@ Làm việc với một khách hàng đang phát triển một trò chơi trực
 40,24,NEWS SITE,Đồ án môn học,"Dự án TRANG TIN TỨC cho phép người dùng xem, cập nhật và đăng thông tin như thể thao, kinh tế và văn hóa.
 ",1/2/2020,2/12/2022
 41,50,Friendly Classroom project,Project Manager,"Mục đích: xây dựng một ứng dụng web E-Learning hoàn chỉnh cho giáo viên và học sinh
-",1/3/2020,3/12/2022
+",1/3/2020,2/13/2022
 42,16,Movie Booking Ticket project,Graduation project,"Kinh nghiệm: gọi API để tương tác với Back-End trong một dự án thực tế, phân tích và thiết kế UI/UX của web, sử dụng git để cộng tác với teammates
-",1/4/2020,12/4/2022
+",1/4/2020,2/14/2022
 43,26,Udemy mini project,Front-End Devloper,"Kinh nghiệm: Tổ chức cấu trúc cho SCSS, đáp ứng đầy đủ bố cục. Mã nguồn: https://github.com/duyonix/Udemy
-",1/5/2020,12/5/2022
+",1/5/2020,2/15/2022
 44,36,Office Administrative Intern at Trung tam Huan Luyen Ky nang The He Tre (YSC),Graduation project,"
 Viết đề cương khóa học, Gọi tư vấn chăm sóc khách hàng (mời 10-20 học viên đến Trung tâm để tham gia khóa học của Trung tâm); Đăng tải thông tin tuyển dụng lên mạng xã hội.
-",1/6/2020,21/1/2022
+",1/6/2020,2/16/2022
 45,38,LIBRARY MANAGEMENT APPLICATION (C++),Designer/Developer,"
 Đây là dự án cuối cùng cho một môn học tôi đã học trong năm đầu tiên. Tôi đã thiết kế luồng giao diện người dùng cơ bản và giúp phát triển khoảng 40% các tính năng của dự án.
-",1/7/2020,27/6/2022
-46,17,A WORLD-TIME APPLICATION (FLUTTER),Developer,"Đây là một dự án tôi đã làm khi lần đầu tiên nghiên cứu Flutter, nó giúp bạn xem thời gian của các quốc gia khác nhau.",1/8/2020,2/8/2022
+",1/7/2020,2/17/2022
+46,17,A WORLD-TIME APPLICATION (FLUTTER),Developer,"Đây là một dự án tôi đã làm khi lần đầu tiên nghiên cứu Flutter, nó giúp bạn xem thời gian của các quốc gia khác nhau.",1/8/2020,2/18/2022
 47,33,A SIMPLE GALLERY ON ANDROID MOBILE (JAVA),Designer/Developer,"
 Đây là một dự án tôi đang thực hiện trong năm thứ ba của tôi. Tôi đã thiết kế giao diện người dùng, quyết định những tính năng nào chúng tôi nên có, phân công nhiệm vụ cho nhóm của tôi và phát triển khoảng 25% tính năng của dự án.
 
 
-",1/9/2020,29/1/2022
+",1/9/2020,2/19/2022
 48,8,A BOOK REVIEW APPLICATION ON ANDROID MOBILE (JAVA),Designer/Developer,"Một dự án tôi đang làm trong năm thứ ba cho phép người dùng viết và đọc đánh giá sách. Tôi đã thiết kế giao diện người dùng và phát triển khoảng 15% tính năng của dự án.
-",1/10/2020,2/2/2022
+",1/10/2020,2/20/2022
 49,34,TMDB Movie Website,Personal Project,"
 Chịu trách nhiệm về Giao diện Website.  Làm việc với API TMDB. Chức năng chính: Tìm kiếm, Hiển thị đoạn giới thiệu phim, Hiển thị danh sách phim theo thể loại.
 
 
-",1/11/2020,2/1/2022
+",1/11/2020,2/21/2022
 50,50,Weather Forecast,Personal Project,"Một trang web cung cấp dự báo thời tiết của thành phố bằng cách sử dụng API OpenWeatherMap, chịu trách nhiệm về Giao diện trang web.
-",1/12/2020,2/2/2022
+",1/12/2020,2/22/2022
 51,36,ChatBox (Personal Project),Personal Project,"Chịu trách nhiệm về Giao diện Website. Làm việc với Firebase (FireStore, FireAuthentication).
-",13/1/2020,2/3/2022
+",1/13/2020,2/23/2022
 52,21,K12 ONLINE,Back-end developer,"
 Phần mềm ôn thi trực tuyến cho tất cả các đơn vị nhà trường. Bảo trì và vận hành hệ thống. Xây dựng chức năng đề thi, chấm thi cho học sinh. - Xây dựng chức năng quản lý đề thi, đề thi cho giáo viên, ngân hàng câu hỏi,...
-",14/1/2020,2/2/2022
+",1/14/2020,2/24/2022
 53,40,Tech JDI Company,Fullstack Developer,"Triển khai và quản lý máy chủ trên EC2. Giúp đồng đội sửa một số lỗi trên front-end để cải thiện và học hỏi các kỹ năng kỹ thuật mới (React Native, Typescript)
-",15/1/2020,25/3/2022
+",1/15/2020,2/25/2022
 54,16,Simply Weatlh,Fullstack Developer,"Sản phẩm Fintech từ Singapore để kết nối giữa các chuyên gia quản lý tài sản, cố vấn tài chính và khách hàng của họ bằng cách tự động hóa và trực quan hóa dữ liệu sâu sắc với ReactJS.
-",16/1/2020,24/6/2022
+",1/16/2020,2/26/2022
 55,26,IDE PROJECTS,Fullstack Developer,"
 Tôi đã phát triển một trang web quản trị cho sách điện tử để quản lý người dùng, sách, blog, âm thanh,... Viết gần như api cho khách hàng để lấy dữ liệu và hiển thị nó trên trang web.
-",17/1/2020,12/2/2022
+",1/17/2020,2/27/2022
 56,40,TinyLife Co.Ltd,Front-end (Flutter & Dart),"
 Siêu ứng dụng tí hon - Siêu ứng dụng này kết hợp nhiều nền tảng truyền thông xã hội như Facebook, Instagram và TikTok. Ứng dụng nhỏ cũng bao gồm một trang web nơi các doanh nghiệp, đối tác và những người khác có thể đăng ký và cộng tác.
-",18/1/2020,25/8/2022
-57,5,VNG,Full Stack Developer,"Tham gia thiết kế và phát triển ứng dụng điện toán đám mây", 1/8/2021, 22/06/2023
-58,5,Đồ án tốt nghiệp,Hệ thống gợi ý công việc,"Tham gia thiết kế và phát triển ứng dụng gợi ý việc làm cho sinh viên trường ĐH KHTN, áp dụng mô hình hybrid, spaCy và consine similarity.", 02/01/2023, 20/07/2023
+",1/18/2020,2/28/2022

@@ -1,29 +1,29 @@
-﻿id,name,avatar,about_me,goodat_Position,dateofbirth,gender,address,email,phone,year_of_experience,created_at,updated_at
-1,MAI THÚY VÂN,null,"Sử dụng các đặc điểm và năng lực cá nhân trong quản lý đa nhiệm vụ, giao tiếp, nghiên cứu và kỹ năng phân tích phù hợp với tư duy phê phán, định hướng mục đích và định hướng chi tiết để có kết quả tốt hơn. Một cá nhân có thể làm việc hiệu quả như một phần",Business Analyst,1997,Nữ,Hà Nội,vanmai2497@gmail.com,(+84)364529248,0,4/3/2023,4/4/2023
+﻿id,name,avatar,about_me,goodat_Position,dateofbirth,gender,address,email,phone,year_of_experience
+1,MAI THÚY VÂN,null,"Sử dụng các đặc điểm và năng lực cá nhân trong quản lý đa nhiệm vụ, giao tiếp, nghiên cứu và kỹ năng phân tích phù hợp với tư duy phê phán, định hướng mục đích và định hướng chi tiết để có kết quả tốt hơn. Một cá nhân có thể làm việc hiệu quả như một phần",Business Analyst,2000,Nữ,Hà Nội,vanmai2497@gmail.com,(+84)364529248,0
 2,NGO HONG CHAN,null,"Giỏi giao tiếp, làm việc độc lập, làm việc nhóm, giải quyết vấn đề, Trách nhiệm cao, thân thiện, trung thực và chăm chỉ. Có thể làm việc dưới áp lực cao
-",Full-Stack Developer,2000,Nam,TPHCM,ngohongchan12a4@gmail.com,(+84)768729814,0,4/3/2023,4/4/2023
+",Full-Stack Developer,2000,Nam,TPHCM,ngohongchan12a4@gmail.com,(+84)768729814,0
 3,LỤC HUỲNH TẤN HOÀNG,null,"Mục tiêu ngắn hạn: Làm việc ở vị trí chuyên viên phân tích nghiệp vụ để tích lũy kinh nghiệm, trau dồi những kiến thức cần có trong lĩnh vực này.
-Mục tiêu dài hạn: Phát triển thêm các kỹ năng chuyên môn và trở thành nhân viên phân tích chuyên nghiệp.",Business Analyst,2001,Nam,TPHCM,hoanglhtje@gmail.com,(+84)767101737,2,4/3/2023,4/4/2023
-4,BÙI ANH THƯ,null,"Tôi là một lập trình viên frontend với gần 2 năm kinh nghiệm về Reactjs, Javascript. Tôi luôn thích học hỏi các công nghệ mới, sẵn sàng giải quyết các vấn đề trong Web. Mong muốn trở thành lập trình viên Fullstack trong 2 năm tới",Frontend Developer,2001,Nữ,TPHCM,thuanhbui2411@gmail.com,(+84)989713105,2,4/3/2023,4/4/2023
+Mục tiêu dài hạn: Phát triển thêm các kỹ năng chuyên môn và trở thành nhân viên phân tích chuyên nghiệp.",Business Analyst,2001,Nam,TPHCM,hoanglhtje@gmail.com,(+84)767101737,2
+4,BÙI ANH THƯ,null,"Tôi là một lập trình viên frontend với gần 2 năm kinh nghiệm về Reactjs, Javascript. Tôi luôn thích học hỏi các công nghệ mới, sẵn sàng giải quyết các vấn đề trong Web. Mong muốn trở thành lập trình viên Fullstack trong 2 năm tới",Frontend Developer,2001,Nữ,TPHCM,thuanhbui2411@gmail.com,(+84)989713105,2
 5,BUI PHU THINH,null,"Tôi là sinh viên năm thứ 3 Khoa của Ngành Công nghệ thông tin, ĐHQG-HCM
-Trường ĐH Khoa học Tự nhiên (chuyên ngành Kỹ thuật tri thức). Tìm kiếm sự trở lại - kết thúc vị trí thực tập sinh của nhà phát triển nơi tôi có thể thiết lập sự nghiệp trong lĩnh vực Phần mềm Phát triển.",Backend developer,1999,Nam,TPHCM,buithinh.tg@gmail.com,(+84)932925620,0,4/3/2023,4/4/2023
-6,BÙI THỊ HỒNG HÀ,null,"Với kiến thức chuyên môn đã được học, em mong muốn được học hỏi thêm nhiều điều mới, thử sức và phát triển bản thân hơn nữa. Những kinh nghiệm làm việc thực tế này sẽ giúp em hoàn thiện bản thân, gắn bó lâu dài, góp phần trong việc phát triển của công ty phần trong việc phát triển của công ty",Tester,1999,Nữ, Hà Nội,hongha18699@gmail.com,(+84)378505057,0,4/3/2023,4/4/2023
-7,Bùi Ngọc Chính,null,Không có,Recognition,2001,Nam,TPHCM,buingocchinh1710@gmail.com,(+84)977739628,0,4/3/2023,4/4/2023
+Trường ĐH Khoa học Tự nhiên (chuyên ngành Kỹ thuật tri thức). Tìm kiếm sự trở lại - kết thúc vị trí thực tập sinh của nhà phát triển nơi tôi có thể thiết lập sự nghiệp trong lĩnh vực Phần mềm Phát triển.",Backend developer,1999,Nam,TPHCM,buithinh.tg@gmail.com,(+84)932925620,0
+6,BÙI THỊ HỒNG HÀ,null,"Với kiến thức chuyên môn đã được học, em mong muốn được học hỏi thêm nhiều điều mới, thử sức và phát triển bản thân hơn nữa. Những kinh nghiệm làm việc thực tế này sẽ giúp em hoàn thiện bản thân, gắn bó lâu dài, góp phần trong việc phát triển của công ty phần trong việc phát triển của công ty",Tester,1999,Nữ, Hà Nội,hongha18699@gmail.com,(+84)378505057,0
+7,Bùi Ngọc Chính,null,Không có,Recognition,2001,Nam,TPHCM,buingocchinh1710@gmail.com,(+84)977739628,0
 8,Luc Huynh Tan Hoang,null,"Mục tiêu ngắn hạn: Tôi mong muốn được trải nghiệm và học hỏi nhiều hơn trong môi trường làm việc để phát triển bản thân hơn nữa.
 Mục tiêu dài hạn: Phát triển các kỹ năng chuyên môn hơn nữa và trở thành Chuyên viên phân tích kinh doanh cao cấp trong tương lai.
-Tôi đã hoàn thành khóa học Phân tích kinh doanh cơ bản của BAC.",Business Analyst,2001,Nam,TPHCM,hoanglhtje@gmail.com,(+84)767101737,0,4/3/2023,4/4/2023
+Tôi đã hoàn thành khóa học Phân tích kinh doanh cơ bản của BAC.",Business Analyst,2001,Nam,TPHCM,hoanglhtje@gmail.com,(+84)767101737,0
 9,CHU DUC AN,null,"Tôi hiện là một nhà phát triển web & di động mới với một năm kinh nghiệm CNTT trong phát triển web & di động-sử dụng framework (React Native &; ReactJS). Tôi cũng có niềm đam mê với thiết kế UI / UX và cạnh tranh.
-",Fresher Mobile Developer,2001,Nam,TPHCM,https://linkedin.com/in/chuducan,(+84)826677301,1,4/3/2023,4/4/2023
+",Fresher Mobile Developer,2001,Nam,TPHCM,https://linkedin.com/in/chuducan,(+84)826677301,1
 10,HUA DAI TAM,null,"Từ 3 đến 6 tháng: Mong muốn được tiếp xúc với các dự án thực tế. Trau dồi và Nâng cao tay nghề để nâng cao chuyên môn trình độ, năng lực. Trở thành một Nhà phát triển cơ sở.
 Từ 2 đến 4 tuổi: Trở thành nhà phát triển cấp cao. Hỗ trợ người mới, hoàn thành nhiệm vụ quan trọng trong công ty
-",Java Developer,1998,Nam,Hà Nội,hdtamlearnfru1805@gmail.com,(+84)868684534,0,4/3/2023,4/4/2023
-11,PHẠM NGUYỄN ĐĂNG DUY,null,Không có,Nhập Liệu,2000,Nam,Hà Nội,dangduy11111111@gmail.com,(+84)906019148,1,4/3/2023,4/4/2023
-12,TRỊNH MINH TUẤN,null,Không có,Backend developer,2002,Nam,Hà Nội,tuantm.it.work@gmail.com,(+84)779245720,2,4/3/2023,4/4/2023
+",Java Developer,2000,Nam,Hà Nội,hdtamlearnfru1805@gmail.com,(+84)868684534,0
+11,PHẠM NGUYỄN ĐĂNG DUY,null,Không có,Nhập Liệu,2000,Nam,Hà Nội,dangduy11111111@gmail.com,(+84)906019148,1
+12,TRỊNH MINH TUẤN,null,Không có,Backend developer,2002,Nam,Hà Nội,tuantm.it.work@gmail.com,(+84)779245720,2
 13,Nguyen My ,null,"Tôi là Châu Nguyễn Mỹ Nguyên, một lập trình viên front-end với 6 tháng kinh nghiệm về ReactJS, NodeJS và
 mongoDB.My stack yêu thích là MERN stack (mongodb, express, react, nodejs). Tôi có khả năng học hỏi mới
 công nghệ thông qua việc xem hướng dẫn Youtube và đọc tài liệu. Sau đó, tôi áp dụng những gì tôi vừa học để xây dựng
-Một trang web đơn giản.",Intern Front-end Developer,2002,Nữ,TPHCM,mynguyen13022002@gmail.com,null,1,4/3/2023,4/4/2023
-14,DANG NGOC SANG,null,Tôi là sinh viên năm thứ 3 tại trường đại học NTT. Tôi thích tạo ra những sản phẩm chất lượng và học hỏi những công nghệ mới. Tôi có thể đối phó với áp lực công việc và những thách thức mới,Frontend Developer,2001,Nam,TPHCM,dnsang.dev@gmail.com,(+84)968894960,0,4/3/2023,4/4/2023
+Một trang web đơn giản.",Intern Front-end Developer,2002,Nữ,TPHCM,mynguyen13022002@gmail.com,null,1
+14,DANG NGOC SANG,null,Tôi là sinh viên năm thứ 3 tại trường đại học NTT. Tôi thích tạo ra những sản phẩm chất lượng và học hỏi những công nghệ mới. Tôi có thể đối phó với áp lực công việc và những thách thức mới,Frontend Developer,2001,Nam,TPHCM,dnsang.dev@gmail.com,(+84)968894960,0
 15,Nguyễn Đình Phước,null,"Mục tiêu ngắn hạn:
 - Làm việc chuyên nghiệp, năng động và khá cạnh tranh
 môi trường và có cơ hội thăng tiến.
@@ -32,7 +32,7 @@ trong khi làm việc.
 - Trở thành nhà phát triển Seninor Fontend sau 2 năm
 Mục tiêu dài hạn:
 Để vượt qua chứng chỉ MCITP.
-",Frontend Developer,1990,Nam,Hà Nội,phuocbn1990@gmail.com,(+84)368899214,1,4/3/2023,4/4/2023
+",Frontend Developer,2000,Nam,Hà Nội,phuocbn1990@gmail.com,(+84)368899214,1
 16,Ho Quang Lam,null,"Em hiện đang là sinh viên năm nhất Trường Đại học Công nghệ Thông tin TP. HCM (HCM-UIT). Tôi bắt đầu học
 Phát triển web một năm trước. Tôi đã có cơ hội làm việc với một số khách hàng và một công ty giúp tôi đạt được một
 nhiều kinh nghiệm thực tiễn quý báu. Ngoài ra, tôi đã nhận được ba giải thưởng và giành vị trí thứ hai trong hai Web
@@ -45,14 +45,14 @@ do Trường Đại học Công nghệ Thông tin Thành phố Hồ Chí Minh t�
 - Có kiến thức về vòng đời và quản lý trạng thái trong React
 - Kiến thức hạn chế về triển khai (Docker, CI / CD)
 - Kiến thức hạn chế về mạng &; bảo mật (XXS, tấn công brute-force, SQL Injection,...)
-",Full-Stack Developer,2003,Nữ,TPHCM,21521049@gm.uit.edu.vn,(+84)092844 753,0,4/3/2023,4/4/2023
-17,TẤN PHÁT HUỲNH,null,Không có,Web Developer,2001,Nam,TPHCM,huynhtanphatleo@gmail.com,(+84)833939799,1,4/3/2023,4/4/2023
+",Full-Stack Developer,2003,Nữ,TPHCM,21521049@gm.uit.edu.vn,(+84)092844 753,0
+17,TẤN PHÁT HUỲNH,null,Không có,Web Developer,2001,Nam,TPHCM,huynhtanphatleo@gmail.com,(+84)833939799,1
 18,Nguyen Dang Anh Khoa,null,"Kinh nghiệm hạn chế về HTML, CSS, JavaScript
 Kinh nghiệm trung cấp về: Java, SQL server
 Kinh nghiệm sử dụng các công cụ quản lý mã nguồn còn hạn chế: GIT
 Kinh nghiệm trung cấp trong hệ điều hành: Windows
 Khả năng học hỏi và ứng dụng công nghệ mới nhanh chóng
-",Backend developer,2001,Nam,TPHCM,khoaruoi69@gmail.com,(+84)793686646,0,4/3/2023,4/4/2023
+",Backend developer,2001,Nam,TPHCM,khoaruoi69@gmail.com,(+84)793686646,0
 19,Nguyen Trong Quy,null,"Em tên là Nguyễn Trọng Quy,
 em hiện là sinh viên năm cuối
 chuyên ngành Kỹ thuật phần mềm
@@ -61,7 +61,7 @@ Thành phố Hồ Chí Minh.
 Với mong muốn học hỏi và
 Trải nghiệm thực tế
 môi trường. Hy vọng tôi có thể mang theo
-giá trị cho doanh nghiệp.",Frontend Developer,2001,Nam,TPHCM,ntquy11092001@gmail.com,(+84)345634374,0,4/3/2023,4/4/2023
+giá trị cho doanh nghiệp.",Frontend Developer,2001,Nam,TPHCM,ntquy11092001@gmail.com,(+84)345634374,0
 20,Phạm Khánh Duy,null,"Là một người cởi mở, thích ứng nhanh với môi trường mới, không ngại khó khăn.Tiếp xúc với công nghệ và bắt đầu học lập trình từ rất sớm, có một niềm đam mê mãnh liệt với lập trình
 - Thường xuyên mày mò, học hỏi thêm những công nghệ thú vị
 - Có khả năng dùng HTML, CSS, JavaScript tốt, có thể kết hợp sử dụng PugJs, Sass, Gulp
@@ -71,41 +71,41 @@ giá trị cho doanh nghiệp.",Frontend Developer,2001,Nam,TPHCM,ntquy11092001@
 - Có thể sử dụng cơ bản SQL
 - Có thể sử dụng GIT
 - Github: https://github.com/duypham000
-- Có khả năng học tập và tiếp thu công nghệ mới nhanh, ham học hỏi",Backend developer,2002,Nam,Hà Nội,duypham05082002@gmail.com,(+84)344848305,0,4/3/2023,4/4/2023
-21,Ngô Đức Thành,null,"Sinh viên năm cuối ngành Hệ thống thông tin tại Đại học Kỹ thuật và Công nghệ – Đại học Quốc gia Hà Nội, muốn theo đuổi sự nghiệp khoa học dữ liệu",Data Scientist,2001,Nam,Hà Nội,thanhdcbn001@gmail.com,(+84)379305312,0,4/3/2023,4/4/2023
+- Có khả năng học tập và tiếp thu công nghệ mới nhanh, ham học hỏi",Backend developer,2002,Nam,Hà Nội,duypham05082002@gmail.com,(+84)344848305,0
+21,Ngô Đức Thành,null,"Sinh viên năm cuối ngành Hệ thống thông tin tại Đại học Kỹ thuật và Công nghệ – Đại học Quốc gia Hà Nội, muốn theo đuổi sự nghiệp khoa học dữ liệu",Data Scientist,2001,Nam,Hà Nội,thanhdcbn001@gmail.com,(+84)379305312,0
 22,ĐÀO THÀNH PHÚC,null,"Tôi bắt đầu học cách viết mã từ tháng 3/2022 và tôi đã dành tất cả
 thời gian học tập của tôi. Bên cạnh việc học tại giáo viên cố vấn của tôi, tôi cũng
 Học trên trang web F8.edu.vn để nâng cao kiến thức của tôi.
 Tôi thích viết mã và thử thách học một cái gì đó
 mớihàng ngày. Tôi cũng coi trọng mọi cơ hội nghề nghiệp và ý chí
 Làm mọi thứ trong khả năng của tôi để tăng thêm giá trị cho công ty.
-",Frontend Developer,1999,Nam,TPHCM,mrphuc48@gmail.com,(+84)333475095,0,4/3/2023,4/4/2023
+",Frontend Developer,2000,Nam,TPHCM,mrphuc48@gmail.com,(+84)333475095,0
 23,HUỲNH THỊ MỸ THANH,null,"Nhằm mục đích làm việc trong một môi trường làm việc đầy thách thức, nơi tôi có thể sử dụng chuyên môn của mình trong
 nhiều lĩnh vực như phát triển C ++, AI, Thị giác máy tính và kỹ năng phân tích của tôi
-hướng tới sự phát triển của công ty.",Data Scientist,2001,Nữ,TPHCM,thanh111@gmail.com,null,0,4/3/2023,4/4/2023
-24,TRỊNH MINH TUẤN,null,Không có,NodeJS Backend developer,2002,Nam,Hà Nội,tuantm.it.work@gmail.com,(+84)779245720,0,4/3/2023,4/4/2023
+hướng tới sự phát triển của công ty.",Data Scientist,2001,Nữ,TPHCM,thanh111@gmail.com,null,0
+24,TRỊNH MINH TUẤN,null,Không có,NodeJS Backend developer,2002,Nam,Hà Nội,tuantm.it.work@gmail.com,(+84)779245720,0
 25,NAM NGUYEN,null,"Tôi bắt đầu học cách viết mã vào tháng 1/2021 và dành phần lớn thời gian
 trong ngày tôi thử nghiệm với HTML, CSS, JavaScript, React,
 Node, Express và MongoDB.
 Tôi thích viết mã và thử thách học một cái gì đó mới
 thường nhật. Tôi cũng coi trọng mọi cơ hội nghề nghiệp và sẽ làm
 Tất cả mọi thứ trong khả năng của tôi để tăng thêm giá trị cho công ty.
-",Web Developer,2002,Nam,TPHCM,namnguyenthanh.developer@gmail.com,(+84)366270052,0,4/3/2023,4/4/2023
+",Web Developer,2002,Nam,TPHCM,namnguyenthanh.developer@gmail.com,(+84)366270052,0
 26,TRONG NGUYEN,null,"Một người định hướng kết quả, thích nghi với làm việc trong một
 Môi trường nhịp độ nhanh với khối lượng công việc lớn.
 Luôn chủ động, độc lập trong công việc nhưng sẵn sàng
-Hãy hỗ trợ, cởi mở trong làm việc nhóm.",Frontend Developer,2002,Nam,TPHCM,huutrong1101@gmail.com,(+84)773696410,0,4/3/2023,4/4/2023
+Hãy hỗ trợ, cởi mở trong làm việc nhóm.",Frontend Developer,2002,Nam,TPHCM,huutrong1101@gmail.com,(+84)773696410,0
 27,NGUYỄN QUỐC TRUNG,null,"Ứng dụng các kiến thức về lập trình Mobile đã học vào môi trường làm việc thực tế.
 - Thu thập thêm các kiến thức về lập trình Mobile, Cơ sở dữ liệu, API,...
 - Tích lũy thêm kinh nghiệm, kỹ năng để sẵn
 sàng cho tương lai được làm việc tại các
 startup và các công ty, tập đoàn có uy tín
-trong và ngoài nước.",Mobile Development,1905,Nam,TPHCM,endarkfamily@gmail.com,(+84)975182035,0,4/3/2023,4/4/2023
+trong và ngoài nước.",Mobile Development,2001,Nam,TPHCM,endarkfamily@gmail.com,(+84)975182035,0
 28,DANG THAI DUY,null,"Tôi mong muốn nâng cao kiến thức của mình và tận dụng chúng để trở thành một người cao
 Kỹ sư phần mềm có trình độ. Hiện tại, kế hoạch ngắn hạn của tôi là để có được một
 vị trí Front End Developer có trách nhiệm và đầy thách thức trong lĩnh vực kỹ thuật
 công ty, nơi tôi có thể sử dụng các kỹ năng của mình trong Phát triển web Front-End từ
-giáo dục và kinh nghiệm làm việc để cung cấp dịch vụ chất lượng cho công ty.",Frontend Developer,2001,Nam,TPHCM,dtduy2210@gmail.com,(+84)789476036,0,4/3/2023,4/4/2023
+giáo dục và kinh nghiệm làm việc để cung cấp dịch vụ chất lượng cho công ty.",Frontend Developer,2001,Nam,TPHCM,dtduy2210@gmail.com,(+84)789476036,0
 29,ĐỖ TIẾN ANH,null,"Sau khi tốt nghiệp cao đẳng sẽ học liên thông đại học.
 Hướng mục tiêu trở thành một lập trình viên trong tương lai có thể lập
 trình nhiều ngôn ngữ tạo nên những sản phẩm có ích cho tiến độ phát
@@ -117,11 +117,11 @@ công việc giúp mang lại giá trị cho bản thân nói riêng và cho cô
 chung.
 Được mọi người nhận xét là : hòa đồng , vui tính , hơi ít nói và có trách
 nghiệm trong công việc.",Frontend Developer,2001,Nam,Hà Nội,"dotienanh21062001@gmail.co
-m",(+84)975243861,0,4/3/2023,4/4/2023
+m",(+84)975243861,0
 30,DƯƠNG THỊ NGUYỆT MINH,null,"Mục tiêu ngắn hạn: có một công việc CNTT phù hợp,
 Tham gia vào nhiều dự án ngoài đời thực, tích lũy  nhiều kinh nghiệm hơn.
 - Mục tiêu dài hạn: trở thành một nhân viên có thể  Giữ một vị trí quan trọng trong công ty. Của tôi  Đóng góp có thể dẫn đến sự hài lòng của khách hàng  và thành công của sản phẩm.
-",Data Scientist,2000,Nam,TPHCM,tongphungminh@gmail.com,(+84)386246298,0,4/3/2023,4/4/2023
+",Data Scientist,2000,Nam,TPHCM,tongphungminh@gmail.com,(+84)386246298,0
 31,ĐÀM THỊ LINH,null,"Tôi là một sinh viên năm thứ hai có xu hướng trở thành một
 Nhà phát triển web Java. Tôi đang cố gắng hết sức để có được càng nhiều
 kiến thức về mã hóa, đặc biệt là trong Java và đó là Spring boot
@@ -130,7 +130,7 @@ với một tâm trí rất ham học hỏi và một người học tự học 
 Cho đến bây giờ, tôi đang cố gắng thực hành tạo một web java bằng cách sử dụng
 Khung mùa xuân của riêng tôi. Tôi đã mã hóa một bản demo
 crud bởi những gì tôi đã học được (Spring boot, mysql để lưu trữ dữ liệu
-và lá húng tây để xem).",Java Developer,2002,Nam,Hà Nội,dtlinh010202@gmail.com,(+84)352651748,0,4/3/2023,4/4/2023
+và lá húng tây để xem).",Java Developer,2002,Nam,Hà Nội,dtlinh010202@gmail.com,(+84)352651748,0
 32,DO VUONG PHUC,null,"Tôi là sinh viên năm cuối Đại học Khoa học Tự nhiên, chuyên ngành
 trong CNTT. Tôi định hướng mục tiêu, tận tâm với công việc và luôn luôn
 Mở ra những trải nghiệm mới, đặc biệt là những trải nghiệm liên quan đến lĩnh vực của tôi
@@ -139,7 +139,7 @@ Tôi đã đạt được nhiều điều từ việc trở thành người lãn
 Đó là lý do tại sao giải quyết vấn đề, thuyết trình và lãnh đạo
 Kỹ năng không phải là điểm yếu của tôi. Tôi có một niềm đam mê mãnh liệt đối với
 kỹ thuật phần mềm và khoa học máy tính, và tôi hy vọng tôi có thể
-góp phần vào sự phát triển của xã hội.",Backend developer,2001,Nam,TPHCM,phuc16102001@gmail.com,(+84)707953475,0,4/3/2023,4/4/2023
+góp phần vào sự phát triển của xã hội.",Backend developer,2001,Nam,TPHCM,phuc16102001@gmail.com,(+84)707953475,0
 33,"NHAT HOANG
 ",null,"Full Name : Hoàng Văn Nhật
 Ngày sinh : 07/10/2003
@@ -148,65 +148,65 @@ Tôi là một lập trình viên tự học. Tôi bắt đầu học
 lập trình khi tôi 16 tuổi.
 Các tài nguyên mà tôi đã nghiên cứu như Udemy,
 Blog, Youtube, vv.
-",Java Developer,2003,Nam,Hà Nội,hoangnhat102003@gmail.com,null,0,4/3/2023,4/4/2023
+",Java Developer,2003,Nam,Hà Nội,hoangnhat102003@gmail.com,null,0
 34,Giang Do,null,"Tôi đam mê học hỏi các công nghệ mới và luôn tập trung vào việc cải thiện kỹ năng bản thân. Sinh vật
 kiên nhẫn và chịu trách nhiệm làm việc giúp tôi thực hiện các nhiệm vụ hoàn toàn khẳng định. Hy vọng rằng tôi có thể đóng góp cho
-phát triển của công ty bạn.",Frontend Developer,2000,Nữ,TPHCM,giangDev.cv@gmail.com,(+84)365096648,0,4/3/2023,4/4/2023
+phát triển của công ty bạn.",Frontend Developer,2000,Nữ,TPHCM,giangDev.cv@gmail.com,(+84)365096648,0
 35,Hồ Vạn Đạt,null,"Mong muốn trở thành một Front-End Developer chuyên nghiệp và một Full-Stack Developer trong tương lai để tạo ra những sản phẩm tốt nhất
 với giao diện người dùng / UX bắt mắt cho công ty và khách hàng.
 - Mong muốn được trải nghiệm làm việc trong môi trường chuyên nghiệp để được đào tạo phát triển bản thân, hoàn thiện và trau dồi
-nhiều kỹ năng cần thiết hơn.",Web Developer,2001,Nam,TPHCM,hovandat0.1@hotmail.com,(+84)812640742,0,4/3/2023,4/4/2023
+nhiều kỹ năng cần thiết hơn.",Web Developer,2001,Nam,TPHCM,hovandat0.1@hotmail.com,(+84)812640742,0
 36,DAT HUYNH TUAN,null," niềm đam mê và cảm hứng mãnh liệt về giao diện trang web mã hóa, tôi quyết định thử thách bản thân bằng cách đăng ký Front-
-kết thúc Developer và đạt đến trình độ chuyên nghiệp.",Frontend Developer,2001,Nam,TPHCM,705507383,(+84)705507383,1,4/3/2023,4/4/2023
+kết thúc Developer và đạt đến trình độ chuyên nghiệp.",Frontend Developer,2001,Nam,TPHCM,705507383,(+84)705507383,1
 37,VY NGUYEN,null,"Với tư duy logic, thích học hỏi và sáng tạo ra những điều mới mẻ, đặc biệt là trong
 Lĩnh vực dữ liệu và kinh doanh, mong muốn của tôi là có thể áp dụng kiến thức
 học ở trường trong thế giới thực và trở thành một chuyên gia trong tương lai Dữ liệu
 Nhà khoa học. Vì vậy, tôi hy vọng có thể đóng góp hết sức mình cho công ty
 Và từ đó cũng có thêm kinh nghiệm cho bản thân để có thể phát triển một
 sự nghiệp lâu dài.
-",Data Scientist,2001,Nữ,TPHCM,khacvy001@gmail.com,null,1,4/3/2023,4/4/2023
+",Data Scientist,2001,Nữ,TPHCM,khacvy001@gmail.com,null,1
 38,LE QUANG DUNG,null,"Tìm kiếm một vị trí của một back-end developer nơi tôi có thể sử dụng kiến thức và kỹ năng của mình để phát triển  và mở rộng một tổ chức cũng như bản thân tôi
-",Software Developer,1995,Nam,Hưng Yên,dunglq512@gmail.com,(+84)329424008,0,4/3/2023,4/4/2023
+",Software Developer,2001,Nam,Hưng Yên,dunglq512@gmail.com,(+84)329424008,0
 39,LE THANH KHOI,null,"Tôi là một sinh viên năm cuối với niềm đam mê mãnh liệt đối với
 trở thành nhà phát triển phần mềm cao cấp. Tôi là một
 Người tỉ mỉ và kỷ luật tìm kiếm cơ hội
 để theo đuổi đam mê của mình. Tôi có thể thích nghi với kiến thức mới trong
-bất kỳ môi trường nào để phát triển toàn diện.",Software Developer,2001,Nam,TPHCM,Không cung cấp,null,2,4/3/2023,4/4/2023
+bất kỳ môi trường nào để phát triển toàn diện.",Software Developer,2001,Nam,TPHCM,Không cung cấp,null,2
 40,LE ANH PHI,null,"Nhà phát triển mới đầy đam mê với 6 tháng
 kinh nghiệm trong .NET framework. Có kỹ năng về C #,
 ASP.NET MVC, .NET và phát triển web. Ham
 để áp dụng các kỹ năng và học hỏi các công nghệ mới trong một
-môi trường hợp tác.",Backend Developer (.NET),2002,Nam,TPHCM,leanhphi1706@gmail.com,(+84)933105367,1,4/3/2023,4/4/2023
+môi trường hợp tác.",Backend Developer (.NET),2002,Nam,TPHCM,leanhphi1706@gmail.com,(+84)933105367,1
 41,LE NGUYEN ANH KHOI,null,"Tôi là sinh viên năm nhất với niềm đam mê lập trình, người đang tìm kiếm công việc mơ ước của tôi là Java /
 Nhà phát triển di động. Tôi có thể thiếu kinh nghiệm nhưng tôi tin rằng những gì tôi đã có được từ mới nhất của tôi
 công việc sẽ làm tôi hài lòng khi đặt vào vị trí Java hoặc Mobile Developer. Tôi được thúc đẩy để trở thành một
-Phiên bản tốt hơn của bản thân và sẵn sàng học hỏi trong mọi môi trường.",Java Developer,2001,Nam,TPHCM,lnakhoi1811@gmail.com,(+84)908195678,1,4/3/2023,4/4/2023
+Phiên bản tốt hơn của bản thân và sẵn sàng học hỏi trong mọi môi trường.",Java Developer,2001,Nam,TPHCM,lnakhoi1811@gmail.com,(+84)908195678,1
 42,MA VIET HA,null,"Tôi là một người không ngại học hỏi và làm việc chăm chỉ, không ngừng học hỏi và học hỏi những công nghệ mới. Luôn cố gắng
-Tốt nhất trong công việc và hoàn thành trách nhiệm của bạn",Frontend Developer,2004,Nam,Gia Lai,mavietha.ct@gmail.com,(+84)353386227,0,4/3/2023,4/4/2023
+Tốt nhất trong công việc và hoàn thành trách nhiệm của bạn",Frontend Developer,2004,Nam,Gia Lai,mavietha.ct@gmail.com,(+84)353386227,0
 43,NGUYEN THIEN MINH,null,"Em hiện đang là sinh viên năm thứ 4 chuyên ngành công nghệ phần mềm
 với niềm đam mê định hướng phát triển trong lĩnh vực di động
 Chương trình.
 Tôi muốn có thể làm việc trong một môi trường sáng tạo và chuyên nghiệp
 để tôi có thể phát triển bản thân thành một nhà phát triển di động đã có ít kinh nghiệm trong
 tương lai gần và một nhà phát triển di động cao cấp trong tương lai xa.
-",Mobile Intern,2001,Nam,TPHCM,nthienminh3001@gmail.com,(+84)902662247,1,4/3/2023,4/4/2023
+",Mobile Intern,2001,Nam,TPHCM,nthienminh3001@gmail.com,(+84)902662247,1
 44,Vũ Văn Khánh,null,"em có tình yêu với lập trình rất lớn, tôi muốn có một môi trường để
 Thực hành, nâng cao kỹ năng của tôi. Tôi có khả năng tự học tốt. Tôi hy vọng có thể tham gia
-cho công ty của bạn. Cảm ơn bạn đã đọc",Javascript Developer,1999,Nam,Hà Nội,vanvukhanh1999@gmail.com,(+84)973856943,0,4/3/2023,4/4/2023
+cho công ty của bạn. Cảm ơn bạn đã đọc",Javascript Developer,2001,Nam,Hà Nội,vanvukhanh1999@gmail.com,(+84)973856943,0
 45,NAM CAP,null,"Niềm đam mê công nghệ đã định hình tôi thành con người tôi ngày hôm nay. Tôi là một
 Nhà phát triển Front-End / Back-End, người có thể làm việc cùng với các CNTT tài năng khác
 chuyên gia trong việc tạo trang web. Tôi thích học hỏi và giải quyết các vấn đề khó khăn
 trong môi trường nhóm để giúp doanh nghiệp tăng tốc và phát triển. Sẵn sàng để áp dụng
-Đam mê mã hóa cho một đội ngũ kỹ sư tài năng để phát triển các giải pháp chất lượng.",Frontend Developer,1999,Nam,New Zealand,capmanhnam@gmail.com,(+84)278867789,0,4/3/2023,4/4/2023
-46,NGOC SON LE,null,Không có,Frontend Developer,2000,Nam,TPHCM,lengocson18122000@gmail.com,(+84)843333817,0,4/3/2023,4/4/2023
+Đam mê mã hóa cho một đội ngũ kỹ sư tài năng để phát triển các giải pháp chất lượng.",Frontend Developer,2001,Nam,New Zealand,capmanhnam@gmail.com,(+84)278867789,0
+46,NGOC SON LE,null,Không có,Frontend Developer,2000,Nam,TPHCM,lengocson18122000@gmail.com,(+84)843333817,0
 47,HUY ANH NGO,null,"Tôi là sinh viên năm thứ ba ngành Hệ thống thông tin. Hiện tại, tôi
 Học về phát triển web là chuyên ngành chính của tôi. Bản tóm tắt của tôi
 Mô tả trong ba từ là:
 Tò mò
 Go-getter
-Ambivert",Software Developer,2001,Nam,TPHCM,Không cung cấp,null,1,4/3/2023,4/4/2023
+Ambivert",Software Developer,2001,Nam,TPHCM,Không cung cấp,null,1
 48,NGUYEN HUU THANH,null,"Tìm kiếm lợi thế về trình độ tiếng Anh cũng như niềm đam mê công việc lập trình để
-Asist bản thân cho sự nghiệp phát triển.",Full-Stack Developer,1994,Nam,TPHCM,Không cung cấp,(+84)339992892,0,4/3/2023,4/4/2023
+Asist bản thân cho sự nghiệp phát triển.",Full-Stack Developer,2001,Nam,TPHCM,Không cung cấp,(+84)339992892,0
 49,NGUYEN NGOC PHUOC,null,"Tên tôi là Nguyễn Ngọc Phước và tôi đang viết đơn xin thực tập hè tại một
 Ngành công nghiệp sử dụng dữ liệu để tăng hiệu suất của nó. Tôi biết về công ty của bạn thông qua
 Trung tâm Dịch vụ Hướng nghiệp.
@@ -217,6 +217,6 @@ mặc dù công ty của bạn đặc biệt chú ý đến lĩnh vực đó và
 Làm việc với nhóm của bạn.
 Tôi vô cùng hào hứng khi nộp đơn xin thực tập tại một công ty coi trọng việc sử dụng chiến lược
 dữ liệu trong thực tiễn. Tôi tin rằng kỳ thực tập này sẽ là một bước đi khôn ngoan trong định hướng sự nghiệp trong
-khoa học dữ liệu và sẽ nỗ lực hết sức để tìm hiểu và tiếp xúc vô giá với lĩnh vực này.",Data Analysis,2001,Nam,TPHCM,Phuocmorpheus@gmail.com,(+84)327557909,0,4/3/2023,4/4/2023
+khoa học dữ liệu và sẽ nỗ lực hết sức để tìm hiểu và tiếp xúc vô giá với lĩnh vực này.",Data Analysis,2001,Nam,TPHCM,Phuocmorpheus@gmail.com,(+84)327557909,0
 50,NGUYỄN TẤN LỘC,null," có niềm đam mê phát triển phần mềm di động Android.
-- Không dễ bỏ cuộc, kiên trì cho đến khi tìm được kết quả mình mong muốn.",Android Developers ,2001,Nam,TPHCM,nguyentanloc160201@gmail.com,(+84)913613257,0,4/3/2023,4/4/2023
+- Không dễ bỏ cuộc, kiên trì cho đến khi tìm được kết quả mình mong muốn.",Android Developers ,2001,Nam,TPHCM,nguyentanloc160201@gmail.com,(+84)913613257,0
