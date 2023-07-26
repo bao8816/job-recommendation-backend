@@ -117,7 +117,7 @@ class UserProfileController extends ApiController
     public function importUserProfile(Request $request, string $id): JsonResponse
     {
         try {
-            $object = json_decode($request->object, true);
+            $object = $request->json('object');
             $profile = $object['user_profile'];
 
             $user_profile = UserProfile::where('id', $id)
@@ -188,11 +188,11 @@ class UserProfileController extends ApiController
         }
     }
 
-    private function formatDates($data)
+    private function formatDates($data): array
     {
         return collect($data)->map(function ($item) {
-            $item['start'] = Carbon::createFromFormat('d/m/Y', $item['start'])->format('Y-m-d');
-            $item['end'] = Carbon::createFromFormat('d/m/Y', $item['end'])->format('Y-m-d');
+            $item['start'] = Carbon::createFromFormat('d/m/Y', $item['start'])->toDateString();
+            $item['end'] = Carbon::createFromFormat('d/m/Y', $item['end'])->toDateString();
             return $item;
         })->all();
     }
