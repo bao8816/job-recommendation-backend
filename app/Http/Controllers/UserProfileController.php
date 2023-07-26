@@ -117,7 +117,12 @@ class UserProfileController extends ApiController
     public function importUserProfile(Request $request, string $id): JsonResponse
     {
         try {
-            $object = json_decode($request->object, true);
+            $encoded_object = $request->object;
+            if (is_array($encoded_object)) {
+                $encoded_object = json_encode($encoded_object);
+            }
+
+            $object = json_decode($encoded_object, true);
             $profile = $object['user_profile'];
             $educations = $object['user_profile']['educations'];
             $experiences = $object['user_profile']['experiences'];
