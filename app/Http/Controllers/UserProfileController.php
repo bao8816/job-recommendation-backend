@@ -152,7 +152,7 @@ class UserProfileController extends ApiController
             $user_profile->avatar = $profile['avatar'] ?? $user_profile->avatar;
             $user_profile->about_me = $profile['about_me'] ?? $user_profile->about_me;
             $user_profile->good_at_position = $profile['good_at_position'] ?? $user_profile->good_at_position;
-            $user_profile->date_of_birth = Carbon::createFromFormat('d/m/Y', $profile['date_of_birth'])->format('Y-m-d')
+            $user_profile->date_of_birth = Carbon::createFromFormat('d/m/Y', $profile['date_of_birth'])->toDateString()
                 ?? $user_profile->date_of_birth;
             $user_profile->address = $profile['address'] ?? $user_profile->address;
             $user_profile->email = $profile['email'] ?? $user_profile->email;
@@ -192,8 +192,8 @@ class UserProfileController extends ApiController
                     $user_experience->title = $experience['title'];
                     $user_experience->position = $experience['position'];
                     $user_experience->description = $experience['description'];
-                    $user_experience->start = Carbon::createFromFormat('d/m/Y', $experience['start'])->format('Y-m-d');
-                    $user_experience->end = Carbon::createFromFormat('d/m/Y', $experience['end'])->format('Y-m-d');
+                    $user_experience->start = Carbon::createFromFormat('d/m/Y', $experience['start'])->toDateString();
+                    $user_experience->end = Carbon::createFromFormat('d/m/Y', $experience['end'])->toDateString();
                     $user_experience->save();
                 }
             }
