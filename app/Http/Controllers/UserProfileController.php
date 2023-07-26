@@ -118,72 +118,40 @@ class UserProfileController extends ApiController
     {
         try {
             $object = $request->json('object');
-            $profile = $object['user_profile'];
+            $profile = $object['user_profile'] ?? [];
 
-            $user_profile = UserProfile::where('id', $id)
-                ->with('educations', 'cvs', 'experiences', 'achievements', 'skills', 'time_table')
-                ->first();
+            $user_profile = UserProfile::updateOrCreate(['id' => $id], $profile);
 
-            if (!$user_profile) {
-                return $this->respondNotFound();
+            if (isset($object['user_profile']['educations'])) {
+                $educations = $object['user_profile']['educations'];
+                $user_profile->educations()->delete();
+                $user_profile->educations()->createMany($educations);
             }
 
-            // update profile
-            $user_profile->full_name = $profile['full_name'] ?? $user_profile->full_name;
-            $user_profile->avatar = $profile['avatar'] ?? $user_profile->avatar;
-            $user_profile->about_me = $profile['about_me'] ?? $user_profile->about_me;
-            $user_profile->good_at_position = $profile['good_at_position'] ?? $user_profile->good_at_position;
-            $user_profile->date_of_birth = Carbon::createFromFormat('d/m/Y', $profile['date_of_birth'])->toDateString()
-                ?? $user_profile->date_of_birth;
-            $user_profile->address = $profile['address'] ?? $user_profile->address;
-            $user_profile->email = $profile['email'] ?? $user_profile->email;
-            $user_profile->phone = $profile['phone'] ?? $user_profile->phone;
-            $user_profile->save();
-            //---------------------------------------------
-
-            // update educations
-            // delete all current educations and insert new educations
-            if (isset($object['profile']['educations'])) {
-                $educations = $object['profile']['educations'];
-                $user_profile->education()->delete();
-                $user_profile->education()->createMany($educations);
+            if (isset($object['user_profile']['experiences'])) {
+                $experiences = $object['user_profile']['experiences'];
+                $user_profile->experiences()->delete();
+                $user_profile->experiences()->createMany($this->formatDates($experiences));
             }
-            //---------------------------------------------
 
-            // update experiences
-            // delete all current experiences and insert new experiences
-            if (isset($object['profile']['experiences'])) {
-                $experiences = $object['profile']['experiences'];
-                $user_profile->experience()->delete();
-                $user_profile->experience()->createMany($this->formatDates($experiences));
+            if (isset($object['user_profile']['achievements'])) {
+                $achievements = $object['user_profile']['achievements'];
+                $user_profile->achievements()->delete();
+                $user_profile->achievements()->createMany($achievements);
             }
-            //---------------------------------------------
 
-            // update achievements
-            // delete all current achievements and insert new achievements
-            if (isset($object['profile']['achievements'])) {
-                $achievements = $object['profile']['achievements'];
-                $user_profile->achievement()->delete();
-                $user_profile->achievement()->createMany($achievements);
+            if (isset($object['user_profile']['skills'])) {
+                $skills = $object['user_profile']['skills'];
+                $user_profile->skills()->delete();
+                $user_profile->skills()->createMany($skills);
             }
-            //---------------------------------------------
-
-            // update skills
-            // delete all current skills and insert new skills
-            if (isset($object['profile']['skills'])) {
-                $skills = $object['profile']['skills'];
-                $user_profile->skill()->delete();
-                $user_profile->skill()->createMany($skills);
-            }
-            //---------------------------------------------
 
             return $this->respondWithData(
                 [
                     'user_profile' => $user_profile,
                 ], 'Cập nhật thông tin thành công'
             );
-        }
-        catch (Exception $exception) {
+        } catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
         }
     }
@@ -191,8 +159,8 @@ class UserProfileController extends ApiController
     private function formatDates($data): array
     {
         return collect($data)->map(function ($item) {
-            $item['start'] = Carbon::createFromFormat('d/m/Y', $item['start'])->toDateString();
-            $item['end'] = Carbon::createFromFormat('d/m/Y', $item['end'])->toDateString();
+            $item['start'] = Carbon::createFromFormat('d/m/Y', $item['start'])->format('Y-m-d');
+            $item['end'] = Carbon::createFromFormat('d/m/Y', $item['end'])->format('Y-m-d');
             return $item;
         })->all();
     }
