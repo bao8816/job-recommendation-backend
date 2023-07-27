@@ -47,7 +47,8 @@ class ApiController extends Controller
             ->withHeaders([
                 'Content-Type' => 'application/json',
                 'Charset' => 'utf-8',
-                'Access-Control-Allow-Origin' => '*'
+                'Access-Control-Allow-Origin' => '*',
+                'Allow' => 'GET, POST, PUT, DELETE, OPTIONS'
             ]);
     }
 
@@ -73,7 +74,8 @@ class ApiController extends Controller
             ->withHeaders([
                 'Content-Type' => 'application/json',
                 'Charset' => 'utf-8',
-                'Access-Control-Allow-Origin' => '*'
+                'Access-Control-Allow-Origin' => '*',
+                'Allow' => 'GET, POST, PUT, DELETE, OPTIONS'
             ]);
     }
 
