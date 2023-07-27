@@ -567,7 +567,7 @@ Route::middleware(['auth:sanctum', 'ability:mod,company'])->controller(EmployerA
         Route::delete('/{id}', 'deleteEmployerAccount');
     });
 
-Route::middleware(['auth:sanctum', 'ability:mod,company,employer'])->controller(EmployerAccountController::class)
+Route::middleware(['auth:sanctum'])->controller(EmployerAccountController::class)
     ->prefix('employer-accounts')->group(function () {
         Route::get('/', 'getEmployerAccounts');
     });
@@ -579,7 +579,7 @@ Route::middleware(['auth:sanctum', 'ability:employer'])->controller(EmployerAcco
     });
 
 // Mod, company and employer
-Route::middleware(['auth:sanctum', 'ability:mod,employer,company'])->controller(EmployerAccountController::class)
+Route::middleware(['auth:sanctum'])->controller(EmployerAccountController::class)
     ->prefix('employer-accounts')->group(function () {
         Route::get('/{id}', 'getEmployerAccountById');
     });
@@ -591,7 +591,7 @@ Route::middleware(['auth:sanctum', 'ability:company'])->controller(EmployerAccou
     });
 
 // -----------Employer Profile
-Route::middleware(['auth:sanctum', 'abilities:employer'])->controller(EmployerProfileController::class)
+Route::middleware(['auth:sanctum'])->controller(EmployerProfileController::class)
     ->prefix('employer-profiles')->group(function () {
         Route::get('/{id}', 'getEmployerProfileById');
         Route::get('/', 'getEmployerProfiles');
