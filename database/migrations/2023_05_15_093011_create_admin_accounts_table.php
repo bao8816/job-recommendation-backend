@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('username');
             $table->string('password');
             $table->string('full_name')->nullable();
-            $table->string('avatar')->default(base_path('public/default_logo.png'));
+            $table->string('avatar')->default(env('DEFAULT_LOGO_URL', base_path('public/default_logo.png')));
             $table->boolean('is_banned')->default(0);
             $table->dateTime('locked_until')->nullable();
             $table->dateTime('last_login')->nullable();
