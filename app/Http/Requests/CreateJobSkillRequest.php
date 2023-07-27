@@ -31,8 +31,8 @@ class CreateJobSkillRequest extends FormRequest
             'skill' => [
                 'required',
                 'string',
-                // regex: not allow special characters
-                'regex:/^[a-zA-Z0-9 ]*$/',
+                // regex: not allow special characters (@, #, $, &, *)
+                'regex:/^[^@#$&*]+$/',
             ],
         ];
     }
