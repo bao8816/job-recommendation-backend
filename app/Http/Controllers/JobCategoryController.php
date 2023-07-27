@@ -97,7 +97,31 @@ class JobCategoryController extends ApiController
     public function createJobCategory(Request $request): JsonResponse
     {
         try {
-            $job_category = JobCategory::create($request->all());
+            $job_id = $request->job_id;
+            $category_ids = $request->category_id;
+
+            $delete_job_category = JobCategory::where('job_id', $job_id)->delete();
+
+            if (str_contains($category_ids, ';')) {
+                while (str_contains($category_ids, ';;')) {
+                    $category_ids = str_replace(';;', ';', $category_ids);
+                }
+                while (str_contains($category_ids, '; ')) {
+                    $category_ids = str_replace('; ', ';', $category_ids);
+                }
+                $category_ids = explode(';', $category_ids);
+            } else {
+                $category_ids = [$category_ids];
+            }
+
+            foreach ($category_ids as $category_id) {
+                $job_category = JobCategory::create([
+                    'job_id' => $job_id,
+                    'category_id' => $category_id,
+                ]);
+            }
+
+            $job_category = JobCategory::where('job_id', $job_id)->get();
 
             return $this->respondWithData(
                 [
