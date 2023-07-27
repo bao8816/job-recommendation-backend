@@ -20,6 +20,7 @@ class JobSkill extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'job_id',
         'skill',
     ];
 

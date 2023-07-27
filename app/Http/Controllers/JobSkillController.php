@@ -402,7 +402,32 @@ class JobSkillController extends ApiController
     public function createJobSkill(CreateJobSkillRequest $request): JsonResponse
     {
         try {
-            $job_skill = JobSkill::create($request->validated());
+            $job_id = $request->job_id;
+            $skills = $request->skill;
+
+            $delete_skills = JobSkill::where('job_id', $job_id)->delete();
+
+            if (str_contains($skills, ';')) {
+                while (str_contains($skills, ';;')) {
+                    $skills = str_replace(';;', ';', $skills);
+                }
+                while (str_contains($skills, '; ')) {
+                    $skills = str_replace('; ', ';', $skills);
+                }
+                $skills = explode(';', $skills);
+            }
+            else {
+                $skills = [$skills];
+            }
+
+            foreach ($skills as $skill) {
+                JobSkill::create([
+                    'job_id' => $job_id,
+                    'skill' => $skill,
+                ]);
+            }
+
+            $job_skill = JobSkill::where('job_id', $job_id)->get();
 
             return $this->respondCreated(
                 [
