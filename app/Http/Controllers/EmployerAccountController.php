@@ -260,10 +260,6 @@ class EmployerAccountController extends ApiController
                 return $this->respondNotFound();
             }
 
-            if (!$request->user()->tokenCan('mod') && $request->user()->id !== $employer_account->id) {
-                return $this->respondForbidden('Bạn không có quyền truy cập');
-            }
-
             return $this->respondWithData(
                 [
                     'employer_account' => $employer_account,
@@ -353,8 +349,7 @@ class EmployerAccountController extends ApiController
             $employer_profile = new EmployerProfile();
             $employer_profile->id = $employer_account->id;
             $employer_profile->company_id = $request->user()->id;
-            $employer_profile->full_name = $request->full_name;
-            $employer_profile->avatar = $request->avatar;
+            $employer_profile->full_name = $request->full_name ?? $username;
             $employer_profile->save();
 
             return $this->respondCreated(
