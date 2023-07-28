@@ -396,7 +396,7 @@ class ApplicationController extends ApiController
             $application = new Application();
             $application->job_id = $request->validated()['job_id'];
             $application->user_id = $request->user()->id;
-            $application->cv_path = $request->validated()['cv_path'];
+            $application->cv_id = $request->validated()['cv_id'];
 
             if (!$request->select_timetable) {
                 $application->time_table = null;
@@ -409,10 +409,11 @@ class ApplicationController extends ApiController
                 }
 
                 $coordinate = $time_table->coordinate;
+                $application->time_table = $coordinate;
+
             }
 
             $application->save();
-            $application->time_table = $coordinate ?? '';
 
             return $this->respondCreated(
                 [

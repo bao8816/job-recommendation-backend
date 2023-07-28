@@ -156,6 +156,49 @@ class UserProfileController extends ApiController
         }
     }
 
+    public function updateUserAvatar(Request $request, string $id): JsonResponse
+    {
+        try {
+            $user_profile = UserProfile::where('id', $id)->first();
+
+            if (!$user_profile) {
+                return $this->respondNotFound();
+            }
+
+            // upload avatar
+            if ($request->hasFile('avatar')) {
+                $file = $request->file('avatar');
+                $file_name = $file->getClientOriginalName();
+                $file_name = str_replace(' ', '_', $file_name);
+                $file_name = preg_replace('/[^A-Za-z0-9\-\.]/', '', $file_name);
+                $file_name = time() . '_' . $file_name;
+
+                $path = Storage::disk('s3')->putFileAs(
+                    'user_avatar',
+                    $file,
+                    $file_name,
+                );
+                $url = Storage::disk('s3')->url($path);
+
+                if (!$path || !$url) {
+                    return $this->respondInternalServerError('Không thể upload avatar');
+                }
+
+                $user_profile->avatar = $url;
+                $user_profile->save();
+            }
+
+            return $this->respondWithData(
+                [
+                    'user_profile' => $user_profile,
+                ], 'Cập nhật avatar thành công'
+            );
+        }
+        catch (Exception $exception) {
+            return $this->respondInternalServerError($exception->getMessage());
+        }
+    }
+
     private function formatDates($data): array
     {
         return collect($data)->map(function ($item) {

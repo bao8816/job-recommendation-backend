@@ -384,4 +384,47 @@ class CompanyProfileController extends ApiController
             return $this->respondInternalServerError($exception->getMessage());
         }
     }
+
+    public function updateCompanyLogo(Request $request, string $id): JsonResponse
+    {
+        try {
+            $company_profile = CompanyProfile::where('id', $id)->first();
+
+            if (!$company_profile) {
+                return $this->respondNotFound();
+            }
+
+            // upload logo
+            if ($request->hasFile('logo')) {
+                $file = $request->file('logo');
+                $file_name = $file->getClientOriginalName();
+                $file_name = str_replace(' ', '_', $file_name);
+                $file_name = preg_replace('/[^A-Za-z0-9\-\.]/', '', $file_name);
+                $file_name = time() . '_' . $file_name;
+
+                $path = Storage::disk('s3')->putFileAs(
+                    'company_logo',
+                    $file,
+                    $file_name,
+                );
+                $url = Storage::disk('s3')->url($path);
+
+                if (!$path || !$url) {
+                    return $this->respondInternalServerError('Không thể upload logo');
+                }
+
+                $company_profile->logo = $url;
+                $company_profile->save();
+            }
+
+            return $this->respondWithData(
+                [
+                    'company_profile' => $company_profile,
+                ], 'Cập nhật logo thành công'
+            );
+        }
+        catch (Exception $exception) {
+            return $this->respondInternalServerError($exception->getMessage());
+        }
+    }
 }
