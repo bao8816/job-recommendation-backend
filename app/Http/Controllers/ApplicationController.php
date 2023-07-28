@@ -204,7 +204,7 @@ class ApplicationController extends ApiController
             // get all applications,
 
             $applications = Application::filter($request, Application::query())
-                ->with(['job.employer_profile.company_profile', 'user_profile', 'user_profile.cvs'])
+                ->with(['job.employer_profile.company_profile', 'user_profile', 'cv'])
                 ->orderBy($order_by, $order_type)
                 ->paginate($count_per_page);
 
@@ -321,7 +321,7 @@ class ApplicationController extends ApiController
     {
         try {
             $application = Application::where('id', $id)
-            ->with(['job.employer_profile.company_profile', 'user_profile'])
+            ->with(['job.employer_profile.company_profile', 'user_profile', 'cv'])
             ->first();
 
             if (!$application) {
