@@ -24,7 +24,7 @@ class Application extends Model
      */
     protected $fillable = [
         'status',
-        'cv_path',
+        'cv_id',
     ];
 
     /**
