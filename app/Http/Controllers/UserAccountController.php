@@ -420,6 +420,8 @@ class UserAccountController extends ApiController
             $user_account->is_banned = true;
             $user_account->save();
 
+            $user_account->tokens()->delete();
+
             return $this->respondWithData(
                 [
                     'user_account' => $user_account,
@@ -564,6 +566,8 @@ class UserAccountController extends ApiController
 
             $user_account->locked_until = $request->locked_until;
             $user_account->save();
+
+            $user_account->tokens()->delete();
 
             return $this->respondWithData(
                 [

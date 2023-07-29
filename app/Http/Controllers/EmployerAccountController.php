@@ -490,6 +490,8 @@ class EmployerAccountController extends ApiController
             $employer_account->is_banned = true;
             $employer_account->save();
 
+            $employer_account->tokens()->delete();
+
             return $this->respondWithData(
                 [
                     'employer_account' => $employer_account,
@@ -622,6 +624,8 @@ class EmployerAccountController extends ApiController
 
             $employer_account->locked_until = $request->locked_until;
             $employer_account->save();
+
+            $employer_account->tokens()->delete();
 
             return $this->respondWithData(
                 [
