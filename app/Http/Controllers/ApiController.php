@@ -48,7 +48,9 @@ class ApiController extends Controller
                 'Content-Type' => 'application/json',
                 'Charset' => 'utf-8',
                 'Access-Control-Allow-Origin' => '*',
-                'Allow' => 'GET, POST, PUT, DELETE, OPTIONS'
+                'Access-Control-Allow-Headers' => '*',
+                'Access-Control-Allow-Methods' => 'GET, POST, PUT, DELETE, OPTIONS, HEAD',
+                'Allow' => 'GET, POST, PUT, DELETE, OPTIONS, HEAD'
             ]);
     }
 
@@ -75,7 +77,9 @@ class ApiController extends Controller
                 'Content-Type' => 'application/json',
                 'Charset' => 'utf-8',
                 'Access-Control-Allow-Origin' => '*',
-                'Allow' => 'GET, POST, PUT, DELETE, OPTIONS'
+                'Access-Control-Allow-Headers' => '*',
+                'Access-Control-Allow-Methods' => 'GET, POST, PUT, DELETE, OPTIONS, HEAD',
+                'Allow' => 'GET, POST, PUT, DELETE, OPTIONS, HEAD'
             ]);
     }
 

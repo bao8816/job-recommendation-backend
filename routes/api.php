@@ -108,7 +108,7 @@ Route::middleware(['auth:sanctum'])->controller(UserProfileController::class)
 // Only user
 Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserProfileController::class)
     ->prefix('user-profiles')->group(function () {
-        Route::put('/avatar/{id}', 'updateUserAvatar');
+        Route::post('/avatar/{id}', 'updateUserAvatar');
         Route::put('/import/{id}', 'importUserProfile');
         Route::put('/', 'updateUserProfile');
     });
@@ -483,7 +483,7 @@ Route::controller(CompanyProfileController::class)
 // Only company
 Route::middleware(['auth:sanctum', 'ability:company'])->controller(CompanyProfileController::class)
     ->prefix('company-profiles')->group(function () {
-        Route::put('/logo/{id}', 'updateCompanyLogo');
+        Route::post('/logo/{id}', 'updateCompanyLogo');
         Route::put('/', 'updateCompanyProfile');
     });
 
@@ -598,7 +598,7 @@ Route::middleware(['auth:sanctum'])->controller(EmployerProfileController::class
         Route::get('/{id}', 'getEmployerProfileById');
         Route::get('/', 'getEmployerProfiles');
 
-        Route::put('/avatar/{id}', 'updateEmployerAvatar');
+        Route::post('/avatar/{id}', 'updateEmployerAvatar');
         Route::put('/{id}', 'updateEmployerProfile');
     });
 
