@@ -64,8 +64,8 @@ class UpdateUserProfileRequest extends FormRequest
             ],
             'phone' => [
                 'string',
-                // regex for phone number
-                'regex:/^0[0-9]{9}$/',
+                // regex for vietnamese phone number, check all case including 84, +84, 0
+                'regex:/^(0|84|\+84)[3|5|7|8|9][0-9]{8}$/',
             ],
             'avatar' => [
                 // file type

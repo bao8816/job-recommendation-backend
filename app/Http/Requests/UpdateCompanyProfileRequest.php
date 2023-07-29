@@ -51,8 +51,8 @@ class UpdateCompanyProfileRequest extends FormRequest
             ],
             'phone' => [
                 'string',
-                // regex phone
-                'regex:/^(\+62|0)[0-9]{9,13}$/',
+                // regex for vietnamese phone number, check all case including 84, +84, 0
+                'regex:/^(0|84|\+84)[3|5|7|8|9][0-9]{8}$/',
             ],
             'email' => [
                 'string',
