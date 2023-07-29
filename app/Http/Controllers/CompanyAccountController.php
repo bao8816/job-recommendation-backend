@@ -520,6 +520,8 @@ class CompanyAccountController extends ApiController
             $company_account->is_banned = true;
             $company_account->save();
 
+            $company_account->tokens()->delete();
+
             return $this->respondWithData(
                 [
                     'company_account' => $company_account
@@ -667,6 +669,8 @@ class CompanyAccountController extends ApiController
 
             $company_account->locked_until = $request->locked_until;
             $company_account->save();
+
+            $company_account->tokens()->delete();
 
             return $this->respondWithData(
                 [

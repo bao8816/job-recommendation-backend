@@ -607,6 +607,8 @@ class AdminController extends ApiController
             $mod->is_banned = true;
             $mod->save();
 
+            $mod->tokens()->delete();
+
             return $this->respondWithData(
                 [
                     'mod' => $mod,
@@ -749,6 +751,8 @@ class AdminController extends ApiController
 
             $mod->locked_until = $request->locked_until;
             $mod->save();
+
+            $mod->tokens()->delete();
 
             return $this->respondWithData(
                 [
