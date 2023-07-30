@@ -67,7 +67,7 @@ class CompanySignUpRequest extends FormRequest
                 'max:1000',
             ],
             'size' => [
-                'nullable',
+                'required',
                 'string',
                 'max:100',
             ],
@@ -126,6 +126,7 @@ class CompanySignUpRequest extends FormRequest
             'address.string' => 'Địa chỉ công ty phải là dạng chuỗi',
             'address.max' => 'Địa chỉ công ty không được quá 1000 ký tự',
 
+            'size.required' => 'Yêu cầu nhập quy mô công ty',
             'size.string' => 'Quy mô công ty phải là dạng chuỗi',
             'size.max' => 'Quy mô công ty không được quá 100 ký tự',
 
