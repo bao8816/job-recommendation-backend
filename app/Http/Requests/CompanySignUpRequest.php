@@ -52,7 +52,7 @@ class CompanySignUpRequest extends FormRequest
                 'min:4',
             ],
             'description' => [
-                'nullable',
+                'required',
                 'string',
                 'max:10000',
             ],
@@ -62,7 +62,7 @@ class CompanySignUpRequest extends FormRequest
                 'max:500',
             ],
             'address' => [
-                'nullable',
+                'required',
                 'string',
                 'max:1000',
             ],
@@ -115,12 +115,14 @@ class CompanySignUpRequest extends FormRequest
             'name.max' => 'Tên công ty không được quá 100 ký tự',
             'name.min' => 'Tên công ty phải có ít nhất 4 ký tự',
 
+            'description.required' => 'Yêu cầu nhập mô tả công ty',
             'description.string' => 'Mô tả công ty phải là dạng chuỗi',
             'description.max' => 'Mô tả công ty không được quá 10000 ký tự',
 
             'site.string' => 'Trang web công ty phải là dạng chuỗi',
             'site.max' => 'Trang web công ty không được quá 500 ký tự',
 
+            'address.required' => 'Yêu cầu nhập địa chỉ công ty',
             'address.string' => 'Địa chỉ công ty phải là dạng chuỗi',
             'address.max' => 'Địa chỉ công ty không được quá 1000 ký tự',
 
