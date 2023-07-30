@@ -160,9 +160,9 @@ class AuthCompanyController extends ApiController
                 return $this->respondBadRequest('Mật khẩu không đúng');
             }
 
-            if (!$companyAccount->is_verified) {
-                return $this->respondBadRequest('Tài khoản chưa được xác thực');
-            }
+//            if (!$companyAccount->is_verified) {
+//                return $this->respondBadRequest('Tài khoản chưa được xác thực');
+//            }
 
             if ($companyAccount->is_banned) {
                 return $this->respondBadRequest('Tài khoản đã bị chặn');
