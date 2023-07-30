@@ -45,11 +45,6 @@ class SignUpRequest extends FormRequest
                 'string',
                 'same:password',
             ],
-            'name' => [
-                'string',
-                'max:100',
-                'min:4',
-            ],
         ];
     }
 
@@ -58,7 +53,7 @@ class SignUpRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function messages()
+    public function messages(): array
     {
         return [
             'username.required' => 'Yêu cầu nhập tên đăng nhập',
@@ -76,10 +71,6 @@ class SignUpRequest extends FormRequest
             'confirm_password.required' => 'Yêu cầu nhập lại mật khẩu xác nhận',
             'confirm_password.string' => 'Mật khẩu xác nhận phải là dạng chuỗi',
             'confirm_password.same' => 'Xác nhận mật khẩu không khớp',
-
-            'name.string' => 'Tên công ty phải là dạng chuỗi',
-            'name.max' => 'Tên công ty không được quá 100 ký tự',
-            'name.min' => 'Tên công ty phải có ít nhất 4 ký tự',
         ];
     }
 }
