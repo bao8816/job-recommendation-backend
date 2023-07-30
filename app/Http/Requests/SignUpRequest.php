@@ -53,7 +53,7 @@ class SignUpRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function messages()
+    public function messages(): array
     {
         return [
             'username.required' => 'Yêu cầu nhập tên đăng nhập',

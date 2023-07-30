@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CompanySignUpRequest;
 use App\Http\Requests\SignInRequest;
-use App\Http\Requests\SignUpRequest;
 use App\Models\CompanyAccount;
 use App\Models\CompanyProfile;
 use Exception;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class AuthCompanyController extends ApiController
@@ -58,7 +57,7 @@ class AuthCompanyController extends ApiController
      *      ),
      *  )
      */
-    public function signUp(SignUpRequest $request): JsonResponse
+    public function signUp(CompanySignUpRequest $request): JsonResponse
     {
         try {
             $username = strtolower(str_replace(' ', '', $request->username));
@@ -67,10 +66,6 @@ class AuthCompanyController extends ApiController
 
             if (CompanyAccount::where('username', $username)->exists()) {
                 return $this->respondBadRequest('Tên đăng nhập đã tồn tại');
-            }
-
-            if (!$request->email) {
-                return $this->respondBadRequest('Email không được để trống');
             }
 
             $hashed_password = Hash::make($password_salt);
@@ -83,6 +78,11 @@ class AuthCompanyController extends ApiController
             $profile = new CompanyProfile();
             $profile->id = $companyAccount->id;
             $profile->name = $request->name ?? $username;
+            $profile->description = $request->description ?? '';
+            $profile->site = $request->site ?? '';
+            $profile->address = $request->address ?? '';
+            $profile->size = $request->size ?? '';
+            $profile->phone = $request->phone ?? '';
             $profile->email = $request->email;
             $profile->save();
 
@@ -160,9 +160,9 @@ class AuthCompanyController extends ApiController
                 return $this->respondBadRequest('Mật khẩu không đúng');
             }
 
-            if (!$companyAccount->is_verified) {
-                return $this->respondBadRequest('Tài khoản chưa được xác thực');
-            }
+//            if (!$companyAccount->is_verified) {
+//                return $this->respondBadRequest('Tài khoản chưa được xác thực');
+//            }
 
             if ($companyAccount->is_banned) {
                 return $this->respondBadRequest('Tài khoản đã bị chặn');

@@ -393,6 +393,14 @@ class ApplicationController extends ApiController
     public function createApplication(CreateApplicationRequest $request): JsonResponse
     {
         try {
+            $application = Application::where('job_id', $request->validated()['job_id'])
+                ->where('user_id', $request->user()->id)
+                ->first();
+
+            if ($application && $application->status !== 'Đã từ chối') {
+                return $this->respondForbidden('Bạn đã nộp đơn cho công việc này');
+            }
+
             $application = new Application();
             $application->job_id = $request->validated()['job_id'];
             $application->user_id = $request->user()->id;
