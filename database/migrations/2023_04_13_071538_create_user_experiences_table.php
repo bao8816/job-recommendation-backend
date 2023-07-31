@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('position', 2000);
             $table->string('description', 5000);
             $table->date('start');
-            $table->date('end');
+            $table->date('end')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('university');
             $table->string('major')->nullable();
             $table->string('start');
-            $table->string('end');
+            $table->string('end')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
