@@ -20,5 +20,9 @@ class JobFilter extends AbstractFilter
         'location' => LocationFilter::class,
         'type' => TypeFilter::class,
         'gender' => GenderFilter::class,
+        'category' => CategoryFilter::class,
+        'skill' => SkillFilter::class,
+
+        'keyword' => SearchKeyword::class,
     ];
 }
