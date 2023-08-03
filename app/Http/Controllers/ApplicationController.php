@@ -406,7 +406,7 @@ class ApplicationController extends ApiController
             $application->user_id = $request->user()->id;
             $application->cv_id = $request->validated()['cv_id'];
 
-            if (!$request->select_timetable) {
+            if ($request->select_timetable === 'false' || !$request->select_timetable) {
                 $application->time_table = null;
             }
             else {
