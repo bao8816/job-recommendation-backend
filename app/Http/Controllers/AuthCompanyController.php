@@ -6,6 +6,8 @@ use App\Http\Requests\CompanySignUpRequest;
 use App\Http\Requests\SignInRequest;
 use App\Models\CompanyAccount;
 use App\Models\CompanyProfile;
+use App\Models\EmployerAccount;
+use App\Models\EmployerProfile;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
@@ -70,13 +72,13 @@ class AuthCompanyController extends ApiController
 
             $hashed_password = Hash::make($password_salt);
 
-            $companyAccount = new CompanyAccount();
-            $companyAccount->username = $username;
-            $companyAccount->password = $hashed_password;
-            $companyAccount->save();
+            $company_account = new CompanyAccount();
+            $company_account->username = $username;
+            $company_account->password = $hashed_password;
+            $company_account->save();
 
             $profile = new CompanyProfile();
-            $profile->id = $companyAccount->id;
+            $profile->id = $company_account->id;
             $profile->name = $request->name ?? $username;
             $profile->description = $request->description ?? '';
             $profile->site = $request->site ?? '';
@@ -86,9 +88,22 @@ class AuthCompanyController extends ApiController
             $profile->email = $request->email;
             $profile->save();
 
+            //Create a Default employer account
+            $employer_account = new EmployerAccount();
+            $employer_account->username = 'default';
+            $employer_account->password = Hash::make(env('INIT_PASSWORD') . env('PASSWORD_SALT'));
+            $employer_account->save();
+
+            $employer_profile = new EmployerProfile();
+            $employer_profile->id = $employer_account->id;
+            $employer_profile->full_name = $profile->name . ' - Default Employer';
+            $employer_profile->company_id = $company_account->id;
+            $employer_profile->save();
+
             return $this->respondWithData(
                 [
-                    'companyAccount' => $companyAccount,
+                    'companyAccount' => $company_account,
+                    'defaultEmployerAccount' => $employer_account,
                 ], 'Đăng ký thành công');
         } catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
