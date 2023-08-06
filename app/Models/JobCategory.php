@@ -14,14 +14,31 @@ class JobCategory extends Model
     protected $connection = 'mysql';
     protected $table = 'job_category';
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'job_id',
         'category_id',
     ];
 
+    /**
+     * The attributes that are hidden.
+     *
+     * @var array
+     */
     protected $hidden = [
         'deleted_at',
     ];
+
+    /**
+     * All the relationships to be touched.
+     *
+     * @var array
+     */
+    protected $touches = ['job'];
 
     public function job(): BelongsTo
     {

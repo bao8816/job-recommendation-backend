@@ -33,6 +33,13 @@ class JobSkill extends Model
         'deleted_at',
     ];
 
+    /**
+     * The relationships that should be touched on save.
+     *
+     * @var array<int, string>
+     */
+    protected $touches = ['job'];
+
     public function job(): BelongsTo
     {
         return $this->belongsTo(Job::class, 'id', 'skill_id');

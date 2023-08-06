@@ -32,6 +32,13 @@ class UserSkill extends Model
         'deleted_at',
     ];
 
+    /**
+     * The of the relationships that should be touched on save.
+     *
+     * @var array
+     */
+    protected $touches = ['user_profile'];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(UserAccount::class, 'user_id', 'id');
