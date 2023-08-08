@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateUserProfileRequest;
+use App\Models\CompanyProfile;
+use App\Models\EmployerProfile;
+use App\Models\Job;
 use App\Models\UserAchievement;
 use App\Models\UserEducation;
 use App\Models\UserExperience;
 use App\Models\UserProfile;
 use App\Models\UserSkill;
+use App\Notifications\Invitation;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -32,8 +36,7 @@ class UserProfileController extends ApiController
                 [
                     'user_profiles' => $user_profiles,
                 ]);
-        }
-        catch (Exception $exception) {
+        } catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
         }
     }
@@ -52,8 +55,7 @@ class UserProfileController extends ApiController
                 [
                     'user_profile' => $user_profile,
                 ]);
-        }
-        catch (Exception $exception) {
+        } catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
         }
     }
@@ -108,8 +110,7 @@ class UserProfileController extends ApiController
                 [
                     'user_profile' => $user_profile,
                 ]);
-        }
-        catch (Exception $exception) {
+        } catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
         }
     }
@@ -193,8 +194,7 @@ class UserProfileController extends ApiController
                     'user_profile' => $user_profile,
                 ], 'Cập nhật avatar thành công'
             );
-        }
-        catch (Exception $exception) {
+        } catch (Exception $exception) {
             return $this->respondInternalServerError($exception->getMessage());
         }
     }
@@ -206,5 +206,105 @@ class UserProfileController extends ApiController
             $item['end'] = Carbon::createFromFormat('d/m/Y', $item['end'])->format('Y-m-d');
             return $item;
         })->all();
+    }
+
+    public function sendJobInvitationNotification(Request $request): JsonResponse
+    {
+        try {
+            $job_id = $request->job_id;
+            $user_id = $request->user_id;
+            $refer_link = $request->refer_link;
+            $sender = $request->user();
+
+            if ($sender->tokenCan('company')) {
+                $company_id = $sender->id;
+            } else {
+                $company_id = EmployerProfile::where('id', $sender->id)->first()->company_id;
+            }
+
+            $company = CompanyProfile::where('id', $company_id)->first();
+            if (!$company) {
+                return $this->respondNotFound('Không tìm thấy công ty');
+            }
+
+            $job = Job::where('id', $job_id)->first();
+            if (!$job) {
+                return $this->respondNotFound('Không tìm thấy công việc');
+            }
+
+            $user_profile = UserProfile::find($user_id);
+            if (!$user_profile) {
+                return $this->respondNotFound('Không tìm thấy người dùng');
+            }
+
+            $user_profile->notify(new Invitation($company->name, $job->title, $refer_link));
+
+            return $this->respondWithData(null, 'Gửi lời mời thành công');
+        } catch (Exception $exception) {
+            return $this->respondInternalServerError($exception->getMessage());
+        }
+    }
+
+    public function getUserNotifications(Request $request): JsonResponse
+    {
+        try {
+            $user = UserProfile::find($request->user()->id);
+
+            $notifications = $user->notifications()->paginate(10);
+
+            return $this->respondWithData(
+                [
+                    'notifications' => $notifications,
+                ]
+            );
+        } catch (Exception $exception) {
+            return $this->respondInternalServerError($exception->getMessage());
+        }
+    }
+
+    public function getUserUnreadNotifications(Request $request): JsonResponse
+    {
+        try {
+            $user = UserProfile::find($request->user()->id);
+            $notifications = $user->unreadNotifications()->paginate(10);
+
+            return $this->respondWithData(
+                [
+                    'notifications' => $notifications,
+                ]
+            );
+        } catch (Exception $exception) {
+            return $this->respondInternalServerError($exception->getMessage());
+        }
+    }
+
+    public function markNotificationAsRead(Request $request, string $id): JsonResponse
+    {
+        try {
+            $user = UserProfile::find($request->user()->id);
+            $notification = $user->notifications()->where('id', $id)->first();
+
+            if (!$notification) {
+                return $this->respondNotFound('Không tìm thấy thông báo');
+            }
+
+            $notification->markAsRead();
+
+            return $this->respondWithData(null, 'Đánh dấu thông báo thành công');
+        } catch (Exception $exception) {
+            return $this->respondInternalServerError($exception->getMessage());
+        }
+    }
+
+    public function markAllNotificationsAsRead(Request $request): JsonResponse
+    {
+        try {
+            $user = UserProfile::find($request->user()->id);
+            $user->unreadNotifications()->update(['read_at' => now()]);
+
+            return $this->respondWithData(null, 'Đánh dấu tất cả thông báo thành công');
+        } catch (Exception $exception) {
+            return $this->respondInternalServerError($exception->getMessage());
+        }
     }
 }

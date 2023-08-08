@@ -111,6 +111,17 @@ Route::middleware(['auth:sanctum', 'abilities:user'])->controller(UserProfileCon
         Route::post('/avatar/{id}', 'updateUserAvatar');
         Route::put('/import/{id}', 'importUserProfile');
         Route::put('/', 'updateUserProfile');
+
+        Route::put('/noti/mark-as-read/{id}', 'markNotificationAsRead');
+        Route::put('/noti/mark-all-as-read', 'markAllNotificationsAsRead');
+        Route::get('/noti/all', 'getUserNotifications');
+        Route::get('/noti/unread', 'getUserUnreadNotifications');
+    });
+
+// Only company and employer
+Route::middleware(['auth:sanctum', 'ability:company,employer'])->controller(UserProfileController::class)
+    ->prefix('user-profiles')->group(function () {
+        Route::post('/noti/job-invite', 'sendJobInvitationNotification');
     });
 
 // ----------User Achievement
