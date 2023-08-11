@@ -624,6 +624,28 @@ class JobController extends ApiController
         }
     }
 
+    public function stopJob(string $id): JsonResponse
+    {
+        try {
+            $job = Job::where('id', $id)->first();
+
+            if (!$job) {
+                return $this->respondNotFound();
+            }
+
+            $job->status = 'Ngừng tuyển';
+            $job->save();
+
+            return $this->respondWithData(
+                [
+                    'job' => $job,
+                ]);
+        }
+        catch (Exception $exception) {
+            return $this->respondInternalServerError($exception->getMessage());
+        }
+    }
+
     /**
      * @OA\Delete(
      *      path="/api/jobs/{id}",
