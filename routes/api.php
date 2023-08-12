@@ -336,6 +336,7 @@ Route::middleware(['auth:sanctum', 'ability:company,employer'])->controller(JobC
     ->prefix('jobs')->group(function () {
         Route::post('/', 'createJob');
 
+        Route::put('/stop/{id}', 'stopJob');
         Route::put('/{id}', 'updateJob');
     });
 

@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Models\Job;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -16,6 +17,17 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('sanctum:prune-expired --hours=24')->daily();
+
+        // check the jobs table daily, if the deadline is passed, change the status to 'Ngừng tuyển'
+        $schedule->call(function () {
+            $jobs = Job::all();
+            foreach ($jobs as $job) {
+                if ($job->deadline < now()) {
+                    $job->status = 'Ngừng tuyển';
+                    $job->save();
+                }
+            }
+        })->daily();
     }
 
     /**

@@ -85,6 +85,10 @@ class UpdateJobRequest extends FormRequest
                 // regex: not allow special characters (@, #, $, &, *)
                 'regex:/^[^@#$&*]+$/',
             ],
+            'status' => [
+                'string',
+                'regex:/^[^@#$&*]+$/',
+            ]
         ];
     }
 
@@ -134,6 +138,9 @@ class UpdateJobRequest extends FormRequest
 
             'gender.string' => 'Giới tính phải là chuỗi ký tự',
             'gender.regex' => 'Giới tính không được chứa ký tự đặc biệt (@, #, $, &, *)',
+
+            'status.string' => 'Trạng thái công việc phải là chuỗi ký tự',
+            'status.regex' => 'Trạng thái công việc không được chứa ký tự đặc biệt (@, #, $, &, *)',
         ];
     }
 }
